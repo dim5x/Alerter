@@ -16,7 +16,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         with open(name_syslog_file, 'a') as f:
             if 'kernel: wlan0' in str(data):
                 f.write(
-                    'IP: ' + self.client_address[0] + '\t' + '\t' + today.strftime('%Y-%m-%d %H:%M:%S') + '\t' + str(
+                    'IP: ' + self.client_address[0] + '\t' + today.strftime('%Y-%m-%d %H:%M:%S') + '\t' + str(
                         data[19:]) + '\n')
                 print(data)
 
