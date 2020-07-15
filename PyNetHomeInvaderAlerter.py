@@ -3,7 +3,7 @@ import socketserver
 from flask import Flask, render_template, request, redirect, g
 
 # HOST, PORT = 'x.x.x.x', 514
-HOST, PORT = '192.168.2.2', 514
+HOST, PORT = '192.168.0.3', 514
 
 app = Flask(__name__)
 
