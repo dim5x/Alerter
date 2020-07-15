@@ -2,7 +2,10 @@ import datetime
 import socketserver
 
 # HOST, PORT = 'x.x.x.x', 514
-HOST, PORT = '192.168.2.2', 514
+HOST, PORT = '192.168.0.3', 514
+
+
+# HOST, PORT = 'localhost', 514
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
@@ -11,8 +14,9 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         today = datetime.datetime.today()
         name_syslog_file = today.strftime('%Y-%m-%d') + '.log'
         with open(name_syslog_file, 'a') as f:
-            if 'kernel' in str(data):
-                f.write(self.client_address[0] + '\t' + today.strftime('%Y-%m-%d %H:%M:%S') + '\t' + str(data) + '\n')
+            if 'kernel: wlan0' in str(data):
+                f.write('IP: ' + self.client_address[0] + '\t' + today.strftime('%Y-%m-%d %H:%M:%S') + '\t' + str(
+                    data[19:]) + '\n')
                 print(data)
 
 
