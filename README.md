@@ -19,4 +19,6 @@
 <li>Что делает: собрание html-страниц для отображения информации.</li>
 </ul>
 </ol>
+<img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/Screenshot.PNG" alt="альтернативный текст">
+
 
