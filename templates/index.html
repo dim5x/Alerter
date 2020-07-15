@@ -22,7 +22,7 @@
     <tr>
         <td style="width: 50%;text-align: center;background-color:black;color: azure">
             {% for item in allowMAC %}
-            <li>{{ item }}</li>
+            <li>{{ item|indent(8, True) }}</li>
             {% endfor %}
         </td>
         <td style="width: 50%;text-align: center;background-color:black;color: azure">
