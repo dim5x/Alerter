@@ -3,14 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Alerter</title>
-    <meta http-equiv="Refresh" content="5" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <meta http-equiv="Refresh" content="5"/>
+
+    <!--    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">-->
+    <!--        <a class="navbar-brand" href="#">Alerter</a>-->
+    <!--    </nav>-->
 </head>
+
 <body>
-<!--{{data}}-->
-<ul>
-{% for item in data %}
-<li>{{ item }}</li>
-{% endfor %}
-</ul>
+<table border="1" style="height: 34px; width: 100%; border-collapse: collapse; border-style: solid;">
+    <caption></caption>
+    <tbody>
+    <tr style="height: 17px;">
+        <td style="width: 50%; height: 17px; text-align: center; background-color: lightgreen;">Allow</td>
+        <td style="width: 50%; height: 17px; text-align: center; background-color: orange;">Disallow</td>
+    </tr>
+    <tr>
+        <td style="width: 50%;">
+            {% for item in allowMAC %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </td>
+        <td style="width: 50%;">{% for item in disallowMAC %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </td>
+    </tr>
+    <tr style="height: 17px;">
+        <td style="height: 17px; text-align: center;" colspan="2">Console output</td>
+    </tr>
+    <tr>
+        <td style="width: 50%; text-align: left;" colspan="2">
+            <div class="container themed-container">
+                <ul>
+                    {% for item in data %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</div>
+<!-- DivTable.com -->
 </body>
 </html>
