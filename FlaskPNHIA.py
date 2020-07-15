@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, g
 import datetime
 
-allowMAC=['']
-disallowMAC=['']
+allowMAC=['84:85:06:21:d5:5a']
+disallowMAC=['00:25:06:11:d5:00','08:75:56:11:11:11']
 
 app = Flask(__name__)
 

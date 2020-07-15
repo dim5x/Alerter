@@ -10,3 +10,18 @@
 192.168.0.100	2020-07-15 17:20:43	<15>Jul 15 17:20:46 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:54551/80 unexpectedly shrunk window 3657459505:3657464187 (repaired)
 192.168.0.100	2020-07-15 17:25:47	<15>Jul 15 17:25:50 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:54863/80 unexpectedly shrunk window 4116673751:4116679037 (repaired)
 192.168.0.100	2020-07-15 17:30:50	<15>Jul 15 17:30:54 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:55179/80 unexpectedly shrunk window 291978850:291997468 (repaired)
+192.168.0.100	2020-07-15 17:34:50	<12>Jul 15 17:34:53 kernel: wlan0: A wireless client is associated - 84:85:06:21:D5:5A
+192.168.0.100	2020-07-15 17:34:50	<12>Jul 15 17:34:53 kernel: wlan0: (zxc3) STA: 84:85:06:21:d5:5a Status: Successful[0]
+192.168.0.100	2020-07-15 17:34:50	<12>Jul 15 17:34:53 kernel: wlan0: WPA2-AES PSK authentication in progress...
+192.168.0.100	2020-07-15 17:34:50	<12>Jul 15 17:34:53 kernel: wlan0: A wireless client is associated - 84:85:06:21:D5:5A to ssid zxc3
+192.168.0.100	2020-07-15 17:34:50	<12>Jul 15 17:34:53 kernel: wlan0: Open and authenticated
+192.168.0.100	2020-07-15 17:39:44	<12>Jul 15 17:39:47 kernel: wlan0: (zxc3) Disassoc received from 84:85:06:21:d5:5a Reason: Leaving (or has left) BSS[8]
+192.168.0.100	2020-07-15 17:39:44	<12>Jul 15 17:39:47 kernel: wlan0: A wireless client is disassociated - 84:85:06:21:D5:5A
+192.168.0.100	2020-07-15 17:40:58	<15>Jul 15 17:41:01 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:55844/80 unexpectedly shrunk window 1211138561:1211141056 (repaired)
+192.168.0.100	2020-07-15 18:11:17	<15>Jul 15 18:11:20 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:58078/80 unexpectedly shrunk window 3963660226:3963665512 (repaired)
+192.168.0.100	2020-07-15 18:16:20	<15>Jul 15 18:16:23 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:58445/80 unexpectedly shrunk window 136124411:136125187 (repaired)
+192.168.0.100	2020-07-15 18:21:24	<15>Jul 15 18:21:27 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:58815/80 unexpectedly shrunk window 595444072:595446567 (repaired)
+192.168.0.100	2020-07-15 18:26:27	<15>Jul 15 18:26:30 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:59187/80 unexpectedly shrunk window 1078781850:1078782756 (repaired)
+192.168.0.100	2020-07-15 18:31:31	<15>Jul 15 18:31:34 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:59562/80 unexpectedly shrunk window 1524310429:1524312924 (repaired)
+192.168.0.100	2020-07-15 18:36:34	<15>Jul 15 18:36:38 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:59933/80 unexpectedly shrunk window 2008426916:2008428946 (repaired)
+192.168.0.100	2020-07-15 18:41:37	<15>Jul 15 18:41:40 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:60320/80 unexpectedly shrunk window 2458595745:2458596497 (repaired)
