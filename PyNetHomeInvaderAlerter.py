@@ -2,10 +2,8 @@ import datetime
 import socketserver
 
 # HOST, PORT = 'x.x.x.x', 514
-HOST, PORT = '192.168.0.3', 514
-
-
 # HOST, PORT = 'localhost', 514
+HOST, PORT = '192.168.0.3', 514
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
