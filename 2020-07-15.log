@@ -86,3 +86,24 @@ IP:192.168.0.100--2020-07-15 22:04:38	 kernel: wlan0: A wireless client is assoc
 IP:192.168.0.100--2020-07-15 22:04:38	 kernel: wlan0: Open and authenticated
 IP: 192.168.0.100	2020-07-15 22:04:56	 kernel: wlan0: (zxc3) Disassoc received from 84:85:06:21:d5:5a Reason: Leaving (or has left) BSS[8]
 IP: 192.168.0.100	2020-07-15 22:04:56	 kernel: wlan0: A wireless client is disassociated - 84:85:06:21:D5:5A
+IP: 192.168.0.100	2020-07-15 22:57:20	 kernel: wlan0: A wireless client is associated - 80:AD:16:7F:D8:AB
+IP: 192.168.0.100	2020-07-15 22:57:20	 kernel: wlan0: (zxc3) STA: 80:ad:16:7f:d8:ab Status: Successful[0]
+IP: 192.168.0.100	2020-07-15 22:57:20	 kernel: wlan0: WPA2-AES PSK authentication in progress...
+IP: 192.168.0.100	2020-07-15 22:57:20	 kernel: wlan0: A wireless client is associated - 80:AD:16:7F:D8:AB to ssid zxc3
+IP: 192.168.0.100	2020-07-15 22:57:21	 kernel: wlan0: Open and authenticated
+IP: 192.168.0.100&#9;2020-07-15 23:01:45	 kernel: wlan0: A wireless client is associated - 84:85:06:21:D5:5A
+IP: 192.168.0.100&#9;2020-07-15 23:01:45	 kernel: wlan0: (zxc3) STA: 84:85:06:21:d5:5a Status: Successful[0]
+IP: 192.168.0.100&#9;2020-07-15 23:01:45	 kernel: wlan0: WPA2-AES PSK authentication in progress...
+IP: 192.168.0.100&#9;2020-07-15 23:01:45	 kernel: wlan0: A wireless client is associated - 84:85:06:21:D5:5A to ssid zxc3
+IP: 192.168.0.100&#9;2020-07-15 23:01:45	 kernel: wlan0: Open and authenticated
+IP: 192.168.0.100&#9;2020-07-15 23:20:03	 kernel: wlan0: (zxc3) Deauth received from 80:ad:16:7f:d8:ab Reason: Leaving (or has left) IBSS or ESS[3]
+IP: 192.168.0.100&#9;2020-07-15 23:20:03	 kernel: wlan0: A wireless client is deauthenticated - 80:AD:16:7F:D8:AB
+IP: 192.168.0.100		2020-07-15 23:53:31	 kernel: wlan0: (zxc3) Disassoc received from 84:85:06:21:d5:5a Reason: Leaving (or has left) BSS[8]
+IP: 192.168.0.100		2020-07-15 23:53:31	 kernel: wlan0: A wireless client is disassociated - 84:85:06:21:D5:5A
+IP: 192.168.0.100		2020-07-15 23:53:45	 kernel: wlan0: A wireless client is associated - 84:85:06:21:D5:5A
+IP: 192.168.0.100		2020-07-15 23:53:45	 kernel: wlan0: (zxc3) STA: 84:85:06:21:d5:5a Status: Successful[0]
+IP: 192.168.0.100		2020-07-15 23:53:45	 kernel: wlan0: WPA2-AES PSK authentication in progress...
+IP: 192.168.0.100		2020-07-15 23:53:45	 kernel: wlan0: A wireless client is associated - 84:85:06:21:D5:5A to ssid zxc3
+IP: 192.168.0.100		2020-07-15 23:53:45	 kernel: wlan0: Open and authenticated
+IP: 192.168.0.100	  2020-07-15 23:54:37	 kernel: wlan0: (zxc3) Disassoc received from 84:85:06:21:d5:5a Reason: Leaving (or has left) BSS[8]
+IP: 192.168.0.100	  2020-07-15 23:54:37	 kernel: wlan0: A wireless client is disassociated - 84:85:06:21:D5:5A
