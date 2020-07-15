@@ -25,3 +25,27 @@
 192.168.0.100	2020-07-15 18:31:31	<15>Jul 15 18:31:34 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:59562/80 unexpectedly shrunk window 1524310429:1524312924 (repaired)
 192.168.0.100	2020-07-15 18:36:34	<15>Jul 15 18:36:38 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:59933/80 unexpectedly shrunk window 2008426916:2008428946 (repaired)
 192.168.0.100	2020-07-15 18:41:37	<15>Jul 15 18:41:40 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:60320/80 unexpectedly shrunk window 2458595745:2458596497 (repaired)
+192.168.0.100	2020-07-15 18:46:41	<15>Jul 15 18:46:44 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:60731/80 unexpectedly shrunk window 2912842958:2912843222 (repaired)
+192.168.0.100	2020-07-15 18:52:54	<12>Jul 15 18:52:57 kernel: wlan0: A wireless client is associated - A0:D8:07:79:9F:63
+192.168.0.100	2020-07-15 18:52:54	<12>Jul 15 18:52:57 kernel: wlan0: (zxc3) STA: a0:d8:07:79:9f:63 Status: Successful[0]
+192.168.0.100	2020-07-15 18:52:54	<12>Jul 15 18:52:57 kernel: wlan0: WPA2-AES PSK authentication in progress...
+192.168.0.100	2020-07-15 18:52:54	<12>Jul 15 18:52:57 kernel: wlan0: A wireless client is associated - A0:D8:07:79:9F:63 to ssid zxc3
+192.168.0.100	2020-07-15 18:52:54	<12>Jul 15 18:52:57 kernel: wlan0: Open and authenticated
+192.168.0.100	2020-07-15 18:53:31	<12>Jul 15 18:53:34 kernel: wlan0: A wireless client is associated - 48:6D:BB:D4:2D:A9
+192.168.0.100	2020-07-15 18:53:31	<12>Jul 15 18:53:34 kernel: wlan0: (zxc3) STA: 48:6d:bb:d4:2d:a9 Status: Successful[0]
+192.168.0.100	2020-07-15 18:53:31	<12>Jul 15 18:53:34 kernel: wlan0: WPA2-AES PSK authentication in progress...
+192.168.0.100	2020-07-15 18:53:31	<12>Jul 15 18:53:34 kernel: wlan0: A wireless client is associated - 48:6D:BB:D4:2D:A9 to ssid zxc3
+192.168.0.100	2020-07-15 18:53:31	<12>Jul 15 18:53:34 kernel: wlan0: Open and authenticated
+192.168.0.100	2020-07-15 19:01:51	<15>Jul 15 19:01:54 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:61935/80 unexpectedly shrunk window 4292512620:4292513290 (repaired)
+192.168.0.100	2020-07-15 19:06:54	<15>Jul 15 19:06:58 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:62337/80 unexpectedly shrunk window 482310932:482326186 (repaired)
+192.168.0.100	2020-07-15 19:10:32	<12>Jul 15 19:10:35 kernel: wlan0: A wireless client is associated - 80:AD:16:7F:D8:AB
+192.168.0.100	2020-07-15 19:10:32	<12>Jul 15 19:10:35 kernel: wlan0: (zxc3) STA: 80:ad:16:7f:d8:ab Status: Successful[0]
+192.168.0.100	2020-07-15 19:10:32	<12>Jul 15 19:10:35 kernel: wlan0: WPA2-AES PSK authentication in progress...
+192.168.0.100	2020-07-15 19:10:32	<12>Jul 15 19:10:35 kernel: wlan0: A wireless client is associated - 80:AD:16:7F:D8:AB to ssid zxc3
+192.168.0.100	2020-07-15 19:10:32	<12>Jul 15 19:10:35 kernel: wlan0: Open and authenticated
+192.168.0.100	2020-07-15 19:11:59	<15>Jul 15 19:12:02 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:62740/80 unexpectedly shrunk window 947467974:947483219 (repaired)
+192.168.0.100	2020-07-15 19:17:03	<15>Jul 15 19:17:06 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:63135/80 unexpectedly shrunk window 1427951771:1427967469 (repaired)
+192.168.0.100	2020-07-15 19:37:18	<15>Jul 15 19:37:21 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:64736/80 unexpectedly shrunk window 3290279671:3290279933 (repaired)
+192.168.0.100	2020-07-15 19:45:04	<12>Jul 15 19:45:07 kernel: wlan0: (zxc3) Deauth received from 80:ad:16:7f:d8:ab Reason: Leaving (or has left) IBSS or ESS[3]
+192.168.0.100	2020-07-15 19:45:04	<12>Jul 15 19:45:07 kernel: wlan0: A wireless client is deauthenticated - 80:AD:16:7F:D8:AB
+192.168.0.100	2020-07-15 19:47:24	<15>Jul 15 19:47:27 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:49168/80 unexpectedly shrunk window 4214126671:4214141168 (repaired)
