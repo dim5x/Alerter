@@ -22,7 +22,7 @@
 <li><b>Что делает:</b> собрание html-страниц для отображения информации.</li>
 </ul>
 
-<li><h2>Скриншот.</h2></li>
+<li><h2>Скриншот:</h2></li>
 <img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/Screenshot.PNG" alt="альтернативный текст">  
 </ol>
 
