@@ -9,7 +9,7 @@ def hello_world():
     today = datetime.datetime.today()
     name_syslog_file = today.strftime('%Y-%m-%d') + '.log'
     with open(name_syslog_file, 'r') as f:
-        s = f.read()
+        s = f.readlines()
     return render_template('index.html', data=s)
 
 

@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Alerter</title>
+    <meta http-equiv="Refresh" content="5" />
 </head>
 <body>
-{{data}}
+<!--{{data}}-->
+<ul>
+{% for item in data %}
+<li>{{ item }}</li>
+{% endfor %}
+</ul>
 </body>
 </html>
