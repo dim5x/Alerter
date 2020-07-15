@@ -1,0 +1,12 @@
+192.168.0.100	2020-07-15 17:10:36	<31>Jul 15 17:10:39 anweb[159]: check need_redirect started
+192.168.0.100	2020-07-15 17:10:36	<31>Jul 15 17:10:39 anweb[159]: need_redirect: is defconf
+192.168.0.100	2020-07-15 17:10:36	<31>Jul 15 17:10:39 anweb[157]: check need_redirect started
+192.168.0.100	2020-07-15 17:10:36	<31>Jul 15 17:10:39 anweb[157]: need_redirect: is defconf
+192.168.0.100	2020-07-15 17:10:36	<15>Jul 15 17:10:39 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:53917/80 unexpectedly shrunk window 2730983990:2730995116 (repaired)
+192.168.0.100	2020-07-15 17:12:46	<31>Jul 15 17:12:49 anweb[160]: check need_redirect started
+192.168.0.100	2020-07-15 17:12:46	<31>Jul 15 17:12:49 anweb[160]: need_redirect: is defconf
+192.168.0.100	2020-07-15 17:12:46	<31>Jul 15 17:12:49 anweb[156]: check need_redirect started
+192.168.0.100	2020-07-15 17:12:46	<31>Jul 15 17:12:49 anweb[156]: need_redirect: is defconf
+192.168.0.100	2020-07-15 17:20:43	<15>Jul 15 17:20:46 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:54551/80 unexpectedly shrunk window 3657459505:3657464187 (repaired)
+192.168.0.100	2020-07-15 17:25:47	<15>Jul 15 17:25:50 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:54863/80 unexpectedly shrunk window 4116673751:4116679037 (repaired)
+192.168.0.100	2020-07-15 17:30:50	<15>Jul 15 17:30:54 kernel: TCP: Peer 0000:0000:0000:0000:0000:ffff:c0a8:0003:55179/80 unexpectedly shrunk window 291978850:291997468 (repaired)
