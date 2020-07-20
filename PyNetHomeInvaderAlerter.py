@@ -13,8 +13,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         name_syslog_file = today.strftime('%Y-%m-%d') + '.log'
         with open(name_syslog_file, 'a') as f:
             if 'kernel: wlan0' in str(data):
-                f.write(
-                    'IP: ' + self.client_address[0] + '\t' + today.strftime('%Y-%m-%d %H:%M:%S') + '\t' + str(
+                f.write('IP: ' + self.client_address[0] + '\t' + today.strftime('%Y-%m-%d %H:%M:%S') + '\t' + str(
                         data[19:]) + '\n')
                 print(data)
 
@@ -26,4 +25,4 @@ if __name__ == '__main__':
     except (IOError, SystemExit):
         raise
     except KeyboardInterrupt:
-        print('Crtl+C Pressed. Shutting down.')
+        print('Ctrl+C Pressed. Shutting down.')

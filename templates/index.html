@@ -13,20 +13,20 @@
     <tbody>
     <tr style="height: 17px;">
         <td style="width: 50%; height: 17px; text-align: center; background-color: lightgreen;">
-            <h2>Allow <a href="add_allowMAC" style="color: black">+</a></h2>
+            <h2>Allow <a href="add_allow_mac" style="color: black">+</a></h2>
         </td>
         <td style="width: 50%; height: 17px; text-align: center; background-color: orange;">
-            <h2>Disallow <a href="add_disallowMAC" style="color: black">+</a></h2>
+            <h2>Disallow <a href="add_disallow_mac" style="color: black">+</a></h2>
         </td>
     </tr>
     <tr>
         <td style="width: 50%;text-align: center;background-color:black;color: azure">
-            {% for item in allowMAC %}
+            {% for item in allow_mac %}
             <li>{{ item }}</li>
             {% endfor %}
         </td>
         <td style="width: 50%;text-align: center;background-color:black;color: azure">
-            {% for item in disallowMAC %}
+            {% for item in disallow_mac %}
             <li>{{ item }}</li>
             {% endfor %}
         </td>

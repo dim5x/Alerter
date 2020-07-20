@@ -25,7 +25,7 @@ def add_allow_mac():
 
 
 # Заглушка страницы добавления.
-@app.route('/add_disallowMAC', methods=['POST', 'GET'])
+@app.route('/add_disallow_mac', methods=['POST', 'GET'])
 def add_disallow_mac():
     return render_template('add_disallow_mac.html', disallow_mac=disallow_mac)
 
