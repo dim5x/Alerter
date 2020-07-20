@@ -13,10 +13,12 @@ app = Flask(__name__)
 def hello_world():
     today = datetime.datetime.today()
     name_syslog_file = today.strftime('%Y-%m-%d') + '.log'
-    with open(name_syslog_file, 'r') as f:
-        s = reversed(f.readlines())
-    return render_template('index.html', data=s, allow_mac=allow_mac, disallow_mac=disallow_mac)
-
+    try:
+        with open(name_syslog_file, 'r') as f:
+            s = reversed(f.readlines())
+        return render_template('index.html', data=s, allow_mac=allow_mac, disallow_mac=disallow_mac)
+    except FileNotFoundError:
+        return render_template('FileNotFoundError.html')
 
 # Заглушка страницы добавления.
 @app.route('/add_allow_mac', methods=['POST', 'GET'])
@@ -32,3 +34,4 @@ def add_disallow_mac():
 
 if __name__ == '__main__':
     app.run()
+# todo FileNotFoundError Если нет файла лога.
