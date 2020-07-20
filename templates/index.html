@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Alerter</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    {#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">#}
     <meta http-equiv="Refresh" content="5"/>
 </head>
 
@@ -13,7 +14,7 @@
     <tbody>
     <tr style="height: 17px;">
         <td style="width: 50%; height: 17px; text-align: center; background-color: lightgreen;">
-            <h2>Allow <a href="add_allow_mac" style="color: black">+</a></h2>
+            <h2>Allow <a href="add_allow_mac.html" style="color: black">+</a></h2>
         </td>
         <td style="width: 50%; height: 17px; text-align: center; background-color: orange;">
             <h2>Disallow <a href="add_disallow_mac" style="color: black">+</a></h2>
@@ -22,12 +23,12 @@
     <tr>
         <td style="width: 50%;text-align: center;background-color:black;color: azure">
             {% for item in allow_mac %}
-            <li>{{ item }}</li>
+                <li>{{ item }}</li>
             {% endfor %}
         </td>
         <td style="width: 50%;text-align: center;background-color:black;color: azure">
             {% for item in disallow_mac %}
-            <li>{{ item }}</li>
+                <li>{{ item }}</li>
             {% endfor %}
         </td>
     </tr>
@@ -41,9 +42,7 @@
                 <ul>
 
                     {% for item in data %}
-
-                    <li>{{ item }}</li>
-
+                        <li>{{ item }}</li>
                     {% endfor %}
                 </ul>
             </div>
