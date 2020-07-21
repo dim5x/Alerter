@@ -1,16 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add allow MAC</title>
-</head>
-<body>
-<p style="text-align:center">
-<p class="container mt-5">
-    Add allow MAC
-    {% for item in allow_mac %}
-        <li>{{ item }}</li>
-    {% endfor %}
-<button style="color: #49642f">Add</button>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+
+    <head>
+        <title>Add allow MAC</title>
+    </head>
+
+    <h3 style="text-align:center; background-color:lightgreen">Add allow MAC</h3>
+
+    <body>
+    <form method="post">
+        <p style="text-align:center">
+            <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx"/>
+            <input name="button" type="submit" value="Добавить"/>
+        </p>
+    </form>
+
+    <p style="text-align:center">
+        <textarea disabled=True, cols="23" name="big" rows="10">
+            {% for item in allow_mac %}
+                {{ item }}
+            {% endfor %}
+        </textarea>
+    </p>
+
+    {#    <p style="text-align:center">#}
+    {#        <iframe src="/allow_mac.txt" width="468" height="60" align="center">#}
+    {#        </iframe>#}
+    {#    </p>#}
+
+    </body>
+{% endblock %}
