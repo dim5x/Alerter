@@ -1,56 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Alerter</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    {#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">#}
-    <meta http-equiv="Refresh" content="5"/>
-</head>
+{% extends 'base.html' %}
+{% block content %}
+    <head>
+        <title>Alerter</title>
+        <meta http-equiv="Refresh" content="10"/>
+    </head>
 
-<body>
-<table border="1" style="height: 34px; width: 100%; border-collapse: collapse; border-style: solid;">
-    <caption></caption>
-    <tbody>
-    <tr style="height: 17px;">
-        <td style="width: 50%; height: 17px; text-align: center; background-color: lightgreen;">
-            <h2>Allow <a href="add_allow_mac.html" style="color: black">+</a></h2>
-        </td>
-        <td style="width: 50%; height: 17px; text-align: center; background-color: orange;">
-            <h2>Disallow <a href="add_disallow_mac" style="color: black">+</a></h2>
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 50%;text-align: center;background-color:black;color: azure">
-            {% for item in allow_mac %}
-                <li>{{ item }}</li>
-            {% endfor %}
-        </td>
-        <td style="width: 50%;text-align: center;background-color:black;color: azure">
-            {% for item in disallow_mac %}
-                <li>{{ item }}</li>
-            {% endfor %}
-        </td>
-    </tr>
-    <tr style="height: 17px;">
-        <td style="height: 17px; text-align: center;background-color:black;color: azure" colspan="2">Console output:
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 50%; text-align: left;background-color:black;color: azure" colspan="2">
-            <div class="container themed-container">
-                <ul>
-
-                    {% for item in data %}
-                        <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <body>
+    <table border-style="1" style="height: 34px; width: 100%; border-collapse: collapse; border-style: solid;">
+        <caption></caption>
+        <tbody>
+        <tr style="height: 17px;">
+            <td style="width: 50%; height: 17px; text-align: center; background-color: lightgreen;">
+                <h2>Allow <a href="add_allow_mac.html" style="color: black">+</a></h2>
+            </td>
+            <td style="width: 50%; height: 17px; text-align: center; background-color: orange;">
+                <h2>Disallow <a href="add_disallow_mac.html" style="color: black">+</a></h2>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%;text-align: center;background-color:black;color: azure">
+                {% for item in allow_mac %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </td>
+            <td style="width: 50%;text-align: center;background-color:black;color: azure">
+                {% for item in disallow_mac %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr style="height: 17px;">
+            <td style="height: 17px; text-align: center;background-color:black;color: azure" colspan="2">Console output:
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%; text-align: left;background-color:black;color: azure" colspan="2">
+                <div class="container themed-container">
+                    <ul>
+                        {% for item in data %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
 
-</body>
-</html>
+    </body>
+{% endblock %}
