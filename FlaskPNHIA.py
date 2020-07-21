@@ -44,6 +44,7 @@ def add_disallow_mac():
             with open('disallow_mac.txt', 'a') as f:
                 mac = request.form['field']
                 f.write(mac + '\n')
+            return redirect('/')
     return render_template('add_disallow_mac.html', disallow_mac=disallow_mac)
 
 
