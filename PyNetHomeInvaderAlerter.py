@@ -9,9 +9,6 @@ HOST, PORT = '172.27.0.165', 514
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
-    def __init__(self, db):
-        self.db = db
-        super().__init__(self)
     def handle(self):
         data = bytes.decode(self.request[0].strip())
         today = datetime.datetime.today()
@@ -21,17 +18,19 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
            #     f.write('IP: ' + self.client_address[0] + '\t' + today.strftime('%Y-%m-%d %H:%M:%S') + '\t' + str(
            #             data[19:]) + '\n')
             f.write(str(data[19:]) + '\n')
+            db = sqlite3.connect('destination.db')
+            cursor = db.cursor()
+            cursor.execute('insert into dest values(\'' + str(data[19:0]) + '\')')
+            db.commit()
+            db.close()
            #  print(data)
 
 
 if __name__ == '__main__':
     try:
-        db = sqlite3.connect('destination.db')
-        _handler = SyslogUDPHandler(db)
-        server = socketserver.UDPServer((HOST, PORT), _handler)
+        server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
         server.serve_forever(poll_interval=0.5)
     except (IOError, SystemExit):
         raise
     except KeyboardInterrupt:
-        db.close()
         print('Ctrl+C Pressed. Shutting down.')
