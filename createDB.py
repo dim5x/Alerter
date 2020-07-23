@@ -20,7 +20,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS syslog (id INTEGER PRIMARY KEY,
                         event_time DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%S','now','localtime')),
                         fromhost varchar(200),
                         syslogtag varchar(50),
-                        event varchar(400),
+                        message varchar(400),
                         mac_allow varchar(17),
                         mac_disallow varchar(17),
                         rez text)''')
