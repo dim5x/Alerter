@@ -2,11 +2,24 @@
 {% block content %}
     <head>
         <title>Alerter</title>
+        {# Заготовка для фильтра #}
+        {#        <script src="static/jquery-3.5.1.min.js"></script>#}
+        {#        <script src="static/tab.js"></script>#}
+        {#        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>#}
+        {#        <script type="text/javascript" src="DataTables/datatables.min.js"></script>#}
         <meta http-equiv="Refresh" content="10"/>
+
     </head>
+    <style type="text/css">
+        TABLE {
+            width: 100%; /* Ширина таблицы */
+            table-layout: fixed;
+        }
+    </style>
 
     <body>
-    <table border-style="1" style="height: 34px; width: 100%; border-collapse: collapse; border-style: solid;">
+    <table id="table_id" border-style="1"
+           style="height: 34px; width: 100%; border-collapse: collapse; border-style: solid;">
         <caption></caption>
         <tbody>
         <tr style="height: 17px;">
@@ -28,17 +41,36 @@
                     <li>{{ item }}</li>
                 {% endfor %}
             </td>
+
         </tr>
         <tr style="height: 17px;">
             <td style="height: 17px; text-align: center;background-color:black;color: azure" colspan="2">Console output:
             </td>
         </tr>
         <tr>
+            {#            <td style="width: 50%; text-align: left;background-color:black;color: azure" colspan="2">#}
+            {#                <div class="container themed-container">#}
+            {#                    <ul>#}
+            {#                        {% for item in data %}#}
+            {#                            <li>{{ item }}</li>#}
+            {#                        {% endfor %}#}
+            {#                    </ul>#}
+            {#                </div>#}
+            {#            </td>#}
             <td style="width: 50%; text-align: left;background-color:black;color: azure" colspan="2">
                 <div class="container themed-container">
                     <ul>
                         {% for item in data %}
-                            <li>{{ item }}</li>
+                            <table align="center" border="1">
+                                <thead>
+                                <tr>
+                                    <th scope="col" width='17%'>{{ item[0] }}</th>
+                                    <th scope="col" width='13%'>{{ item[1] }}</th>
+                                    <th scope="col" width='15%'>{{ item[2] }}</th>
+                                    <th scope="col" width='65%'>{{ item[3] }}</th>
+                                </tr>
+                                </thead>
+                            </table>
                         {% endfor %}
                     </ul>
                 </div>
