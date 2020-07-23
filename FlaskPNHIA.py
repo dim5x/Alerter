@@ -1,20 +1,39 @@
 from flask import Flask, render_template, request, redirect
+import sqlite3
 
 app = Flask(__name__)
 app.static_folder = r'templates\static'
 
+conn = sqlite3.connect('destination_test.db')
+cursor = conn.cursor()
+data = list(cursor.execute("SELECT event_time, address,source,event FROM syslog"))
+
+# Главная страница.
+# Вариант с файловым представлением сислога.
+# @app.route('/', methods=['POST', 'GET'])
+# def hello_world():
+#     name_syslog_file = 'sys.log'
+#     global allow_mac
+#     global disallow_mac
+#     try:
+#         with open(name_syslog_file, 'r') as f, \
+#                 open('allow_mac.txt', 'r') as am, \
+#                 open('disallow_mac.txt', 'r') as dm:
+#             data = reversed(f.readlines())
+#             allow_mac = am.readlines()
+#             disallow_mac = dm.readlines()
+#         return render_template('index.html', data=data, allow_mac=allow_mac, disallow_mac=disallow_mac)
+#     except FileNotFoundError:
+#         return render_template('FileNotFoundError.html')
 
 # Главная страница.
 @app.route('/', methods=['POST', 'GET'])
 def hello_world():
-    name_syslog_file = 'sys.log'
     global allow_mac
     global disallow_mac
     try:
-        with open(name_syslog_file, 'r') as f, \
-                open('allow_mac.txt', 'r') as am, \
+        with open('allow_mac.txt', 'r') as am, \
                 open('disallow_mac.txt', 'r') as dm:
-            data = reversed(f.readlines())
             allow_mac = am.readlines()
             disallow_mac = dm.readlines()
         return render_template('index.html', data=data, allow_mac=allow_mac, disallow_mac=disallow_mac)
