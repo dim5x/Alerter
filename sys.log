@@ -143,3 +143,811 @@ kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
  kv-4fl-ex4200 mgd[70028]: auto-snapshot is not configured
  kv-4fl-ex4200 mgd[70029]: auto-snapshot is not configured
  kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<31>Jul 23 11:40:32 kv-5fl-ex4200 mgd[66100]: auto-snapshot is not configured
+<31>Jul 23 11:40:35 kv-5fl-ex4200 mgd[66101]: auto-snapshot is not configured
+<12>Jul 23 11:40:40 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-7/0/5.0 MAC 9c:7b:ef:3a:83:eb
+<30>Jul 23 11:40:41 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 11:40:41 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<28>Jul 23 11:40:41 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<7>Jul 23 11:40:41 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 11:40:42 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 23 11:40:42 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 23 11:40:42 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 11:40:42 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_DOWN: ifIndex 731, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-0/0/32
+<30>Jul 23 11:40:44 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 11:40:44 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 11:40:44 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 11:40:44 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 11:40:44 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 11:40:44 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 11:40:44 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<30>Jul 23 11:40:45 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 23 11:40:45 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 23 11:40:45 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 11:40:45 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 11:40:45 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 731, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32
+<46>Jul 23 11:40:46 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 11:40:45 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 1219, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32.0
+<31>Jul 23 11:40:49 kv-4fl-ex4200 mgd[74462]: auto-snapshot is not configured
+<31>Jul 23 11:40:49 kv-4fl-ex4200 mgd[74463]: auto-snapshot is not configured
+<31>Jul 23 11:40:50 kv-6fl-ex4200 mgd[52249]: auto-snapshot is not configured
+<31>Jul 23 11:40:50 kv-6fl-ex4200 mgd[52250]: auto-snapshot is not configured
+<30>Jul 23 13:39:01 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-7/0/5.0. Now, this interface has 1 neighbor/s .
+<12>Jul 23 13:39:01 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-7/0/5.0 MAC 9c:7b:ef:3a:8b:c8
+<12>Jul 23 13:39:02 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-7/0/5 MAC 9c:7b:ef:3a:8b:c8
+<30>Jul 23 13:39:23 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 13:39:23 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<28>Jul 23 13:39:23 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<7>Jul 23 13:39:23 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 13:39:26 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 13:39:26 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 13:39:26 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 13:39:26 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:39:26 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 13:39:26 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:39:26 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<30>Jul 23 13:39:30 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-3/0/37.0 has gone down. Now, this interface has 2 neighbor/s.
+<30>Jul 23 13:39:30 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-3/0/37.0. Now, this interface has 3 neighbor/s .
+<31>Jul 23 13:39:31 kv-4fl-ex4200 mgd[75208]: auto-snapshot is not configured
+<31>Jul 23 13:39:31 kv-4fl-ex4200 mgd[75209]: auto-snapshot is not configured
+<12>Jul 23 13:39:34 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 13:39:35 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<78>Jul 23 13:40:00 kv-6fl-ex4200 /usr/sbin/cron[52502]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:40:00 kv-ex4550 /usr/sbin/cron[55946]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:40:00 ds-qfx5100-2 /usr/sbin/cron[11996]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:40:00 kv-2fl-ex4300 /usr/sbin/cron[60954]: (root) CMD (   /usr/libexec/atrun)
+<30>Jul 23 13:40:00 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:00 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:00 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from FORWARDING to BLOCKING
+<7>Jul 23 13:40:00 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 13:40:00 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<78>Jul 23 13:40:00 kv-4fl-ex4200 /usr/sbin/cron[75211]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:40:00 kv-5fl-ex4200 /usr/sbin/cron[66374]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:40:00 ds-qfx5100-1 /usr/sbin/cron[25477]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:40:00 kv-3fl-ex4200 /usr/sbin/cron[48188]: (root) CMD (   /usr/libexec/atrun)
+<7>Jul 23 13:40:04 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 13:40:04 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-7/0/5.0 has gone down. Now, this interface has 0 neighbor/s.
+<30>Jul 23 13:40:04 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:04 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<46>Jul 23 13:40:04 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:04 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<46>Jul 23 13:40:05 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:04 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>Jul 23 13:40:07 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 13:40:07 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<28>Jul 23 13:40:07 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<30>Jul 23 13:40:07 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from BLOCKING to LEARNING
+<7>Jul 23 13:40:07 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 13:40:07 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from LEARNING to FORWARDING
+<31>Jul 23 13:40:10 kv-5fl-ex4200 mgd[66379]: auto-snapshot is not configured
+<31>Jul 23 13:40:10 kv-5fl-ex4200 mgd[66378]: auto-snapshot is not configured
+<30>Jul 23 13:40:10 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 13:40:10 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 13:40:10 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 13:40:10 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 13:40:10 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<28>Jul 23 13:40:10 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<7>Jul 23 13:40:10 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 13:40:10 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from FORWARDING to BLOCKING
+<46>Jul 23 13:40:11 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:10 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 13:40:11 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:10 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<30>Jul 23 13:40:13 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:13 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 13:40:13 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 13:40:14 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:13 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<46>Jul 23 13:40:14 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:13 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>Jul 23 13:40:14 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-7/0/5.0. Now, this interface has 1 neighbor/s .
+<31>Jul 23 13:40:15 kv-4fl-ex4200 mgd[75215]: auto-snapshot is not configured
+<31>Jul 23 13:40:15 kv-4fl-ex4200 mgd[75216]: auto-snapshot is not configured
+<30>Jul 23 13:40:16 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from BLOCKING to LEARNING
+<30>Jul 23 13:40:16 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from LEARNING to FORWARDING
+<31>Jul 23 13:40:19 kv-5fl-ex4200 mgd[66383]: auto-snapshot is not configured
+<31>Jul 23 13:40:19 kv-5fl-ex4200 mgd[66382]: auto-snapshot is not configured
+<12>Jul 23 13:40:19 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 13:40:20 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 13:40:24 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-7/0/5.0 MAC 9c:7b:ef:3a:8b:c8
+<12>Jul 23 13:40:24 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-7/0/5 MAC 9c:7b:ef:3a:8b:c8
+<28>Jul 23 13:40:24 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_DOWN: ifIndex 731, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-0/0/32
+<30>Jul 23 13:40:24 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 23 13:40:24 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 23 13:40:24 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 13:40:27 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 23 13:40:27 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 23 13:40:27 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 13:40:27 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:27 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 731, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32
+<46>Jul 23 13:40:28 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:27 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 1219, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32.0
+<30>Jul 23 13:40:31 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-7/0/5.0 has gone down. Now, this interface has 0 neighbor/s.
+<30>Jul 23 13:40:32 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:32 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 13:40:32 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 13:40:32 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from FORWARDING to BLOCKING
+<28>Jul 23 13:40:32 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<31>Jul 23 13:40:32 kv-6fl-ex4200 mgd[52506]: auto-snapshot is not configured
+<31>Jul 23 13:40:33 kv-6fl-ex4200 mgd[52507]: auto-snapshot is not configured
+<30>Jul 23 13:40:34 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:34 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:34 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:34 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 13:40:34 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 13:40:34 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:34 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<46>Jul 23 13:40:34 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 13:40:34 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>Jul 23 13:40:34 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:40:34 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<28>Jul 23 13:40:34 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<7>Jul 23 13:40:34 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<78>Jul 23 13:45:00 kv-3fl-ex4200 /usr/sbin/cron[48196]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 kv-3fl-ex4200 /usr/sbin/cron[48197]: (root) CMD (newsyslog)
+<78>Jul 23 13:45:00 kv-6fl-ex4200 /usr/sbin/cron[52514]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 kv-6fl-ex4200 /usr/sbin/cron[52515]: (root) CMD (newsyslog)
+<78>Jul 23 13:45:00 kv-ex4550 /usr/sbin/cron[55950]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 kv-ex4550 /usr/sbin/cron[55951]: (root) CMD (newsyslog)
+<78>Jul 23 13:45:00 kv-2fl-ex4300 /usr/sbin/cron[60958]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 ds-qfx5100-1 /usr/sbin/cron[25482]: (root) CMD (newsyslog)
+<78>Jul 23 13:45:00 kv-2fl-ex4300 /usr/sbin/cron[60959]: (root) CMD (newsyslog)
+<78>Jul 23 13:45:00 ds-qfx5100-1 /usr/sbin/cron[25483]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 ds-qfx5100-2 /usr/sbin/cron[12001]: (root) CMD (newsyslog)
+<78>Jul 23 13:45:00 ds-qfx5100-2 /usr/sbin/cron[12002]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 kv-4fl-ex4200 /usr/sbin/cron[75244]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 kv-4fl-ex4200 /usr/sbin/cron[75243]: (root) CMD (newsyslog)
+<78>Jul 23 13:45:00 kv-5fl-ex4200 /usr/sbin/cron[66430]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 23 13:45:00 kv-5fl-ex4200 /usr/sbin/cron[66431]: (root) CMD (newsyslog)
+<30>Jul 23 13:45:02 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-7/0/5.0 has gone down. Now, this interface has 0 neighbor/s.
+<30>Jul 23 13:45:03 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:45:03 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 13:45:03 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from FORWARDING to BLOCKING
+<7>Jul 23 13:45:03 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 13:45:03 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<28>Jul 23 14:09:03 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<28>	Jul 23 14:09:03	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<30>Jul 23 14:09:03 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>	Jul 23 14:09:03	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 14:09:03 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>	Jul 23 14:09:03	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 14:09:03 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	Jul 23 14:09:03	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 14:09:06 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>	Jul 23 14:09:06	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 14:09:06 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>	Jul 23 14:09:06	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 14:09:06 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	Jul 23 14:09:06	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 14:09:06 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	Jul 23 14:09:06	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 14:09:06 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<30>	Jul 23 14:09:06	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 14:09:06 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	Jul 23 14:09:06	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 14:09:06 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<30>	Jul 23 14:09:06	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<31>Jul 23 14:09:11 kv-4fl-ex4200 mgd[75400]: auto-snapshot is not configured
+<31>	Jul 23 14:09:11	kv-4fl-ex4200	mgd[75400]:	auto-snapshot is not configured
+<31>Jul 23 14:09:11 kv-4fl-ex4200 mgd[75401]: auto-snapshot is not configured
+<31>	Jul 23 14:09:11	kv-4fl-ex4200	mgd[75401]:	auto-snapshot is not configured
+<12>Jul 23 14:09:15 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<12>	Jul 23 14:09:15	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<30>Jul 23 15:01:01 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:01:01 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 15:01:01 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:01:01 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:01:01 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 15:01:01 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:01:01 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<30>Jul 23 15:01:03 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/3.0 index 271 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.86
+<28>Jul 23 15:02:31 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<28>	2020-07-23 15:02:31	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<30>Jul 23 15:02:31 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:31	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:31 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:31	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 15:02:31 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	2020-07-23 15:02:31	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<31>Jul 23 15:02:33 kv-5fl-ex4200 mgd[66700]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:33	kv-5fl-ex4200	mgd[66700]:	auto-snapshot is not configured
+<31>Jul 23 15:02:33 kv-5fl-ex4200 mgd[66701]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:33	kv-5fl-ex4200	mgd[66701]:	auto-snapshot is not configured
+<31>Jul 23 15:02:35 kv-4fl-ex4200 mgd[75742]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:35	kv-4fl-ex4200	mgd[75742]:	auto-snapshot is not configured
+<31>Jul 23 15:02:35 kv-4fl-ex4200 mgd[75743]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:35	kv-4fl-ex4200	mgd[75743]:	auto-snapshot is not configured
+<30>Jul 23 15:02:36 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:36	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:36 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:36	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:36 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:36	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:36 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:36	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 15:02:37 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	2020-07-23 15:02:37	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:02:37 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	2020-07-23 15:02:37	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:02:36 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<30>	2020-07-23 15:02:36	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<46>Jul 23 15:02:37 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	2020-07-23 15:02:37	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:02:36 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>	2020-07-23 15:02:36	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<12>Jul 23 15:02:39 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<12>	2020-07-23 15:02:39	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 15:02:39 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<12>	2020-07-23 15:02:39	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<30>Jul 23 15:02:39 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from BLOCKING to LEARNING
+<30>	2020-07-23 15:02:39	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from BLOCKING to LEARNING
+<30>Jul 23 15:02:39 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from LEARNING to FORWARDING
+<30>	2020-07-23 15:02:39	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from LEARNING to FORWARDING
+<31>Jul 23 15:02:43 kv-5fl-ex4200 mgd[66705]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:43	kv-5fl-ex4200	mgd[66705]:	auto-snapshot is not configured
+<31>Jul 23 15:02:43 kv-5fl-ex4200 mgd[66704]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:43	kv-5fl-ex4200	mgd[66704]:	auto-snapshot is not configured
+<30>Jul 23 15:02:45 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:45	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:45 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:45	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 15:02:45 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	2020-07-23 15:02:45	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 15:02:45 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<28>	2020-07-23 15:02:45	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<30>Jul 23 15:02:45 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from FORWARDING to BLOCKING
+<30>	2020-07-23 15:02:45	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from FORWARDING to BLOCKING
+<30>Jul 23 15:02:47 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:47	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:47 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:47	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:47 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:47	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:47 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:47	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 15:02:47 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	2020-07-23 15:02:47	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:02:47 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	2020-07-23 15:02:47	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:02:47 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<30>	2020-07-23 15:02:47	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<46>Jul 23 15:02:47 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	2020-07-23 15:02:47	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:02:47 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>	2020-07-23 15:02:47	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>Jul 23 15:02:50 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:50	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5.0 index 225 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:50 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:50	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5 index 283 <Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 15:02:50 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	2020-07-23 15:02:50	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 15:02:50 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<28>	2020-07-23 15:02:50	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_DOWN: ifIndex 900, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-7/0/5
+<31>Jul 23 15:02:52 kv-5fl-ex4200 mgd[66708]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:52	kv-5fl-ex4200	mgd[66708]:	auto-snapshot is not configured
+<31>Jul 23 15:02:53 kv-5fl-ex4200 mgd[66709]: auto-snapshot is not configured
+<31>	2020-07-23 15:02:53	kv-5fl-ex4200	mgd[66709]:	auto-snapshot is not configured
+<30>Jul 23 15:02:56 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:56	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:56 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:56	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth UpDown> ge-7/0/5 index 283 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:56 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:56	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>Jul 23 15:02:56 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<30>	2020-07-23 15:02:56	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-7/0/5.0 index 225 <Up Broadcast Multicast> address #0 54.e0.32.82.72.88
+<7>Jul 23 15:02:56 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<7>	2020-07-23 15:02:56	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:02:56 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	2020-07-23 15:02:56	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:02:56 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<30>	2020-07-23 15:02:56	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 900, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5
+<46>Jul 23 15:02:56 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<46>	2020-07-23 15:02:56	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:02:56 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>	2020-07-23 15:02:56	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 1410, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-7/0/5.0
+<30>Jul 23 15:02:59 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from BLOCKING to LEARNING
+<30>	2020-07-23 15:02:59	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from BLOCKING to LEARNING
+<30>Jul 23 15:02:59 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from LEARNING to FORWARDING
+<30>	2020-07-23 15:02:59	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-7/0/5.0 context id 0 changed from LEARNING to FORWARDING
+<31>Jul 23 15:03:01 kv-5fl-ex4200 mgd[66712]: auto-snapshot is not configured
+<31>	2020-07-23 15:03:01	kv-5fl-ex4200	mgd[66712]:	auto-snapshot is not configured
+<31>Jul 23 15:03:01 kv-5fl-ex4200 mgd[66713]: auto-snapshot is not configured
+<31>	2020-07-23 15:03:01	kv-5fl-ex4200	mgd[66713]:	auto-snapshot is not configured
+<163>Jul 23 15:03:04 kv-2fl-ex4300 fpc1 [EX-BCM PIC] ex_bcm_linkscan_handler: Link 6 DOWN
+<163>	2020-07-23 15:03:04	kv-2fl-ex4300	fpc1	[EX-BCM PIC] ex_bcm_linkscan_handler: Link 6 DOWN
+<167>Jul 23 15:03:04 kv-2fl-ex4300 fpc1 UPDN msg to kernel for ifd:ge-1/0/28, flag:2, speed: 10000000, duplex:2
+<167>	2020-07-23 15:03:04	kv-2fl-ex4300	fpc1	UPDN msg to kernel for ifd:ge-1/0/28, flag:2, speed: 10000000, duplex:2
+<30>Jul 23 15:03:04 kv-2fl-ex4300 rpd[1291]: EVENT <UpDown> ge-1/0/28.0 index 685 <Broadcast Multicast> address #0 4c.96.14.e9.e3.9f
+<30>	2020-07-23 15:03:04	kv-2fl-ex4300	rpd[1291]:	EVENT <UpDown> ge-1/0/28.0 index 685 <Broadcast Multicast> address #0 4c.96.14.e9.e3.9f
+<30>Jul 23 15:03:04 kv-2fl-ex4300 rpd[1291]: EVENT <UpDown> ge-1/0/28 index 1000 <Broadcast Multicast> address #0 4c.96.14.e9.e3.9f
+<30>	2020-07-23 15:03:04	kv-2fl-ex4300	rpd[1291]:	EVENT <UpDown> ge-1/0/28 index 1000 <Broadcast Multicast> address #0 4c.96.14.e9.e3.9f
+<30>Jul 23 15:03:04 kv-2fl-ex4300 rpd[1291]: STP handler: IFD =NULL, op=change, state=Discarding, Topo change generation=0
+<30>	2020-07-23 15:03:04	kv-2fl-ex4300	rpd[1291]:	STP handler: IFD =NULL, op=change, state=Discarding, Topo change generation=0
+<30>Jul 23 15:03:04 kv-2fl-ex4300 rpd[1291]: *STP Change*, notify to other modules
+<30>	2020-07-23 15:03:04	kv-2fl-ex4300	rpd[1291]:	*STP Change*, notify to other modules
+<166>Jul 23 15:03:04 kv-2fl-ex4300 fpc1 [EX-BCM PIC] ex_bcm_pic_ifd_config: ge-1/0/28, enable - 1
+<166>	2020-07-23 15:03:04	kv-2fl-ex4300	fpc1	[EX-BCM PIC] ex_bcm_pic_ifd_config: ge-1/0/28, enable - 1
+<167>Jul 23 15:03:04 kv-2fl-ex4300 fpc1 [EX-BCM PIC] ex_bcm_pic_ifd_config: ge-1/0/28 is already in state = 1
+<167>	2020-07-23 15:03:04	kv-2fl-ex4300	fpc1	[EX-BCM PIC] ex_bcm_pic_ifd_config: ge-1/0/28 is already in state = 1
+<28>Jul 23 15:03:04 kv-2fl-ex4300 mib2d[1290]: SNMP_TRAP_LINK_DOWN: ifIndex 696, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-1/0/28
+<28>	2020-07-23 15:03:04	kv-2fl-ex4300	mib2d[1290]:	SNMP_TRAP_LINK_DOWN: ifIndex 696, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-1/0/28
+<30>Jul 23 15:03:04 kv-2fl-ex4300 rpd[1291]: STP handler: IFD =NULL, op=change, state=Discarding, Topo change generation=0
+<30>	2020-07-23 15:03:04	kv-2fl-ex4300	rpd[1291]:	STP handler: IFD =NULL, op=change, state=Discarding, Topo change generation=0
+<30>Jul 23 15:03:04 kv-2fl-ex4300 rpd[1291]: *STP Change*, notify to other modules
+<30>	2020-07-23 15:03:04	kv-2fl-ex4300	rpd[1291]:	*STP Change*, notify to other modules
+<7>Jul 23 15:23:57 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:23:57	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 15:23:57 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:23:57	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:23:57 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:23:57	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<28>Jul 23 15:23:57 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+28	2020-07-23 15:23:57	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<7>Jul 23 15:24:01 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:24:01	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 15:24:01 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:24:01	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:24:01 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:24:01	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<46>Jul 23 15:24:01 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:24:01	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:24:01 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+30	2020-07-23 15:24:01	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 15:24:01 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:24:01	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:24:01 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+30	2020-07-23 15:24:01	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<31>Jul 23 15:24:06 kv-4fl-ex4200 mgd[75873]: auto-snapshot is not configured
+31	2020-07-23 15:24:06	kv-4fl-ex4200	mgd[75873]:	auto-snapshot is not configured
+<31>Jul 23 15:24:06 kv-4fl-ex4200 mgd[75874]: auto-snapshot is not configured
+31	2020-07-23 15:24:06	kv-4fl-ex4200	mgd[75874]:	auto-snapshot is not configured
+<12>Jul 23 15:24:10 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:24:10	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 15:24:10 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:24:10	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<31>Jul 23 15:31:14 kv-2fl-ex4300 last message repeated 127 times
+31	2020-07-23 15:31:14	kv-2fl-ex4300	last	message repeated 127 times
+<30>Jul 23 15:31:48 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+30	2020-07-23 15:31:48	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-0/0/32.0 index 442 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 23 15:31:48 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+30	2020-07-23 15:31:48	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-0/0/32 index 501 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 23 15:31:48 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:31:48	kv-6fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 15:31:48 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_DOWN: ifIndex 731, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-0/0/32
+28	2020-07-23 15:31:48	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_DOWN: ifIndex 731, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-0/0/32
+<30>Jul 23 15:31:51 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+30	2020-07-23 15:31:51	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-0/0/32.0 index 442 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 23 15:31:51 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+30	2020-07-23 15:31:51	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-0/0/32 index 501 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 23 15:31:51 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:31:51	kv-6fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:31:51 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:31:51	kv-6fl-ex4200	eventd[1032]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:31:51 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 731, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32
+30	2020-07-23 15:31:51	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_UP: ifIndex 731, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32
+<46>Jul 23 15:31:51 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:31:51	kv-6fl-ex4200	eventd[1032]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:31:51 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 1219, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32.0
+30	2020-07-23 15:31:51	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_UP: ifIndex 1219, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32.0
+<31>Jul 23 15:31:56 kv-6fl-ex4200 mgd[52753]: auto-snapshot is not configured
+31	2020-07-23 15:31:56	kv-6fl-ex4200	mgd[52753]:	auto-snapshot is not configured
+<31>Jul 23 15:31:56 kv-6fl-ex4200 mgd[52752]: auto-snapshot is not configured
+31	2020-07-23 15:31:56	kv-6fl-ex4200	mgd[52752]:	auto-snapshot is not configured
+<12>Jul 23 15:31:58 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-0/0/32.0 MAC 30:e1:71:bb:65:c0
+12	2020-07-23 15:31:58	kv-6fl-ex4200	cscript:	link-up.slax: IFNAME ge-0/0/32.0 MAC 30:e1:71:bb:65:c0
+<12>Jul 23 15:31:59 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-0/0/32 MAC 30:e1:71:bb:65:c0
+12	2020-07-23 15:31:59	kv-6fl-ex4200	cscript:	link-up.slax: IFNAME ge-0/0/32 MAC 30:e1:71:bb:65:c0
+<7>Jul 23 15:32:06 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:06	kv-6fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 15:32:06 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_DOWN: ifIndex 554, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-2/0/10
+28	2020-07-23 15:32:06	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_DOWN: ifIndex 554, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-2/0/10
+<30>Jul 23 15:32:06 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10.0 index 84 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:06	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10.0 index 84 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+<30>Jul 23 15:32:06 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10 index 143 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:06	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10 index 143 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+<7>Jul 23 15:32:07 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:07	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 15:32:07 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:07	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:32:07 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:07	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<28>Jul 23 15:32:07 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+28	2020-07-23 15:32:07	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<30>Jul 23 15:32:10 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:10	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:32:10 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:10	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 15:32:10 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:10	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:32:10 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:10	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:10 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+30	2020-07-23 15:32:10	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<30>Jul 23 15:32:10 kv-6fl-ex4200 lldpd[1461]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-2/0/10.0 has gone down. Now, this interface has 0 neighbor/s.
+30	2020-07-23 15:32:10	kv-6fl-ex4200	lldpd[1461]:	LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-2/0/10.0 has gone down. Now, this interface has 0 neighbor/s.
+<30>Jul 23 15:32:10 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10.0 index 84 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:10	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10.0 index 84 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+<30>Jul 23 15:32:10 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10 index 143 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:10	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10 index 143 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+<7>Jul 23 15:32:10 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:10	kv-6fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:32:11 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:11	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:10 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+30	2020-07-23 15:32:10	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<46>Jul 23 15:32:11 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:11	kv-6fl-ex4200	eventd[1032]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:10 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 554, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10
+30	2020-07-23 15:32:10	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_UP: ifIndex 554, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10
+<46>Jul 23 15:32:11 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:11	kv-6fl-ex4200	eventd[1032]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:10 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 666, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10.0
+30	2020-07-23 15:32:10	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_UP: ifIndex 666, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10.0
+<31>Jul 23 15:32:15 kv-4fl-ex4200 mgd[75926]: auto-snapshot is not configured
+31	2020-07-23 15:32:15	kv-4fl-ex4200	mgd[75926]:	auto-snapshot is not configured
+<31>Jul 23 15:32:15 kv-4fl-ex4200 mgd[75927]: auto-snapshot is not configured
+31	2020-07-23 15:32:15	kv-4fl-ex4200	mgd[75927]:	auto-snapshot is not configured
+<31>Jul 23 15:32:15 kv-6fl-ex4200 mgd[52756]: auto-snapshot is not configured
+31	2020-07-23 15:32:15	kv-6fl-ex4200	mgd[52756]:	auto-snapshot is not configured
+<31>Jul 23 15:32:15 kv-6fl-ex4200 mgd[52757]: auto-snapshot is not configured
+31	2020-07-23 15:32:15	kv-6fl-ex4200	mgd[52757]:	auto-snapshot is not configured
+<30>Jul 23 15:32:18 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10.0 index 84 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:18	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10.0 index 84 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+<30>Jul 23 15:32:18 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10 index 143 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:18	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10 index 143 <Broadcast Multicast> address #0 54.e0.32.81.55.d
+<7>Jul 23 15:32:18 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:18	kv-6fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 15:32:18 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_DOWN: ifIndex 554, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-2/0/10
+28	2020-07-23 15:32:18	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_DOWN: ifIndex 554, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-2/0/10
+<12>Jul 23 15:32:19 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:32:19	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 15:32:19 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:32:19	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<46>Jul 23 15:32:22 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:22	kv-6fl-ex4200	eventd[1032]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:21 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 554, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10
+30	2020-07-23 15:32:21	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_UP: ifIndex 554, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10
+<46>Jul 23 15:32:22 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:22	kv-6fl-ex4200	eventd[1032]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:21 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 666, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10.0
+30	2020-07-23 15:32:21	kv-6fl-ex4200	mib2d[1437]:	SNMP_TRAP_LINK_UP: ifIndex 666, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/10.0
+<30>Jul 23 15:32:21 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10.0 index 84 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:21	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10.0 index 84 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+<30>Jul 23 15:32:21 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-2/0/10 index 143 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+30	2020-07-23 15:32:21	kv-6fl-ex4200	rpd[1438]:	EVENT <UpDown> ge-2/0/10 index 143 <Up Broadcast Multicast> address #0 54.e0.32.81.55.d
+<7>Jul 23 15:32:21 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:21	kv-6fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 15:32:23 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from FORWARDING to BLOCKING
+30	2020-07-23 15:32:23	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from FORWARDING to BLOCKING
+<30>Jul 23 15:32:23 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4.0 index 272 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:23	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-3/0/4.0 index 272 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:23 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4 index 330 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:23	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-3/0/4 index 330 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<28>Jul 23 15:32:23 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 705, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-3/0/4
+28	2020-07-23 15:32:23	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_DOWN: ifIndex 705, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-3/0/4
+<7>Jul 23 15:32:23 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:23	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 15:32:25 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:25	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:25 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth UpDown> ge-3/0/4 index 330 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:25	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth UpDown> ge-3/0/4 index 330 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:25 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:25	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:25 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:25	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<7>Jul 23 15:32:25 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:25	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 15:32:25 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-3/0/4.0 has gone down. Now, this interface has 0 neighbor/s.
+30	2020-07-23 15:32:25	kv-5fl-ex4200	lldpd[1355]:	LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-3/0/4.0 has gone down. Now, this interface has 0 neighbor/s.
+<46>Jul 23 15:32:25 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:25	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:25 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 705, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4
+30	2020-07-23 15:32:25	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 705, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4
+<46>Jul 23 15:32:25 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:25	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:25 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1441, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4.0
+30	2020-07-23 15:32:25	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 1441, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4.0
+<31>Jul 23 15:32:26 kv-6fl-ex4200 mgd[52760]: auto-snapshot is not configured
+31	2020-07-23 15:32:26	kv-6fl-ex4200	mgd[52760]:	auto-snapshot is not configured
+<31>Jul 23 15:32:26 kv-6fl-ex4200 mgd[52761]: auto-snapshot is not configured
+31	2020-07-23 15:32:26	kv-6fl-ex4200	mgd[52761]:	auto-snapshot is not configured
+<30>Jul 23 15:32:28 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from BLOCKING to LEARNING
+30	2020-07-23 15:32:28	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from BLOCKING to LEARNING
+<30>Jul 23 15:32:28 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from LEARNING to FORWARDING
+30	2020-07-23 15:32:28	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from LEARNING to FORWARDING
+<12>Jul 23 15:32:29 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-2/0/10 MAC 9c:7b:ef:3a:84:66
+12	2020-07-23 15:32:29	kv-6fl-ex4200	cscript:	link-up.slax: IFNAME ge-2/0/10 MAC 9c:7b:ef:3a:84:66
+<12>Jul 23 15:32:29 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-2/0/10.0 MAC 9c:7b:ef:3a:84:66
+12	2020-07-23 15:32:29	kv-6fl-ex4200	cscript:	link-up.slax: IFNAME ge-2/0/10.0 MAC 9c:7b:ef:3a:84:66
+<30>Jul 23 15:32:30 kv-6fl-ex4200 lldpd[1461]: LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-2/0/10.0. Now, this interface has 1 neighbor/s .
+30	2020-07-23 15:32:30	kv-6fl-ex4200	lldpd[1461]:	LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-2/0/10.0. Now, this interface has 1 neighbor/s .
+<31>Jul 23 15:32:30 kv-5fl-ex4200 mgd[66841]: auto-snapshot is not configured
+31	2020-07-23 15:32:30	kv-5fl-ex4200	mgd[66841]:	auto-snapshot is not configured
+<31>Jul 23 15:32:30 kv-5fl-ex4200 mgd[66842]: auto-snapshot is not configured
+31	2020-07-23 15:32:30	kv-5fl-ex4200	mgd[66842]:	auto-snapshot is not configured
+<30>Jul 23 15:32:33 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4.0 index 272 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:33	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-3/0/4.0 index 272 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:33 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4 index 330 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:33	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-3/0/4 index 330 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<7>Jul 23 15:32:33 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:33	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 15:32:33 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 705, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-3/0/4
+28	2020-07-23 15:32:33	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_DOWN: ifIndex 705, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-3/0/4
+<30>Jul 23 15:32:33 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from FORWARDING to BLOCKING
+30	2020-07-23 15:32:33	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from FORWARDING to BLOCKING
+<12>Jul 23 15:32:35 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 48:ba:4e:de:6a:fc
+12	2020-07-23 15:32:35	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC 48:ba:4e:de:6a:fc
+<12>Jul 23 15:32:35 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC f4:30:b9:76:57:c8
+12	2020-07-23 15:32:35	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC f4:30:b9:76:57:c8
+<12>Jul 23 15:32:35 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 00:23:24:68:b3:2d
+12	2020-07-23 15:32:35	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC 00:23:24:68:b3:2d
+<12>Jul 23 15:32:35 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 18:60:24:24:d9:fe
+12	2020-07-23 15:32:35	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC 18:60:24:24:d9:fe
+<12>Jul 23 15:32:35 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC ac:e2:d3:0f:a2:4b
+12	2020-07-23 15:32:35	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC ac:e2:d3:0f:a2:4b
+<7>Jul 23 15:32:37 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:37	kv-5fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:32:37 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:37	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:37 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 705, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4
+30	2020-07-23 15:32:37	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 705, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4
+<46>Jul 23 15:32:37 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:37	kv-5fl-ex4200	eventd[932]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:37 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1441, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4.0
+30	2020-07-23 15:32:37	kv-5fl-ex4200	mib2d[1329]:	SNMP_TRAP_LINK_UP: ifIndex 1441, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4.0
+<30>Jul 23 15:32:37 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:37	kv-5fl-ex4200	rpd[1331]:	EVENT <UpDown> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:37 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth UpDown> ge-3/0/4 index 330 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:37	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth UpDown> ge-3/0/4 index 330 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:37 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:37	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:37 kv-5fl-ex4200 rpd[1331]: EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+30	2020-07-23 15:32:37	kv-5fl-ex4200	rpd[1331]:	EVENT <Bandwidth> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 23 15:32:37 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-3/0/4.0. Now, this interface has 1 neighbor/s .
+30	2020-07-23 15:32:37	kv-5fl-ex4200	lldpd[1355]:	LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-3/0/4.0. Now, this interface has 1 neighbor/s .
+<30>Jul 23 15:32:38 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-3/0/4.0 has gone down. Now, this interface has 0 neighbor/s.
+30	2020-07-23 15:32:38	kv-5fl-ex4200	lldpd[1355]:	LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-3/0/4.0 has gone down. Now, this interface has 0 neighbor/s.
+<30>Jul 23 15:32:38 kv-5fl-ex4200 lldpd[1355]: LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-3/0/4.0. Now, this interface has 1 neighbor/s .
+30	2020-07-23 15:32:38	kv-5fl-ex4200	lldpd[1355]:	LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-3/0/4.0. Now, this interface has 1 neighbor/s .
+<30>Jul 23 15:32:40 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from BLOCKING to LEARNING
+30	2020-07-23 15:32:40	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from BLOCKING to LEARNING
+<30>Jul 23 15:32:40 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from LEARNING to FORWARDING
+30	2020-07-23 15:32:40	kv-5fl-ex4200	eswd[1346]:	ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from LEARNING to FORWARDING
+<31>Jul 23 15:32:42 kv-5fl-ex4200 mgd[66846]: auto-snapshot is not configured
+31	2020-07-23 15:32:42	kv-5fl-ex4200	mgd[66846]:	auto-snapshot is not configured
+<31>Jul 23 15:32:42 kv-5fl-ex4200 mgd[66845]: auto-snapshot is not configured
+31	2020-07-23 15:32:42	kv-5fl-ex4200	mgd[66845]:	auto-snapshot is not configured
+<12>Jul 23 15:32:47 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4.0 MAC c4:65:16:e8:39:56
+12	2020-07-23 15:32:47	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4.0 MAC c4:65:16:e8:39:56
+<12>Jul 23 15:32:47 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 48:ba:4e:de:6a:fc
+12	2020-07-23 15:32:47	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC 48:ba:4e:de:6a:fc
+<12>Jul 23 15:32:47 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC f4:30:b9:76:57:c8
+12	2020-07-23 15:32:47	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC f4:30:b9:76:57:c8
+<12>Jul 23 15:32:47 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC c4:65:16:e8:39:56
+12	2020-07-23 15:32:47	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC c4:65:16:e8:39:56
+<12>Jul 23 15:32:47 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 00:23:24:68:b3:2d
+12	2020-07-23 15:32:47	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC 00:23:24:68:b3:2d
+<12>Jul 23 15:32:47 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 18:60:24:24:d9:fe
+12	2020-07-23 15:32:47	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC 18:60:24:24:d9:fe
+<12>Jul 23 15:32:47 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC ac:e2:d3:0f:a2:4b
+12	2020-07-23 15:32:47	kv-5fl-ex4200	cscript:	link-up.slax: IFNAME ge-3/0/4 MAC ac:e2:d3:0f:a2:4b
+<30>Jul 23 15:32:51 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:51	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:32:51 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:51	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 15:32:51 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:51	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 23 15:32:51 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+28	2020-07-23 15:32:51	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<30>Jul 23 15:32:54 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:54	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:32:54 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:32:54	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 15:32:54 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:32:54	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:32:54 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:54	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:54 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+30	2020-07-23 15:32:54	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 15:32:54 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:32:54	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:32:54 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+30	2020-07-23 15:32:54	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<31>Jul 23 15:32:59 kv-4fl-ex4200 mgd[75930]: auto-snapshot is not configured
+31	2020-07-23 15:32:59	kv-4fl-ex4200	mgd[75930]:	auto-snapshot is not configured
+<31>Jul 23 15:32:59 kv-4fl-ex4200 mgd[75931]: auto-snapshot is not configured
+31	2020-07-23 15:32:59	kv-4fl-ex4200	mgd[75931]:	auto-snapshot is not configured
+<12>Jul 23 15:33:03 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:33:03	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 15:33:04 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:33:04	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<7>Jul 23 15:33:36 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:33:36	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 23 15:33:36 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:33:36	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:33:36 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:33:36	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<28>Jul 23 15:33:36 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+28	2020-07-23 15:33:36	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<30>Jul 23 15:33:39 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:33:39	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 23 15:33:39 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+30	2020-07-23 15:33:39	kv-4fl-ex4200	rpd[1284]:	EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 23 15:33:39 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+7	2020-07-23 15:33:39	kv-4fl-ex4200	/kernel:	if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 23 15:33:39 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:33:39	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:33:39 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+30	2020-07-23 15:33:39	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 23 15:33:39 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+46	2020-07-23 15:33:39	kv-4fl-ex4200	eventd[908]:	EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 23 15:33:39 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+30	2020-07-23 15:33:39	kv-4fl-ex4200	mib2d[1373]:	SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<31>Jul 23 15:33:44 kv-4fl-ex4200 mgd[75934]: auto-snapshot is not configured
+31	2020-07-23 15:33:44	kv-4fl-ex4200	mgd[75934]:	auto-snapshot is not configured
+<31>Jul 23 15:33:44 kv-4fl-ex4200 mgd[75935]: auto-snapshot is not configured
+31	2020-07-23 15:33:44	kv-4fl-ex4200	mgd[75935]:	auto-snapshot is not configured
+<12>Jul 23 15:33:48 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:33:48	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<12>Jul 23 15:33:48 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+12	2020-07-23 15:33:48	kv-4fl-ex4200	cscript:	link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<12>Jul 24 10:13:19 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 48:ba:4e:de:6a:fc
+<12>Jul 24 10:13:19 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC f4:30:b9:76:57:c8
+<12>Jul 24 10:13:19 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 00:23:24:68:b3:2d
+<12>Jul 24 10:13:19 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 18:60:24:24:d9:fe
+<12>Jul 24 10:13:19 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC ac:e2:d3:0f:a2:4b
+<30>Jul 24 10:13:40 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 24 10:13:40 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 24 10:13:40 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:13:40 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<30>Jul 24 10:16:39 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 24 10:16:39 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 24 10:16:39 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:16:39 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<30>Jul 24 10:16:41 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 24 10:16:41 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 24 10:16:41 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:16:42 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:16:42 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 24 10:16:42 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:16:42 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<30>Jul 24 10:16:42 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4.0 index 272 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 24 10:16:42 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4 index 330 <Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 24 10:16:42 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from FORWARDING to BLOCKING
+<7>Jul 24 10:16:42 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:16:42 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_DOWN: ifIndex 705, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-3/0/4
+<30>Jul 24 10:16:45 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4.0 index 272 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<30>Jul 24 10:16:45 kv-5fl-ex4200 rpd[1331]: EVENT <UpDown> ge-3/0/4 index 330 <Up Broadcast Multicast> address #0 54.e0.32.81.7a.87
+<7>Jul 24 10:16:45 kv-5fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:16:45 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:16:45 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 705, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4
+<46>Jul 24 10:16:46 kv-5fl-ex4200 eventd[932]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:16:45 kv-5fl-ex4200 mib2d[1329]: SNMP_TRAP_LINK_UP: ifIndex 1441, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-3/0/4.0
+<31>Jul 24 10:16:46 kv-4fl-ex4200 mgd[83083]: auto-snapshot is not configured
+<31>Jul 24 10:16:46 kv-4fl-ex4200 mgd[83084]: auto-snapshot is not configured
+<30>Jul 24 10:16:48 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from BLOCKING to LEARNING
+<30>Jul 24 10:16:48 kv-5fl-ex4200 eswd[1346]: ESWD_STP_STATE_CHANGE_INFO: STP state for interface ge-3/0/4.0 context id 0 changed from LEARNING to FORWARDING
+<12>Jul 24 10:16:50 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<31>Jul 24 10:16:50 kv-5fl-ex4200 mgd[68433]: auto-snapshot is not configured
+<31>Jul 24 10:16:50 kv-5fl-ex4200 mgd[68432]: auto-snapshot is not configured
+<12>Jul 24 10:16:51 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<12>Jul 24 10:16:55 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 48:ba:4e:de:6a:fc
+<12>Jul 24 10:16:55 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC f4:30:b9:76:57:c8
+<12>Jul 24 10:16:55 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC c4:65:16:e8:3a:91
+<12>Jul 24 10:16:55 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 00:23:24:68:b3:2d
+<12>Jul 24 10:16:55 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC 18:60:24:24:d9:fe
+<12>Jul 24 10:16:55 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4 MAC ac:e2:d3:0f:a2:4b
+<12>Jul 24 10:16:56 kv-5fl-ex4200 cscript: link-up.slax: IFNAME ge-3/0/4.0 MAC c4:65:16:e8:3a:91
+<30>Jul 24 10:17:15 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-2/0/42.0 index 213 <Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:15 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-2/0/42 index 273 <Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<7>Jul 24 10:17:15 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:17:15 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 772, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-2/0/42
+<30>Jul 24 10:17:18 kv-4fl-ex4200 lldpd[1369]: LLDP_NEIGHBOR_DOWN: A neighbor of interface ge-2/0/42.0 has gone down. Now, this interface has 0 neighbor/s.
+<30>Jul 24 10:17:18 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-2/0/42.0 index 213 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:18 kv-4fl-ex4200 rpd[1284]: EVENT <Bandwidth UpDown> ge-2/0/42 index 273 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:18 kv-4fl-ex4200 rpd[1284]: EVENT <Bandwidth> ge-2/0/42.0 index 213 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:18 kv-4fl-ex4200 rpd[1284]: EVENT <Bandwidth> ge-2/0/42.0 index 213 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<7>Jul 24 10:17:18 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:17:18 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:18 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 772, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/42
+<46>Jul 24 10:17:18 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:18 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1056, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/42.0
+<31>Jul 24 10:17:23 kv-4fl-ex4200 mgd[83087]: auto-snapshot is not configured
+<31>Jul 24 10:17:23 kv-4fl-ex4200 mgd[83088]: auto-snapshot is not configured
+<30>Jul 24 10:17:23 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 24 10:17:23 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<28>Jul 24 10:17:23 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<7>Jul 24 10:17:23 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<30>Jul 24 10:17:23 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-2/0/42.0 index 213 <Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:23 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-2/0/42 index 273 <Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<7>Jul 24 10:17:23 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:17:23 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 772, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-2/0/42
+<30>Jul 24 10:17:26 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 24 10:17:26 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 24 10:17:26 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:17:26 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:26 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 24 10:17:26 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:26 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<30>Jul 24 10:17:27 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-2/0/42.0 index 213 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:27 kv-4fl-ex4200 rpd[1284]: EVENT <Bandwidth UpDown> ge-2/0/42 index 273 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:27 kv-4fl-ex4200 rpd[1284]: EVENT <Bandwidth> ge-2/0/42.0 index 213 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<30>Jul 24 10:17:27 kv-4fl-ex4200 rpd[1284]: EVENT <Bandwidth> ge-2/0/42.0 index 213 <Up Broadcast Multicast> address #0 54.e0.32.81.88.ad
+<7>Jul 24 10:17:27 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:17:27 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:27 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 772, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/42
+<46>Jul 24 10:17:28 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:27 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1056, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-2/0/42.0
+<30>Jul 24 10:17:28 kv-3fl-ex4200 rpd[1294]: EVENT <UpDown> ge-9/0/13.0 index 281 <Broadcast Multicast> address #0 54.e0.32.81.87.90
+<30>Jul 24 10:17:28 kv-3fl-ex4200 rpd[1294]: EVENT <UpDown> ge-9/0/13 index 340 <Broadcast Multicast> address #0 54.e0.32.81.87.90
+<7>Jul 24 10:17:28 kv-3fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:17:28 kv-3fl-ex4200 mib2d[1293]: SNMP_TRAP_LINK_DOWN: ifIndex 662, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-9/0/13
+<30>Jul 24 10:17:31 kv-3fl-ex4200 rpd[1294]: EVENT <UpDown> ge-9/0/13.0 index 281 <Up Broadcast Multicast> address #0 54.e0.32.81.87.90
+<30>Jul 24 10:17:31 kv-3fl-ex4200 rpd[1294]: EVENT <UpDown> ge-9/0/13 index 340 <Up Broadcast Multicast> address #0 54.e0.32.81.87.90
+<7>Jul 24 10:17:31 kv-3fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:17:31 kv-3fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:31 kv-3fl-ex4200 mib2d[1293]: SNMP_TRAP_LINK_UP: ifIndex 662, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-9/0/13
+<46>Jul 24 10:17:31 kv-3fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:31 kv-3fl-ex4200 mib2d[1293]: SNMP_TRAP_LINK_UP: ifIndex 664, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-9/0/13.0
+<31>Jul 24 10:17:31 kv-4fl-ex4200 mgd[83093]: auto-snapshot is not configured
+<31>Jul 24 10:17:31 kv-4fl-ex4200 mgd[83094]: auto-snapshot is not configured
+<31>Jul 24 10:17:34 kv-4fl-ex4200 mgd[83096]: auto-snapshot is not configured
+<31>Jul 24 10:17:34 kv-4fl-ex4200 mgd[83095]: auto-snapshot is not configured
+<31>Jul 24 10:17:35 kv-3fl-ex4200 mgd[52908]: auto-snapshot is not configured
+<31>Jul 24 10:17:35 kv-3fl-ex4200 mgd[52909]: auto-snapshot is not configured
+<30>Jul 24 10:17:36 kv-4fl-ex4200 lldpd[1369]: LLDP_NEIGHBOR_UP: A neighbor has come up for interface ge-2/0/42.0. Now, this interface has 1 neighbor/s .
+<12>Jul 24 10:17:38 kv-3fl-ex4200 cscript: link-up.slax: IFNAME ge-9/0/13 MAC ec:8e:b5:bf:92:fb
+<12>Jul 24 10:17:39 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<12>Jul 24 10:17:39 kv-3fl-ex4200 cscript: link-up.slax: IFNAME ge-9/0/13.0 MAC ec:8e:b5:bf:92:fb
+<12>Jul 24 10:17:42 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-2/0/42.0 MAC ac:e2:d3:0f:9e:8f
+<12>Jul 24 10:17:42 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-2/0/42 MAC ac:e2:d3:0f:9e:8f
+<12>Jul 24 10:17:42 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
+<30>Jul 24 10:17:43 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 24 10:17:43 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 24 10:17:43 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:17:43 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_DOWN: ifIndex 731, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-0/0/32
+<30>Jul 24 10:17:46 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 24 10:17:46 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 24 10:17:46 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:17:46 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:46 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 731, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32
+<46>Jul 24 10:17:46 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:17:46 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 1219, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32.0
+<31>Jul 24 10:17:51 kv-6fl-ex4200 mgd[55214]: auto-snapshot is not configured
+<31>Jul 24 10:17:51 kv-6fl-ex4200 mgd[55215]: auto-snapshot is not configured
+<12>Jul 24 10:17:54 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-0/0/32 MAC 30:e1:71:bb:65:c0
+<12>Jul 24 10:17:54 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-0/0/32.0 MAC 30:e1:71:bb:65:c0
+<30>Jul 24 10:24:42 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 24 10:24:42 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 24 10:24:43 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:24:43 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_DOWN: ifIndex 731, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-0/0/32
+<30>Jul 24 10:24:45 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32.0 index 442 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<30>Jul 24 10:24:45 kv-6fl-ex4200 rpd[1438]: EVENT <UpDown> ge-0/0/32 index 501 <Up Broadcast Multicast> address #0 54.e0.32.81.8a.a3
+<7>Jul 24 10:24:45 kv-6fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:24:46 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:24:45 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 731, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32
+<46>Jul 24 10:24:46 kv-6fl-ex4200 eventd[1032]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:24:45 kv-6fl-ex4200 mib2d[1437]: SNMP_TRAP_LINK_UP: ifIndex 1219, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-0/0/32.0
+<30>Jul 24 10:24:48 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 24 10:24:48 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 24 10:24:48 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<28>Jul 24 10:24:48 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_DOWN: ifIndex 723, ifAdminStatus up(1), ifOperStatus down(2), ifName ge-5/0/41
+<31>Jul 24 10:24:50 kv-6fl-ex4200 mgd[55245]: auto-snapshot is not configured
+<31>Jul 24 10:24:50 kv-6fl-ex4200 mgd[55246]: auto-snapshot is not configured
+<30>Jul 24 10:24:51 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41.0 index 149 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<30>Jul 24 10:24:51 kv-4fl-ex4200 rpd[1284]: EVENT <UpDown> ge-5/0/41 index 224 <Up Broadcast Multicast> address #0 54.e0.32.81.94.ac
+<7>Jul 24 10:24:51 kv-4fl-ex4200 /kernel: if_pfe_ge_ifdstat_ipc:handling ALARM ASSERT/CLEAR
+<46>Jul 24 10:24:51 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:24:51 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 723, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41
+<46>Jul 24 10:24:51 kv-4fl-ex4200 eventd[908]: EVENTD_ESCRIPT_EXECUTION: Trying to execute the script 'link-up.slax' from '/var/db/scripts/event/'
+<30>Jul 24 10:24:51 kv-4fl-ex4200 mib2d[1373]: SNMP_TRAP_LINK_UP: ifIndex 1199, ifAdminStatus up(1), ifOperStatus up(1), ifName ge-5/0/41.0
+<12>Jul 24 10:24:53 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-0/0/32.0 MAC 30:e1:71:bb:65:c0
+<12>Jul 24 10:24:54 kv-6fl-ex4200 cscript: link-up.slax: IFNAME ge-0/0/32 MAC 30:e1:71:bb:65:c0
+<31>Jul 24 10:24:56 kv-4fl-ex4200 mgd[83138]: auto-snapshot is not configured
+<31>Jul 24 10:24:56 kv-4fl-ex4200 mgd[83139]: auto-snapshot is not configured
+<12>Jul 24 10:24:59 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41 MAC d8:9d:67:64:f6:d8
+<78>Jul 24 10:25:00 kv-5fl-ex4200 /usr/sbin/cron[68438]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 24 10:25:00 kv-3fl-ex4200 /usr/sbin/cron[52926]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 24 10:25:00 kv-6fl-ex4200 /usr/sbin/cron[55248]: (root) CMD (   /usr/libexec/atrun)
+<78>Jul 24 10:25:00 kv-4fl-ex4200 /usr/sbin/cron[83141]: (root) CMD (   /usr/libexec/atrun)
+<12>Jul 24 10:25:00 kv-4fl-ex4200 cscript: link-up.slax: IFNAME ge-5/0/41.0 MAC d8:9d:67:64:f6:d8
