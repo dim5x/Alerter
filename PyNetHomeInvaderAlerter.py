@@ -6,9 +6,9 @@ import datetime
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
 # Заменить тем, что выше 1023-его.
 # HOST, PORT = 'x.x.x.x', 514
-HOST, PORT = '192.168.0.102', 5140
+#HOST, PORT = '192.168.0.102', 5140
 # my_branch test
-# HOST, PORT = '172.27.0.165', 514
+HOST, PORT = '172.27.0.165', 514
 
 db = sqlite3.connect('destination.db')  # создаём коннект с базой
 cursor = db.cursor()  # создаём курсор
@@ -28,8 +28,8 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         devicereportedtime = timestamp.strftime('%Y-%m-%d %H:%M:%S')
         # fromhost = self.client_address[0]
         fromhost = event.group('fromhost')
-        process = event.group('process').strip('/:')
-        syslogtag = event.group('syslogtag').strip(':')
+        process = event.group('process')
+        syslogtag = event.group('syslogtag')
         message = event.group('message')
         cursor.execute(
             "INSERT INTO syslog (priority,devicereportedtime,fromhost,process,syslogtag,message) VALUES (?,?,?,?,?,?)",
