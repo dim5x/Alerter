@@ -28,8 +28,8 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         devicereportedtime = timestamp.strftime('%Y-%m-%d %H:%M:%S')
         # fromhost = self.client_address[0]
         fromhost = event.group('fromhost')
-        process = event.group('process')
-        syslogtag = event.group('syslogtag')
+        process = event.group('process').strip('/:')
+        syslogtag = event.group('syslogtag').strip(':')
         message = event.group('message')
         cursor.execute(
             "INSERT INTO syslog (priority,devicereportedtime,fromhost,process,syslogtag,message) VALUES (?,?,?,?,?,?)",
@@ -48,8 +48,8 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 if __name__ == '__main__':
     try:
         server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
+        print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
         server.serve_forever(poll_interval=0.5)
-        print('Start server on: {}. Listening port:{}'.format(HOST, PORT))
     except (IOError, SystemExit):
         raise
     except KeyboardInterrupt:

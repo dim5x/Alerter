@@ -4,9 +4,15 @@ import sqlite3
 app = Flask(__name__)
 app.static_folder = r'templates\static'
 
-conn = sqlite3.connect('destination_test.db')
+conn = sqlite3.connect('destination.db')
 cursor = conn.cursor()
-data = list(cursor.execute("SELECT event_time, address,source,event FROM syslog"))
+data = list(cursor.execute('''SELECT priority,
+                                    receivedat,
+                                    fromhost,
+                                    process,
+                                    syslogtag,
+                                    message FROM syslog'''))
+
 
 # Главная страница.
 # Вариант с файловым представлением сислога.
