@@ -6,7 +6,8 @@ import sqlite3
                             devicereportedtime = время с железки
                             process = источник события
                             event_time = время события
-                            fromhost = IP-адресс (доменное имя) 
+                            ip = IP-адрес 
+                            fromhost = (доменное имя?) | переименовать в device_name? 
                             syslogtag = тег события
                             message = сообщение о событии
                             mac_allow = разрешенные маки
@@ -22,6 +23,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS syslog (id INTEGER PRIMARY KEY,
                         devicereportedtime DATETIME, 
                         event_time DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%S','now','localtime')),
                         fromhost varchar(200),
+                        ip varchar(15),
                         process text,
                         syslogtag varchar(50),
                         message varchar(400),
