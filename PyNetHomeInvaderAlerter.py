@@ -23,16 +23,16 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
             r'(?P<priority><\d{,3}>)(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2,2})(?P<from_host>\s+[^:]+){0,'
             r'1}\s+(?P<process>\S+:)(?P<syslog_tag>\s+\S+:){0,1}\s+(?P<message>.+)', data)
         priority = event.group('priority').strip('><')
-        timestamp = datetime.datetime.strptime(str(datetime.datetime.now().year) + ' ' + event.group('date'),
+        timestamp = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'),
                                                '%Y %b %d %H:%M:%S')
         device_time = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'), '%Y %b %d %H:%M:%S')
         if isinstance(event.group('from_host'), str):
-            fromhost = event.group('from_host')
+            from_host = event.group('from_host')
         else:
-            ip = self.client_address[0]       
+            from_host = self.client_address[0]       
         process = event.group('process')
         syslog_tag = event.group('syslog_tag')
-		message = event.group('message')
+        message = event.group('message')
 
         cursor.execute(
             "INSERT INTO syslog (priority, device_time, from_host, process, syslog_tag, message) "
@@ -50,6 +50,8 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 
 if __name__ == '__main__':
     try:
+        if not os.path.exists('destination.db'):
+            print('нужна база!')           
         server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
         print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
         server.serve_forever(poll_interval=0.5)
