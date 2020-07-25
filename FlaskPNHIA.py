@@ -40,7 +40,7 @@ def check_mac(s):
 #         return render_template('FileNotFoundError.html')
 
 # Главная страница.
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/alerter', methods=['POST', 'GET'])
 def hello_world():
     global data
     global allow_mac
@@ -58,7 +58,7 @@ def hello_world():
                                         FROM syslog'''))
     allow_mac = list(cursor.execute('SELECT mac,company,author,description,started_at FROM wellknown_mac'))
     disallow_mac = list(cursor.execute('SELECT mac, company FROM unknown_mac'))
-    return render_template('index.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac)
+    return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac)
 
 
 # # Заглушка страницы добавления.
@@ -121,6 +121,27 @@ def add_disallow_mac():
 @app.route('/test')
 def txt():
     return render_template('test.html', data=data)
+
+
+@app.route('/', methods=['POST', 'GET'])
+def login_admin():
+    if request.method == 'POST':
+        # print(request.form['login'])
+        login = request.form.get('login')
+        password = request.form.get('password')
+        # message = ''
+        db = sqlite3.connect('destination.db')
+        cur = db.cursor()
+        try:
+            p = list(cur.execute('SELECT password FROM admin WHERE login=?', (login,)))
+            if password == (str(p)[3:-4]):
+                return redirect('/alerter')
+            else:
+                return render_template('index.html', message='Неверно')
+        except:
+            pass
+
+    return render_template('index.html', message='')
 
 
 if __name__ == '__main__':
