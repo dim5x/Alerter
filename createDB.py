@@ -30,11 +30,22 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS syslog (id INTEGER PRIMARY KEY,
                         rez text)''')
 
 # Табличка для маков:
-cursor.execute('''CREATE TABLE IF NOT EXISTS mac (id INTEGER PRIMARY KEY,
-                        event_time DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%S','now','localtime')),
-                        allow_mac varchar(17),
-                        disallow_mac varchar(17))''')
-cursor.execute('INSERT INTO mac (allow_mac, disallow_mac) VALUES (?,?)', ('23:34:56:32:23:45', '00:00:56:32:23:77'))
+cursor.execute('''CREATE TABLE IF NOT EXISTS unknown_mac (id INTEGER PRIMARY KEY,
+                        mac varchar(17),
+                        started at DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%S','now','localtime')),
+                        company text)''')
+
+cursor.execute('INSERT INTO unknown_mac (mac, company) VALUES (?,?)', ('23:34:56:32:23:45', 'apple'))
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS wellknown_mac  (id INTEGER PRIMARY KEY,
+                        mac varchar(17),
+                        company text,
+                        description text,                        
+                        started_at DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%S','now','localtime')),
+                        ended_at DATETIME,
+                        author varchar(20))''')
+cursor.execute('INSERT INTO wellknown_mac (mac, company,description,author) VALUES (?,?,?,?)',
+               ('23:34:56:32:23:45', 'apple', 'Зу-зу-зу', 'Василий'))
 
 db.commit()
 db.close()
