@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
+import hashlib
 
 app = Flask(__name__)
 app.static_folder = r'templates\static'
@@ -129,12 +130,12 @@ def login_admin():
         # print(request.form['login'])
         login = request.form.get('login')
         password = request.form.get('password')
-        # message = ''
+        hash = hashlib.sha3_384(bytes(password, encoding='UTF-8')).hexdigest()
         db = sqlite3.connect('destination.db')
         cur = db.cursor()
         try:
-            p = list(cur.execute('SELECT password FROM admin WHERE login=?', (login,)))
-            if password == (str(p)[3:-4]):
+            hash_in_base = list(cur.execute('SELECT hash FROM admin WHERE login=?', (login,)))
+            if hash == (str(hash_in_base)[3:-4]):
                 return redirect('/alerter')
             else:
                 return render_template('index.html', message='Неверно')
