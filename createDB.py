@@ -3,12 +3,12 @@ import sqlite3
 """ Табличка c именем syslog и полями: 
                             id
                             priority = приоритет
-                            devicereportedtime = время с железки
+                            device_time = время с железки
                             process = источник события
                             event_time = время события
                             ip = IP-адрес 
-                            fromhost = (доменное имя?) | переименовать в device_name? 
-                            syslogtag = тег события
+                            from_host = (доменное имя?) | переименовать в device_name? 
+                            syslog_tag = тег события
                             message = сообщение о событии
                             mac_allow = разрешенные маки
                             mac_disallow = неразрешенные маки
@@ -20,12 +20,12 @@ cursor = db.cursor()  # создаём курсор
 # SQL- запрос на создание:
 cursor.execute('''CREATE TABLE IF NOT EXISTS syslog (id INTEGER PRIMARY KEY,
                         priority integer,
-                        devicereportedtime DATETIME, 
+                        device_time DATETIME, 
                         event_time DATETIME NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%S','now','localtime')),
-                        fromhost varchar(200),
+                        from_host varchar(200),
                         ip varchar(15),
                         process text,
-                        syslogtag varchar(50),
+                        syslog_tag varchar(50),
                         message varchar(400),                        
                         rez text)''')
 
