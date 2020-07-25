@@ -48,12 +48,12 @@ def hello_world():
     conn = sqlite3.connect('destination.db')
     cursor = conn.cursor()
 
-    data = list(cursor.execute('''SELECT receivedat, 
+    data = list(cursor.execute('''SELECT event_time, 
                                         priority,                                    
-                                        fromhost,
+                                        from_host,
                                         ip,
                                         process,
-                                        syslogtag,
+                                        syslog_tag,
                                         message
                                         FROM syslog'''))
     allow_mac = list(cursor.execute('SELECT mac,company,author,description,started_at FROM wellknown_mac'))
