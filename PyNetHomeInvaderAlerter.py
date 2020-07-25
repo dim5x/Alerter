@@ -1,7 +1,7 @@
 import socketserver
 import sqlite3
 import re
-import datetime
+from datetime import datetime
 
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
 # Заменить тем, что выше 1023-его.
@@ -20,20 +20,23 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 
         # Parse
         event = re.search(
-            r'(?P<priority><\d{,3}>)(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2,2})(?P<fromhost>\s+[^:]+){0,'
-            r'1}\s+(?P<process>\S+:)(?P<syslogtag>\s+\S+:){0,1}\s+(?P<message>.+)', data)
-        priority = event.group('priority').replace('<', '').replace('>', '')
+            r'(?P<priority><\d{,3}>)(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2,2})(?P<from_host>\s+[^:]+){0,'
+            r'1}\s+(?P<process>\S+:)(?P<syslog_tag>\s+\S+:){0,1}\s+(?P<message>.+)', data)
+        priority = event.group('priority').strip('><')
         timestamp = datetime.datetime.strptime(str(datetime.datetime.now().year) + ' ' + event.group('date'),
                                                '%Y %b %d %H:%M:%S')
-        devicereportedtime = timestamp.strftime('%Y-%m-%d %H:%M:%S')
-        # fromhost = self.client_address[0]
-        fromhost = event.group('fromhost')
+        device_time = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'), '%Y %b %d %H:%M:%S')
+        if isinstance(event.group('from_host'), str):
+            fromhost = event.group('from_host')
+        else:
+            ip = self.client_address[0]       
         process = event.group('process')
-        syslogtag = event.group('syslogtag')
-        message = event.group('message')
+        syslog_tag = event.group('syslog_tag')
+		message = event.group('message')
+
         cursor.execute(
-            "INSERT INTO syslog (priority,devicereportedtime,fromhost,process,syslogtag,message) VALUES (?,?,?,?,?,?)",
-            (priority, devicereportedtime, fromhost, process, syslogtag, message))
+            "INSERT INTO syslog (priority, device_time, from_host, process, syslog_tag, message) "
+            "VALUES (?,?,?,?,?,?)", (priority, device_time, from_host, process, syslog_tag, message))
 
         db.commit()
 
