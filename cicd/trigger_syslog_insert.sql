@@ -53,7 +53,7 @@ begin
 	select
 		text_value,
 		1,
-		datetime(current_timestamp, 'localtime'),
+		datetime('now', 'localtime'),
 		new.from_host,
 		(select text_value from variables where name = 'port') port
 	from
@@ -72,7 +72,7 @@ begin
 	update current_state 
 	set
 		state = 1,
-		started_at = new.receivedat,
+		started_at = datetime('now','localtime'),
 		from_host = new.from_host,
 		port = (select text_value from variables where name = 'port')
 	where 

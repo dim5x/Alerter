@@ -8,8 +8,8 @@ def get_query(script_file):
     return query
 
 
-# if os.path.exists('/destination.db'):
-#     os.remove('../destination.db')
+if os.path.exists('/destination.db'):
+     os.remove('../destination.db')
 
 db = sqlite3.connect('../destination.db')
 cursor = db.cursor()
@@ -28,3 +28,6 @@ cursor.execute(get_query('variables.sql'))
 cursor.execute(get_query('trigger_syslog_insert.sql'))
 # Добавление админской учётки
 cursor.execute(get_query('admin_insert.sql'))
+
+db.commit()
+db.close()
