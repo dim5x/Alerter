@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration</title>
+    </head>
+    <body>
+    <div class="container login-container" align="center">
+        <div class="col-md-6 login-form-2">
+            <div style="color: white">
+                <h2><p>Вы регистрируетесь в системе Alerter.</p></h2>
+                <p>Представьтесь, пожалуйста.</p>
+                <p>Выберите желаемый логин и введите актуальный адрес почты, на него будет выслан пароль.</p>
+            </div>
+            <form method="post">
+                <div class="form-group">
+                    <input name="name" required="required" autofocus type="text" class="form-control"
+                           placeholder="Name *"/>
+                </div>
+                <div class="form-group">
+                    <input name="surname" required="required" autofocus type="text" class="form-control"
+                           placeholder="Surname *"/>
+                </div>
+                <div class="form-group">
+                    <input name="wanted_login" required="required" autofocus type="text" class="form-control"
+                           placeholder="Login *"/>
+                </div>
+                <div class="form-group">
+                    <input name="email" type="email" required="required" class="form-control"
+                           placeholder="E-mail *"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Send password"/>
+                </div>
+                <span style="color:#e74c3c">{{ message }}</span>
+            </form>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}

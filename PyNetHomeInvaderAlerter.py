@@ -3,17 +3,33 @@ import sqlite3
 import re
 import os
 from datetime import datetime
+<<<<<<< HEAD
 import db_management
+=======
+import os
+import subprocess
+import sys
+>>>>>>> master
 
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
 # Заменить тем, что выше 1023-его.
 # HOST, PORT = 'x.x.x.x', 514
-#HOST, PORT = '192.168.0.102', 5140
+HOST, PORT = '192.168.0.102', 5140
 # my_branch test
-HOST, PORT = '172.27.0.165', 514
+# HOST, PORT = '172.27.0.165', 514
 
-db = sqlite3.connect('destination.db')  # создаём коннект с базой
-cursor = db.cursor()  # создаём курсор
+if not os.path.exists('destination.db'):
+    print('Нужна база!')
+    try:
+        subprocess.Popen([sys.executable, 'cicd/create_db.py'])
+        print('База создана!')
+        db = sqlite3.connect('destination.db')  # создаём коннект с базой
+        cursor = db.cursor()  # создаём курсор
+    except:
+        print('Что-то пошло не так!')
+else:
+    db = sqlite3.connect('destination.db')  # создаём коннект с базой
+    cursor = db.cursor()  # создаём курсор
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
@@ -26,10 +42,11 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
             r'1}\s+(?P<process>\S+:)(?P<syslog_tag>\s+\S+:){0,1}\s+(?P<message>.+)', data)
         priority = event.group('priority').strip('><')
         device_time = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'), '%Y %b %d %H:%M:%S')
+
         if isinstance(event.group('from_host'), str):
             from_host = event.group('from_host')
         else:
-            from_host = self.client_address[0]       
+            from_host = self.client_address[0]
         process = event.group('process')
         syslog_tag = event.group('syslog_tag')
         message = event.group('message')
@@ -53,8 +70,6 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 
 if __name__ == '__main__':
     try:
-        if not os.path.exists('destination.db'):
-            print('нужна база!')           
         server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
         print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
         server.serve_forever(poll_interval=0.5)
