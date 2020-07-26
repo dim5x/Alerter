@@ -15,19 +15,19 @@ db = sqlite3.connect('../destination.db')
 cursor = db.cursor()
 
 # Таблица событий
-cursor.execute(get_query('syslog.sql'))
+#cursor.execute(get_query('syslog.sql'))
 # Таблица с логин/паролем.
-cursor.execute(get_query('admin.sql'))
+#cursor.execute(get_query('admin.sql'))
 # # Таблица с mac-адресами
-cursor.execute(get_query('mac_addresses.sql'))
+#cursor.execute(get_query('mac_addresses.sql'))
 # # Таблица с текущим состоянием
-cursor.execute(get_query('current_state.sql'))
+#cursor.execute(get_query('current_state.sql'))
 # # Таблица с переменными
-cursor.execute(get_query('variables.sql'))
+#cursor.execute(get_query('variables.sql'))
 # # Триггер при появлении новых событий
-cursor.execute(get_query('trigger_syslog_insert.sql'))
+#cursor.execute(get_query('trigger_syslog_insert.sql'))
 # Добавление админской учётки
-cursor.execute(get_query('admin_insert.sql'))
+cursor.execute(get_query('create_db.sql'))
 
 db.commit()
 db.close()
