@@ -8,22 +8,26 @@ def get_query(script_file):
     return query
 
 
-# if os.path.exists('/destination.db'):
-#     os.remove('../destination.db')
+if os.path.exists('/destination.db'):
+     os.remove('../destination.db')
 
 db = sqlite3.connect('../destination.db')
 cursor = db.cursor()
 
 # Таблица событий
 cursor.execute(get_query('syslog.sql'))
-# Таблица с mac-адресами
+# Таблица с логин/паролем.
+cursor.execute(get_query('admin.sql'))
+# # Таблица с mac-адресами
 cursor.execute(get_query('mac_addresses.sql'))
-# Таблица с текущим состоянием
+# # Таблица с текущим состоянием
 cursor.execute(get_query('current_state.sql'))
-# Таблица с переменными
+# # Таблица с переменными
 cursor.execute(get_query('variables.sql'))
-# Триггер при появлении новых событий
+# # Триггер при появлении новых событий
 cursor.execute(get_query('trigger_syslog_insert.sql'))
+# Добавление админской учётки
+cursor.execute(get_query('admin_insert.sql'))
 # Только для тестирования
 cursor.execute(
     "INSERT INTO mac_addresses (mac, wellknown, wellknown_author, wellknown_started_at) "
@@ -40,7 +44,5 @@ cursor.execute(
     "INSERT INTO mac_addresses (mac) "
     "VALUES (?)", ('08:75:57:11:11:11',))
 
-
 db.commit()
 db.close()
-
