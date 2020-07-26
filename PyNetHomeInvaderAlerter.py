@@ -1,7 +1,9 @@
 import socketserver
 import sqlite3
 import re
+import os
 from datetime import datetime
+import db_management
 
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
 # Заменить тем, что выше 1023-его.
@@ -23,8 +25,6 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
             r'(?P<priority><\d{,3}>)(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2,2})(?P<from_host>\s+[^:]+){0,'
             r'1}\s+(?P<process>\S+:)(?P<syslog_tag>\s+\S+:){0,1}\s+(?P<message>.+)', data)
         priority = event.group('priority').strip('><')
-        timestamp = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'),
-                                               '%Y %b %d %H:%M:%S')
         device_time = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'), '%Y %b %d %H:%M:%S')
         if isinstance(event.group('from_host'), str):
             from_host = event.group('from_host')
@@ -34,9 +34,12 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         syslog_tag = event.group('syslog_tag')
         message = event.group('message')
 
-        cursor.execute(
-            "INSERT INTO syslog (priority, device_time, from_host, process, syslog_tag, message) "
-            "VALUES (?,?,?,?,?,?)", (priority, device_time, from_host, process, syslog_tag, message))
+        data_dic = {'priority' : priority, 'device_time' : device_time.strftime('%Y-%m-%d %H:%M:%S'), 'from_host' : from_host, 'process' : process, 'syslog_tag' : syslog_tag, 'message' : message}
+        db_management.insert_data(data_dic, 'syslog', cursor)
+
+       # cursor.execute(
+       #     "INSERT INTO syslog (priority, device_time, from_host, process, syslog_tag, message) "
+       #     "VALUES (?,?,?,?,?,?)", (priority, device_time, from_host, process, syslog_tag, message))
 
         db.commit()
 
