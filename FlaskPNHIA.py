@@ -212,4 +212,24 @@ def login_admin():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True, host='0.0.0.0')
+    # Считываем настройки
+    # Локальные имеют приоритет над глобальными
+    with open('local.config') as file:
+        lines = file.read().splitlines()
+
+    options  = {}
+
+    for line in lines:
+        key, value = line.split(':')
+        options.update({key:value})
+
+    with open ('global.config') as file:
+        lines = file.read().splitlines()
+
+    for line in lines:
+        key, value = line.split(':')
+        if not key in options:
+            options.update({key:value})
+
+    #
+    app.run(debug=True, use_reloader=True,host=options["flask_host"])
