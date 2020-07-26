@@ -28,21 +28,6 @@ cursor.execute(get_query('variables.sql'))
 cursor.execute(get_query('trigger_syslog_insert.sql'))
 # Добавление админской учётки
 cursor.execute(get_query('admin_insert.sql'))
-# Только для тестирования
-cursor.execute(
-    "INSERT INTO mac_addresses (mac, wellknown, wellknown_author, wellknown_started_at) "
-    "VALUES (?,?,?,?)", ('84:85:06:21:d5:5a', 1, 'dim5x' , '2020-07-26 00:01:02'))
-
-cursor.execute(
-    "INSERT INTO mac_addresses (mac, wellknown, wellknown_author, wellknown_started_at) "
-    "VALUES (?,?,?,?)", ('84:85:06:21:D5:5A', 1, 'dim5x' , '2020-07-26 00:01:02'))
-
-cursor.execute(
-    "INSERT INTO mac_addresses (mac) "
-    "VALUES (?)", ('00:25:06:11:d5:00',))
-cursor.execute(
-    "INSERT INTO mac_addresses (mac) "
-    "VALUES (?)", ('08:75:57:11:11:11',))
 
 db.commit()
 db.close()
