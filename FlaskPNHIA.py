@@ -48,16 +48,15 @@ def hello_world():
     conn = sqlite3.connect('destination.db')
     cursor = conn.cursor()
 
-    data = list(cursor.execute('''SELECT event_time, 
+    data = list(cursor.execute('''SELECT device_time, 
                                         priority,                                    
                                         from_host,
-                                        ip,
                                         process,
                                         syslog_tag,
                                         message
                                         FROM syslog'''))
-    allow_mac = list(cursor.execute('SELECT mac,company,author,description,started_at FROM wellknown_mac'))
-    disallow_mac = list(cursor.execute('SELECT mac, company FROM unknown_mac'))
+    allow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 1'))
+    disallow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 0 or wellknown is null'))
     return render_template('index.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac)
 
 
@@ -124,4 +123,4 @@ def txt():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+    app.run(debug=True, use_reloader=True, host='0.0.0.0')
