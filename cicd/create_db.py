@@ -16,11 +16,15 @@ cursor = db.cursor()
 
 # Таблица событий
 cursor.execute(get_query('syslog.sql'))
-# Таблица с mac-адресами
+# Таблица с логин/паролем.
+cursor.execute(get_query('admin.sql'))
+# # Таблица с mac-адресами
 cursor.execute(get_query('mac_addresses.sql'))
-# Таблица с текущим состоянием
+# # Таблица с текущим состоянием
 cursor.execute(get_query('current_state.sql'))
-# Таблица с переменными
+# # Таблица с переменными
 cursor.execute(get_query('variables.sql'))
-# Триггер при появлении новых событий
+# # Триггер при появлении новых событий
 cursor.execute(get_query('trigger_syslog_insert.sql'))
+# Добавление админской учётки
+cursor.execute(get_query('admin_insert.sql'))
