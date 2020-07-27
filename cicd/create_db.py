@@ -27,7 +27,7 @@ cursor = db.cursor()
 # # Триггер при появлении новых событий
 #cursor.execute(get_query('trigger_syslog_insert.sql'))
 # Добавление админской учётки
-cursor.execute(get_query('create_db.sql'))
+cursor.executescript(get_query('create_db.sql'))
 
 db.commit()
 db.close()
