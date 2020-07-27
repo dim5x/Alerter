@@ -14,7 +14,7 @@ import management
 # Заменить тем, что выше 1023-его.
 # HOST, PORT = 'x.x.x.x', 514
 
-HOST, PORT = management.get_option('alerter_host'), management.get_option('alerter_port')
+HOST, PORT = management.get_option('alerter_host'), int(management.get_option('alerter_port'))
 db_name = management.get_option('db_name')
 
 if not os.path.exists('destination.db'):
