@@ -5,7 +5,7 @@ def get_connection(db='default'):
     if db == 'default':
         return management.get_option('db_name')
 		
-def get_value():
+def get_value(data):
     if data is None:
         value = 'null'
     elif not data.isdigit():
