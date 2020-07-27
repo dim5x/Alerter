@@ -213,6 +213,7 @@ def login_admin():
 
 
 if __name__ == '__main__':
-	flask_host = management.get_option('flask_host')
+    flask_host = management.get_option('flask_host')
+    print(flask_host)
     #
     app.run(debug=True, use_reloader=True,host=flask_host)
