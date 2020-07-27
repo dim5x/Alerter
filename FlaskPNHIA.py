@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 # from flask_login import LoginManager
 import sqlite3
 import hashlib
+import management
 
 app = Flask(__name__)
 app.static_folder = r'templates\static'  # определяем static папку для Flask, где лежат css и прочее.
@@ -212,24 +213,6 @@ def login_admin():
 
 
 if __name__ == '__main__':
-    # Считываем настройки
-    # Локальные имеют приоритет над глобальными
-    with open('local.config') as file:
-        lines = file.read().splitlines()
-
-    options  = {}
-
-    for line in lines:
-        key, value = line.split(':')
-        options.update({key:value})
-
-    with open ('global.config') as file:
-        lines = file.read().splitlines()
-
-    for line in lines:
-        key, value = line.split(':')
-        if not key in options:
-            options.update({key:value})
-
+	flask_host = management.get_option('flask_host')
     #
-    app.run(debug=True, use_reloader=True,host=options["flask_host"])
+    app.run(debug=True, use_reloader=True,host=flask_host)
