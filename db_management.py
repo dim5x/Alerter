@@ -3,7 +3,7 @@ import management
 
 def get_connection(db='default'):
     if db == 'default':
-        return management.get_option(db_name)
+        return management.get_option('db_name')
 		
 def get_value(data):
     if data is None:
@@ -39,8 +39,9 @@ def insert_data(data, table, cursor='not_created'):
 		
 def login_exists(login):
     db = sqlite3.connect(get_connection())
-	cursor = db.cursor()
-	if int(cursor.execute('select count(1) _count from admin where login = \'' + login '\'')) > 0:
-		return true
-	else
-		return false
+    cursor = db.cursor()
+    cursor.execute('select count(1) _count from [admin] where [login] = \'' + login + '\'');
+    if int(cursor.fetchone()[0]) > 0:
+        return True
+    else:
+        return False
