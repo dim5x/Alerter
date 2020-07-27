@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, session
 # from flask_login import LoginManager
 import sqlite3
 import hashlib
+import management
+import db_management
 
 app = Flask(__name__)
 app.static_folder = r'templates\static'  # определяем static папку для Flask, где лежат css и прочее.
@@ -148,19 +150,20 @@ def txt():
 def registration():
     message = ''
     if request.method == 'POST':
-        j = []
-        db = sqlite3.connect('destination.db')
-        cur = db.cursor()
+        #j = []
+        #db = sqlite3.connect('destination.db')
+        #cur = db.cursor()
         name = request.form.get('name')
         surname = request.form.get('surname')
         wanted_login = request.form.get('wanted_login')
         email = request.form.get('wanted_login')
-        l = list(cur.execute('SELECT login FROM admin'))
-        print(l)
-        for i in l:
-            j.append(str(i)[2:-3])
-        print(j)
-        if wanted_login not in j:
+        #l = list(cur.execute('SELECT login FROM admin'))
+        #print(l)
+        #for i in l:
+        #    j.append(str(i)[2:-3])
+        #print(j)
+        #if wanted_login not in j:
+        if not db_management.login_exists(wanted_login):
             return '''
         <h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>
         '''
@@ -212,24 +215,7 @@ def login_admin():
 
 
 if __name__ == '__main__':
-    # Считываем настройки
-    # Локальные имеют приоритет над глобальными
-    with open('local.config') as file:
-        lines = file.read().splitlines()
-
-    options  = {}
-
-    for line in lines:
-        key, value = line.split(':')
-        options.update({key:value})
-
-    with open ('global.config') as file:
-        lines = file.read().splitlines()
-
-    for line in lines:
-        key, value = line.split(':')
-        if not key in options:
-            options.update({key:value})
-
+    flask_host = management.get_option('flask_host')
+    print(flask_host)
     #
-    app.run(debug=True, use_reloader=True,host=options["flask_host"])
+    app.run(debug=True, use_reloader=True,host=flask_host)

@@ -1,4 +1,10 @@
 import sqlite3
+import management
+
+def get_connection(db='default'):
+    if db == 'default':
+        return management.get_option('db_name')
+		
 def get_value(data):
     if data is None:
         value = 'null'
@@ -19,14 +25,23 @@ def insert_data(data, table, cursor='not_created'):
             values = values + ', ' + get_value(data[key])
             
     query = 'insert into ' + table + '(' + columns + ') values(' + values +')'
-    print(query)
     
-    if cursor == 'not_created':
+    connection = cursor
+    if connection == 'not_created':
         db = sqlite3.connect('destination.db')
         cursor = db.cursor()
         
     cursor.execute(query)
     
-    if cursor == 'not_created':
+    if connection == 'not_created':
         db.commit()
         db.close()
+		
+def login_exists(login):
+    db = sqlite3.connect(get_connection())
+    cursor = db.cursor()
+    cursor.execute('select count(1) _count from [admin] where [login] = \'' + login + '\'');
+    if int(cursor.fetchone()[0]) > 0:
+        return True
+    else:
+        return False
