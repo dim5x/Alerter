@@ -58,18 +58,23 @@ def hello_world():
         global data
         global allow_mac
         global disallow_mac
-        conn = sqlite3.connect('destination.db')
-        cursor = conn.cursor()
+        #conn = sqlite3.connect('destination.db')
+        #cursor = conn.cursor()
 
-        data = list(cursor.execute('''SELECT device_time, 
-                                            priority,                                    
-                                            from_host,
-                                            process,
-                                            syslog_tag,
-                                            message
-                                            FROM syslog'''))
-        allow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 1'))
-        disallow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 0 or wellknown is null'))
+       # data = list(cursor.execute('''SELECT device_time, 
+       #                                     priority,                                    
+       #                                     from_host,
+       #                                     process,
+       #                                     syslog_tag,
+       #                                     message
+       #                                     FROM syslog'''))
+        # data = db_management.get_events(link,start,end)
+        data = db_management.get_events()
+       # allow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 1'))
+        allow_mac = db_management.get_wellknown_mac()
+       # disallow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 0 or wellknown is null'))
+        disallow_mac = db_management.get_unknown_mac()
+       
         return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
                                login=login)
     return 'You are not logged in'
