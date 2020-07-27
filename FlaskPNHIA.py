@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, session
 import sqlite3
 import hashlib
 import management
+import db_managemtnt
 
 app = Flask(__name__)
 app.static_folder = r'templates\static'  # определяем static папку для Flask, где лежат css и прочее.
@@ -156,12 +157,13 @@ def registration():
         surname = request.form.get('surname')
         wanted_login = request.form.get('wanted_login')
         email = request.form.get('wanted_login')
-        l = list(cur.execute('SELECT login FROM admin'))
-        print(l)
-        for i in l:
-            j.append(str(i)[2:-3])
-        print(j)
-        if wanted_login not in j:
+        #l = list(cur.execute('SELECT login FROM admin'))
+        #print(l)
+        #for i in l:
+        #    j.append(str(i)[2:-3])
+        #print(j)
+        #if wanted_login not in j:
+		if not management.login_exists(wanted_login):
             return '''
         <h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>
         '''
