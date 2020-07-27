@@ -7,3 +7,4 @@
 /templates/static/tab.js
 /templates/test.html
 *.db
+local.config

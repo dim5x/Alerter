@@ -43,6 +43,13 @@ create table variables(
 	integer_value integer,
 	text_value varchar(30)
 	);
+	
+/* Производители */
+
+create table mac_owners(
+	mac varchar(30),
+	manufacturer varchar(200)
+)
 
 /* При возникновении новых событий*/
 create trigger syslog_insert after insert on syslog
@@ -157,4 +164,5 @@ begin
 		from_host = new.from_host;	
 end;
 
+/* Данные для отладки */
 insert into admin (login, hash) values ('admin','36d841bb32fc5ef1a5704652097584ee789f4d2e745fa283516320163dba0d699b5a502de4f33321155dc5715e0c1e4d');
