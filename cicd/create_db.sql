@@ -49,7 +49,7 @@ create table variables(
 create table mac_owners(
 	mac varchar(30),
 	manufacturer varchar(200)
-)
+);
 
 /* При возникновении новых событий*/
 create trigger syslog_insert after insert on syslog

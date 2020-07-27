@@ -21,17 +21,15 @@ cursor.executescript(get_query('create_db.sql'))
 with open('macs.txt') as file:
     lines = file.read().splitlines()
 
-query = 'insert into mac_owners(mac, manufacturer) values (\')'
+query = 'insert into mac_owners(mac, manufacturer) values '
 
 for line in lines:
-    mac, owner = line.split('     ')
-	query = query + mac + '\', \'' + owner + '\','
+    mac, owner = line[0:6].replace('\'','\'\''), line[11:].replace('\'','\'\'')
+    query = query + '(\''+ mac + '\', \'' + owner + '\'),'
 	
-query = query[0:-1] + ')'
+query = query[0:-1] + ';'
 
 cursor.execute(query)
 	
-        
-
 db.commit()
 db.close()
