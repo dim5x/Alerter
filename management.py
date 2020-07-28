@@ -3,7 +3,7 @@ import os
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
 def get_option(name):
-    with open('local.config') as file:
+    with open('../local.config') as file:
         lines = file.read().splitlines()
     
     options  = {}

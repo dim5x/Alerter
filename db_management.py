@@ -99,7 +99,7 @@ def get_unknown_mac():
 					left join
 					mac_owners
 					on
-					substr(replace(mac_addresses.mac,':',''),1,6) = mac_owners.mac
+					upper(substr(replace(mac_addresses.mac,':',''),1,6)) = mac_owners.mac
 				where 
 					wellknown = 0 
 					or 
