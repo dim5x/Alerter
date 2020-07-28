@@ -81,7 +81,18 @@ def get_wellknown_mac():
     db = sqlite3.connect(get_connection())
     cursor = db.cursor()
 	
-    result = list(cursor.execute('select mac from mac_addresses where wellknown = 1'))
+    result = list(cursor.execute('''select 
+					mac_addresses.mac mac,
+					mac_owners.manufacturer manufacturer
+				from 
+					mac_addresses 
+					left join
+					mac_owners
+					on
+					upper(substr(replace(mac_addresses.mac,':',''),1,6)) = mac_owners.mac
+				where 
+					wellknown = 1
+				'''))
 	
     db.close()
 	
@@ -108,3 +119,20 @@ def get_unknown_mac():
     db.close()
 	
     return result
+
+def set_mac_to_wellknown(mac, login, description):
+    db = sqlite3.connect(get_connection())
+    cursor = db.cursor()
+	
+    cursor.execute('''update
+						mac_addresses
+					set
+						wellknown = 1,
+						wellknown_author = '%(login)s',
+						description = '%(description)s',
+						wellknown_started_at = datetime('now','localtime')
+					where
+						mac = '%(mac)s'
+					''' % {'login':login, 'mac':mac, 'description':description})
+    db.commit()
+    db.close()

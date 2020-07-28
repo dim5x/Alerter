@@ -99,16 +99,17 @@ def add_allow_mac():
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
-                db = sqlite3.connect('destination.db')
-                cur = db.cursor()
+                #db = sqlite3.connect('destination.db')
+                #cur = db.cursor()
                 mac = request.form['field']
                 # author = request.form['author']
-                author = login
+                #author = login
                 description = request.form['description']
-                company = check_mac(mac)
-                cur.execute('INSERT INTO wellknown_mac (mac,company,author,description) VALUES (?,?,?,?)',
-                            (mac, company, author, description))
-                db.commit()
+                #company = check_mac(mac)
+                #cur.execute('INSERT INTO wellknown_mac (mac,company,author,description) VALUES (?,?,?,?)',
+                #            (mac, company, author, description))
+                #db.commit()
+                db_management.set_mac_to_wellknown(mac,login,description)
                 return redirect('/alerter')
     else:
         return redirect('/')
