@@ -8,3 +8,4 @@
 /templates/test.html
 *.db
 local.config
+.vs/
