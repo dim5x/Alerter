@@ -15,20 +15,19 @@ import management
 # HOST, PORT = 'x.x.x.x', 514
 
 HOST, PORT = management.get_option('alerter_host'), int(management.get_option('alerter_port'))
-db_name = management.get_option('db_name')
+db_name = management.get_option('db_connection_string')
 
-if not os.path.exists('destination.db'):
+# заменить на TestConnection
+if not os.path.exists(db_name):
     print('Нужна база!')
     try:
         subprocess.Popen([sys.executable, 'cicd/create_db.py'])
         print('База создана!')
-        db = sqlite3.connect('destination.db')  # создаём коннект с базой
-        cursor = db.cursor()  # создаём курсор
+        db = db_management.db_connection()
     except:
         print('Что-то пошло не так!')
 else:
-    db = sqlite3.connect('destination.db')  # создаём коннект с базой
-    cursor = db.cursor()  # создаём курсор
+    db = db_management.db_connection()
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
@@ -51,13 +50,11 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         message = event.group('message')
 
         data_dic = {'priority' : priority, 'device_time' : device_time.strftime('%Y-%m-%d %H:%M:%S'), 'from_host' : from_host, 'process' : process, 'syslog_tag' : syslog_tag, 'message' : message}
-        db_management.insert_data(data_dic, 'syslog', cursor)
+        db_management.insert_data(data_dic, 'syslog')
 
         #cursor.execute(
         #    "INSERT INTO syslog (priority, device_time, from_host, process, syslog_tag, message) "
         #    "VALUES (?,?,?,?,?,?)", (priority, device_time, from_host, process, syslog_tag, message))
-
-        db.commit()
 
         # for debug
         '''

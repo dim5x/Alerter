@@ -18,7 +18,7 @@ cursor = db.cursor()
 cursor.executescript(get_query('create_db.sql'))
 
 # Заполнение таблицы mac_owners
-with open('macs.txt') as file:
+with open('macs.txt', encoding="utf-8") as file:
     lines = file.read().splitlines()
 
 query = 'insert into mac_owners(mac, manufacturer) values '

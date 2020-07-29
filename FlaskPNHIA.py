@@ -58,21 +58,9 @@ def hello_world():
         global data
         global allow_mac
         global disallow_mac
-        #conn = sqlite3.connect('destination.db')
-        #cursor = conn.cursor()
 
-       # data = list(cursor.execute('''SELECT device_time, 
-       #                                     priority,                                    
-       #                                     from_host,
-       #                                     process,
-       #                                     syslog_tag,
-       #                                     message
-       #                                     FROM syslog'''))
-        # data = db_management.get_events(link,start,end)
-        data = db_management.get_events()
-       # allow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 1'))
+        data = db_management.get_events()        
         allow_mac = db_management.get_wellknown_mac()
-       # disallow_mac = list(cursor.execute('SELECT mac FROM mac_addresses where wellknown = 0 or wellknown is null'))
         disallow_mac = db_management.get_unknown_mac()
        
         return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
@@ -99,16 +87,8 @@ def add_allow_mac():
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
-                #db = sqlite3.connect('destination.db')
-                #cur = db.cursor()
                 mac = request.form['field']
-                # author = request.form['author']
-                #author = login
                 description = request.form['description']
-                #company = check_mac(mac)
-                #cur.execute('INSERT INTO wellknown_mac (mac,company,author,description) VALUES (?,?,?,?)',
-                #            (mac, company, author, description))
-                #db.commit()
                 db_management.set_mac_to_wellknown(mac,login,description)
                 return redirect('/alerter')
     else:
@@ -156,19 +136,10 @@ def txt():
 def registration():
     message = ''
     if request.method == 'POST':
-        #j = []
-        #db = sqlite3.connect('destination.db')
-        #cur = db.cursor()
         name = request.form.get('name')
         surname = request.form.get('surname')
         wanted_login = request.form.get('wanted_login')
         email = request.form.get('wanted_login')
-        #l = list(cur.execute('SELECT login FROM admin'))
-        #print(l)
-        #for i in l:
-        #    j.append(str(i)[2:-3])
-        #print(j)
-        #if wanted_login not in j:
         if not db_management.login_exists(wanted_login):
             return '''
         <h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>
