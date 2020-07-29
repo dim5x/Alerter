@@ -26,7 +26,7 @@ class db_connection:
         self.connection.row_factory = self.dict_factory
         cursor = self.connection.cursor();
         cursor.execute(query)
-        result = cursor.fetchmany()
+        result = cursor.fetchall()
         cursor.close()
         return result
             
