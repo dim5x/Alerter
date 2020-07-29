@@ -29,6 +29,7 @@ if not os.path.exists(db_name):
 else:
     db = db_management.db_connection()
 
+db.open()
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):

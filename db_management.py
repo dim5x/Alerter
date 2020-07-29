@@ -65,7 +65,7 @@ def insert_data(data, table, conn='not_created'):
             
     query = 'insert into ' + table + '(' + columns + ') values(' + values +')'
     
-    connection = cursor
+    connection = conn
     if connection == 'not_created':
         db = db_connection();
         db.open()
