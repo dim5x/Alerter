@@ -17,7 +17,8 @@ import management
 # Соответственно, management.get_option() - выдаёт список или картеж из трёх элементов:
 # типа: (127.0.0.1, 515 (сразу в формате int) и третий параметр с БД.)
 
-HOST, PORT = management.get_option('alerter_host'), int(management.get_option('alerter_port'))
+#HOST, PORT = management.get_option('alerter_host'), int(management.get_option('alerter_port'))
+HOST, PORT = management.get_alerter_settings()
 db_name = management.get_option('db_connection_string')
 
 # заменить на TestConnection

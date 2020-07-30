@@ -20,3 +20,6 @@ def get_option(name):
                 options.update({key: value})
 
     return options[name]
+
+def get_alerter_settings():
+    return get_option('alerter_host'), int(get_option('alerter_port'))
