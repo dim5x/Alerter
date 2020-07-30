@@ -1,12 +1,14 @@
-import sqlite3
-import management
 import psycopg2
+import sqlite3
+import os
+
+import management
 
 
 class db_connection:
     def __init__(self):
-        self.rdbms = management.get_option("rdbms")
-        self.db_connection_string = management.get_option("db_connection_string")
+        self.rdbms, self.db_connection_string = management.get_settings(["rdbms","db_connection_string"])
+        #self.db_connection_string = management.get_option("db_connection_string")
 
     def open(self):
         if self.rdbms == "sqlite":
@@ -16,6 +18,14 @@ class db_connection:
 
     def close(self):
         self.connection.close()
+
+    def test_connection(self):
+        if self.rdbms == "sqlite":
+            if os.path.exists(self.db_connection_string):
+                return 0
+            else:
+                return 1
+        return 0
 
     def dict_factory(self, cursor, row):
         d = {}

@@ -192,7 +192,5 @@ def login_admin():
 
 
 if __name__ == '__main__':
-    flask_host = management.get_option('flask_host')
-    flask_use_reloader = management.get_option('flask_use_reloader')
-    #
-    app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
+    flask_host, flask_use_reloader = management.get_settings(['flask_host','flask_use_reloader'])
+    app.run(debug=True, use_reloader=flask_use_reloader,host=flask_host)
