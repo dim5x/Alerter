@@ -2,6 +2,7 @@ import sqlite3
 import management
 import psycopg2
 
+
 class db_connection:
     def __init__(self):
         self.rdbms = management.get_option("rdbms")
@@ -14,7 +15,7 @@ class db_connection:
             self.connection = psycopg2.connect(self.db_connection_string)
 
     def close(self):
-            self.connection.close()
+        self.connection.close()
 
     def dict_factory(self, cursor, row):
         d = {}
@@ -24,25 +25,26 @@ class db_connection:
 
     def execute(self, query):
         self.connection.row_factory = self.dict_factory
-        cursor = self.connection.cursor();
+        cursor = self.connection.cursor()
         cursor.execute(query)
         result = cursor.fetchall()
         cursor.close()
         return result
-            
+
     def execute_non_query(self, query):
-        cursor = self.connection.cursor();
+        cursor = self.connection.cursor()
         cursor.execute(query)
         self.connection.commit()
         cursor.close()
         return True
 
     def execute_scalar(self, query):
-        cursor = self.connection.cursor();
+        cursor = self.connection.cursor()
         cursor.execute(query)
         result = cursor.fetchone()[0]
         cursor.close()
         return result
+
 
 def get_value(data):
     if data is None:
@@ -53,8 +55,9 @@ def get_value(data):
         value = data
     return value
 
+
 def insert_data(data, table, conn='not_created'):
-    columns, values = '',''
+    columns, values = '', ''
     for key in data:
         if columns == '':
             columns += key
@@ -62,30 +65,30 @@ def insert_data(data, table, conn='not_created'):
         else:
             columns = columns + ', ' + key
             values = values + ', ' + get_value(data[key])
-            
-    query = 'insert into ' + table + '(' + columns + ') values(' + values +')'
-    
+
+    query = 'insert into ' + table + '(' + columns + ') values(' + values + ')'
+
     connection = conn
     if connection == 'not_created':
-        db = db_connection();
+        db = db_connection()
         db.open()
-        
+
     db.execute_non_query(query)
-    
+
     if connection == 'not_created':
         db.close()
 
-def login_exists(login):
 
-    query = 'select count(1) _count from [admin] where [login] = %(login)s' % {'login':login}
-    db = db_connection();
+def login_exists(login):
+    query = 'select count(1) _count from [admin] where [login] = %(login)s' % {'login': login}
+    db = db_connection()
     db.open()
     result = (int(db.execute_scalar(query)) > 0)
     db.close()
     return result
 
-def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
 
+def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
     if started_at == '':
         started_at = 'datetime(\'now\',\'-2 hour\', \'localtime\')'
     if ended_at == '':
@@ -104,19 +107,19 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 			device_time > %(started_at)s
 			and
 			device_time < %(ended_at)s
-		 ''' %  {'started_at':started_at, 'ended_at':ended_at}
+		 ''' % {'started_at': started_at, 'ended_at': ended_at}
     if not all_events:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
 
-    db = db_connection();
+    db = db_connection()
     db.open()
     result = db.execute(query)
     db.close()
 
     return result
 
-def get_wellknown_mac():
 
+def get_wellknown_mac():
     query = '''select 
 					mac_addresses.mac mac,
 					mac_owners.manufacturer manufacturer
@@ -130,15 +133,15 @@ def get_wellknown_mac():
 					wellknown = 1
 				'''
 
-    db = db_connection();
+    db = db_connection()
     db.open()
     result = db.execute(query)
     db.close()
 
     return result
 
+
 def get_unknown_mac():
-	
     query = '''select 
 					mac_addresses.mac mac,
 					mac_owners.manufacturer manufacturer
@@ -154,15 +157,15 @@ def get_unknown_mac():
 					wellknown is null
 				'''
 
-    db = db_connection();
+    db = db_connection()
     db.open()
     result = db.execute(query)
     db.close()
 
     return result
 
-def set_mac_to_wellknown(mac, login, description):
 
+def set_mac_to_wellknown(mac, login, description):
     query = '''update
 						mac_addresses
 					set
@@ -172,9 +175,9 @@ def set_mac_to_wellknown(mac, login, description):
 						wellknown_started_at = datetime('now','localtime')
 					where
 						mac = '%(mac)s'
-					''' % {'login':login, 'mac':mac, 'description':description}
+					''' % {'login': login, 'mac': mac, 'description': description}
 
-    db = db_connection();
+    db = db_connection()
     db.open()
     db.execute_non_query(query)
     db.close()

@@ -8,10 +8,14 @@ import subprocess
 import sys
 import management
 
-
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
 # Заменить тем, что выше 1023-его.
 # HOST, PORT = 'x.x.x.x', 514
+
+# КМК должно быть типа такого:
+# HOST, PORT, db_name = management.get_option()
+# Соответственно, management.get_option() - выдаёт список или картеж из трёх элементов:
+# типа: (127.0.0.1, 515 (сразу в формате int) и третий параметр с БД.)
 
 HOST, PORT = management.get_option('alerter_host'), int(management.get_option('alerter_port'))
 db_name = management.get_option('db_connection_string')
@@ -29,6 +33,7 @@ else:
     db = db_management.db_connection()
 
 db.open()
+
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
@@ -50,7 +55,8 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         syslog_tag = event.group('syslog_tag')
         message = event.group('message')
 
-        data_dic = {'priority' : priority, 'device_time' : device_time.strftime('%Y-%m-%d %H:%M:%S'), 'from_host' : from_host, 'process' : process, 'syslog_tag' : syslog_tag, 'message' : message}
+        data_dic = {'priority': priority, 'device_time': device_time.strftime('%Y-%m-%d %H:%M:%S'),
+                    'from_host': from_host, 'process': process, 'syslog_tag': syslog_tag, 'message': message}
         db_management.insert_data(data_dic, 'syslog')
 
         print(data)  # отправка сообщений от sysloga в консоль для отладки.
