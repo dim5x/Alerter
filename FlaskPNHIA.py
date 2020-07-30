@@ -65,7 +65,7 @@ def hello_world():
 
         return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
                                login=login)
-    return 'You are not logged in'
+    return '<h2>You are not logged in</h2>'
 
 
 # # Заглушка страницы добавления.
