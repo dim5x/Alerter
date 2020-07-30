@@ -3,23 +3,29 @@
 
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
-def get_option(name):
-    options = {}
+def get_settings(options):
+    settings = {}
 
     with open('../local.config') as file:
         lines = file.read().splitlines()
         for line in lines:
             key, value = line.split(':')
-            options.update({key: value})
+            settings.update({key: value})
 
     with open('global.config') as file:
         lines = file.read().splitlines()
         for line in lines:
             key, value = line.split(':')
-            if key not in options:
-                options.update({key: value})
+            if key not in settings:
+                settings.update({key: value})
 
-    return options[name]
-
-def get_alerter_settings():
-    return get_option('alerter_host'), int(get_option('alerter_port'))
+    if isinstance(options, str):
+        return settings[options]
+    elif isinstance(options, list):
+        result =[]
+        for option in options:
+            if settings[option].isdigit():
+                result.ammend(int(settings[option]))
+            else:
+                result.append(settings[option])
+        return result
