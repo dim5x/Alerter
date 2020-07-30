@@ -12,8 +12,8 @@ create table syslog(
 
 /*Таблица с mac-адресами*/
 create table mac_addresses(
-	mac varchar(30),
-	device varchar(400),
+	mac varchar(17),
+	device varchar(70),
 	description varchar(400),
 	wellknown int,
 	wellknown_author varchar(400),
@@ -22,7 +22,7 @@ create table mac_addresses(
 
 /*Текущее состояние*/
 create table current_state(
-	mac varchar(30),
+	mac varchar(17),
 	state integer,
 	started_at datetime,
 	from_host varchar(200),
@@ -47,8 +47,8 @@ create table variables(
 /* Производители */
 
 create table mac_owners(
-	mac varchar(30),
-	manufacturer varchar(200)
+	mac varchar(6),
+	manufacturer varchar(70)
 );
 
 /* При возникновении новых событий*/
