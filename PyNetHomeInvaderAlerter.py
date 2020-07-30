@@ -4,7 +4,6 @@ import re
 import os
 from datetime import datetime
 import db_management
-import os
 import subprocess
 import sys
 import management
@@ -39,6 +38,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         event = re.search(
             r'(?P<priority><\d{,3}>)(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2,2})(?P<from_host>\s+[^:]+){0,'
             r'1}\s+(?P<process>\S+:)(?P<syslog_tag>\s+\S+:){0,1}\s+(?P<message>.+)', data)
+
         priority = event.group('priority').strip('><')
         device_time = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'), '%Y %b %d %H:%M:%S')
 
@@ -53,15 +53,6 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         data_dic = {'priority' : priority, 'device_time' : device_time.strftime('%Y-%m-%d %H:%M:%S'), 'from_host' : from_host, 'process' : process, 'syslog_tag' : syslog_tag, 'message' : message}
         db_management.insert_data(data_dic, 'syslog')
 
-        #cursor.execute(
-        #    "INSERT INTO syslog (priority, device_time, from_host, process, syslog_tag, message) "
-        #    "VALUES (?,?,?,?,?,?)", (priority, device_time, from_host, process, syslog_tag, message))
-
-        # for debug
-        '''
-        with open('sys.log', 'a') as f:
-            f.write(data+ '\n')
-        '''
         print(data)  # отправка сообщений от sysloga в консоль для отладки.
 
 
