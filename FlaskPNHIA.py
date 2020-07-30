@@ -173,9 +173,9 @@ def login_admin():
     return render_template('index.html', message=message)
 
 
-# @app.errorhandler(404)
-# def page_not_found(error):
-#     return render_template('FileNotFoundError.html'), 404
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('FileNotFoundError.html'), 404
 
 
 # @app.route('/login', methods=['GET', 'POST'])

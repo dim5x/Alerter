@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Error</title>
-</head>
-<body>
-<h1>Файл лога не обнаружен.</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Error</title>
+    </head>
+    <body>
+    <span align="center">
+<h2 style="color: white">Такой страницы нет.</h2>
+<div><img src='static/yH.gif' alt="альтернативный текст"></div>
+    </span>
+    </body>
+    </html>
+{% endblock %}
