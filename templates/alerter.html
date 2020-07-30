@@ -2,14 +2,19 @@
 {% block content %}
     <head>
         <title>Alerter</title>
-        {# Заготовка для фильтра #}
-        {#        <script src="static/jquery-3.5.1.min.js"></script>#}
-        {#        <script src="static/tab.js"></script>#}
-        {#        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>#}
-        {#        <script type="text/javascript" src="DataTables/datatables.min.js"></script>#}
-        <meta http-equiv="Refresh" content="15"/>
+        <link rel="stylesheet" type="text/css" href="/static/DataTables/datatables.css">
+        <script type="text/javascript" charset="utf8" src="/static/jquery-3.5.1.min.js"></script>
+
+        <script type="text/javascript" charset="utf8" src="/static/DataTables/datatables.js"></script>
+        <script type="text/javascript" charset="utf8" src="/static/DataTables/my.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/DataTables/my.css">
+
+        {#        <meta http-equiv="Refresh" content="15"/>#}
+
 
     </head>
+
+
 
     {#    <style type="text/css">#}
     {#        TABLE {#}
@@ -76,7 +81,7 @@
             <td class="oya">
                 <div style="width:100%;height:120px;overflow:scroll;overflow-x: hidden;">
                     {% for item in allow_mac %}
-                    <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>
+                        <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>
                     {% endfor %}
                 </div>
             </td>
@@ -84,7 +89,7 @@
             <td class="oya">
                 <div style="width:100%;height:120px;overflow:scroll;overflow-x: hidden;">
                     {% for item in disallow_mac %}
-                    <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>
+                        <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>
                     {% endfor %}
                 </div>
             </td>
@@ -132,7 +137,7 @@
         }
     </style>
 
-    <table class="tg" align="center" width="99%">
+    <table id="table_id" class="tg" align="center" width="99%">
         <thead>
         <tr>
             <th width='14%'>DATE</th>

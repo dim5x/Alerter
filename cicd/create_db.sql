@@ -7,13 +7,14 @@ create table syslog(
     from_host varchar(200),
     process varchar(50),
     syslog_tag varchar(50),
-    message varchar(400)
+    message varchar(400),
+    mac varchar(17)
     );
 
 /*Таблица с mac-адресами*/
 create table mac_addresses(
-	mac varchar(30),
-	device varchar(400),
+	mac varchar(17),
+	device varchar(70),
 	description varchar(400),
 	wellknown int,
 	wellknown_author varchar(400),
@@ -22,7 +23,7 @@ create table mac_addresses(
 
 /*Текущее состояние*/
 create table current_state(
-	mac varchar(30),
+	mac varchar(17),
 	state integer,
 	started_at datetime,
 	from_host varchar(200),
@@ -47,13 +48,13 @@ create table variables(
 /* Производители */
 
 create table mac_owners(
-	mac varchar(30),
-	manufacturer varchar(200)
+	mac varchar(6),
+	manufacturer varchar(70)
 );
 
 /* При возникновении новых событий*/
 create trigger syslog_insert after insert on syslog
-when instr(new.syslog_tag, 'link-up') > 0 or instr(new.syslog_tag, 'LINK_DOWN') > 0
+when instr(new.syslog_tag, 'link-up') > 0 or instr(new.syslog_tag, 'LINK_DOWN') > 0 or instr(new.message, 'associated -') > 0
 begin
 	delete from variables;
 	insert into variables(name, integer_value, text_value) 
@@ -63,6 +64,9 @@ begin
 		case
 			when instr(NEW.message, 'MAC') > 0 then
 				substr(NEW.message, instr(NEW.message, 'MAC')+4, 17)
+			when 
+				instr(new.message, 'associated -') > 0 then
+				substr(NEW.message, instr(NEW.message, 'associated -')+13, 17)
 			else
 				null
 		end _value;
@@ -94,16 +98,19 @@ begin
 					1,
 					instr(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')), 'MAC') - 2
 					)
-			else
+			when instr(NEW.message, 'MAC') = 0 and instr(NEW.message, 'IFNAME') > 0 then
 				substr(
 					substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')),
 					1,
-					ifnull(
-						instr(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')), ' '),
-						length(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')))
-						)
+					case
+						when instr(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')), ' ') > 0
+						 then instr(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')), ' ')
+						else length(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')))
+					end
 					)
+			else null
 		end _value;	
+	
 	
 	insert into current_state(mac,state,started_at,from_host,port)
 	select
@@ -124,7 +131,13 @@ begin
 						select 
 							mac
 						from
-							current_state);
+							current_state)
+		and 
+		(
+		instr(new.syslog_tag, 'link-up') > 0 
+	 	or 
+		instr(new.message, ' associated -') > 0
+		);
 	
 	
 	update current_state 
@@ -150,18 +163,38 @@ begin
 									)
 				)
 		and
-		instr(new.syslog_tag, 'link-up') > 0;
-		
+		(
+		instr(new.syslog_tag, 'link-up') > 0
+		or
+		instr(NEW.message, ' associated -') > 0
+		);
+	
+	
 	update current_state 
 	set
 		state = 0,
 		started_at = new.receivedat
 	where
+		(
 		instr(new.syslog_tag, 'LINK_DOWN') > 0
 		and 
 		port = (select text_value from variables where name = 'port')
 		and
-		from_host = new.from_host;	
+		from_host = new.from_host
+		)
+		or
+		(
+		instr(NEW.message, 'disassociated -') > 0
+		and
+		mac = (
+				select 
+					text_value 
+				from 
+					variables 
+				where 
+					name = 'new_mac'
+				)
+		);
 end;
 
 /* Данные для отладки */
