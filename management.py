@@ -25,7 +25,7 @@ def get_settings(options):
         result =[]
         for option in options:
             if settings[option].isdigit():
-                result.ammend(int(settings[option]))
+                result.append(int(settings[option]))
             else:
                 result.append(settings[option])
         return result
