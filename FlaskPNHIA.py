@@ -59,10 +59,10 @@ def hello_world():
         global allow_mac
         global disallow_mac
 
-        data = db_management.get_events()        
+        data = db_management.get_events()
         allow_mac = db_management.get_wellknown_mac()
         disallow_mac = db_management.get_unknown_mac()
-       
+
         return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
                                login=login)
     return 'You are not logged in'
@@ -89,7 +89,7 @@ def add_allow_mac():
             if request.form['button'] == 'Добавить':
                 mac = request.form['field']
                 description = request.form['description']
-                db_management.set_mac_to_wellknown(mac,login,description)
+                db_management.set_mac_to_wellknown(mac, login, description)
                 return redirect('/alerter')
     else:
         return redirect('/')
@@ -119,7 +119,7 @@ def add_disallow_mac():
                 company = check_mac(mac)
                 db = sqlite3.connect('destination.db')
                 cur = db.cursor()
-                cur.execute('INSERT INTO unknown_mac (mac,company) VALUES (?,?)', (mac, company))
+                cur.execute('INSERT INTO mac_addresses (mac) VALUES (?)', (mac,))
                 db.commit()
                 return redirect('/alerter')
     else:
@@ -129,7 +129,7 @@ def add_disallow_mac():
 
 @app.route('/test')
 def txt():
-    return render_template('test.html', data=data)
+    return render_template('test.html')
 
 
 @app.route('/registration', methods=['POST', 'GET'])
@@ -195,4 +195,4 @@ if __name__ == '__main__':
     flask_host = management.get_option('flask_host')
     flask_use_reloader = management.get_option('flask_use_reloader')
     #
-    app.run(debug=True, use_reloader=flask_use_reloader,host=flask_host)
+    app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
