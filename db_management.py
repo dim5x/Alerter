@@ -242,3 +242,22 @@ def set_mac_to_wellknown(mac, login, description):
     db.open()
     db.execute_non_query(query)
     db.close()
+
+
+def flask_logon(login, hash):
+    query = '''
+                select
+                    count(1) _count
+                from
+                    admin
+                where
+                    login = '%(login)s'
+                    and
+                    hash = '%(hash)s'
+            ''' % {'login': login, 'hash': hash}
+
+    db = db_connection()
+    db.open()
+    result = (int(db.execute_scalar(query)) > 0)
+    db.close()
+    return result

@@ -48,10 +48,7 @@ def login_admin():
 
         password_hash = hashlib.sha3_384(bytes(password, encoding='UTF-8')).hexdigest()
 
-        db = sqlite3.connect('destination.db')
-        cur = db.cursor()
-        hash_in_base = list(cur.execute('SELECT hash FROM admin WHERE login=?', (login,)))
-        if password_hash == (str(hash_in_base)[3:-4]):
+        if db_management.flask_logon(login, password_hash):
             session[login] = login
             return redirect('/alerter')
         else:
