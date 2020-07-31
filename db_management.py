@@ -4,6 +4,33 @@ import os
 
 import management
 
+#   Класс представляет собой абстракцию для работы с базой данных.
+#
+#   Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
+#
+#       создается функция, которая будет вызываться извне, def function
+#       внутри функции определяется запрос к БД
+#     
+#       db = db_connection()    // создается экземпляр класса
+#       db.open()               // открывается подклчюение
+#       result = db.execute...  // выполняется запрос
+#       db.close()              // закрыватеся подключени
+#
+#   Методы класса
+#       
+#       open                создать подключение к БД
+#       close               закрыть подключение
+#       execute             выполняет запрос и возвращает результат в виде списка словарей
+#       execute_scalar      выполняет запрос и возвращает результат в виде одного значения
+#                           нужно использовать в запросах типа "select count(x) from" или "select top 1 x from" 
+#       execute_non_query   необходимо использовать для запросов, которые изменяют данные "insert", "update"
+#
+#   Атрибуты класса (извне не используются)
+#
+#       rdbms               тип БД
+#       connection_string   строка подключения
+#       connection          текущее подключение
+
 
 class db_connection:
     def __init__(self):
@@ -55,7 +82,6 @@ class db_connection:
         cursor.close()
         return result
 
-
 def get_value(data):
     if data is None:
         value = 'null'
@@ -65,6 +91,17 @@ def get_value(data):
         value = data
     return value
 
+#
+#   Функции для работы извне
+#
+   
+#   Вставка словаря в соответствующую таблицу
+#
+#   data    словарь
+#   table   имя таблицы
+#   conn    подключение
+#
+#   Если подключение не передается в качестве параметра, то создается подключение по умолчанию, которое закрывается после выполнения
 
 def insert_data(data, table, conn='not_created'):
     columns, values = '', ''
@@ -88,6 +125,9 @@ def insert_data(data, table, conn='not_created'):
     if connection == 'not_created':
         db.close()
 
+#   Проверка существования логина
+#
+#   login       проверяемый логин
 
 def login_exists(login):
     query = 'select count(1) _count from [admin] where [login] = %(login)s' % {'login': login}
@@ -97,6 +137,14 @@ def login_exists(login):
     db.close()
     return result
 
+#   Выборка событий из syslog'а
+#
+#   all_events          получать только c тэгами link-up и LINK_DOWN
+#   only_unknown_mac    получить события только с неизвестными mac'ами
+#   started_at          начало диапазона
+#   ended_at            конец диапазона
+#
+#   По умолчанию в выборку попадают все события за последний два часа
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
     if started_at == '':
@@ -128,6 +176,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 
     return result
 
+#   Выборка всех доверенных mac-адресов
 
 def get_wellknown_mac():
     query = '''select 
@@ -150,6 +199,7 @@ def get_wellknown_mac():
 
     return result
 
+#   Выборка всех недоверенных mac-адресов
 
 def get_unknown_mac():
     query = '''select 
@@ -174,6 +224,7 @@ def get_unknown_mac():
 
     return result
 
+#   Установка признака доверенный для mac-адреса
 
 def set_mac_to_wellknown(mac, login, description):
     query = '''update
