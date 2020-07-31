@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, session
-# from flask_login import LoginManager
 import sqlite3
 import hashlib
 import management
@@ -33,125 +32,13 @@ def check_mac(s):
                 return ' '.join(lo[1:])
 
 
-# Главная страница.
-# Вариант с файловым представлением сислога.
-# @app.route('/', methods=['POST', 'GET'])
-# def hello_world():
-#     name_syslog_file = 'sys.log'
-#     global allow_mac
-#     global disallow_mac
-#     try:
-#         with open(name_syslog_file, 'r') as f, \
-#                 open('allow_mac.txt', 'r') as am, \
-#                 open('disallow_mac.txt', 'r') as dm:
-#             data = reversed(f.readlines())
-#             allow_mac = am.readlines()
-#             disallow_mac = dm.readlines()
-#         return render_template('index.html', data=data, allow_mac=allow_mac, disallow_mac=disallow_mac)
-#     except FileNotFoundError:
-#         return render_template('FileNotFoundError.html')
-
-# Главная страница.
-@app.route('/alerter', methods=['POST', 'GET'])
-def hello_world():
-    if login in session:
-        global data
-        global allow_mac
-        global disallow_mac
-
-        data = db_management.get_events()
-        allow_mac = db_management.get_wellknown_mac()
-        disallow_mac = db_management.get_unknown_mac()
-
-        return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
-                               login=login)
-    return '<h2>You are not logged in</h2>'
-
-
-# # Заглушка страницы добавления.
-# @app.route('/add_allow_mac.html', methods=['POST', 'GET'])
-# def add_allow_mac():
-#     global allow_mac
-#     if request.method == 'POST':
-#         if request.form['button'] == 'Добавить':
-#             with open('allow_mac.txt', 'a') as f:
-#                 mac = request.form['field']
-#                 f.write(mac + '\n')
-#             return redirect('/')
-#     return render_template('add_allow_mac.html', allow_mac=allow_mac)
-
-# Заглушка страницы добавления.
-
-@app.route('/add_allow_mac.html', methods=['POST', 'GET'])
-def add_allow_mac():
-    if login in session:
-        if request.method == 'POST':
-            if request.form['button'] == 'Добавить':
-                mac = request.form['field']
-                description = request.form['description']
-                db_management.set_mac_to_wellknown(mac, login, description)
-                return redirect('/alerter')
-    else:
-        return redirect('/')
-    return render_template('add_allow_mac.html', allow_mac=allow_mac)
-
-
-# # Заглушка страницы добавления
-# @app.route('/add_disallow_mac.html', methods=['POST', 'GET'])
-# def add_disallow_mac():
-#     global allow_mac
-#     if request.method == 'POST':
-#         if request.form['button'] == 'Добавить':
-#             with open('disallow_mac.txt', 'a') as f:
-#                 mac = request.form['field']
-#                 f.write(mac + '\n')
-#             return redirect('/')
-#     return render_template('add_disallow_mac.html', disallow_mac=disallow_mac)
-
-# Заглушка страницы добавления.
-
-@app.route('/add_disallow_mac.html', methods=['POST', 'GET'])
-def add_disallow_mac():
-    if login in session:
-        if request.method == 'POST':
-            if request.form['button'] == 'Добавить':
-                mac = request.form['field']
-                company = check_mac(mac)
-                db = sqlite3.connect('destination.db')
-                cur = db.cursor()
-                cur.execute('INSERT INTO mac_addresses (mac) VALUES (?)', (mac,))
-                db.commit()
-                return redirect('/alerter')
-    else:
-        return redirect('/')
-    return render_template('add_disallow_mac.html', disallow_mac=disallow_mac)
-
-
-@app.route('/test')
-def txt():
-    return render_template('test.html')
-
-
-@app.route('/registration', methods=['POST', 'GET'])
-def registration():
-    message = ''
-    if request.method == 'POST':
-        name = request.form.get('name')
-        surname = request.form.get('surname')
-        wanted_login = request.form.get('wanted_login')
-        email = request.form.get('wanted_login')
-        if not db_management.login_exists(wanted_login):
-            return '''
-        <h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>
-        '''
-        else:
-            message = 'Логин занят.'
-            render_template('registration.html', message=message)
-    return render_template('registration.html', message=message)
-
-
+# Страница логина.
 @app.route('/', methods=['POST', 'GET'])
 def login_admin():
+    """Обрабатывает логин в систему. Считывает с формы логин/пароль (index.html).
+    Проверяет в базе наличие хэша пароля.
+    В случае успеха делает редирект на основную страницу. Помечает успешный залогин в кукисе session[login] = login.
+    В противном случае - пишет Fail и отображает страницу ввода пароля снова."""
     message = ''
     session.clear()
     global login
@@ -173,24 +60,95 @@ def login_admin():
     return render_template('index.html', message=message)
 
 
+# Главная страница.
+@app.route('/alerter', methods=['POST', 'GET'])
+def hello_world():
+    """ Отображает информацию из БД, в том случае, если осуществлен удачный логин. """
+    if login in session:
+        global data
+        global allow_mac
+        global disallow_mac
+
+        data = db_management.get_events()
+        allow_mac = db_management.get_wellknown_mac()
+        disallow_mac = db_management.get_unknown_mac()
+
+        return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
+                               login=login)
+    return '<h2>You are not logged in</h2>'
+
+
+# Заглушка страницы добавления хороших маков.
+@app.route('/add_allow_mac.html', methods=['POST', 'GET'])
+def add_allow_mac():
+    """Добавляет мак в доверенные, в том случае, если успешен залогин.
+    В качестве автора - проставляется тот, кто залогинился в систему."""
+    if login in session:
+        if request.method == 'POST':
+            if request.form['button'] == 'Добавить':
+                mac = request.form['field']
+                description = request.form['description']
+                db_management.set_mac_to_wellknown(mac, login, description)
+                return redirect('/alerter')
+    else:
+        return redirect('/')
+    return render_template('add_allow_mac.html', allow_mac=allow_mac)
+
+
+# Заглушка страницы добавления плохих маков.
+@app.route('/add_disallow_mac.html', methods=['POST', 'GET'])
+def add_disallow_mac():
+    """Добавляет плохие маки, если успешен залогин.
+     Функционал сомнителен - ибо всё то же делается автоматически в БД.
+    Вероятно, будет удалено/изменено просто на просмотр списка."""
+    if login in session:
+        if request.method == 'POST':
+            if request.form['button'] == 'Добавить':
+                mac = request.form['field']
+                company = check_mac(mac)
+                db = sqlite3.connect('destination.db')
+                cur = db.cursor()
+                cur.execute('INSERT INTO mac_addresses (mac) VALUES (?)', (mac,))
+                db.commit()
+                return redirect('/alerter')
+    else:
+        return redirect('/')
+    return render_template('add_disallow_mac.html', disallow_mac=disallow_mac)
+
+
+# Страница регистрации нового пользователя.
+@app.route('/registration', methods=['POST', 'GET'])
+def registration():
+    """Осуществляет ригистрацию нового пользователя в системе.
+    Фунционал работы с почтой не дописан. Под вопросом."""
+    message = ''
+    if request.method == 'POST':
+        name = request.form.get('name')
+        surname = request.form.get('surname')
+        wanted_login = request.form.get('wanted_login')
+        email = request.form.get('wanted_login')
+        if not db_management.login_exists(wanted_login):
+            return '''
+        <h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>
+        '''
+        else:
+            message = 'Логин занят.'
+            render_template('registration.html', message=message)
+    return render_template('registration.html', message=message)
+
+
+@app.route('/test')
+def txt():
+    return render_template('test.html')
+
+
+# Страница 404.
 @app.errorhandler(404)
 def page_not_found(error):
+    """Отображает страницу ошибки в случае перехода на несуществующую страницу."""
     return render_template('FileNotFoundError.html'), 404
 
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         session['username'] = request.form['username']
-#         return redirect('/')
-#     return '''
-#         <form method="post">
-#             <p><input type=text name=username>
-#             <p><input type=submit value=Login>
-#         </form>
-#     '''
-
-
 if __name__ == '__main__':
-    flask_host, flask_use_reloader = management.get_settings(['flask_host','flask_use_reloader'])
-    app.run(debug=True, use_reloader=flask_use_reloader,host=flask_host)
+    flask_host, flask_use_reloader = management.get_settings(['flask_host', 'flask_use_reloader'])
+    app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
