@@ -1,11 +1,11 @@
 import socketserver
-import sqlite3
-import re
-import os
 from datetime import datetime
-import db_management
+import re
 import subprocess
 import sys
+from datetime import datetime
+
+import db_management
 import management
 
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
@@ -31,8 +31,8 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 
         # Parse
         event = re.search(
-            r'(?P<priority><\d{,3}>)(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2,2})(?P<from_host>\s+[^:]+){0,'
-            r'1}\s+(?P<process>\S+:)(?P<syslog_tag>\s+\S+:){0,1}\s+(?P<message>.+)', data)
+            r'(?P<priority><\d{,3}>)(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2,2})(?P<from_host>\s+[^:]+){,1}\s+'
+            r'((?P<process>\S+):){,1}((?P<syslog_tag>\s+\S+):){,1} (?P<message>.+(?P<mac>d8){,1})', data)
 
         device_time = datetime.strptime(str(datetime.now().year) + ' ' + event.group('date'), '%Y %b %d %H:%M:%S')
 
@@ -41,21 +41,20 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         else:
             from_host = self.client_address[0]
 
+        mac_re = re.search('(?P<mac>([0-9a-fA-F]{2}([:-]|$)){6}$|([0-9a-fA-F]{4}([.]|$)){3})', event.group('message'))
+        if mac_re is not None:
+            mac = mac_re.group('mac')
+        else:
+            mac = None
+
         row = {'priority': event.group('priority').strip('><'),
                'device_time': device_time.strftime('%Y-%m-%d %H:%M:%S'),
                'from_host': from_host,
                'process': event.group('process'),
                'syslog_tag': event.group('syslog_tag'),
-               'message': event.group('message')
+               'message': event.group('message'),
+               'mac': mac
             }
-
-        #priority = event.group('priority').strip('><')
-        #process = event.group('process')
-        #syslog_tag = event.group('syslog_tag')
-        #message = event.group('message')
-
-        #data_dic = {'priority': priority, 'device_time': device_time.strftime('%Y-%m-%d %H:%M:%S'),
-        #            'from_host': from_host, 'process': process, 'syslog_tag': syslog_tag, 'message': message}
 
         db_management.insert_data(row, 'syslog')
 
