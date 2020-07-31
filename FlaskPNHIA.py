@@ -14,24 +14,6 @@ global disallow_mac
 login = ''
 
 
-def check_mac(s):
-    """ Return company name of the MAC
-    Форматы для тестирования:
-        test_mac1 = 'F4:97:C2:34:67:90'
-        test_mac2 = 'F4-97-C2-89-78-67'
-        test_mac3 = 'F497C2897867
-    """
-    if len(s) > 12:
-        half_mac = ''.join((i for i in s[:8] if i.isalnum())).upper()
-    else:
-        half_mac = s[:6]
-    with open('oui_min+.txt', 'r', encoding='UTF-8') as f:
-        for line in f:
-            if half_mac in line:
-                lo = line.split()
-                return ' '.join(lo[1:])
-
-
 # Страница логина.
 @app.route('/', methods=['POST', 'GET'])
 def login_admin():

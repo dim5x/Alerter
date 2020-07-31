@@ -158,9 +158,17 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 			from_host,
 			process,
 			syslog_tag,
+            case
+                when mac_addresses.mac is null then ''
+                when mac_addresses.wellknown = 1 then 'wellknown'
+                when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then 'uknown'
+            end mac_type,
 			message
 		from
 			syslog
+            left join
+            mac_addresses
+            on syslog.mac = mac_addresses.mac
 		where
 			device_time > %(started_at)s
 			and
