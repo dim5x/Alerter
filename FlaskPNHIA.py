@@ -14,24 +14,6 @@ global disallow_mac
 login = ''
 
 
-def check_mac(s):
-    """ Return company name of the MAC
-    Форматы для тестирования:
-        test_mac1 = 'F4:97:C2:34:67:90'
-        test_mac2 = 'F4-97-C2-89-78-67'
-        test_mac3 = 'F497C2897867
-    """
-    if len(s) > 12:
-        half_mac = ''.join((i for i in s[:8] if i.isalnum())).upper()
-    else:
-        half_mac = s[:6]
-    with open('oui_min+.txt', 'r', encoding='UTF-8') as f:
-        for line in f:
-            if half_mac in line:
-                lo = line.split()
-                return ' '.join(lo[1:])
-
-
 # Страница логина.
 @app.route('/', methods=['POST', 'GET'])
 def login_admin():
@@ -48,10 +30,7 @@ def login_admin():
 
         password_hash = hashlib.sha3_384(bytes(password, encoding='UTF-8')).hexdigest()
 
-        db = sqlite3.connect('destination.db')
-        cur = db.cursor()
-        hash_in_base = list(cur.execute('SELECT hash FROM admin WHERE login=?', (login,)))
-        if password_hash == (str(hash_in_base)[3:-4]):
+        if db_management.flask_logon(login, password_hash):
             session[login] = login
             return redirect('/alerter')
         else:
@@ -105,11 +84,7 @@ def add_disallow_mac():
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
                 mac = request.form['field']
-                company = check_mac(mac)
-                db = sqlite3.connect('destination.db')
-                cur = db.cursor()
-                cur.execute('INSERT INTO mac_addresses (mac) VALUES (?)', (mac,))
-                db.commit()
+                db_management.set_mac_to_unknown(mac, login)
                 return redirect('/alerter')
     else:
         return redirect('/')

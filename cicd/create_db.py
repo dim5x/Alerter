@@ -26,7 +26,7 @@ query = 'insert into mac_owners(mac, manufacturer) values '
 for line in lines:
     mac, owner = line[0:6].replace('\'','\'\''), line[11:].replace('\'','\'\'')
     query = query + '(\''+ mac + '\', \'' + owner + '\'),'
-	
+
 query = query[0:-1] + ';'
 
 cursor.execute(query)

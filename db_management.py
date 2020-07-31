@@ -14,7 +14,7 @@ import management
 #       db = db_connection()    // создается экземпляр класса
 #       db.open()               // открывается подклчюение
 #       result = db.execute...  // выполняется запрос
-#       db.close()              // закрыватеся подключени
+#       db.close()              // закрывается подключение
 #
 #   Методы класса
 #       
@@ -158,9 +158,17 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 			from_host,
 			process,
 			syslog_tag,
+            case
+                when mac_addresses.mac is null then ''
+                when mac_addresses.wellknown = 1 then 'wellknown'
+                when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then 'unknown'
+            end mac_type,
 			message
 		from
 			syslog
+            left join
+            mac_addresses
+            on syslog.mac = mac_addresses.mac
 		where
 			device_time > %(started_at)s
 			and
@@ -224,7 +232,7 @@ def get_unknown_mac():
 
     return result
 
-#   Установка признака доверенный для mac-адреса
+#   Установка признака "доверенный" для mac-адреса
 
 def set_mac_to_wellknown(mac, login, description):
     query = '''update
@@ -242,3 +250,42 @@ def set_mac_to_wellknown(mac, login, description):
     db.open()
     db.execute_non_query(query)
     db.close()
+
+#   Удаление признака "доверенный" для mac-адреса
+
+def set_mac_to_unknown(mac, login):
+    query = '''update
+						mac_addresses
+					set
+						wellknown = 0,
+						wellknown_author = '%(login)s',
+						description = '',
+						wellknown_started_at = datetime('now','localtime')
+					where
+						mac = '%(mac)s'
+					''' % {'login': login, 'mac': mac}
+
+    db = db_connection()
+    db.open()
+    db.execute_non_query(query)
+    db.close()
+
+#   Аутентификация
+
+def flask_logon(login, hash):
+    query = '''
+                select
+                    count(1) _count
+                from
+                    admin
+                where
+                    login = '%(login)s'
+                    and
+                    hash = '%(hash)s'
+            ''' % {'login': login, 'hash': hash}
+
+    db = db_connection()
+    db.open()
+    result = (int(db.execute_scalar(query)) > 0)
+    db.close()
+    return result
