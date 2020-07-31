@@ -102,11 +102,7 @@ def add_disallow_mac():
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
                 mac = request.form['field']
-                company = check_mac(mac)
-                db = sqlite3.connect('destination.db')
-                cur = db.cursor()
-                cur.execute('INSERT INTO mac_addresses (mac) VALUES (?)', (mac,))
-                db.commit()
+                db_management.set_mac_to_unknown(mac, login)
                 return redirect('/alerter')
     else:
         return redirect('/')

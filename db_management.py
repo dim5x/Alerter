@@ -14,7 +14,7 @@ import management
 #       db = db_connection()    // создается экземпляр класса
 #       db.open()               // открывается подклчюение
 #       result = db.execute...  // выполняется запрос
-#       db.close()              // закрыватеся подключени
+#       db.close()              // закрывается подключение
 #
 #   Методы класса
 #       
@@ -224,7 +224,7 @@ def get_unknown_mac():
 
     return result
 
-#   Установка признака доверенный для mac-адреса
+#   Установка признака "доверенный" для mac-адреса
 
 def set_mac_to_wellknown(mac, login, description):
     query = '''update
@@ -243,6 +243,26 @@ def set_mac_to_wellknown(mac, login, description):
     db.execute_non_query(query)
     db.close()
 
+#   Удаление признака "доверенный" для mac-адреса
+
+def set_mac_to_unknown(mac, login):
+    query = '''update
+						mac_addresses
+					set
+						wellknown = 0,
+						wellknown_author = '%(login)s',
+						description = '',
+						wellknown_started_at = datetime('now','localtime')
+					where
+						mac = '%(mac)s'
+					''' % {'login': login, 'mac': mac}
+
+    db = db_connection()
+    db.open()
+    db.execute_non_query(query)
+    db.close()
+
+#   Аутентификация
 
 def flask_logon(login, hash):
     query = '''
