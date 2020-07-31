@@ -1,10 +1,15 @@
+# Убрать папки:
 /venv/Lib
+.vs/
 .idea/
-/PyNetHomeInvaderAlerter.7z
-/test.py
+
+# Убрать типы файлов:
 *.pyc
+*.db
+
+# Убрать конкретные файлы:
 /templates/static/tab.js
 /templates/test.html
-*.db
 local.config
-.vs/
+/PyNetHomeInvaderAlerter.7z
+/test.py
