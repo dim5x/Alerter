@@ -161,7 +161,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
             case
                 when mac_addresses.mac is null then ''
                 when mac_addresses.wellknown = 1 then 'wellknown'
-                when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then 'uknown'
+                when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then 'unknown'
             end mac_type,
 			message
 		from
