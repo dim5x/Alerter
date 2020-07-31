@@ -1,4 +1,5 @@
 import socketserver
+from datetime import datetime
 import re
 import subprocess
 import sys
@@ -40,7 +41,11 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         else:
             from_host = self.client_address[0]
 
-        mac = re.search('(?P<mac>([0-9a-fA-F]{2}([:-]|$)){6}$|([0-9a-fA-F]{4}([.]|$)){3})', event.group('message')).group('mac')
+        mac_re = re.search('(?P<mac>([0-9a-fA-F]{2}([:-]|$)){6}$|([0-9a-fA-F]{4}([.]|$)){3})', event.group('message'))
+        if mac_re is not None:
+            mac = mac_re.group('mac')
+        else:
+            mac = None
 
         row = {'priority': event.group('priority').strip('><'),
                'device_time': device_time.strftime('%Y-%m-%d %H:%M:%S'),
