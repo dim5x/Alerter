@@ -2,8 +2,9 @@
 {% block content %}
     <head>
         <title>Alerter</title>
+        {#Для работы фильтра и поиска#}
         <script type="text/javascript" charset="utf8" src="/static/jquery-3.5.1.min.js"></script>
-
+        {#Фильтр и поиск#}
         <link rel="stylesheet" type="text/css" href="/static/DataTables/datatables.min.css">
         <script type="text/javascript" charset="utf8" src="/static/DataTables/datatables.min.js"></script>
 
@@ -54,16 +55,16 @@
     <table align="center">
         <thead>
         <tr>
-            {#            Allow#}
+            {#Allow#}
             <th class="am" width='35%'><h4>Allow <a href="add_allow_mac.html" style="color: black">+</a></h4></th>
 
-            {#            Login#}
+            {#Login#}
             <th class="login" width='30%' style="color: white">
                 Login as:<span style="color: azure">  {{ login }}</span>
                 <a href="/" style="color: white"> (Logout)</a>
             </th>
 
-            {#            Dissalow#}
+            {#Dissalow#}
             <th class="bm" width='35%'><h4>Disallow <a href="add_disallow_mac.html" style="color: black">+</a></h4></th>
         </tr>
 

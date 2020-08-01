@@ -53,7 +53,7 @@ def hello_world():
 
         return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
                                login=login)
-    return '<h2>You are not logged in</h2>'
+    return """<h2><span style="text-align:center">You are not <a href="/">logged in</a></span></h2>"""
 
 
 # Заглушка страницы добавления хороших маков.
@@ -120,7 +120,7 @@ def txt():
 @app.errorhandler(404)
 def page_not_found(error):
     """Отображает страницу ошибки в случае перехода на несуществующую страницу."""
-    return render_template('FileNotFoundError.html'), 404
+    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
