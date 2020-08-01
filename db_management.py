@@ -4,6 +4,7 @@ import os
 
 import management
 
+
 #   Класс представляет собой абстракцию для работы с базой данных.
 #
 #   Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
@@ -34,8 +35,8 @@ import management
 
 class db_connection:
     def __init__(self):
-        self.rdbms, self.db_connection_string = management.get_settings(["rdbms","db_connection_string"])
-        #self.db_connection_string = management.get_option("db_connection_string")
+        self.rdbms, self.db_connection_string = management.get_settings(["rdbms", "db_connection_string"])
+        # self.db_connection_string = management.get_option("db_connection_string")
 
     def open(self):
         if self.rdbms == "sqlite":
@@ -82,6 +83,7 @@ class db_connection:
         cursor.close()
         return result
 
+
 def get_value(data):
     if data is None:
         value = 'null'
@@ -91,10 +93,11 @@ def get_value(data):
         value = data
     return value
 
+
 #
 #   Функции для работы извне
 #
-   
+
 #   Вставка словаря в соответствующую таблицу
 #
 #   data    словарь
@@ -125,6 +128,7 @@ def insert_data(data, table, conn='not_created'):
     if connection == 'not_created':
         db.close()
 
+
 #   Проверка существования логина
 #
 #   login       проверяемый логин
@@ -136,6 +140,7 @@ def login_exists(login):
     result = (int(db.execute_scalar(query)) > 0)
     db.close()
     return result
+
 
 #   Выборка событий из syslog'а
 #
@@ -174,7 +179,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 			and
 			device_time < %(ended_at)s
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
-    if not all_events:
+    if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
 
     db = db_connection()
@@ -183,6 +188,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
     db.close()
 
     return result
+
 
 #   Выборка всех доверенных mac-адресов
 
@@ -206,6 +212,7 @@ def get_wellknown_mac():
     db.close()
 
     return result
+
 
 #   Выборка всех недоверенных mac-адресов
 
@@ -232,6 +239,7 @@ def get_unknown_mac():
 
     return result
 
+
 #   Установка признака "доверенный" для mac-адреса
 
 def set_mac_to_wellknown(mac, login, description):
@@ -251,6 +259,7 @@ def set_mac_to_wellknown(mac, login, description):
     db.execute_non_query(query)
     db.close()
 
+
 #   Удаление признака "доверенный" для mac-адреса
 
 def set_mac_to_unknown(mac, login):
@@ -269,6 +278,7 @@ def set_mac_to_unknown(mac, login):
     db.open()
     db.execute_non_query(query)
     db.close()
+
 
 #   Аутентификация
 
