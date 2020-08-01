@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, redirect, session
-import sqlite3
 import hashlib
 import management
 import db_management
 
 app = Flask(__name__)
-app.static_folder = r'templates\static'  # определяем static папку для Flask, где лежат css и прочее.
+# app.static_folder = r'static'  # определяем static папку для Flask, где лежат css и прочее.
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # для работы session
 
 global data

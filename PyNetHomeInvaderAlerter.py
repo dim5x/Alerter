@@ -1,5 +1,4 @@
 import socketserver
-from datetime import datetime
 import re
 import subprocess
 import sys
@@ -12,7 +11,7 @@ import management
 # Заменить тем, что выше 1023-его.
 # HOST, PORT = 'x.x.x.x', 514
 
-HOST, PORT = management.get_settings(['alerter_host','alerter_port'])
+HOST, PORT = management.get_settings(['alerter_host', 'alerter_port'])
 
 db = db_management.db_connection()
 
@@ -24,6 +23,7 @@ if db.test_connection() == 1:
         print('Что-то пошло не так!')
 
 db.open()
+
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
@@ -53,8 +53,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
                'process': event.group('process'),
                'syslog_tag': event.group('syslog_tag'),
                'message': event.group('message'),
-               'mac': mac
-            }
+               'mac': mac}
 
         db_management.insert_data(row, 'syslog')
 
