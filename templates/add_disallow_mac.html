@@ -2,45 +2,8 @@
 {% block content %}
     <head>
         <title>Add disallow MAC</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/for_add_mac.css">
     </head>
-
-        <style type="text/css">
-        .tg {
-            border-collapse: collapse;
-            border-color: #aaa;
-            border-spacing: 0;
-        }
-
-        .tg td {
-            background-color: black;
-            border-color: #aaa;
-            border-style: solid;
-            border-width: 1px;
-            color: white;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            overflow: hidden;
-            text-align: center;
-            padding: 10px 5px;
-            word-break: normal;
-        }
-
-        .tg th {
-            background-color: #4f4f4f;
-            border-color: #aaa;
-            border-style: solid;
-            border-width: 1px;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-            overflow: hidden;
-            text-align: center;
-            padding: 10px 5px;
-            word-break: normal;
-        }
-    </style>
-
 
     <h3 style="text-align:center; background-color:orange">Add disallow MAC</h3>
 
@@ -52,29 +15,22 @@
         </p>
     </form>
 
-    <table class="tg" align="center" width="99%">
+    <table id="table_id" class="tg" align="center" width="99%">
         <thead>
         <tr>
             <th width='14%'>MAC</th>
             <th width='11%'>Company</th>
-{#            <th width='6%'>Author</th>#}
-{#            <th width='12%'>Description</th>#}
-{#            <th width='11%'>Data</th>#}
         </tr>
         </thead>
 
         <tbody>
         {% for item in disallow_mac %}
             <tr>
-                <td width='17%'>{{ item[0] }}</td>
-                <td width='5%'>{{ item[1] }}</td>
-{#                <td width='13%'>{{ item[2] }}</td>#}
-{#                <td width='15%'>{{ item[3] }}</td>#}
-{#                <td width='15%'>{{ item[4] }}</td>#}
+                <td width='17%'>{{ item['mac'] }}</td>
+                <td width='5%'>{{ item['manufacturer'] }}</td>
             </tr>
         {% endfor %}}
         </tbody>
     </table>
-
 
 {% endblock %}

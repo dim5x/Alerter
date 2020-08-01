@@ -195,6 +195,9 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 def get_wellknown_mac():
     query = '''select 
 					mac_addresses.mac mac,
+					mac_addresses.wellknown_author wellknown_author,
+					mac_addresses.description description,
+					mac_addresses.wellknown_started_at wellknown_started_at,
 					mac_owners.manufacturer manufacturer
 				from 
 					mac_addresses 

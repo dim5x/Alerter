@@ -2,14 +2,7 @@
 {% block content %}
     <head>
         <title>Alerter</title>
-        {#Для работы фильтра и поиска#}
-        <script type="text/javascript" charset="utf8" src="/static/jquery-3.5.1.min.js"></script>
-        {#Фильтр и поиск#}
-        <link rel="stylesheet" type="text/css" href="/static/DataTables/datatables.min.css">
-        <script type="text/javascript" charset="utf8" src="/static/DataTables/datatables.min.js"></script>
 
-        <script type="text/javascript" charset="utf8" src="/static/DataTables/my.js"></script>
-        <link rel="stylesheet" type="text/css" href="/static/DataTables/my.css">
 
         {#        <meta http-equiv="Refresh" content="15"/>#}
 
@@ -150,7 +143,11 @@
                 <td width='13%'>{{ item["from_host"] }}</td>
                 <td width='15%'>{{ item["process"] }}</td>
                 <td width='5%'>{{ item["syslog_tag"] }}</td>
-                <td width='5%'>{{ item["mac_type"] }}</td>
+                {% if item["mac_type"] =='wellknown' %}
+                    <td width='5%' style="color: lightgreen">{{ item["mac_type"] }}</td>
+                {% else %}
+                    <td width='5%' style="color: orange">{{ item["mac_type"] }}</td>
+                {% endif %}
                 <td width='5%'>{{ item["message"] }}</td>
             </tr>
         {% endfor %}}

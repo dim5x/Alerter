@@ -1,60 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-
     <head>
         <title>Add allow MAC</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/for_add_mac.css">
     </head>
 
-    <style type="text/css">
-        .tg {
-            border-collapse: collapse;
-            border-color: #aaa;
-            border-spacing: 0;
-        }
-
-        .tg td {
-            background-color: black;
-            border-color: #aaa;
-            border-style: solid;
-            border-width: 1px;
-            color: white;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            overflow: hidden;
-            text-align: center;
-            padding: 10px 5px;
-            word-break: normal;
-        }
-
-        .tg th {
-            background-color: #4f4f4f;
-            border-color: #aaa;
-            border-style: solid;
-            border-width: 1px;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-            overflow: hidden;
-            text-align: center;
-            padding: 10px 5px;
-            word-break: normal;
-        }
-    </style>
     <h3 style="text-align:center; background-color:lightgreen">Add allow MAC</h3>
 
     <form method="post">
         <p style="text-align:center">
             <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx"/>
-{#            <span style="color:#e74c3c">#}
-{#                    <input name="author" required="required" type="text" placeholder="Author*"/>&nbsp;*Required field.#}
-{#                </span>#}
             <input name="description" size="20" type="text" placeholder="Description"/>
             <input name="button" type="submit" value="Добавить"/>
         </p>
     </form>
 
-    <table class="tg" align="center" width="99%">
+    <table id="table_id" class="tg" align="center" width="99%">
         <thead>
         <tr>
             <th width='14%'>MAC</th>
@@ -68,11 +29,11 @@
         <tbody>
         {% for item in allow_mac %}
             <tr>
-                <td width='17%'>{{ item[0] }}</td>
-                <td width='5%'>{{ item[1] }}</td>
-                <td width='13%'>{{ item[2] }}</td>
-                <td width='15%'>{{ item[3] }}</td>
-                <td width='15%'>{{ item[4] }}</td>
+                <td width='17%'>{{ item['mac'] }}</td>
+                <td width='5%'>{{ item['manufacturer'] }}</td>
+                <td width='13%'>{{ item['wellknown_author'] }}</td>
+                <td width='15%'>{{ item['description'] }}</td>
+                <td width='15%'>{{ item['wellknown_started_at'] }}</td>
             </tr>
         {% endfor %}}
         </tbody>
