@@ -61,6 +61,7 @@ def hello_world():
 def add_allow_mac():
     """Добавляет мак в доверенные, в том случае, если успешен залогин.
     В качестве автора - проставляется тот, кто залогинился в систему."""
+    editing_mac = request.args.get('editing_mac','')
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
@@ -70,7 +71,7 @@ def add_allow_mac():
                 return redirect('/alerter')
     else:
         return redirect('/')
-    return render_template('add_allow_mac.html', allow_mac=allow_mac)
+    return render_template('add_allow_mac.html', allow_mac=allow_mac, editing_mac=editing_mac)
 
 
 # Заглушка страницы добавления плохих маков.
@@ -79,6 +80,7 @@ def add_disallow_mac():
     """Добавляет плохие маки, если успешен залогин.
      Функционал сомнителен - ибо всё то же делается автоматически в БД.
     Вероятно, будет удалено/изменено просто на просмотр списка."""
+    editing_mac = request.args.get('editing_mac','')
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
@@ -87,7 +89,7 @@ def add_disallow_mac():
                 return redirect('/alerter')
     else:
         return redirect('/')
-    return render_template('add_disallow_mac.html', disallow_mac=disallow_mac)
+    return render_template('add_disallow_mac.html', disallow_mac=disallow_mac, editing_mac=editing_mac)
 
 
 # Страница регистрации нового пользователя.

@@ -144,9 +144,9 @@
                 <td width='15%'>{{ item["process"] }}</td>
                 <td width='5%'>{{ item["syslog_tag"] }}</td>
                 {% if item["mac_type"] =='wellknown' %}
-                    <td width='5%' style="color: lightgreen">{{ item["mac_type"] }}</td>
+                    <td width='5%'><a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}" style="color: lightgreen">{{ item["mac_type"] }}</a></td>
                 {% else %}
-                    <td width='5%' style="color: orange">{{ item["mac_type"] }}</td>
+                    <td width='5%'><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}" style="color: orange">{{ item["mac_type"] }}</a></td>
                 {% endif %}
                 <td width='5%'>{{ item["message"] }}</td>
             </tr>
