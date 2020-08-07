@@ -98,6 +98,8 @@ class db_connection:
                     query = file.read().replace('\n', ' ')
                 query = query[0:-1] + ';'
                 cursor.executescript(query)
+            else:
+                cursor.execute(query)
 
         self.connection.commit()
         cursor.close()
