@@ -1,9 +1,9 @@
 import os
 
+
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
 def get_settings(options):
-    
     settings = {}
 
     if os.path.exists('local.config'):
@@ -23,7 +23,7 @@ def get_settings(options):
     if isinstance(options, str):
         return settings[options]
     elif isinstance(options, list):
-        result =[]
+        result = []
         for option in options:
             if settings[option].isdigit():
                 result.append(int(settings[option]))

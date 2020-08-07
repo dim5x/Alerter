@@ -35,7 +35,8 @@ import management
 
 class db_connection:
     def __init__(self):
-        self.rdbms, self.db_connection_string, self.debug = management.get_settings(["rdbms", "db_connection_string", "debug"])
+        self.rdbms, self.db_connection_string, self.debug = management.get_settings(
+            ["rdbms", "db_connection_string", "debug"])
 
     def create_db(self):
         if self.rdbms == "sqlite":
@@ -50,8 +51,8 @@ class db_connection:
                 lines = file.read().splitlines()
             query = 'insert into mac_owners(mac, manufacturer) values '
             for line in lines:
-                mac, owner = line[0:6].replace('\'','\'\''), line[11:].replace('\'','\'\'')
-                query = query + '(\''+ mac + '\', \'' + owner + '\'),'
+                mac, owner = line[0:6].replace('\'', '\'\''), line[11:].replace('\'', '\'\'')
+                query = query + '(\'' + mac + '\', \'' + owner + '\'),'
             query = query[0:-1] + ';'
             self.execute_non_query(query)
             self.close()
@@ -102,15 +103,19 @@ class db_connection:
 
     def execute_non_query(self, query):
         cursor = self.connection.cursor()
-        if os.path.exists(query):
-            with open(query, 'r') as file:
-                query = file.read().replace('\n', ' ').replace('\t','')
-            if self.rdbms == 'sqlite':
-                cursor.executescript(query)
-            elif self.rdbms == 'postgresql':
-                cursor.execute(query)
-        else:
+        if len(query) > 250:
             cursor.execute(query)
+        else:
+            if os.path.exists(query):
+                with open(query, 'r') as file:
+                    query = file.read().replace('\n', ' ').replace('\t','')
+                if self.rdbms == 'sqlite':
+                    cursor.executescript(query)
+                elif self.rdbms == 'postgresql':
+                    cursor.execute(query)
+            else:
+                cursor.execute(query)
+
         self.connection.commit()
         cursor.close()
         return True
@@ -269,7 +274,7 @@ def get_current_state(only_unknown=False):
 		    '''
     if only_unknown:
         query = query + " and mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) "
-    
+
     query = query + "order by from_host, port"
 
     db = db_connection()

@@ -51,7 +51,7 @@ def hello_world():
         allow_mac = db_management.get_wellknown_mac()
         disallow_mac = db_management.get_unknown_mac()
 
-        return render_template('alerter.html', data=reversed(data), allow_mac=allow_mac, disallow_mac=disallow_mac,
+        return render_template('alerter.html', data=data, allow_mac=allow_mac, disallow_mac=disallow_mac,
                                login=login)
     return """<h2><span style="text-align:center">You are not <a href="/">logged in</a></span></h2>"""
 
@@ -61,7 +61,7 @@ def hello_world():
 def add_allow_mac():
     """Добавляет мак в доверенные, в том случае, если успешен залогин.
     В качестве автора - проставляется тот, кто залогинился в систему."""
-    editing_mac = request.args.get('editing_mac','')
+    editing_mac = request.args.get('editing_mac', '')
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
@@ -80,7 +80,7 @@ def add_disallow_mac():
     """Добавляет плохие маки, если успешен залогин.
      Функционал сомнителен - ибо всё то же делается автоматически в БД.
     Вероятно, будет удалено/изменено просто на просмотр списка."""
-    editing_mac = request.args.get('editing_mac','')
+    editing_mac = request.args.get('editing_mac', '')
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
