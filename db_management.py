@@ -177,7 +177,7 @@ def login_exists(login):
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
     if started_at == '':
-        started_at = 'datetime(\'now\',\'-2 hour\', \'localtime\')'
+        started_at = 'datetime(\'now\',\'-2000 hour\', \'localtime\')'
     if ended_at == '':
         ended_at = 'datetime(\'now\', \'localtime\')'
 
@@ -206,6 +206,56 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
     if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
+
+    db = db_connection()
+    db.open()
+    result = db.execute(query)
+    db.close()
+
+    return result
+
+
+#   Выборка текущих подключений к сетевому оборудованию
+#
+#   from_host
+#   port
+#   mac
+#   mac_type
+#   manufacturer
+#   up_time
+#
+#   Фильтр
+#       only_unknown    только "недоверенные" mac-адресы
+
+def get_current_state(only_unknown=False):
+    query = '''select
+	            from_host,
+	            port,
+	            current_state.mac mac,
+                case
+                    when mac_addresses.mac is null then ''
+                    when mac_addresses.wellknown = 1 then 'wellknown'
+                    when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then 'unknown'
+                end mac_type,
+                manufacturer,
+	            started_at up_time
+            from
+	            current_state
+	            join
+	            mac_addresses 
+	            on
+	            upper(current_state.mac) = upper(mac_addresses.mac)
+	            left join
+	            mac_owners
+	            on
+	            upper(substr(replace(mac_addresses.mac,':',''),1,6)) = mac_owners.mac
+            where
+	            state = 1
+		    '''
+    if only_unknown:
+        query = query + " and mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) "
+    
+    query = query + "order by from_host, port"
 
     db = db_connection()
     db.open()
