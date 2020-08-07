@@ -213,7 +213,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 			syslog
             left join
             mac_addresses
-            on syslog.mac = mac_addresses.mac
+            on upper(syslog.mac) = upper(mac_addresses.mac)
 		where
 			device_time > %(started_at)s
 			and
