@@ -71,7 +71,20 @@ class db_connection:
                 return 0
             else:
                 return 1
-        return 0
+        elif self.rdbms == "postgresql":
+            # проверка доступности базы данных
+            try:
+                self.open()
+                # проверка наличия структуры в базе данных
+                query = "select count(table_name) _count from information_schema.tables  WHERE table_schema='public'"
+                table_count = self.execute_scalar(query)
+                if table_count == 0:
+                    self.execute_non_query("cicd/postgres_create_db.sql")
+                connection.close()
+                return 0
+            except:
+                return 1
+        return 1
 
     def dict_factory(self, cursor, row):
         d = {}
