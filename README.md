@@ -50,9 +50,9 @@
 <ul>
 <li><b>Настройка подключений</b></li>
 </ul>
-<li>Прослушаваемый интерфейс</li>
-<li><i>vi /etc/postgresql/10/main/postgresql.conf</i></li>
-<li><i>listen_addresses = '*'</i></li>
-<li>Предоставляем доступ, например, для всех пользователей во всей локальной сети</li>
-<li><i>vi /etc/postgresql/10/main/pg_hba.conf</i></li>
+Прослушаваемый интерфейс
+<i>vi /etc/postgresql/10/main/postgresql.conf</i>
+<i>listen_addresses = '*'</i>
+Предоставляем доступ, например, для всех пользователей во всей локальной сети
+<i>vi /etc/postgresql/10/main/pg_hba.conf</i>
 <i>host	all	all	0.0.0.0/0	md5</i>
