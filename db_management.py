@@ -35,8 +35,26 @@ import management
 
 class db_connection:
     def __init__(self):
-        self.rdbms, self.db_connection_string = management.get_settings(["rdbms", "db_connection_string"])
-        # self.db_connection_string = management.get_option("db_connection_string")
+        self.rdbms, self.db_connection_string, self.debug = management.get_settings(["rdbms", "db_connection_string", "debug"])
+
+    def create_db(self):
+        if self.rdbms == "sqlite":
+            if os.path.exists(self.db_connection_string):
+                os.remove(self.db_connection_string)
+            self.open()
+            self.execute_non_query("cicd/sqlite_create_db.sql")
+            if self.debug:
+                self.execute_non_query("cicd/debug_data.sql")
+            # Заполнение таблицы mac_owners            
+            with open('cicd/macs.txt', encoding="utf-8") as file:
+                lines = file.read().splitlines()
+            query = 'insert into mac_owners(mac, manufacturer) values '
+            for line in lines:
+                mac, owner = line[0:6].replace('\'','\'\''), line[11:].replace('\'','\'\'')
+                query = query + '(\''+ mac + '\', \'' + owner + '\'),'
+            query = query[0:-1] + ';'
+            self.execute_non_query(query)
+            self.close()
 
     def open(self):
         if self.rdbms == "sqlite":
@@ -71,7 +89,13 @@ class db_connection:
 
     def execute_non_query(self, query):
         cursor = self.connection.cursor()
-        cursor.execute(query)
+        if os.path.exists(query):
+            with open(query, 'r') as file:
+                query = file.read().replace('\n', ' ')
+            query = query[0:-1] + ';'
+            cursor.executescript(query)
+        else:
+            cursor.execute(query)
         self.connection.commit()
         cursor.close()
         return True

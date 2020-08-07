@@ -11,5 +11,5 @@ if os.system('systemctl status rsyslog') > 0:
     '''
 else:
     # copy new configuration files
-    shutil.copy(./)
+    shutil.copy()
     print('ok')

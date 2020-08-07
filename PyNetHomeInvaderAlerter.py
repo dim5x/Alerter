@@ -17,7 +17,7 @@ db = db_management.db_connection()
 
 if db.test_connection() == 1:
     try:
-        subprocess.Popen([sys.executable, 'cicd/create_db.py'])
+        db.create_db()
         print('База создана!')
     except:
         print('Что-то пошло не так!')

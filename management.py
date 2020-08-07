@@ -1,16 +1,17 @@
-# import os
-
+import os
 
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
 def get_settings(options):
+    
     settings = {}
 
-    with open('../local.config') as file:
-        lines = file.read().splitlines()
-        for line in lines:
-            key, value = line.split(':')
-            settings.update({key: value})
+    if os.path.exists('local.config'):
+        with open('local.config') as file:
+            lines = file.read().splitlines()
+            for line in lines:
+                key, value = line.split(':')
+                settings.update({key: value})
 
     with open('global.config') as file:
         lines = file.read().splitlines()

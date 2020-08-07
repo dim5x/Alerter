@@ -196,8 +196,3 @@ begin
 				)
 		);
 end;
-
-/* Данные для отладки */
-insert into admin (login, hash) values ('admin','36d841bb32fc5ef1a5704652097584ee789f4d2e745fa283516320163dba0d699b5a502de4f33321155dc5715e0c1e4d');
-insert into admin (login, hash) values ('avl8','3d193c42aa262e32885ba0dfcc4e51b4b18e9c46774eac253937c73fea70546172a0da11cc98b040f28a625900fad957');
-
