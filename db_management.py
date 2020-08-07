@@ -25,6 +25,10 @@ import management
 #       execute_scalar      выполняет запрос и возвращает результат в виде одного значения
 #                           нужно использовать в запросах типа "select count(x) from" или "select top 1 x from" 
 #       execute_non_query   необходимо использовать для запросов, которые изменяют данные "insert", "update"
+#       test_connection     проверить возможность подключения
+#                           0 - все в порядке
+#                           1 - подключение есть, отсутствует структура, можно вызвать методо create_db
+#                           2 - что-то непонятное, нужно искать причины
 #
 #   Атрибуты класса (извне не используются)
 #
@@ -39,13 +43,14 @@ class db_connection:
             ["rdbms", "db_connection_string", "debug"])
 
     def create_db(self):
+        
+        self.open()
+
         if self.rdbms == "sqlite":
             if os.path.exists(self.db_connection_string):
                 os.remove(self.db_connection_string)
-            self.open()
+            
             self.execute_non_query("cicd/sqlite_create_db.sql")
-            if self.debug:
-                self.execute_non_query("cicd/debug_data.sql")
             # Заполнение таблицы mac_owners            
             with open('cicd/macs.txt', encoding="utf-8") as file:
                 lines = file.read().splitlines()
@@ -55,7 +60,14 @@ class db_connection:
                 query = query + '(\'' + mac + '\', \'' + owner + '\'),'
             query = query[0:-1] + ';'
             self.execute_non_query(query)
-            self.close()
+            
+        elif self.rdbms == "postgresql":
+            self.execute_non_query("cicd/postgres_create_db.sql")
+
+        if self.debug:
+            self.execute_non_query("cicd/debug_data.sql")
+
+        self.close()
 
     def open(self):
         if self.rdbms == "sqlite":
@@ -80,12 +92,14 @@ class db_connection:
                 query = "select count(table_name) _count from information_schema.tables  WHERE table_schema='public'"
                 table_count = self.execute_scalar(query)
                 if table_count == 0:
-                    self.execute_non_query("cicd/postgres_create_db.sql")
-                self.close()
-                return 0
+                    self.close()
+                    return 1
+                else:    
+                    self.close()
+                    return 0
             except:
-                return 1
-        return 1
+                return 2
+        return 2
 
     def dict_factory(self, cursor, row):
         d = {}

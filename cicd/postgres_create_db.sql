@@ -31,7 +31,6 @@ create table current_state(
 
 /* Учетные записи*/
 create table admin(
-	id integer primary key,
 	login varchar(20),
     hash varchar(96),
     date_time timestamp with time zone default current_timestamp
