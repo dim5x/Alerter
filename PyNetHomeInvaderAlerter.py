@@ -17,10 +17,11 @@ if db.test_connection() == 1:
     try:
         db.create_db()
         print('База создана!')
-    except:
-        print('Что-то пошло не так!')
+    except Exception as E:
+        print('Что-то пошло не так!', E)
 
 db.open()
+
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
@@ -39,8 +40,8 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
             from_host = self.client_address[0]
 
         mac_re = re.search('(?P<mac>[0-9a-fA-F]{2}(?:[:-][0-9a-fA-F]{2}){5})', event.group('message'))
-        if mac_re is not None:
-            mac = mac_re.group('mac')
+        if mac_re != None:
+            mac = mac_re.group('mac').upper()
         else:
             mac = None
 
