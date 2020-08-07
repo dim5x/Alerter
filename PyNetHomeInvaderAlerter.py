@@ -1,7 +1,5 @@
 import socketserver
 import re
-import subprocess
-import sys
 from datetime import datetime
 
 import db_management
@@ -23,7 +21,6 @@ if db.test_connection() == 1:
         print('Что-то пошло не так!')
 
 db.open()
-
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):

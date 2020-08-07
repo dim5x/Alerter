@@ -28,5 +28,31 @@
 <img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/Screenshot.PNG" alt="альтернативный текст">  
 </ol>
 
-
-
+<li><h2>Настройка postgresql</h2></li>
+<li><b>NB:</b> База данных, учетные данные должны соответствовать указанным в настройках *.config.</li>
+<ul>
+<li><b>Установка (linux)</b></li>
+</ul>
+<li>https://www.postgresql.org/download/linux/ubuntu/</li>
+<ul>
+<li><b>Настройка базы данных</b></li>
+</ul>
+<li>Логинимся под системным пользователем</li>
+<li><i>su - postgres</i></li>
+<li>Запускаем утилиту</li>
+<li><i>psql</i></li>
+<li>Создаем пользователя для сервиса</li>
+<li><i>create user alerter with password 'alerter';</i></li>
+<li>Создаем базу данных</li>
+<li><i>create database alerter_destination;</i></li>
+<li>Предоставляем пользователю права на базу данных</li>
+<li><i>grant all privileges on database alerter_destination to alerter;</i></li>
+<ul>
+<li><b>Настройка подключений</b></li>
+</ul>
+<li>Прослушаваемый интерфейс</li>
+<li><i>vi /etc/postgresql/10/main/postgresql.conf</i></li>
+<li><i>listen_addresses = '*'</i></li>
+<li>Предоставляем доступ, например, для всех пользователей во всей локальной сети</li>
+<li><i>vi /etc/postgresql/10/main/pg_hba.conf</i></li>
+<li><i>host	all	all	0.0.0.0/0	md5</i></li>
