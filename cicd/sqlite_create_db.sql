@@ -54,7 +54,7 @@ create table mac_owners(
 
 /* При возникновении новых событий*/
 create trigger syslog_insert after insert on syslog
-when instr(new.syslog_tag, 'link-up') > 0 or instr(new.syslog_tag, 'LINK_DOWN') > 0 or instr(new.message, 'associated -') > 0
+when instr(new.syslog_tag, 'link-up') > 0 or instr(new.syslog_tag, 'LINK_DOWN') > 0 or instr(new.message, 'assoc') > 0
 begin
 	delete from variables;
 	insert into variables(name, integer_value, text_value) 
