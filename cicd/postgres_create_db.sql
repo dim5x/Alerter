@@ -20,3 +20,34 @@ create table mac_addresses(
 	wellknown_author varchar(400),
 	wellknown_started_at timestamp
 	);
+	
+/*Текущее состояние*/
+create table current_state(
+	mac varchar(17),
+	state integer,
+	started_at timestamp,
+	from_host varchar(200),
+	port varchar(30)
+	);
+
+/* Учетные записи*/
+create table admin(
+	id integer primary key,
+	login varchar(20),
+    hash varchar(96),
+    date_time timestamp with time zone default current_timestamp
+    );
+
+/* Переменные*/	
+create table variables(
+	name varchar(30),
+	integer_value integer,
+	text_value varchar(30)
+	);
+	
+/* Производители */
+
+create table mac_owners(
+	mac varchar(6),
+	manufacturer varchar(70)
+);
