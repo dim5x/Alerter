@@ -55,4 +55,4 @@
 <li><i>listen_addresses = '*'</i></li>
 <li>Предоставляем доступ, например, для всех пользователей во всей локальной сети</li>
 <li><i>vi /etc/postgresql/10/main/pg_hba.conf</i></li>
-<li><i>host	all	all	0.0.0.0/0	md5</i></li>
+<i>host	all	all	0.0.0.0/0	md5</i>
