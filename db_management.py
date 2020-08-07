@@ -80,7 +80,7 @@ class db_connection:
                 table_count = self.execute_scalar(query)
                 if table_count == 0:
                     self.execute_non_query("cicd/postgres_create_db.sql")
-                connection.close()
+                self.close()
                 return 0
             except:
                 return 1
@@ -104,9 +104,11 @@ class db_connection:
         cursor = self.connection.cursor()
         if os.path.exists(query):
             with open(query, 'r') as file:
-                query = file.read().replace('\n', ' ')
-            query = query[0:-1] + ';'
-            cursor.executescript(query)
+                query = file.read().replace('\n', ' ').replace('\t','')
+            if self.rdbms == 'sqlite':
+                cursor.executescript(query)
+            elif self.rdbms == 'postgresql':
+                cursor.execute(query)
         else:
             cursor.execute(query)
         self.connection.commit()

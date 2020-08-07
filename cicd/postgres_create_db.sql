@@ -18,5 +18,5 @@ create table mac_addresses(
 	description varchar(400),
 	wellknown int,
 	wellknown_author varchar(400),
-	wellknown_started_at datetime
+	wellknown_started_at timestamp
 	);

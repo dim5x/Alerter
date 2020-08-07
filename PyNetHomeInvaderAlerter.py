@@ -17,7 +17,7 @@ if db.test_connection() == 1:
     try:
         db.create_db()
         print('База создана!')
-    except:
+    except Exception:
         print('Что-то пошло не так!')
 
 db.open()
