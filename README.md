@@ -43,7 +43,7 @@ https://www.postgresql.org/download/linux/ubuntu/<br/>
 <i>create database alerter_destination;</i><br/>
 Предоставляем пользователю права на базу данных<br/>
 <i>grant all privileges on database alerter_destination to alerter;</i><br/>
-<b>Настройка подключений</b><br/>
+<br/><b>Настройка подключений</b><br/>
 Прослушаваемый интерфейс<br/>
 <i>vi /etc/postgresql/10/main/postgresql.conf</i><br/>
 <i>listen_addresses = '*'</i><br/>
