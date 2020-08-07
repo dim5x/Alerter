@@ -35,8 +35,26 @@ import management
 
 class db_connection:
     def __init__(self):
-        self.rdbms, self.db_connection_string = management.get_settings(["rdbms", "db_connection_string"])
-        # self.db_connection_string = management.get_option("db_connection_string")
+        self.rdbms, self.db_connection_string, self.debug = management.get_settings(["rdbms", "db_connection_string", "debug"])
+
+    def create_db(self):
+        if self.rdbms == "sqlite":
+            if os.path.exists(self.db_connection_string):
+                os.remove(self.db_connection_string)
+            self.open()
+            self.execute_non_query("cicd/sqlite_create_db.sql")
+            if self.debug:
+                self.execute_non_query("cicd/debug_data.sql")
+            # Заполнение таблицы mac_owners            
+            with open('cicd/macs.txt', encoding="utf-8") as file:
+                lines = file.read().splitlines()
+            query = 'insert into mac_owners(mac, manufacturer) values '
+            for line in lines:
+                mac, owner = line[0:6].replace('\'','\'\''), line[11:].replace('\'','\'\'')
+                query = query + '(\''+ mac + '\', \'' + owner + '\'),'
+            query = query[0:-1] + ';'
+            self.execute_non_query(query)
+            self.close()
 
     def open(self):
         if self.rdbms == "sqlite":
@@ -71,7 +89,13 @@ class db_connection:
 
     def execute_non_query(self, query):
         cursor = self.connection.cursor()
-        cursor.execute(query)
+        if os.path.exists(query):
+            with open(query, 'r') as file:
+                query = file.read().replace('\n', ' ')
+            query = query[0:-1] + ';'
+            cursor.executescript(query)
+        else:
+            cursor.execute(query)
         self.connection.commit()
         cursor.close()
         return True
@@ -153,7 +177,7 @@ def login_exists(login):
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
     if started_at == '':
-        started_at = 'datetime(\'now\',\'-2 hour\', \'localtime\')'
+        started_at = 'datetime(\'now\',\'-2000 hour\', \'localtime\')'
     if ended_at == '':
         ended_at = 'datetime(\'now\', \'localtime\')'
 
@@ -182,6 +206,56 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
     if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
+
+    db = db_connection()
+    db.open()
+    result = db.execute(query)
+    db.close()
+
+    return result
+
+
+#   Выборка текущих подключений к сетевому оборудованию
+#
+#   from_host
+#   port
+#   mac
+#   mac_type
+#   manufacturer
+#   up_time
+#
+#   Фильтр
+#       only_unknown    только "недоверенные" mac-адресы
+
+def get_current_state(only_unknown=False):
+    query = '''select
+	            from_host,
+	            port,
+	            current_state.mac mac,
+                case
+                    when mac_addresses.mac is null then ''
+                    when mac_addresses.wellknown = 1 then 'wellknown'
+                    when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then 'unknown'
+                end mac_type,
+                manufacturer,
+	            started_at up_time
+            from
+	            current_state
+	            join
+	            mac_addresses 
+	            on
+	            upper(current_state.mac) = upper(mac_addresses.mac)
+	            left join
+	            mac_owners
+	            on
+	            upper(substr(replace(mac_addresses.mac,':',''),1,6)) = mac_owners.mac
+            where
+	            state = 1
+		    '''
+    if only_unknown:
+        query = query + " and mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) "
+    
+    query = query + "order by from_host, port"
 
     db = db_connection()
     db.open()

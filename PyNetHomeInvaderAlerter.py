@@ -1,7 +1,5 @@
 import socketserver
 import re
-import subprocess
-import sys
 from datetime import datetime
 
 import db_management
@@ -17,13 +15,12 @@ db = db_management.db_connection()
 
 if db.test_connection() == 1:
     try:
-        subprocess.Popen([sys.executable, 'cicd/create_db.py'])
+        db.create_db()
         print('База создана!')
     except:
         print('Что-то пошло не так!')
 
 db.open()
-
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
