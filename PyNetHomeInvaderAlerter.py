@@ -38,7 +38,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         else:
             from_host = self.client_address[0]
 
-        mac_re = re.search('(?P<mac>([0-9a-fA-F]{2}([:-]|$)){6}$|([0-9a-fA-F]{4}([.]|$)){3})', event.group('message'))
+        mac_re = re.search('(?P<mac>[0-9a-fA-F]{2}(?:[:-][0-9a-fA-F]{2}){5})', event.group('message'))
         if mac_re is not None:
             mac = mac_re.group('mac')
         else:
