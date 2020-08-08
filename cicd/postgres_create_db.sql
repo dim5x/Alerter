@@ -99,7 +99,7 @@ as $function$
 				set
 						state = 1,
 						started_at = current_timestamp,
-						fromhost = new.from_host,
+						from_host = new.from_host,
 						port = new_port
 					where
 						mac = new.mac;
