@@ -140,7 +140,7 @@ class db_connection:
 
     def execute_script(self, path):
         cursor = self.connection.cursor()
-        with open(query, 'r') as file:
+        with open(path, 'r') as file:
             query = file.read().replace('\n', ' ').replace('\t','')
         if self.rdbms == 'sqlite':
             cursor.executescript(query)
