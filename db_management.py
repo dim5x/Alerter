@@ -50,9 +50,7 @@ class db_connection:
 
         # Создание структуры базы данных
 
-        if self.rdbms == "sqlite":
-            if os.path.exists(self.db_connection_string):
-                os.remove(self.db_connection_string)            
+        if self.rdbms == "sqlite":          
             self.execute_script("cicd/sqlite_create_db.sql")            
         elif self.rdbms == "postgresql":
             self.execute_script("cicd/postgres_create_db.sql")
@@ -235,7 +233,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
             ended_at = 'current_timestamp'       
 
     query = '''select 
-			receivedat,
+			receivedat::timestamp(0) receivedat,
 			priority,
 			from_host,
 			process,
