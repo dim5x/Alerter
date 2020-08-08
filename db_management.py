@@ -232,9 +232,14 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
          if ended_at == '':
             ended_at = 'current_timestamp'       
 
-    query = '''select 
-			receivedat::timestamp(0) receivedat,
-			priority,
+    if db.rdbms == 'sqlite':
+        query = '''select 
+			receivedat, '''
+    elif db.rdbms == 'postgresql':
+        query = '''select 
+			receivedat::timestamp(0) receivedat,'''
+
+    query = query + '''priority,
 			from_host,
 			process,
 			syslog_tag,
@@ -260,7 +265,6 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 
     query = query + ''' order by receivedat desc limit 500'''
 
-    db = db_connection()
     db.open()
     result = db.execute(query)
     db.close()
@@ -383,7 +387,7 @@ def set_mac_to_wellknown(mac, login, description):
 						wellknown = 1,
 						wellknown_author = '%(login)s',
 						description = '%(description)s',
-            '''
+            ''' % {'login': login, 'description': description}
     if db.rdbms == 'sqlite':
         query = query + '''wellknown_started_at = datetime('now','localtime')'''
     elif db.rdbms == 'postgresql':
@@ -391,7 +395,7 @@ def set_mac_to_wellknown(mac, login, description):
 
     query = query + ''' where
 						mac = '%(mac)s'
-					''' % {'login': login, 'mac': mac, 'description': description}
+					''' % {'mac': mac}
   
     db.open()
     db.execute_non_query(query)
@@ -410,7 +414,7 @@ def set_mac_to_unknown(mac, login):
 						wellknown = 0,
 						wellknown_author = '%(login)s',
 						description = '',
-            '''
+            ''' % {'login': login}
     if db.rdbms == 'sqlite':
         query = query + '''wellknown_started_at = datetime('now','localtime')'''
     elif db.rdbms == 'postgresql':
@@ -418,7 +422,7 @@ def set_mac_to_unknown(mac, login):
 
     query = query + ''' where
 						mac = '%(mac)s'
-					''' % {'login': login, 'mac': mac}
+					''' % {'mac': mac}
 
     
     db.open()
