@@ -98,7 +98,7 @@ as $function$
 					update current_state
 				set
 						state = 1,
-						started_on = current_timestamp,
+						started_at = current_timestamp,
 						fromhost = new.from_host,
 						port = new_port
 					where
