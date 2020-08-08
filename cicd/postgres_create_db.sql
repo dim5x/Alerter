@@ -39,7 +39,7 @@ create table admin(
 
 create table mac_owners(
 	mac varchar(6),
-	manufacturer varchar(70)
+	manufacturer varchar(200)
 );
 
 /*Функция для триггера на insert в syslog*/
