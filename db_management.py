@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 import sqlite3
 import os
 
@@ -25,6 +26,11 @@ import management
 #       execute_scalar      выполняет запрос и возвращает результат в виде одного значения
 #                           нужно использовать в запросах типа "select count(x) from" или "select top 1 x from" 
 #       execute_non_query   необходимо использовать для запросов, которые изменяют данные "insert", "update"
+#       eecute_script       выполняет скрипт из *.sql-файла
+#       test_connection     проверить возможность подключения
+#                           0 - все в порядке
+#                           1 - подключение есть, отсутствует структура, можно вызвать метод create_db
+#                           2 - что-то непонятное, нужно искать причины
 #
 #   Атрибуты класса (извне не используются)
 #
@@ -39,23 +45,33 @@ class db_connection:
             ["rdbms", "db_connection_string", "debug"])
 
     def create_db(self):
-        if self.rdbms == "sqlite":
-            if os.path.exists(self.db_connection_string):
-                os.remove(self.db_connection_string)
-            self.open()
-            self.execute_non_query("cicd/sqlite_create_db.sql")
-            if self.debug:
-                self.execute_non_query("cicd/debug_data.sql")
-            # Заполнение таблицы mac_owners            
-            with open('cicd/macs.txt', encoding="utf-8") as file:
-                lines = file.read().splitlines()
-            query = 'insert into mac_owners(mac, manufacturer) values '
-            for line in lines:
-                mac, owner = line[0:6].replace('\'', '\'\''), line[11:].replace('\'', '\'\'')
-                query = query + '(\'' + mac + '\', \'' + owner + '\'),'
-            query = query[0:-1] + ';'
-            self.execute_non_query(query)
-            self.close()
+        
+        self.open()
+
+        # Создание структуры базы данных
+
+        if self.rdbms == "sqlite":          
+            self.execute_script("cicd/sqlite_create_db.sql")            
+        elif self.rdbms == "postgresql":
+            self.execute_script("cicd/postgres_create_db.sql")
+
+        # Заполнение таблицы mac_owners  
+                  
+        with open('cicd/macs.txt', encoding="utf-8") as file:
+            lines = file.read().splitlines()
+        query = 'insert into mac_owners(mac, manufacturer) values '
+        for line in lines:
+            mac, owner = line[0:6].replace('\'', '\'\''), line[11:].replace('\'', '\'\'')
+            query = query + '(\'' + mac + '\', \'' + owner + '\'),'
+        query = query[0:-1] + ';'
+        self.execute_non_query(query)
+
+        # Тестовые наборы данных для отладки
+
+        if self.debug:
+            self.execute_script("cicd/debug_data.sql")
+
+        self.close()
 
     def open(self):
         if self.rdbms == "sqlite":
@@ -72,7 +88,22 @@ class db_connection:
                 return 0
             else:
                 return 1
-        return 0
+        elif self.rdbms == "postgresql":
+            # проверка доступности базы данных
+            try:
+                self.open()
+                # проверка наличия структуры в базе данных
+                query = "select count(table_name) _count from information_schema.tables  WHERE table_schema='public'"
+                table_count = self.execute_scalar(query)
+                if table_count == 0:
+                    self.close()
+                    return 1
+                else:    
+                    self.close()
+                    return 0
+            except:
+                return 2
+        return 2
 
     def dict_factory(self, cursor, row):
         d = {}
@@ -81,8 +112,11 @@ class db_connection:
         return d
 
     def execute(self, query):
-        self.connection.row_factory = self.dict_factory
-        cursor = self.connection.cursor()
+        if self.rdbms == 'sqlite':
+            self.connection.row_factory = self.dict_factory
+            cursor = self.connection.cursor()
+        elif self.rdbms == 'postgresql':
+            cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cursor.execute(query)
         result = cursor.fetchall()
         cursor.close()
@@ -90,17 +124,7 @@ class db_connection:
 
     def execute_non_query(self, query):
         cursor = self.connection.cursor()
-        if len(query) > 250:
-            cursor.execute(query)
-        else:
-            if os.path.exists(query):
-                with open(query, 'r') as file:
-                    query = file.read().replace('\n', ' ')
-                query = query[0:-1] + ';'
-                cursor.executescript(query)
-            else:
-                cursor.execute(query)
-
+        cursor.execute(query)
         self.connection.commit()
         cursor.close()
         return True
@@ -111,6 +135,19 @@ class db_connection:
         result = cursor.fetchone()[0]
         cursor.close()
         return result
+
+    def execute_script(self, path):
+        cursor = self.connection.cursor()
+        with open(path, 'r') as file:
+            query = file.read().replace('\n', ' ').replace('\t','')
+        if self.rdbms == 'sqlite':
+            cursor.executescript(query)
+        elif self.rdbms == 'postgresql':
+            cursor.execute(query)
+        self.connection.commit()
+        cursor.close()
+        return True
+        
 
 
 def get_value(data):
@@ -181,14 +218,28 @@ def login_exists(login):
 #   По умолчанию в выборку попадают все события за последний два часа
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
-    if started_at == '':
-        started_at = 'datetime(\'now\',\'-2000 hour\', \'localtime\')'
-    if ended_at == '':
-        ended_at = 'datetime(\'now\', \'localtime\')'
 
-    query = '''select 
-			device_time,
-			priority,
+    db = db_connection()
+
+    if db.rdbms == 'sqlite':
+        if started_at == '':
+            started_at = 'datetime(\'now\',\'-2000 hour\', \'localtime\')'
+        if ended_at == '':
+            ended_at = 'datetime(\'now\', \'localtime\')'
+    elif db.rdbms == 'postgresql':
+         if started_at == '':
+            started_at = 'current_timestamp + interval \'-2000 hour\''
+         if ended_at == '':
+            ended_at = 'current_timestamp'       
+
+    if db.rdbms == 'sqlite':
+        query = '''select 
+			receivedat, '''
+    elif db.rdbms == 'postgresql':
+        query = '''select 
+			receivedat::timestamp(0) receivedat,'''
+
+    query = query + '''priority,
 			from_host,
 			process,
 			syslog_tag,
@@ -212,7 +263,8 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
     if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
 
-    db = db_connection()
+    query = query + ''' order by receivedat desc limit 500'''
+
     db.open()
     result = db.execute(query)
     db.close()
@@ -326,18 +378,25 @@ def get_unknown_mac():
 #   Установка признака "доверенный" для mac-адреса
 
 def set_mac_to_wellknown(mac, login, description):
+    
+    db = db_connection()
+
     query = '''update
 						mac_addresses
 					set
 						wellknown = 1,
 						wellknown_author = '%(login)s',
 						description = '%(description)s',
-						wellknown_started_at = datetime('now','localtime')
-					where
-						mac = '%(mac)s'
-					''' % {'login': login, 'mac': mac, 'description': description}
+            ''' % {'login': login, 'description': description}
+    if db.rdbms == 'sqlite':
+        query = query + '''wellknown_started_at = datetime('now','localtime')'''
+    elif db.rdbms == 'postgresql':
+        query = query + '''wellknown_started_at = current_timestamp'''
 
-    db = db_connection()
+    query = query + ''' where
+						mac = '%(mac)s'
+					''' % {'mac': mac}
+  
     db.open()
     db.execute_non_query(query)
     db.close()
@@ -346,18 +405,26 @@ def set_mac_to_wellknown(mac, login, description):
 #   Удаление признака "доверенный" для mac-адреса
 
 def set_mac_to_unknown(mac, login):
+
+    db = db_connection()
+
     query = '''update
 						mac_addresses
 					set
 						wellknown = 0,
 						wellknown_author = '%(login)s',
 						description = '',
-						wellknown_started_at = datetime('now','localtime')
-					where
-						mac = '%(mac)s'
-					''' % {'login': login, 'mac': mac}
+            ''' % {'login': login}
+    if db.rdbms == 'sqlite':
+        query = query + '''wellknown_started_at = datetime('now','localtime')'''
+    elif db.rdbms == 'postgresql':
+        query = query + '''wellknown_started_at = current_timestamp'''
 
-    db = db_connection()
+    query = query + ''' where
+						mac = '%(mac)s'
+					''' % {'mac': mac}
+
+    
     db.open()
     db.execute_non_query(query)
     db.close()

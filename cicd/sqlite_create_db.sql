@@ -1,6 +1,5 @@
  /*Таблица с событиями*/
 create table syslog(
-    id integer primary key,
     priority integer,
     device_time datetime,
     receivedat datetime not null default (datetime('now','localtime')),
@@ -14,7 +13,6 @@ create table syslog(
 /*Таблица с mac-адресами*/
 create table mac_addresses(
 	mac varchar(17),
-	device varchar(70),
 	description varchar(400),
 	wellknown int,
 	wellknown_author varchar(400),
@@ -32,7 +30,6 @@ create table current_state(
 
 /* Учетные записи*/
 create table admin(
-	id integer primary key,
 	login varchar(20),
     hash varchar(96),
     date_time datetime not null default (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime'))
@@ -49,14 +46,15 @@ create table variables(
 
 create table mac_owners(
 	mac varchar(6),
-	manufacturer varchar(70)
+	manufacturer varchar(200)
 );
 
 /* При возникновении новых событий*/
 create trigger syslog_insert after insert on syslog
-when instr(new.syslog_tag, 'link-up') > 0 or instr(new.syslog_tag, 'LINK_DOWN') > 0 or instr(new.message, 'associated -') > 0
+when instr(new.syslog_tag, 'link-up') > 0 or instr(new.syslog_tag, 'LINK_DOWN') > 0 or instr(new.message, 'assoc') > 0
 begin
 	delete from variables;
+
 	insert into variables(name, integer_value, text_value) 
 	select
 		'new_mac',
@@ -72,66 +70,82 @@ begin
 		end _value;
 
 	insert into mac_addresses(mac)
-	select
-		text_value mac
+	select 
+		new_data.mac 
 	from 
-		variables 
-	where 
-		text_value is not null
-		and
-		name = 'new_mac'
+		(
+		select
+			new.mac mac
+		) new_data 
+		left join
+		(
+		select 
+			mac
+		from
+			mac_addresses
+		) mac_addresses
+		on new_data.mac = mac_addresses.mac 
+	where
+		new_data.mac is not null
 		and 
-		text_value not in
-						(
-						select 
-							mac
-						from
-							mac_addresses);
-							
+		mac_addresses.mac is null
+	;
+
 	insert into variables(name, text_value)
 	select
 		'port',
 		case
-			when instr(NEW.message, 'MAC') > 0 then
+			when instr(message, 'MAC') > 0 then
 				substr(
-					substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')),
+					substr(message, instr(message, 'IFNAME')+7, length(message)-instr(message, 'IFNAME')),
 					1,
-					instr(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')), 'MAC') - 2
+					instr(substr(message, instr(message, 'IFNAME')+7, length(message)-instr(message, 'IFNAME')), 'MAC') - 2
 					)
-			when instr(NEW.message, 'MAC') = 0 and instr(NEW.message, 'IFNAME') > 0 then
+			when instr(message, 'MAC') = 0 and instr(message, 'IFNAME') > 0 then
 				substr(
-					substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')),
+					substr(message, instr(message, 'IFNAME')+7, length(message)-instr(message, 'IFNAME')),
 					1,
 					case
-						when instr(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')), ' ') > 0
-						 then instr(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')), ' ')
-						else length(substr(NEW.message, instr(NEW.message, 'IFNAME')+7, length(NEW.message)-instr(NEW.message, 'IFNAME')))
+						when instr(substr(message, instr(message, 'IFNAME')+7, length(message)-instr(message, 'IFNAME')), ' ') > 0
+						 then instr(substr(message, instr(message, 'IFNAME')+7, length(message)-instr(message, 'IFNAME')), ' ')
+						else length(substr(message, instr(message, 'IFNAME')+7, length(message)-instr(message, 'IFNAME')))
 					end
 					)
 			else null
-		end _value;	
+		end _value
+	from
+		(
+		select
+			upper(new.message) message
+		) message_data
+		;	
+	
 	
 	
 	insert into current_state(mac,state,started_at,from_host,port)
 	select
-		text_value,
+		new_data.mac,
 		1,
 		datetime(current_timestamp, 'localtime'),
 		new.from_host,
 		(select text_value from variables where name = 'port') port
-	from
-		variables 
+	from 
+		(
+		select
+			new.mac mac
+		) new_data 
+		left join
+		(
+		select 
+			mac
+		from
+			current_state
+		) current_state
+		on new_data.mac = current_state.mac 
 	where
-		text_value is not null
-		and
-		name = 'new_mac'
+		new_data.mac is not null
 		and 
-		text_value not in
-						(
-						select 
-							mac
-						from
-							current_state)
+		current_state.mac is null
 		and 
 		(
 		instr(new.syslog_tag, 'link-up') > 0 
@@ -147,21 +161,7 @@ begin
 		from_host = new.from_host,
 		port = (select text_value from variables where name = 'port')
 	where 
-		mac = (
-				select 
-					text_value 
-				from 
-					variables 
-				where 
-					name = 'new_mac'
-					and
-					text_value in (
-									select 
-										mac 
-									from 
-										current_state
-									)
-				)
+		mac = new.mac
 		and
 		(
 		instr(new.syslog_tag, 'link-up') > 0
@@ -184,15 +184,8 @@ begin
 		)
 		or
 		(
-		instr(NEW.message, 'disassociated -') > 0
+		(instr(NEW.message, 'disassociated -') > 0 or instr(NEW.message, 'Disassoc') > 0)
 		and
-		mac = (
-				select 
-					text_value 
-				from 
-					variables 
-				where 
-					name = 'new_mac'
-				)
+		mac = new.mac
 		);
 end;
