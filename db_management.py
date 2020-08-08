@@ -26,9 +26,10 @@ import management
 #       execute_scalar      выполняет запрос и возвращает результат в виде одного значения
 #                           нужно использовать в запросах типа "select count(x) from" или "select top 1 x from" 
 #       execute_non_query   необходимо использовать для запросов, которые изменяют данные "insert", "update"
+#       eecute_script       выполняет скрипт из *.sql-файла
 #       test_connection     проверить возможность подключения
 #                           0 - все в порядке
-#                           1 - подключение есть, отсутствует структура, можно вызвать методо create_db
+#                           1 - подключение есть, отсутствует структура, можно вызвать метод create_db
 #                           2 - что-то непонятное, нужно искать причины
 #
 #   Атрибуты класса (извне не используются)
@@ -47,26 +48,30 @@ class db_connection:
         
         self.open()
 
+        # Создание структуры базы данных
+
         if self.rdbms == "sqlite":
             if os.path.exists(self.db_connection_string):
-                os.remove(self.db_connection_string)
-            
-            self.execute_non_query("cicd/sqlite_create_db.sql")
-            # Заполнение таблицы mac_owners            
-            with open('cicd/macs.txt', encoding="utf-8") as file:
-                lines = file.read().splitlines()
-            query = 'insert into mac_owners(mac, manufacturer) values '
-            for line in lines:
-                mac, owner = line[0:6].replace('\'', '\'\''), line[11:].replace('\'', '\'\'')
-                query = query + '(\'' + mac + '\', \'' + owner + '\'),'
-            query = query[0:-1] + ';'
-            self.execute_non_query(query)
-            
+                os.remove(self.db_connection_string)            
+            self.execute_script("cicd/sqlite_create_db.sql")            
         elif self.rdbms == "postgresql":
-            self.execute_non_query("cicd/postgres_create_db.sql")
+            self.execute_script("cicd/postgres_create_db.sql")
+
+        # Заполнение таблицы mac_owners  
+                  
+        with open('cicd/macs.txt', encoding="utf-8") as file:
+            lines = file.read().splitlines()
+        query = 'insert into mac_owners(mac, manufacturer) values '
+        for line in lines:
+            mac, owner = line[0:6].replace('\'', '\'\''), line[11:].replace('\'', '\'\'')
+            query = query + '(\'' + mac + '\', \'' + owner + '\'),'
+        query = query[0:-1] + ';'
+        self.execute_non_query(query)
+
+        # Тестовые наборы данных для отладки
 
         if self.debug:
-            self.execute_non_query("cicd/debug_data.sql")
+            self.execute_script("cicd/debug_data.sql")
 
         self.close()
 
@@ -121,19 +126,7 @@ class db_connection:
 
     def execute_non_query(self, query):
         cursor = self.connection.cursor()
-        if len(query) > 250:
-            cursor.execute(query)
-        else:
-            if os.path.exists(query):
-                with open(query, 'r') as file:
-                    query = file.read().replace('\n', ' ').replace('\t','')
-                if self.rdbms == 'sqlite':
-                    cursor.executescript(query)
-                elif self.rdbms == 'postgresql':
-                    cursor.execute(query)
-            else:
-                cursor.execute(query)
-
+        cursor.execute(query)
         self.connection.commit()
         cursor.close()
         return True
@@ -144,6 +137,19 @@ class db_connection:
         result = cursor.fetchone()[0]
         cursor.close()
         return result
+
+    def execute_script(self, path):
+        cursor = self.connection.cursor()
+        with open(query, 'r') as file:
+            query = file.read().replace('\n', ' ').replace('\t','')
+        if self.rdbms == 'sqlite':
+            cursor.executescript(query)
+        elif self.rdbms == 'postgresql':
+            cursor.execute(query)
+        self.connection.commit()
+        cursor.close()
+        return True
+        
 
 
 def get_value(data):
@@ -224,12 +230,12 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
             ended_at = 'datetime(\'now\', \'localtime\')'
     elif db.rdbms == 'postgresql':
          if started_at == '':
-            started_at = 'CURRENT_DATE + INTERVAL \'-2000 hour\''
+            started_at = 'current_timestamp + interval \'-2000 hour\''
          if ended_at == '':
             ended_at = 'current_timestamp'       
 
     query = '''select 
-			device_time,
+			receivedat,
 			priority,
 			from_host,
 			process,
@@ -253,6 +259,8 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
     if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
+
+    query = query + ''' order by receivedat desc limit 500'''
 
     db = db_connection()
     db.open()

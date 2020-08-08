@@ -1,6 +1,5 @@
  /*Таблица с событиями*/
 create table syslog(
-    id integer primary key,
     priority integer,
     device_time datetime,
     receivedat datetime not null default (datetime('now','localtime')),
@@ -14,7 +13,6 @@ create table syslog(
 /*Таблица с mac-адресами*/
 create table mac_addresses(
 	mac varchar(17),
-	device varchar(70),
 	description varchar(400),
 	wellknown int,
 	wellknown_author varchar(400),
@@ -32,7 +30,6 @@ create table current_state(
 
 /* Учетные записи*/
 create table admin(
-	id integer primary key,
 	login varchar(20),
     hash varchar(96),
     date_time datetime not null default (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime'))
