@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 import sqlite3
 import os
 
@@ -108,8 +109,11 @@ class db_connection:
         return d
 
     def execute(self, query):
-        self.connection.row_factory = self.dict_factory
-        cursor = self.connection.cursor()
+        if self.rdbms == 'sqlite':
+            self.connection.row_factory = self.dict_factory
+            cursor = self.connection.cursor()
+        elif self.rdbms == 'postgresql':
+            cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cursor.execute(query)
         result = cursor.fetchall()
         cursor.close()
@@ -210,10 +214,19 @@ def login_exists(login):
 #   По умолчанию в выборку попадают все события за последний два часа
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
-    if started_at == '':
-        started_at = 'datetime(\'now\',\'-2000 hour\', \'localtime\')'
-    if ended_at == '':
-        ended_at = 'datetime(\'now\', \'localtime\')'
+
+    db = db_connection()
+
+    if db.rdbms == 'sqlite':
+        if started_at == '':
+            started_at = 'datetime(\'now\',\'-2000 hour\', \'localtime\')'
+        if ended_at == '':
+            ended_at = 'datetime(\'now\', \'localtime\')'
+    elif db.rdbms == 'postgresql':
+         if started_at == '':
+            started_at = 'CURRENT_DATE + INTERVAL \'-2000 hour\''
+         if ended_at == '':
+            ended_at = 'current_timestamp'       
 
     query = '''select 
 			device_time,
@@ -355,18 +368,25 @@ def get_unknown_mac():
 #   Установка признака "доверенный" для mac-адреса
 
 def set_mac_to_wellknown(mac, login, description):
+    
+    db = db_connection()
+
     query = '''update
 						mac_addresses
 					set
 						wellknown = 1,
 						wellknown_author = '%(login)s',
 						description = '%(description)s',
-						wellknown_started_at = datetime('now','localtime')
-					where
+            '''
+    if db.rdbms == 'sqlite':
+        query = query + '''wellknown_started_at = datetime('now','localtime')'''
+    elif db.rdbms == 'postgresql':
+        query = query + '''wellknown_started_at = current_timestamp'''
+
+    query = query + ''' where
 						mac = '%(mac)s'
 					''' % {'login': login, 'mac': mac, 'description': description}
-
-    db = db_connection()
+  
     db.open()
     db.execute_non_query(query)
     db.close()
@@ -375,18 +395,26 @@ def set_mac_to_wellknown(mac, login, description):
 #   Удаление признака "доверенный" для mac-адреса
 
 def set_mac_to_unknown(mac, login):
+
+    db = db_connection()
+
     query = '''update
 						mac_addresses
 					set
 						wellknown = 0,
 						wellknown_author = '%(login)s',
 						description = '',
-						wellknown_started_at = datetime('now','localtime')
-					where
+            '''
+    if db.rdbms == 'sqlite':
+        query = query + '''wellknown_started_at = datetime('now','localtime')'''
+    elif db.rdbms == 'postgresql':
+        query = query + '''wellknown_started_at = current_timestamp'''
+
+    query = query + ''' where
 						mac = '%(mac)s'
 					''' % {'login': login, 'mac': mac}
 
-    db = db_connection()
+    
     db.open()
     db.execute_non_query(query)
     db.close()
