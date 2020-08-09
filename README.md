@@ -1,11 +1,4 @@
 # PyNetHomeInvaderAlerter
-<style>
-   mark {
-    background: #ffec82;
-    padding: 0 3px;
-    border: 1px dashed #333;
-   }
-  </style>
 <ol>
 <li><h2>Запуск скрипта PyNetHomeInvaderAlerter.py.</h2></li>
 <ul>
