@@ -36,24 +36,22 @@ https://www.postgresql.org/download/linux/ubuntu/</li>
   <li><b>Настройка базы данных:</b>
 <ul>
 <li>Логинимся под системным пользователем:<br>
-<i>```Bash
-su - postgres
-```</i></li>
+<code>su - postgres</code></li>
 <li>Запускаем утилиту:<br>
-<i>`psql`</i></li>
+<code>psql</code></li>
 <li>Создаем пользователя для сервиса:<br>
-<i>`create user alerter with password 'alerter';`</i></li>
+<code>create user alerter with password 'alerter';</code></li>
 <li>Создаем базу данных:<br>
-<i>`create database alerter_destination;`</i></li>
+<code>create database alerter_destination;</code></li>
 <li>Предоставляем пользователю права на базу данных:<br>
-<i>`grant all privileges on database alerter_destination to alerter;`</i></li>
+<code>grant all privileges on database alerter_destination to alerter;</code></li>
 </ul>
 </li>
   <li><b>Настройка подключений:</b><br>
 Прослушаваемый интерфейс:<br/>
-<i>`vi /etc/postgresql/10/main/postgresql.conf`</i><br>
-<i>`listen_addresses = '*'</i>`<br/>
+<pre>vi /etc/postgresql/10/main/postgresql.conf
+listen_addresses = '*'</pre>
 Предоставляем доступ, например, для всех пользователей во всей локальной сети:<br>
-<i>`vi /etc/postgresql/10/main/pg_hba.conf`</i><br>
-<i>`host	all	all	0.0.0.0/0	md5`</i></li>
+<pre>vi /etc/postgresql/10/main/pg_hba.conf
+host	all	all	0.0.0.0/0	md5</pre></li>
 </ol>
