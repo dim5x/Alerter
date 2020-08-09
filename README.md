@@ -36,15 +36,33 @@ https://www.postgresql.org/download/linux/ubuntu/</li>
   <li><b>Настройка базы данных:</b>
 <ul>
 <li>Логинимся под системным пользователем:<br>
-<code>su - postgres</code></li>
+
+```
+su - postgres
+```
 <li>Запускаем утилиту:<br>
-<code>psql</code></li>
+
+```
+psql
+```
 <li>Создаем пользователя для сервиса:<br>
-<code>create user alerter with password 'alerter';</code></li>
+
+```SQL
+create user alerter with password 'alerter';
+```
+
 <li>Создаем базу данных:<br>
-<code>create database alerter_destination;</code></li>
+
+```SQL
+create database alerter_destination;
+```
+
 <li>Предоставляем пользователю права на базу данных:<br>
-<code>grant all privileges on database alerter_destination to alerter;</code></li>
+
+```SQL
+grant all privileges on database alerter_destination to alerter;
+```
+
 </ul>
 </li>
   <li><b>Настройка подключений:</b><br>
