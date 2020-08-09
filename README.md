@@ -1,4 +1,11 @@
 # PyNetHomeInvaderAlerter
+<style>
+   mark {
+    background: #ffec82;
+    padding: 0 3px;
+    border: 1px dashed #333;
+   }
+  </style>
 <ol>
 <li><h2>Запуск скрипта PyNetHomeInvaderAlerter.py.</h2></li>
 <ul>
@@ -29,7 +36,8 @@
 </ol>
 
 <h2>Настройка postgresql:</h2><br>
-<b>NB:</b> База данных, учетные данные должны соответствовать указанным в настройках *.config.<br>
+<kbd><b>NB:</b> База данных, учетные данные должны соответствовать указанным в настройках *.config.<br>
+</kbd>
 <ol>
   <li><b>Установка (для linux).</b><br>
 https://www.postgresql.org/download/linux/ubuntu/</li>
