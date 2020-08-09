@@ -15,3 +15,4 @@ local.config
 /test.py
 .DS_Store
 local_bak.config
+/.github/
