@@ -217,7 +217,7 @@ def login_exists(login):
 #
 #   По умолчанию в выборку попадают все события за последний два часа
 
-def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
+def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at='', mac=''):
 
     db = db_connection()
 
@@ -262,6 +262,8 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
     if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
+    if mac != '':
+        query = query + 'and syslog.mac = %(mac)s' % {'mac': mac}
 
     query = query + ''' order by receivedat desc limit 500'''
 
