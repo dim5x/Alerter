@@ -28,25 +28,30 @@
 <img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/Screenshot.PNG" alt="альтернативный текст">  
 </ol>
 
-<h2>Настройка postgresql</h2><br/>
-<b>NB:</b> База данных, учетные данные должны соответствовать указанным в настройках *.config.<br/>
-<b>Установка (linux)</b><br/>
-https://www.postgresql.org/download/linux/ubuntu/<br/>
-<br/><b>Настройка базы данных</b><br/>
-Логинимся под системным пользователем<br/>
-<i>su - postgres</i><br/>
-Запускаем утилиту<br/>
-<i>psql</i><br/>
-Создаем пользователя для сервиса</li><br/>
-<i>create user alerter with password 'alerter';</i><br/>
-Создаем базу данных<br/>
-<i>create database alerter_destination;</i><br/>
-Предоставляем пользователю права на базу данных<br/>
-<i>grant all privileges on database alerter_destination to alerter;</i><br/>
-<br/><b>Настройка подключений</b><br/>
-Прослушаваемый интерфейс<br/>
-<i>vi /etc/postgresql/10/main/postgresql.conf</i><br/>
-<i>listen_addresses = '*'</i><br/>
-Предоставляем доступ, например, для всех пользователей во всей локальной сети<br/>
-<i>vi /etc/postgresql/10/main/pg_hba.conf</i><br/>
-<i>host	all	all	0.0.0.0/0	md5</i>
+<h2>Настройка postgresql:</h2><br>
+<b>NB:</b> База данных, учетные данные должны соответствовать указанным в настройках *.config.<br>
+<ol>
+  <li><b>Установка (для linux).</b>
+https://www.postgresql.org/download/linux/ubuntu/</li>
+  <li><b>Настройка базы данных:</b>
+<ul>
+<li>Логинимся под системным пользователем:<br>
+<i>`su - postgres`</i></li>
+<li>Запускаем утилиту:<br>
+<i>`psql`</i></li>
+<li>Создаем пользователя для сервиса:<br>
+<i>`create user alerter with password 'alerter';`</i></li>
+<li>Создаем базу данных:<br>
+<i>`create database alerter_destination;`</i></li>
+<li>Предоставляем пользователю права на базу данных:<br>
+<i>`grant all privileges on database alerter_destination to alerter;`</i></li>
+</ul>
+</li>
+  <li><b>Настройка подключений:</b><br>
+Прослушаваемый интерфейс:<br/>
+<i>`vi /etc/postgresql/10/main/postgresql.conf`</i><br>
+<i>`listen_addresses = '*'</i>`<br/>
+Предоставляем доступ, например, для всех пользователей во всей локальной сети:<br>
+<i>`vi /etc/postgresql/10/main/pg_hba.conf`</i><br>
+<i>`host	all	all	0.0.0.0/0	md5`</i></li>
+</ol>
