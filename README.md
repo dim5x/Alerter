@@ -36,8 +36,8 @@
 </ol>
 
 <h2>Настройка postgresql:</h2><br>
-<kbd><b>NB:</b> База данных, учетные данные должны соответствовать указанным в настройках *.config.<br>
-</kbd>
+<tt><b>NB:</b> База данных, учетные данные должны соответствовать указанным в настройках *.config.<br>
+</tt>
 <ol>
   <li><b>Установка (для linux).</b><br>
 https://www.postgresql.org/download/linux/ubuntu/</li>
