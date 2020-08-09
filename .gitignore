@@ -2,6 +2,7 @@
 /venv/Lib
 .vs/
 .idea/
+/.github/
 
 # Убрать типы файлов:
 *.pyc
@@ -15,4 +16,4 @@ local.config
 /test.py
 .DS_Store
 local_bak.config
-/.github/
+
