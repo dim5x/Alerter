@@ -36,7 +36,9 @@ https://www.postgresql.org/download/linux/ubuntu/</li>
   <li><b>Настройка базы данных:</b>
 <ul>
 <li>Логинимся под системным пользователем:<br>
-<i>`su - postgres`</i></li>
+<i>```Bash
+su - postgres
+```</i></li>
 <li>Запускаем утилиту:<br>
 <i>`psql`</i></li>
 <li>Создаем пользователя для сервиса:<br>
