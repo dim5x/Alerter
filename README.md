@@ -58,12 +58,13 @@ create user alerter with password 'alerter';
 create database alerter_destination;
 ```
 
-<li>Предоставляем пользователю права на базу данных:<br></li>
+<li>Предоставляем пользователю права на базу данных:<br>
 
 ```SQL
 grant all privileges on database alerter_destination to alerter;
 ```
 
+</li>
 </ul>
 
   <li><b>Настройка подключений:</b><br>
