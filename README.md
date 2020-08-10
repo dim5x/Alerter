@@ -64,8 +64,9 @@ create database alerter_destination;
 grant all privileges on database alerter_destination to alerter;
 ```
 
-</ul>
 </li>
+</ul>
+
   <li><b>Настройка подключений:</b><br>
 Прослушаваемый интерфейс:<br/>
 <pre>vi /etc/postgresql/10/main/postgresql.conf
