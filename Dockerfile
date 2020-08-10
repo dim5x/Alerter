@@ -3,7 +3,7 @@ FROM python:3.8-slim
 # Копируем все файлы из текущей директории в /app контейнера
 COPY ./ /app
 # Устанавливаем все зависимости
-RUN apk update && pip install -r /app/requirements.txt --no-cache-dir
+RUN pip install -r /app/requirements.txt --no-cache-dir
 # Устанавливаем приложение (Подробнее смотри Distutils)
 RUN pip install -e /app
 # Говорим контейнеру какой порт слушай
