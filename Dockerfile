@@ -7,7 +7,8 @@ RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 # Устанавливаем все зависимости
 RUN pip install -r /app/requirements.txt --no-cache-dir
 # Устанавливаем приложение (Подробнее смотри Distutils)
-CMD python /app/PyNetHomeInvaderAlerter.py && python /app/FlaskPNHIA.py
+CMD python /app/PyNetHomeInvaderAlerter.py
+#&& python /app/FlaskPNHIA.py
 # Говорим контейнеру какой порт слушай
 EXPOSE 5000
 EXPOSE 5140/udp
