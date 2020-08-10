@@ -118,6 +118,11 @@ def txt():
     return render_template('test.html')
 
 
+@app.route('/unit_test')
+def unit_test():
+    return ('Hello World!')
+
+
 # Страница 404.
 @app.errorhandler(404)
 def page_not_found(error):
