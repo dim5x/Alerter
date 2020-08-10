@@ -22,7 +22,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests
         # Запускаем тесты
-        run: coverage run src/tests.py
+        run: coverage run unit_test.py
       - name: Tests report
         run: coverage report
 
