@@ -7,9 +7,9 @@ RUN apk update && pip install -r /app/requirements.txt --no-cache-dir
 # Устанавливаем приложение (Подробнее смотри Distutils)
 RUN pip install -e /app
 # Говорим контейнеру какой порт слушай
-EXPOSE 8080
+EXPOSE 5000
 # Запуск нашего приложения при старте контейнера
-CMD web_server
+CMD python /app/FlaskPNHIA.py
 
 # В качестве альтернативы distutils можно просто указать что выполнить
 #CMD python /app/src/app.py
