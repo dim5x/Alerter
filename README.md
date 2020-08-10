@@ -64,7 +64,6 @@ create database alerter_destination;
 grant all privileges on database alerter_destination to alerter;
 ```
 
-</li>
 </ul>
 
   <li><b>Настройка подключений:</b><br>
@@ -73,5 +72,5 @@ grant all privileges on database alerter_destination to alerter;
 listen_addresses = '*'</pre>
 Предоставляем доступ, например, для всех пользователей во всей локальной сети:<br>
 <pre>vi /etc/postgresql/10/main/pg_hba.conf
-host	all	all	0.0.0.0/0	md5</pre></li>
+host	all	all	0.0.0.0/0	md5</pre>
 </ol>
