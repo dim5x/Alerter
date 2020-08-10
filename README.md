@@ -36,29 +36,29 @@
 https://www.postgresql.org/download/linux/ubuntu/</li>
   <li><b>Настройка базы данных:</b>
 <ul>
-<li>Логинимся под системным пользователем:<br>
+<li>Логинимся под системным пользователем:<br></li>
 
 ```
 su - postgres
 ```
-<li>Запускаем утилиту:<br>
+<li>Запускаем утилиту:<br></li>
 
 ```
 psql
 ```
-<li>Создаем пользователя для сервиса:<br>
+<li>Создаем пользователя для сервиса:<br></li>
 
 ```SQL
 create user alerter with password 'alerter';
 ```
 
-<li>Создаем базу данных:<br>
+<li>Создаем базу данных:<br></li>
 
 ```SQL
 create database alerter_destination;
 ```
 
-<li>Предоставляем пользователю права на базу данных:<br>
+<li>Предоставляем пользователю права на базу данных:<br></li>
 
 ```SQL
 grant all privileges on database alerter_destination to alerter;
@@ -72,5 +72,5 @@ grant all privileges on database alerter_destination to alerter;
 listen_addresses = '*'</pre>
 Предоставляем доступ, например, для всех пользователей во всей локальной сети:<br>
 <pre>vi /etc/postgresql/10/main/pg_hba.conf
-host	all	all	0.0.0.0/0	md5</pre>
+host	all	all	0.0.0.0/0	md5</pre></li>
 </ol>
