@@ -1,5 +1,5 @@
-# import psycopg2
-# import psycopg2.extras
+import psycopg2
+import psycopg2.extras
 import sqlite3
 import os
 
