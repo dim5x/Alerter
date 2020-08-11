@@ -3,7 +3,7 @@
 .vs/
 .idea/
 /.github/
-pgdata/
+pg_data/
 
 # Убрать типы файлов:
 *.pyc

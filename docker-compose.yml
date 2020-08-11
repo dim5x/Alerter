@@ -1,0 +1,41 @@
+version: '2'
+services:
+  db:
+    image: postgres:11.4-alpine
+    container_name: db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/pgdata
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.4  
+    environment:
+      POSTGRES_USER: alerter
+      POSTGRES_PASSWORD: alerter
+      POSTGRES_DB: alerter_destination
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+  app:
+    image: afp
+    container_name: app
+    ports:
+      - 514:514/udp
+      - 1234:5000
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.2
+    environment:
+      POSTGRES_HOST: db
+    restart: always
+    links: 
+      - db
+    volumes:
+      - ./local.config:/app/local.config
+networks:
+  bridge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
