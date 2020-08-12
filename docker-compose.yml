@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    image: postgres:11.4-alpine
+    image: postgres:12.3-alpine
     container_name: db
     ports:
       - 5432:5432
@@ -17,21 +17,35 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
   app:
-    image: afp
+    image: flask
     container_name: app
     ports:
-      - 514:514/udp
       - 1234:5000
     networks:
       bridge:
-        ipv4_address: 172.21.0.2
+        ipv4_address: 172.21.0.3
     environment:
       POSTGRES_HOST: db
     restart: always
     links: 
       - db
     volumes:
-      - ./local.config:/app/local.config
+      - ./local_docker.config:/app/alerter/local.config
+  syslog_server:
+    image: alerter
+    container_name: syslog_server
+    ports:
+      - 514:514/udp
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.2
+    environment:
+      POSTGRES_HOST: db
+    restart: always
+    links:
+      - db
+    volumes:
+      - ./local_docker.config:/app/alerter/local.config
 networks:
   bridge:
     driver: bridge

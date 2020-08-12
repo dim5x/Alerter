@@ -194,6 +194,11 @@ def insert_data(data, table, conn='not_created'):
     if connection == 'not_created':
         db.close()
 
+def new_syslog_event(event, db):
+    cursor = db.connection.cursor()
+    cursor.callproc('new_syslog_event',[event['priority'], event['device_time'], event['from_host'], event['process'], event['syslog_tag'], event['message'], event['mac']])
+    db.connection.commit()
+    cursor.close()
 
 #   Проверка существования логина
 #
@@ -256,9 +261,9 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
             mac_addresses
             on upper(syslog.mac) = upper(mac_addresses.mac)
 		where
-			device_time > %(started_at)s
+			receivedat > %(started_at)s
 			and
-			device_time < %(ended_at)s
+			receivedat < %(ended_at)s
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
     if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
@@ -268,7 +273,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
     db.open()
     result = db.execute(query)
     db.close()
-
+    print(query)
     return result
 
 

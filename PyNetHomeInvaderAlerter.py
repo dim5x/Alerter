@@ -53,8 +53,11 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
                'syslog_tag': event.group('syslog_tag'),
                'message': event.group('message'),
                'mac': mac}
-
-        db_management.insert_data(row, 'syslog')
+        
+        if db.rdbms == 'sqlite':
+            db_management.insert_data(row, 'syslog')
+        elif db.rdbms == 'postgresql':
+            db_management.new_syslog_event(row,db)
 
         print(data)  # отправка сообщений от sysloga в консоль для отладки.
 

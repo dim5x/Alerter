@@ -142,3 +142,20 @@ create trigger syslog_insert after
 insert
 on
 public.syslog for each row execute procedure syslog_insert();
+
+create or replace function new_syslog_event(_priority integer, 
+											_device_time timestamp, 
+											_from_host varchar(200), 
+											_process varchar(50), 
+											_syslog_tag varchar(50), 
+											_message varchar(400), 
+											_mac varchar(17)
+											) 
+returns void as 
+$BODY$
+begin 
+	insert into syslog(priority, device_time, from_host, process, syslog_tag, message, mac)
+	values(_priority, _device_time, _from_host, _process, _syslog_tag, _message, _mac);
+end;
+$BODY$
+LANGUAGE plpgsql;
