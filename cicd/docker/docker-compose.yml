@@ -1,0 +1,61 @@
+version: '2'
+services:
+  db:
+    image: postgres:12.3-alpine
+    container_name: db
+    ports:
+      - 5432:5432
+    volumes:
+      - ../../pg_data:/var/lib/postgresql/data/pgdata
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.4  
+    environment:
+      POSTGRES_USER: alerter
+      POSTGRES_PASSWORD: alerter
+      POSTGRES_DB: alerter_destination
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+  app:
+    image: flask
+    build:
+      context: ../../
+      dockerfile: ./cicd/docker/flask
+    container_name: app
+    ports:
+      - 1234:5000
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.3
+    environment:
+      POSTGRES_HOST: db
+    restart: always
+    links: 
+      - db
+    volumes:
+      - ../../local_docker.config:/app/alerter/local.config
+  syslog_server:
+    image: alerter
+    build:
+      context: ../../
+      dockerfile: ./cicd/docker/alerter
+    container_name: syslog_server
+    ports:
+      - 514:514/udp
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.2
+    environment:
+      POSTGRES_HOST: db
+    restart: always
+    links:
+      - db
+    volumes:
+      - ../../local_docker.config:/app/alerter/local.config
+networks:
+  bridge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1

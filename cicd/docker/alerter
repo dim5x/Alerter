@@ -1,0 +1,22 @@
+# Берем нужный базовый образ
+FROM python:3.8-slim
+# Копируем все файлы из текущей директории в /app контейнера
+COPY ./cicd/db /app/alerter/cicd/db
+COPY ./static /app/alerter/static
+COPY ./templates /app/alerter/templates
+COPY db_management.py /app/alerter/db_management.py
+COPY PyNetHomeInvaderAlerter.py /app/alerter/PyNetHomeInvaderAlerter.py
+COPY global.config /app/alerter/global.config
+COPY management.py /app/alerter/management.py
+COPY ./cicd/docker/requirements.txt /app/alerter/requirements.txt
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean
+# Устанавливаем все зависимости
+RUN pip install -r /app/alerter/requirements.txt --no-cache-dir
+# Устанавливаем приложение (Подробнее смотри Distutils)
+WORKDIR /app/alerter
+
+CMD python /app/alerter/PyNetHomeInvaderAlerter.py
+
+# Говорим контейнеру какой порт слушай
+EXPOSE 514

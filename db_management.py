@@ -51,13 +51,13 @@ class db_connection:
         # Создание структуры базы данных
 
         if self.rdbms == "sqlite":          
-            self.execute_script("cicd/sqlite_create_db.sql")            
+            self.execute_script("cicd/db/sqlite_create_db.sql")            
         elif self.rdbms == "postgresql":
-            self.execute_script("cicd/postgres_create_db.sql")
+            self.execute_script("cicd/db/postgres_create_db.sql")
 
         # Заполнение таблицы mac_owners  
                   
-        with open('cicd/macs.txt', encoding="utf-8") as file:
+        with open('cicd/db/macs.txt', encoding="utf-8") as file:
             lines = file.read().splitlines()
         query = 'insert into mac_owners(mac, manufacturer) values '
         for line in lines:
@@ -69,7 +69,7 @@ class db_connection:
         # Тестовые наборы данных для отладки
 
         if self.debug:
-            self.execute_script("cicd/debug_data.sql")
+            self.execute_script("cicd/db/debug_data.sql")
 
         self.close()
 
@@ -194,6 +194,11 @@ def insert_data(data, table, conn='not_created'):
     if connection == 'not_created':
         db.close()
 
+def new_syslog_event(event, db):
+    cursor = db.connection.cursor()
+    cursor.callproc('new_syslog_event',[event['priority'], event['device_time'], event['from_host'], event['process'], event['syslog_tag'], event['message'], event['mac']])
+    db.connection.commit()
+    cursor.close()
 
 #   Проверка существования логина
 #
@@ -217,7 +222,7 @@ def login_exists(login):
 #
 #   По умолчанию в выборку попадают все события за последний два часа
 
-def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=''):
+def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at='', mac=''):
 
     db = db_connection()
 
@@ -256,19 +261,21 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
             mac_addresses
             on upper(syslog.mac) = upper(mac_addresses.mac)
 		where
-			device_time > %(started_at)s
+			receivedat > %(started_at)s
 			and
-			device_time < %(ended_at)s
+			receivedat < %(ended_at)s
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
     if all_events == False:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
+    if mac != '':
+        query = query + 'and syslog.mac = %(mac)s' % {'mac': mac}
 
     query = query + ''' order by receivedat desc limit 500'''
 
     db.open()
     result = db.execute(query)
     db.close()
-
+    print(query)
     return result
 
 

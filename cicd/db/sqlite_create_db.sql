@@ -46,7 +46,7 @@ create table variables(
 
 create table mac_owners(
 	mac varchar(6),
-	manufacturer varchar(200)
+	manufacturer varchar(100)
 );
 
 /* При возникновении новых событий*/
