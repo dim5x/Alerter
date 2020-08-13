@@ -1,10 +1,10 @@
 name: Publish on Docker Hub
 
 on:
-  #release:
-  #  types: [published]
-  push:
-    tags: "release"
+  release:
+    types: [published]
+  #push:
+    #tags: "release"
   # Запуск только при публиковании нового релиза
 
 jobs:
