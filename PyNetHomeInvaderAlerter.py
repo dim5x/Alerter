@@ -14,15 +14,18 @@ HOST, PORT = management.get_settings(['alerter_host', 'alerter_port'])
 
 db = db_management.db_connection()
 
-if db.test_connection() == 1:
+connection_result = db.test_connection()
+
+if connection_result == 1:
     try:
         db.create_db()
         print('База создана!')
     except Exception as E:
         print('Что-то пошло не так!', E)
+elif connection_result == 2:
+    print('Что-то пошло не так!')
 
 db.open()
-
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
