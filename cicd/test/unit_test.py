@@ -1,5 +1,8 @@
 import unittest
 import FlaskPNHIA as tested_app
+import sys
+sys.path.insert(1,'../../FlaskPNHIA.py')
+import FlaskPNHIA
 
 
 class FlaskAppTests(unittest.TestCase):
