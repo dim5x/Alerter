@@ -51,13 +51,13 @@ class db_connection:
         # Создание структуры базы данных
 
         if self.rdbms == "sqlite":          
-            self.execute_script("cicd/sqlite_create_db.sql")            
+            self.execute_script("cicd/db/sqlite_create_db.sql")            
         elif self.rdbms == "postgresql":
-            self.execute_script("cicd/postgres_create_db.sql")
+            self.execute_script("cicd/db/postgres_create_db.sql")
 
         # Заполнение таблицы mac_owners  
                   
-        with open('cicd/macs.txt', encoding="utf-8") as file:
+        with open('cicd/db/macs.txt', encoding="utf-8") as file:
             lines = file.read().splitlines()
         query = 'insert into mac_owners(mac, manufacturer) values '
         for line in lines:
@@ -69,7 +69,7 @@ class db_connection:
         # Тестовые наборы данных для отладки
 
         if self.debug:
-            self.execute_script("cicd/debug_data.sql")
+            self.execute_script("cicd/db/debug_data.sql")
 
         self.close()
 

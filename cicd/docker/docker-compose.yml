@@ -18,6 +18,9 @@ services:
     restart: always
   app:
     image: flask
+    build:
+      context: ../../
+      dockerfile: ./cicd/docker/flask
     container_name: app
     ports:
       - 1234:5000
@@ -33,6 +36,9 @@ services:
       - ../../local_docker.config:/app/alerter/local.config
   syslog_server:
     image: alerter
+    build:
+      context: ../../
+      dockerfile: ./cicd/docker/alerter
     container_name: syslog_server
     ports:
       - 514:514/udp
