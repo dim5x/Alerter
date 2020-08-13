@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Build image
         # Собираем image и называем его так как указано в hub.docker т.е. login/repository:version
-        run: docker build -t $LOGIN/$NAME:${GITHUB_REF:11} -f Dockerfile .
+        run: docker build -t $LOGIN/$NAME:${GITHUB_REF:11} -f ./cicd/docker/alerter .
       - name: Push image to docker.io
         # Пушим образ в registry
         run: docker push $LOGIN/$NAME:${GITHUB_REF:11}
