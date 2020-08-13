@@ -6,7 +6,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./pg_data:/var/lib/postgresql/data/pgdata
+      - ../../pg_data:/var/lib/postgresql/data/pgdata
     networks:
       bridge:
         ipv4_address: 172.21.0.4  
@@ -30,7 +30,7 @@ services:
     links: 
       - db
     volumes:
-      - ./local_docker.config:/app/alerter/local.config
+      - ../../local_docker.config:/app/alerter/local.config
   syslog_server:
     image: alerter
     container_name: syslog_server
@@ -45,7 +45,7 @@ services:
     links:
       - db
     volumes:
-      - ./local_docker.config:/app/alerter/local.config
+      - ../../local_docker.config:/app/alerter/local.config
 networks:
   bridge:
     driver: bridge
