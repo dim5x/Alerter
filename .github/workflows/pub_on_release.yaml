@@ -19,10 +19,10 @@ jobs:
           architecture: 'x64'
       - name: Install requirements
         # Устанавливаем зависимости
-        run: pip install -r requirements.txt
+        run: pip install -r ./cicd/docker/requirements.txt
       - name: Run tests
         # Запускаем тесты
-        run: coverage run unit_test.py
+        run: coverage run ./cicd/test/unit_test.py
       - name: Tests report
         run: coverage report
 
