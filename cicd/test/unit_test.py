@@ -1,9 +1,12 @@
 import unittest
-import os,sys,inspect
+import os
+import sys
+import inspect
+import web_view as tested_app
+
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(os.path.dirname(current_dir))
-sys.path.insert(0, parent_dir) 
-import FlaskPNHIA as tested_app
+sys.path.insert(0, parent_dir)
 
 
 class FlaskAppTests(unittest.TestCase):
