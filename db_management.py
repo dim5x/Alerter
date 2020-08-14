@@ -1,42 +1,41 @@
+"""  Класс представляет собой абстракцию для работы с базой данных.
+
+Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
+
+    создается функция, которая будет вызываться извне, def function
+    внутри функции определяется запрос к БД
+
+    db = db_connection()    // создается экземпляр класса
+    db.open()               // открывается подклчюение
+    result = db.execute...  // выполняется запрос
+    db.close()              // закрывается подключение
+
+Методы класса
+
+    open                создать подключение к БД
+    close               закрыть подключение
+    execute             выполняет запрос и возвращает результат в виде списка словарей
+    execute_scalar      выполняет запрос и возвращает результат в виде одного значения
+                        нужно использовать в запросах типа "select count(x) from" или "select top 1 x from"
+    execute_non_query   необходимо использовать для запросов, которые изменяют данные "insert", "update"
+    execute_script      выполняет скрипт из *.sql-файла
+    test_connection     проверить возможность подключения
+                        0 - все в порядке
+                        1 - подключение есть, отсутствует структура, можно вызвать метод create_db
+                        2 - что-то непонятное, нужно искать причины
+
+Атрибуты класса (извне не используются)
+
+    rdbms               тип БД
+    connection_string   строка подключения
+    connection          текущее подключение
+    """
+import os
+import sqlite3
 import psycopg2
 import psycopg2.extras
-import sqlite3
-import os
 
 import management
-
-
-#   Класс представляет собой абстракцию для работы с базой данных.
-#
-#   Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
-#
-#       создается функция, которая будет вызываться извне, def function
-#       внутри функции определяется запрос к БД
-#     
-#       db = db_connection()    // создается экземпляр класса
-#       db.open()               // открывается подклчюение
-#       result = db.execute...  // выполняется запрос
-#       db.close()              // закрывается подключение
-#
-#   Методы класса
-#       
-#       open                создать подключение к БД
-#       close               закрыть подключение
-#       execute             выполняет запрос и возвращает результат в виде списка словарей
-#       execute_scalar      выполняет запрос и возвращает результат в виде одного значения
-#                           нужно использовать в запросах типа "select count(x) from" или "select top 1 x from" 
-#       execute_non_query   необходимо использовать для запросов, которые изменяют данные "insert", "update"
-#       execute_script       выполняет скрипт из *.sql-файла
-#       test_connection     проверить возможность подключения
-#                           0 - все в порядке
-#                           1 - подключение есть, отсутствует структура, можно вызвать метод create_db
-#                           2 - что-то непонятное, нужно искать причины
-#
-#   Атрибуты класса (извне не используются)
-#
-#       rdbms               тип БД
-#       connection_string   строка подключения
-#       connection          текущее подключение
 
 
 class db_connection:
@@ -45,18 +44,16 @@ class db_connection:
             ["rdbms", "db_connection_string", "debug"])
 
     def create_db(self):
-        
+        """Создание структуры базы данных"""
         self.open()
 
-        # Создание структуры базы данных
-
-        if self.rdbms == "sqlite":          
-            self.execute_script("cicd/db/sqlite_create_db.sql")            
+        if self.rdbms == "sqlite":
+            self.execute_script("cicd/db/sqlite_create_db.sql")
         elif self.rdbms == "postgresql":
             self.execute_script("cicd/db/postgres_create_db.sql")
 
         # Заполнение таблицы mac_owners  
-                  
+
         with open('cicd/db/macs.txt', encoding="utf-8") as file:
             lines = file.read().splitlines()
         query = 'insert into mac_owners(mac, manufacturer) values '
@@ -74,15 +71,18 @@ class db_connection:
         self.close()
 
     def open(self):
+        """Открытие."""
         if self.rdbms == "sqlite":
             self.connection = sqlite3.connect(self.db_connection_string)
         elif self.rdbms == "postgresql":
             self.connection = psycopg2.connect(self.db_connection_string)
 
     def close(self):
+        """Закрытие."""
         self.connection.close()
 
     def test_connection(self):
+        """Проверка соединения."""
         if self.rdbms == "sqlite":
             if os.path.exists(self.db_connection_string):
                 return 0
@@ -98,7 +98,7 @@ class db_connection:
                 if table_count == 0:
                     self.close()
                     return 1
-                else:    
+                else:
                     self.close()
                     return 0
             except:
@@ -112,6 +112,7 @@ class db_connection:
         return d
 
     def execute(self, query):
+        """Выполняет запрос и возвращает результат в виде списка словарей"""
         if self.rdbms == 'sqlite':
             self.connection.row_factory = self.dict_factory
             cursor = self.connection.cursor()
@@ -123,6 +124,7 @@ class db_connection:
         return result
 
     def execute_non_query(self, query):
+        """Необходимо использовать для запросов, которые изменяют данные "insert", "update" """
         cursor = self.connection.cursor()
         cursor.execute(query)
         self.connection.commit()
@@ -130,6 +132,8 @@ class db_connection:
         return True
 
     def execute_scalar(self, query):
+        """Выполняет запрос и возвращает результат в виде одного значения,
+        нужно использовать в запросах типа "select count(x) from" или "select top 1 x from" """
         cursor = self.connection.cursor()
         cursor.execute(query)
         result = cursor.fetchone()[0]
@@ -137,9 +141,10 @@ class db_connection:
         return result
 
     def execute_script(self, path):
+        """Выполняет скрипт из *.sql-файла"""
         cursor = self.connection.cursor()
         with open(path, 'r') as file:
-            query = file.read().replace('\n', ' ').replace('\t','')
+            query = file.read().replace('\n', ' ').replace('\t', '')
         if self.rdbms == 'sqlite':
             cursor.executescript(query)
         elif self.rdbms == 'postgresql':
@@ -147,7 +152,6 @@ class db_connection:
         self.connection.commit()
         cursor.close()
         return True
-        
 
 
 def get_value(data):
@@ -160,17 +164,18 @@ def get_value(data):
     return value
 
 
-#
-#   Функции для работы извне
-#
+"""  Функции для работы извне
 
-#   Вставка словаря в соответствующую таблицу
-#
-#   data    словарь
-#   table   имя таблицы
-#   conn    подключение
-#
-#   Если подключение не передается в качестве параметра, то создается подключение по умолчанию, которое закрывается после выполнения
+  Вставка словаря в соответствующую таблицу
+
+  data    словарь
+  table   имя таблицы
+  conn    подключение
+
+  Если подключение не передается в качестве параметра, то создается подключение по умолчанию,
+  которое закрывается после выполнения 
+  """
+
 
 def insert_data(data, table, conn='not_created'):
     columns, values = '', ''
@@ -194,11 +199,15 @@ def insert_data(data, table, conn='not_created'):
     if connection == 'not_created':
         db.close()
 
+
 def new_syslog_event(event, db):
     cursor = db.connection.cursor()
-    cursor.callproc('new_syslog_event',[event['priority'], event['device_time'], event['from_host'], event['process'], event['syslog_tag'], event['message'], event['mac']])
+    cursor.callproc('new_syslog_event', [event['priority'], event['device_time'],
+                                         event['from_host'], event['process'], event['syslog_tag'],
+                                         event['message'], event['mac']])
     db.connection.commit()
     cursor.close()
+
 
 #   Проверка существования логина
 #
@@ -223,7 +232,6 @@ def login_exists(login):
 #   По умолчанию в выборку попадают все события за последний два часа
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at='', mac=''):
-
     db = db_connection()
 
     if db.rdbms == 'sqlite':
@@ -232,10 +240,10 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
         if ended_at == '':
             ended_at = 'datetime(\'now\', \'localtime\')'
     elif db.rdbms == 'postgresql':
-         if started_at == '':
+        if started_at == '':
             started_at = 'current_timestamp + interval \'-2000 hour\''
-         if ended_at == '':
-            ended_at = 'current_timestamp'       
+        if ended_at == '':
+            ended_at = 'current_timestamp'
 
     if db.rdbms == 'sqlite':
         query = '''select 
@@ -265,7 +273,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 			and
 			receivedat < %(ended_at)s
 		 ''' % {'started_at': started_at, 'ended_at': ended_at}
-    if all_events == False:
+    if not all_events:
         query = query + ' and (syslog_tag like \'%link-up%\' or syslog_tag like \'%LINK_DOWN%\')'
     if mac != '':
         query = query + 'and syslog.mac = %(mac)s' % {'mac': mac}
@@ -279,17 +287,18 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
     return result
 
 
-#   Выборка текущих подключений к сетевому оборудованию
-#
-#   from_host
-#   port
-#   mac
-#   mac_type
-#   manufacturer
-#   up_time
-#
-#   Фильтр
-#       only_unknown    только "недоверенные" mac-адресы
+"""  Выборка текущих подключений к сетевому оборудованию
+
+  from_host
+  port
+  mac
+  mac_type
+  manufacturer
+  up_time
+
+  Фильтр
+      only_unknown    только "недоверенные" mac-адресы"""
+
 
 def get_current_state(only_unknown=False):
     query = '''select
@@ -329,9 +338,8 @@ def get_current_state(only_unknown=False):
     return result
 
 
-#   Выборка всех доверенных mac-адресов
-
 def get_wellknown_mac():
+    """ Выборка всех доверенных mac-адресов"""
     query = '''select 
 					mac_addresses.mac mac,
 					mac_addresses.wellknown_author wellknown_author,
@@ -356,9 +364,8 @@ def get_wellknown_mac():
     return result
 
 
-#   Выборка всех недоверенных mac-адресов
-
 def get_unknown_mac():
+    """Выборка всех недоверенных mac-адресов"""
     query = '''select 
 					mac_addresses.mac mac,
 					mac_owners.manufacturer manufacturer
@@ -382,10 +389,8 @@ def get_unknown_mac():
     return result
 
 
-#   Установка признака "доверенный" для mac-адреса
-
 def set_mac_to_wellknown(mac, login, description):
-    
+    """Установка признака "доверенный" для mac-адреса"""
     db = db_connection()
 
     query = '''update
@@ -403,16 +408,14 @@ def set_mac_to_wellknown(mac, login, description):
     query = query + ''' where
 						mac = '%(mac)s'
 					''' % {'mac': mac}
-  
+
     db.open()
     db.execute_non_query(query)
     db.close()
 
 
-#   Удаление признака "доверенный" для mac-адреса
-
 def set_mac_to_unknown(mac, login):
-
+    """Удаление признака "доверенный" для mac-адреса"""
     db = db_connection()
 
     query = '''update
@@ -431,15 +434,13 @@ def set_mac_to_unknown(mac, login):
 						mac = '%(mac)s'
 					''' % {'mac': mac}
 
-    
     db.open()
     db.execute_non_query(query)
     db.close()
 
 
-#   Аутентификация
-
-def flask_logon(login, hash):
+def flask_logon(login, hash_sha384):
+    """Аутентификация"""
     query = '''
                 select
                     count(1) _count
@@ -449,7 +450,7 @@ def flask_logon(login, hash):
                     login = '%(login)s'
                     and
                     hash = '%(hash)s'
-            ''' % {'login': login, 'hash': hash}
+            ''' % {'login': login, 'hash': hash_sha384}
 
     db = db_connection()
     db.open()
