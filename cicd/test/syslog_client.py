@@ -1,3 +1,4 @@
+"""Модуль реализует отсылку данных на 514 порт, для тестирования Syslog-сервера. """
 import socket
 import time
 from datetime import datetime
@@ -14,32 +15,32 @@ sock.connect(("192.168.0.102", 5140))
 
 
 def random_mac():
-    r = []
-    for i in range(6):
-        r.append(str(random.randint(10, 99)))
-    return ':'.join(r)
+    """Генерирует случайные маки."""
+    r_m = []
+    for _ in range(6):
+        r_m.append(str(random.randint(10, 99)))
+    return ':'.join(r_m)
 
 
 def random_ip():
-    r = []
-    for i in range(4):
-        r.append(str(random.randint(100, 255)))
-    return '.'.join(r)
+    """Генерирует случайные ип."""
+    r_i = []
+    for _ in range(4):
+        r_i.append(str(random.randint(100, 255)))
+    return '.'.join(r_i)
 
 
 while True:
     mes = random.choice(message)
-    if 'is associated' in mes:
-        mes = mes.replace('70:F3:95:E5:59:EE', random_mac())
-    elif 'client is disassociated' in mes:
+    if 'assoc' in mes:
         mes = mes.replace('70:F3:95:E5:59:EE', random_mac())
     prior = random.randint(1, 12)
     d = datetime.now().day
     t = datetime.now().time().strftime("%H:%M:%S")
     from_host = random_ip()
     tag = random.choice(tags)
-
-    s = bytes('<{}>Jul {} {} {} {} {}'.format(prior, d, t, from_host, tag, mes), encoding='UTF-8')
+    TEMPLATE = '<{}>Jul {} {} {} {} {}'
+    s = bytes(TEMPLATE.format(prior, d, t, from_host, tag, mes), encoding='UTF-8')
     sock.send(s)
     print(s)
     time.sleep(5)
