@@ -5,6 +5,8 @@ from datetime import datetime
 import db_management
 import management
 
+# from memory_profiler import memory_usage
+
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
 # Заменить тем, что выше 1023-его.
 # HOST, PORT = 'x.x.x.x', 514
@@ -63,12 +65,18 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
             db_management.new_syslog_event(row,db)
 
         print(data)  # отправка сообщений от sysloga в консоль для отладки.
+        # print('{:2} |{:^16} | {:^9} | {:^10} | {:^17} | {}'.format(row['priority'], row['from_host'], row['process'],
+        #                                                          row['syslog_tag'],
+        #                                                          row['mac'] or 'None', row['message']))
 
 
 if __name__ == '__main__':
     try:
         server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
         print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
+        # print(memory_usage())
+        # print('{:2} |{:^16} | {:^9} | {:^9} | {:^17} | {}'.format('pr', 'from_host', 'process', 'syslog_tag',
+        #                                                          'mac', 'message'))
         server.serve_forever(poll_interval=0.5)
     except (IOError, SystemExit):
         raise
