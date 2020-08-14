@@ -45,7 +45,7 @@ jobs:
         # Собираем image и называем его так как указано в hub.docker т.е. login/repository:version
         run: docker build -t $LOGIN/$NAME:latest -f ./cicd/docker/alerter .
       - name: Build image Flask
-        run: docker build -t $LOGIN/$NAME2:latest -f ./cicd/docker/flask .
+        run: docker build -t $LOGIN/$NAME2:$TAG -f ./cicd/docker/flask .
         # Пушим образы в registry
       - name: Push image to docker.io
         run: docker push $LOGIN/$NAME:latest
