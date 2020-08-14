@@ -275,7 +275,7 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
     db.open()
     result = db.execute(query)
     db.close()
-    print(query)
+    # print(query)
     return result
 
 
