@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, session
+"""Модуль для отображения текущего состояния, лога, управления маками."""
 import hashlib
+from flask import Flask, render_template, request, redirect, session
 import management
 import db_management
 
@@ -7,18 +8,18 @@ app = Flask(__name__)
 # app.static_folder = r'static'  # определяем static папку для Flask, где лежат css и прочее.
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # для работы session
 
-global data
-global allow_mac
-global disallow_mac
-login = ''
+data: list = []
+allow_mac: list = []
+disallow_mac: list = []
+login: str = ''
 
 
 # Страница логина.
 @app.route('/', methods=['POST', 'GET'])
 def login_admin():
     """Обрабатывает логин в систему. Считывает с формы логин/пароль (index.html).
-    Проверяет в базе наличие хэша пароля.
-    В случае успеха делает редирект на основную страницу. Помечает успешный залогин в кукисе session[login] = login.
+    Проверяет в базе наличие хэша пароля. В случае успеха делает редирект на основную страницу.
+    Помечает успешный залогин в кукисе session[login] = login.
     В противном случае - пишет Fail и отображает страницу ввода пароля снова."""
     message = ''
     session.clear()
@@ -51,9 +52,10 @@ def hello_world():
         allow_mac = db_management.get_wellknown_mac()
         disallow_mac = db_management.get_unknown_mac()
 
-        return render_template('alerter.html', data=data, allow_mac=allow_mac, disallow_mac=disallow_mac,
-                               login=login)
-    return """<h2><span style="text-align:center">You are not <a href="/">logged in</a></span></h2>"""
+        return render_template('alerter.html', data=data, allow_mac=allow_mac,
+                               disallow_mac=disallow_mac, login=login)
+    return """
+    <h2><span style="text-align:center">You are not <a href="/">logged in</a></span></h2>"""
 
 
 # Заглушка страницы добавления хороших маков.
@@ -89,7 +91,8 @@ def add_disallow_mac():
                 return redirect('/alerter')
     else:
         return redirect('/')
-    return render_template('add_disallow_mac.html', disallow_mac=disallow_mac, editing_mac=editing_mac)
+    return render_template('add_disallow_mac.html', disallow_mac=disallow_mac,
+                           editing_mac=editing_mac)
 
 
 # Страница регистрации нового пользователя.
@@ -99,35 +102,37 @@ def registration():
     Фунционал работы с почтой не дописан. Под вопросом."""
     message = ''
     if request.method == 'POST':
-        name = request.form.get('name')
-        surname = request.form.get('surname')
+        # name = request.form.get('name')
+        # surname = request.form.get('surname')
         wanted_login = request.form.get('wanted_login')
-        email = request.form.get('wanted_login')
+        # email = request.form.get('wanted_login')
         if not db_management.login_exists(wanted_login):
             return '''
         <h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>
         '''
         else:
             message = 'Логин занят.'
-            render_template('registration.html', message=message)
+            return render_template('registration.html', message=message)
     return render_template('registration.html', message=message)
 
 
 @app.route('/test')
 def txt():
+    """Для тестов."""
     return render_template('test.html')
 
 
 @app.route('/unit_test')
 def unit_test():
-    return ('Hello World!')
+    """Для юнит-теста."""
+    return 'Hello World!'
 
 
 # Страница 404.
 @app.errorhandler(404)
 def page_not_found(error):
     """Отображает страницу ошибки в случае перехода на несуществующую страницу."""
-    return render_template('404.html'), 404
+    return render_template('404.html', error=error), 404
 
 
 if __name__ == '__main__':
