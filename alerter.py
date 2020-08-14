@@ -71,14 +71,15 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         print(TEMPLATE.format(row['priority'], row['from_host'], row['process'],
                               row['syslog_tag'], row['mac'] or 'None', row['message']))
 
-    if __name__ == '__main__':
-        try:
-            server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
-            print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
-            print(TEMPLATE.format('pr', 'from_host', 'process', 'syslog_tag', 'mac', 'message'))
-            server.serve_forever(poll_interval=0.5)
-        except (IOError, SystemExit):
-            raise
-        except KeyboardInterrupt:
-            db.close()
-            print('Ctrl+C Pressed. Shutting down.')
+
+if __name__ == '__main__':
+    try:
+        server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
+        print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
+        print(TEMPLATE.format('pr', 'from_host', 'process', 'syslog_tag', 'mac', 'message'))
+        server.serve_forever(poll_interval=0.5)
+    except (IOError, SystemExit):
+        raise
+    except KeyboardInterrupt:
+        db.close()
+        print('Ctrl+C Pressed. Shutting down.')
