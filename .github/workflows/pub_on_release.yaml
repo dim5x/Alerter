@@ -35,6 +35,8 @@ jobs:
     env:
       LOGIN: ${{ secrets.DOCKER_LOGIN }}
       NAME: ${{ secrets.DOCKER_NAME }}
+      NAME2: ${{ secrets.DOCKER_NAME2 }}
+      TAG: ${{ secrets.DOCKER_TAG }}
     steps:
       - name: Login to docker.io
         # Сначала мы логинимся в docker.io
