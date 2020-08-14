@@ -79,7 +79,7 @@ if __name__ == '__main__':
         print(TEMPLATE.format('pr', 'from_host', 'process', 'syslog_tag', 'mac', 'message'))
         server.serve_forever(poll_interval=0.5)
     except (IOError, SystemExit):
-        raise
+        raise Exception
     except KeyboardInterrupt:
         db.close()
         print('Ctrl+C Pressed. Shutting down.')
