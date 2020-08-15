@@ -67,9 +67,9 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         elif db.rdbms == 'postgresql':
             db_management.new_syslog_event(row, db)
 
-        # print(data)  # отправка сообщений от sysloga в консоль для отладки.
-        print(TEMPLATE.format(row['priority'], row['from_host'], row['process'],
-                              row['syslog_tag'], row['mac'] or 'None', row['message']))
+        print(data)  # отправка сообщений от sysloga в консоль для отладки.
+        #print(TEMPLATE.format(row['priority'], row['from_host'], row['process'],
+        #                      row['syslog_tag'], row['mac'] or 'None', row['message']))
 
 
 if __name__ == '__main__':
