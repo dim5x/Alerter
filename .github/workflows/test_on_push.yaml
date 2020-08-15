@@ -34,6 +34,6 @@ jobs:
       - uses: actions/checkout@master
       - name: Build image Alerter
         # Собираем image и называем его так как указано в hub.docker т.е. login/repository:version
-        run: docker build -t dim5x/alerter:latest -f ./cicd/docker/alerter .
+        run: docker build -t $LOGIN/$NAME:latest -f ./cicd/docker/alerter .
       - name: Build image Flask
-        run: docker build -t dim5x/flask:latest -f ./cicd/docker/flask .
+        run: docker build -t $LOGIN/$NAME2:latest -f ./cicd/docker/flask .
