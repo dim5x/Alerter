@@ -30,10 +30,6 @@ jobs:
     # Если тесты были пройдены успешно.
     needs: [run_tests]
     runs-on: [ubuntu-latest]
-    env:
-      LOGIN: ${{ secrets.DOCKER_LOGIN }}
-      NAME: ${{ secrets.DOCKER_NAME }}
-      NAME2: ${{ secrets.DOCKER_NAME2 }}
     steps:
       - uses: actions/checkout@master
       #- name: Build image Alerter
