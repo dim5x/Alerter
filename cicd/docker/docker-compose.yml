@@ -16,12 +16,12 @@ services:
       POSTGRES_DB: alerter_destination
       PGDATA: /var/lib/postgresql/data/pgdata
     restart: always
-  app:
-    image: flask
+  web_view:
+    image: dim5x/flask:latest
     build:
       context: ../../
       dockerfile: ./cicd/docker/flask
-    container_name: app
+    container_name: web_view
     ports:
       - 1234:5000
     networks:
@@ -34,12 +34,12 @@ services:
       - db
     volumes:
       - ../../local_docker.config:/app/alerter/local.config
-  syslog_server:
-    image: alerter
+  alerter:
+    image: dim5x/alerter:latest
     build:
       context: ../../
       dockerfile: ./cicd/docker/alerter
-    container_name: syslog_server
+    container_name: alerter
     ports:
       - 514:514/udp
     networks:
