@@ -18,12 +18,12 @@ services:
     restart: always
   web_view:
     image: dim5x/flask:latest
-    build:
-      context: ../../
-      dockerfile: ./cicd/docker/flask
+    #build:
+    #  context: ../../
+    #  dockerfile: ./cicd/docker/flask
     container_name: web_view
     ports:
-      - 1234:5000
+      - 5000:5000
     networks:
       bridge:
         ipv4_address: 172.21.0.3
@@ -36,9 +36,9 @@ services:
       - ../../local_docker.config:/app/alerter/local.config
   alerter:
     image: dim5x/alerter:latest
-    build:
-      context: ../../
-      dockerfile: ./cicd/docker/alerter
+    #build:
+    #  context: ../../
+    #  dockerfile: ./cicd/docker/alerter
     container_name: alerter
     ports:
       - 514:514/udp
