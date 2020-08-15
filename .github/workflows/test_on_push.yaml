@@ -30,14 +30,10 @@ jobs:
     # Если тесты были пройдены успешно.
     needs: [run_tests]
     runs-on: [ubuntu-latest]
-    env:
-      LOGIN: ${{ secrets.DOCKER_LOGIN }}
-      NAME: ${{ secrets.DOCKER_NAME }}
-      NAME2: ${{ secrets.DOCKER_NAME2 }}
     steps:
       - uses: actions/checkout@master
       - name: Build image Alerter
         # Собираем image и называем его так как указано в hub.docker т.е. login/repository:version
-        run: docker build -t $LOGIN/$NAME:latest -f ./cicd/docker/alerter .
+        run: docker build -t dim5x/alerter:latest -f ./cicd/docker/alerter .
       - name: Build image Flask
-        run: docker build -t $LOGIN/$NAME2:latest -f ./cicd/docker/flask .
+        run: docker build -t dim5x/flask:latest -f ./cicd/docker/flask .
