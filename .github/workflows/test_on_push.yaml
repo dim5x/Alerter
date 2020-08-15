@@ -13,7 +13,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       # Чекаутим код
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
       # Устанавливаем python нужной версии
       - uses: actions/setup-python@v1
         with:
@@ -21,7 +21,7 @@ jobs:
           architecture: 'x64'
       - name: Install requirements
         # Устанавливаем зависимости
-        run: pip install -r ./cicd/docker/requirements_test.txt
+        run: pip install -r ./cicd/docker/requirements_alerter.txt
       - name: Run tests
         run: coverage run ./cicd/test/unit_test.py
       - name: Tests report
