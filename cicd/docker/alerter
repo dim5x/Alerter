@@ -5,18 +5,18 @@ COPY ./cicd/db /app/alerter/cicd/db
 COPY ./static /app/alerter/static
 COPY ./templates /app/alerter/templates
 COPY db_management.py /app/alerter/db_management.py
-COPY PyNetHomeInvaderAlerter.py /app/alerter/PyNetHomeInvaderAlerter.py
+COPY alerter.py /app/alerter/alerter.py
 COPY global.config /app/alerter/global.config
 COPY management.py /app/alerter/management.py
-COPY ./cicd/docker/requirements.txt /app/alerter/requirements.txt
+COPY ./cicd/docker/requirements_alerter.txt /app/alerter/requirements_alerter.txt
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean
 # Устанавливаем все зависимости
-RUN pip install -r /app/alerter/requirements.txt --no-cache-dir
+RUN pip install -r /app/alerter/requirements_alerter.txt --no-cache-dir
 # Устанавливаем приложение (Подробнее смотри Distutils)
 WORKDIR /app/alerter
 
-CMD python /app/alerter/PyNetHomeInvaderAlerter.py
+CMD python /app/alerter/alerter.py
 
 # Говорим контейнеру какой порт слушай
 EXPOSE 514

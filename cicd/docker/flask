@@ -5,10 +5,10 @@ COPY ./cicd/db /app/alerter/cicd/db
 COPY ./static /app/alerter/static
 COPY ./templates /app/alerter/templates
 COPY db_management.py /app/alerter/db_management.py
-COPY FlaskPNHIA.py /app/alerter/FlaskPNHIA.py
+COPY web_view.py /app/alerter/web_view.py
 COPY global.config /app/alerter/global.config
 COPY management.py /app/alerter/management.py
-COPY ./cicd/docker/requirements.txt /app/alerter/requirements.txt
+COPY ./cicd/docker/requirements_flask.txt /app/alerter/requirements_flask.txt
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean
 # Устанавливаем все зависимости
@@ -16,7 +16,7 @@ RUN pip install -r /app/alerter/requirements_flask.txt --no-cache-dir
 # Устанавливаем приложение (Подробнее смотри Distutils)
 WORKDIR /app/alerter
 
-CMD python /app/alerter/FlaskPNHIA.py
+CMD python /app/alerter/web_view.py
 
 # Говорим контейнеру какой порт слушай
 EXPOSE 5000

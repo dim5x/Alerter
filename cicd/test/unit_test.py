@@ -3,12 +3,12 @@ import unittest
 import os
 import sys
 import inspect
-import web_view as tested_app
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(os.path.dirname(current_dir))
 sys.path.insert(0, parent_dir)
 
+import web_view as tested_app
 
 class FlaskAppTests(unittest.TestCase):
     """Класс юнит-теста."""
