@@ -35,7 +35,5 @@ jobs:
       - name: Build image Alerter
         # Собираем image и называем его так как указано в hub.docker т.е. login/repository:version
         run: docker build -t dim5x/alerter:latest -f ./cicd/docker/alerter .
-      - name: check
-        run: ls ./cicd/docker/ 
       - name: Build image Flask
         run: docker build -t dim5x/flask:latest -f ./cicd/docker/flask .
