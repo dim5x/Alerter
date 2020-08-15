@@ -36,9 +36,10 @@ jobs:
       NAME2: ${{ secrets.DOCKER_NAME2 }}
     steps:
       - uses: actions/checkout@master
-      - name: Build image Alerter
+      #- name: Build image Alerter
         # Собираем image и называем его так как указано в hub.docker т.е. login/repository:version
-        run: ls ./cicd/docker/
-        run: docker build -t $LOGIN/$NAME:latest -f ./cicd/docker/alerter .
+      #  run: docker build -t $LOGIN/$NAME:latest -f ./cicd/docker/alerter .
+      - name: check
+        run: ls ./cicd/docker/ 
       - name: Build image Flask
         run: docker build -t $LOGIN/$NAME2:latest -f ./cicd/docker/flask .
