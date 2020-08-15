@@ -2,17 +2,17 @@
 FROM python:3.8-slim
 # Копируем все файлы из текущей директории в /app контейнера
 COPY ./cicd/db /app/alerter/cicd/db
-COPY cicd/docker/requirements_al.txt /app/alerter/requirements_al.txt
 COPY ./static /app/alerter/static
 COPY ./templates /app/alerter/templates
 COPY db_management.py /app/alerter/db_management.py
 COPY alerter.py /app/alerter/alerter.py
 COPY global.config /app/alerter/global.config
 COPY management.py /app/alerter/management.py
+COPY cicd/docker/requirements_alerter.txt /app/alerter/requirements_alerter.txt
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean
 # Устанавливаем все зависимости
-RUN pip install -r /app/alerter/requirements_al.txt --no-cache-dir
+RUN pip install -r /app/alerter/requirements_alerter.txt --no-cache-dir
 # Устанавливаем приложение (Подробнее смотри Distutils)
 WORKDIR /app/alerter
 
