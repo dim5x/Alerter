@@ -2,7 +2,6 @@
 /.github/
 /archive/
 # По идее можно так: !/cicd/db
-/cicd/docker
 /cicd/test
 
 # Убрать конкретные файлы:
