@@ -1,21 +1,5 @@
 version: '2'
 services:
-  db:
-    image: postgres:12.3-alpine
-    container_name: db
-    ports:
-      - 5432:5432
-    volumes:
-      - ../../pg_data:/var/lib/postgresql/data/pgdata
-    networks:
-      bridge:
-        ipv4_address: 172.21.0.4  
-    environment:
-      POSTGRES_USER: alerter
-      POSTGRES_PASSWORD: alerter
-      POSTGRES_DB: alerter_destination
-      PGDATA: /var/lib/postgresql/data/pgdata
-    restart: always
   web_view:
     image: dim5x/flask:latest
     #build:
@@ -30,10 +14,9 @@ services:
     #environment:
     #  POSTGRES_HOST: db
     restart: always
-    links: 
-      - db
     volumes:
       - ../../local_docker.config:/app/alerter/local.config
+      - ../../destination.db:/app/alerter/destination.db
   alerter:
     image: dim5x/alerter:latest
     #build:
@@ -48,10 +31,9 @@ services:
     #environment:
     #  POSTGRES_HOST: db
     restart: always
-    links:
-      - db
     volumes:
       - ../../local_docker.config:/app/alerter/local.config
+      - ../../destination.db:/app/alerter/destination.db
 networks:
   bridge:
     driver: bridge
