@@ -2,39 +2,38 @@
 {% block content %}
     <head>
         <title>Add disallow MAC</title>
-        <link rel="stylesheet" type="text/css" href="/static/css/for_add_mac.css">
     </head>
 
-    <h3 style="text-align:center; background-color:orange">Add disallow MAC</h3>
+    <div>
+        <h3 style="text-align:center; background-color:orange">Add disallow MAC</h3>
+        <form method="post">
+            <p style="text-align:center">
+                {% if editing_mac != '' %}
+                    <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx"
+                           value={{ editing_mac }}/>
+                {% else %}
+                    <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx">
+                {% endif %}
+                <input name="button" type="submit" value="Добавить">
+            </p>
+        </form>
 
-    <body>
-    <form method="post">
-        <p style="text-align:center">
-            {% if editing_mac != '' %}
-                <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx" value={{ editing_mac }} />
-            {% else %}
-                <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx" />
-            {% endif %}
-            <input name="button" type="submit" value="Добавить" />
-        </p>
-    </form>
-
-    <table id="table_id" class="tg" align="center" width="99%">
-        <thead>
-        <tr>
-            <th width='14%'>MAC</th>
-            <th width='11%'>Company</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        {% for item in disallow_mac %}
+        <table id="log" class="tg">
+            <thead>
             <tr>
-                <td width='17%'>{{ item['mac'] }}</td>
-                <td width='5%'>{{ item['manufacturer'] }}</td>
+                <th>MAC</th>
+                <th>Company</th>
             </tr>
-        {% endfor %}}
-        </tbody>
-    </table>
+            </thead>
 
+            <tbody>
+            {% for item in disallow_mac %}
+                <tr>
+                    <td>{{ item['mac'] }}</td>
+                    <td>{{ item['manufacturer'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
