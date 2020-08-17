@@ -57,14 +57,14 @@ jobs:
       - name: Build image Flask Latest
         run: docker build -t $LOGIN/$NAME2:latest -f ./cicd/docker/flask .
       - name: Build image Flask Version
-        run: docker build -t $LOGIN/$NAME2:{{ steps.vars.outputs.tag }} -f ./cicd/docker/flask .
+        run: docker build -t $LOGIN/$NAME2:${{ steps.vars.outputs.tag }} -f ./cicd/docker/flask .
         # Пушим образы в registry
       - name: Push image to docker.io
         run: docker push $LOGIN/$NAME:latest
       - name: Push image to docker.io
-        run: docker push $LOGIN/$NAME:{{ steps.vars.outputs.tag }}
+        run: docker push $LOGIN/$NAME:${{ steps.vars.outputs.tag }}
       - name: Push image to docker.io
         run: docker push $LOGIN/$NAME2:latest
       - name: Push image to docker.io
-        run: docker push $LOGIN/$NAME2:{{ steps.vars.outputs.tag }}
+        run: docker push $LOGIN/$NAME2:${{ steps.vars.outputs.tag }}
 
