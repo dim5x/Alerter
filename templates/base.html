@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:background-color="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <title>Alerter</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/static/images/favicon.ico">
+
+    {# Подключаем bootsrtap #}
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    {#Для работы фильтра и поиска#}
+    {# jquery - для работы фильтра и поиска #}
     <script type="text/javascript" charset="utf8" src="/static/js/jquery-3.5.1.min.js"></script>
-    {#Фильтр и поиск#}
+
+    {# Библиотека для фильтра и поиска #}
     <link rel="stylesheet" type="text/css" href="/static/DataTables/datatables.min.css">
     <script type="text/javascript" charset="utf8" src="/static/DataTables/datatables.min.js"></script>
 
-    <script type="text/javascript" charset="utf8" src="/static/DataTables/my.js"></script>
+    {# Подключаем фильтр и поиск для наших таблиц #}
+    <script type="text/javascript" charset="utf8" src="/static/DataTables/for_state_table.js"></script>
+    <script type="text/javascript" charset="utf8" src="/static/DataTables/for_log_table.js"></script>
+    {# Моя css для таблиц #}
     <link rel="stylesheet" type="text/css" href="/static/DataTables/my.css">
-
-{#        <script type="text/javascript" charset="utf8" src="/static/DataTables/pdf.js"></script>#}
-
 </head>
 
-<body style="background-color:black">
+{#{% block title %}{% endblock %}#}
 
-{% block title %}{% endblock %}
+<body>
 {% block content %}{% endblock %}
-
 </body>
 </html>

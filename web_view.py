@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # для работы session
 
 data: list = []
+state: list = []
 allow_mac: list = []
 disallow_mac: list = []
 login: str = ''
@@ -21,7 +22,7 @@ def login_admin():
     Проверяет в базе наличие хэша пароля. В случае успеха делает редирект на основную страницу.
     Помечает успешный залогин в кукисе session[login] = login.
     В противном случае - пишет Fail и отображает страницу ввода пароля снова."""
-    message = ''
+    message_for_user = ''
     session.clear()
     global login
     if request.method == 'POST':
@@ -35,8 +36,8 @@ def login_admin():
             return redirect('/alerter')
         else:
             message = 'Fail.'
-            return render_template('index.html', message=message)
-    return render_template('index.html', message=message)
+            return render_template('index.html', message=message_for_user)
+    return render_template('index.html', message=message_for_user)
 
 
 # Главная страница.
@@ -45,14 +46,17 @@ def hello_world():
     """ Отображает информацию из БД, в том случае, если осуществлен удачный логин. """
     if login in session:
         global data
+        global state
         global allow_mac
         global disallow_mac
 
         data = db_management.get_events()
+        state = db_management.get_current_state()
+
         allow_mac = db_management.get_wellknown_mac()
         disallow_mac = db_management.get_unknown_mac()
 
-        return render_template('alerter.html', data=data, allow_mac=allow_mac,
+        return render_template('test.html', data=data, state=state, allow_mac=allow_mac,
                                disallow_mac=disallow_mac, login=login)
     return """
     <h2><span style="text-align:center">You are not <a href="/">logged in</a></span></h2>"""
@@ -119,7 +123,25 @@ def registration():
 @app.route('/test')
 def txt():
     """Для тестов."""
-    return render_template('test.html')
+
+    data = db_management.get_events()
+    return render_template('test.html', data=data)
+
+
+@app.route('/test1')
+def txt1():
+    """Для тестов."""
+
+    data = db_management.get_events()
+    return render_template('test1.html', data=data)
+
+
+@app.route('/test2')
+def txt2():
+    """Для тестов."""
+    # data = ''
+    data = db_management.get_events()
+    return render_template('test2.html', data=data)
 
 
 @app.route('/unit_test')
@@ -137,4 +159,5 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     flask_host, flask_use_reloader = management.get_settings(['flask_host', 'flask_use_reloader'])
-    app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
+    # app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
+    app.run(debug=True, use_reloader=True, host=flask_host)
