@@ -1,3 +1,4 @@
+"""Модуль для управления настройками."""
 import os
 import socket
 
@@ -5,6 +6,7 @@ import socket
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
 def get_settings(options):
+    """Получить настройки из файлов конфигурации."""
     settings = {}
 
     if os.path.exists('local.config'):
@@ -33,6 +35,7 @@ def get_settings(options):
         return result
 
 def get_ip_address():
+    """Получить ИП-адрес."""
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     return s.getsockname()[0]

@@ -2,11 +2,10 @@
 {% block content %}
     <head>
         <title>Alerter</title>
-
         {#        <meta http-equiv="Refresh" content="15"/>#}
-
     </head>
 
+    {#     Стиль для заголовка#}
     <style type="text/css">
         TABLE {
             width: 99%; /* Ширина таблицы */
@@ -41,47 +40,7 @@
         }
     </style>
 
-    <body>
-
-    <table align="center">
-        <thead>
-        <tr>
-            {#Allow#}
-            <th class="am" width='35%'><h4>Allow <a href="add_allow_mac.html" style="color: black">+</a></h4></th>
-
-            {#Login#}
-            <th class="login" width='30%' style="color: white">
-                Login as:<span style="color: azure">  {{ login }}</span>
-                <a href="/" style="color: white"> (Logout)</a>
-            </th>
-
-            {#Dissalow#}
-            <th class="bm" width='35%'><h4>Disallow <a href="add_disallow_mac.html" style="color: black">+</a></h4></th>
-        </tr>
-
-        <tbody>
-        <tr style="height: 10px">
-            <td class="oya">
-                <div style="width:100%;height:120px;overflow:scroll;overflow-x: hidden;">
-                    {% for item in allow_mac %}
-                        <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>
-                    {% endfor %}
-                </div>
-            </td>
-            <td class="oya" style="text-align: center">Nothing terrible!</td>
-            <td class="oya">
-                <div style="width:100%;height:120px;overflow:scroll;overflow-x: hidden;">
-                    {% for item in disallow_mac %}
-                        <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>
-                    {% endfor %}
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-
-
+    {#    Стиль для большой таблицы.#}
     <style type="text/css">
         .tg {
             border-collapse: collapse;
@@ -119,38 +78,121 @@
         }
     </style>
 
-{#<button id="ExportPdf" type="button">Export All</button>#}
+    {#   CSS GRID #}
+    <style>
+        body {
+            display: grid;
+            grid-template-areas: "header" "article" "footer";
+            grid-template-rows: 6% 60% 30%;
+        {#    grid-template-columns: 10% 60% 30%;#} grid-gap: 2px;
+            height: 100vh;
+            margin: 0;
+        }
 
-    <table id="table_id" class="tg" align="center" width="99%">
-        <thead>
-        <tr>
-            <th width='14%'>DATE</th>
-            <th width='6%'>PRIOR.</th>
-            <th width='12%'>FROMHOST</th>
-            <th width='11%'>PROCESS</th>
-            <th width='10%'>SYSLOGTAG</th>
-            <th width='10%'>MAC_TYPE</th>
-            <th>MESSAGE</th>
-        </tr>
-        </thead>
+        header, footer, article, nav, div {
+            padding: 0px;
+            background: gold;
+        }
+
+        #pageHeader {
+            grid-area: header;
+        }
+
+        #pageFooter {
+            grid-area: footer;
+        }
+
+        #mainArticle {
+            grid-area: article;
+        }
+
+    </style>
 
 
-        <tbody>
-        {% for item in data %}
+
+    {# Маленькая таблица.    #}
+
+
+    <body>
+    <header id="pageHeader">
+        <table align="center">
+            <thead>
             <tr>
-                <td width='17%'>{{ item["receivedat"] }}</td>
-                <td width='5%'>{{ item["priority"] }}</td>
-                <td width='13%'>{{ item["from_host"] }}</td>
-                <td width='15%'>{{ item["process"] }}</td>
-                <td width='5%'>{{ item["syslog_tag"] }}</td>
-                {% if item["mac_type"] =='wellknown' %}
-                    <td width='5%'><a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}" style="color: lightgreen">{{ item["mac_type"] }}</a></td>
-                {% else %}
-                    <td width='5%'><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}" style="color: orange">{{ item["mac_type"] }}</a></td>
-                {% endif %}
-                <td width='5%'>{{ item["message"] }}</td>
+                {#Allow#}
+                <th class="am" width='35%'><h4>Allow <a href="add_allow_mac.html" style="color: black">+</a></h4></th>
+
+                {#Login#}
+                <th class="login" width='30%' style="color: white">
+                    Login as:<span style="color: azure">  {{ login }}</span>
+                    <a href="/" style="color: white"> (Logout)</a>
+                </th>
+
+                {#Dissalow#}
+                <th class="bm" width='35%'><h4>Disallow <a href="add_disallow_mac.html" style="color: black">+</a></h4>
+                </th>
             </tr>
-        {% endfor %}}
-        </tbody>
-    </table>
+            </thead>
+
+            {#        <tbody>#}
+            {#        <tr style="height: 10px">#}
+            {#            <td class="oya">#}
+            {#                <div style="width:100%;height:120px;overflow:scroll;overflow-x: hidden;">#}
+            {#                    {% for item in allow_mac %}#}
+            {#                        <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>#}
+            {#                    {% endfor %}#}
+            {#                </div>#}
+            {#            </td>#}
+            {#            <td class="oya" style="text-align: center">Nothing terrible!</td>#}
+            {#            <td class="oya">#}
+            {#                <div style="width:100%;height:120px;overflow:scroll;overflow-x: hidden;">#}
+            {#                    {% for item in disallow_mac %}#}
+            {#                        <li>{{ item["mac"] }} - <span style="color: yellow">{{ item["manufacturer"] }}</span></li>#}
+            {#                    {% endfor %}#}
+            {#                </div>#}
+            {#            </td>#}
+            {#        </tr>#}
+            {#        </tbody>#}
+        </table>
+    </header>
+    {#    <article id="mainArticle">Article</article>#}
+    <div id="mainArticle" style="overflow: scroll; overflow-x: hidden">
+        <table id="table_id" class="tg" align="center" width="99%">
+            <thead>
+            <tr>
+                <th width='14%'>Hardware</th>
+                <th width='6%'>Port.</th>
+                <th width='12%'>Mac</th>
+                <th width='11%'>Uptime</th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+            {% for item in data %}
+                <tr>
+                    <td width='25%'>{{ item["from_host"] }}</td>
+                    <td width='25%'>{{ port }}</td>
+                    {% if item["mac_type"] =='wellknown' %}
+                        <td width='25%'><a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
+                                           style="color: lightgreen">{{ item["mac_type"] }}</a></td>
+                    {% else %}
+                        <td width='25%'><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
+                                           style="color: orange">{{ item["mac_type"] }}</a></td>
+                        <td width='25%'>{{ item["receivedat"] }}</td>
+
+                    {% endif %}
+                </tr>
+            {% endfor %}}
+            </tbody>
+        </table>
+    </div>
+    <footer id="pageFooter">Footer</footer>
+    </body>
+
+    {#Таблица.#}
+
+
+    {#Большая таблица. Сислог.#}
+
+
 {% endblock %}

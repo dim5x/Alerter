@@ -122,6 +122,22 @@ def txt():
     return render_template('test.html')
 
 
+@app.route('/test1')
+def txt1():
+    """Для тестов."""
+    data = ''
+    data = db_management.get_events()
+    return render_template('test1.html', data=data)
+
+
+@app.route('/test2')
+def txt2():
+    """Для тестов."""
+    data = ''
+    data = db_management.get_events()
+    return render_template('test2.html', data=data)
+
+
 @app.route('/unit_test')
 def unit_test():
     """Для юнит-теста."""
@@ -137,4 +153,5 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     flask_host, flask_use_reloader = management.get_settings(['flask_host', 'flask_use_reloader'])
-    app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
+    # app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
+    app.run(debug=True, use_reloader=True, host=flask_host)
