@@ -1,11 +1,13 @@
 name: Publish on Docker Hub
 
 on:
-  release:
-    types: [published]
-  #push:
-    #tags: "release"
-  # Запуск только при публиковании нового релиза
+  #release:
+  #  types: [published]
+  
+  # при наличии тэга, содержащего v.
+    push:
+      tags:
+        - v.*
 
 jobs:
   run_tests:
@@ -42,14 +44,27 @@ jobs:
         run:  echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
         # Чекаутим код
       - uses: actions/checkout@master
-      - name: Build image Alerter
-        # Собираем image и называем его так как указано в hub.docker т.е. login/repository:version
+        # Получим текущий тэг
+      - name: get_version
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        # Собираем образа alerter'а, первый именуем 'latest', второй - текущим тэгом
+      - name: Build image Alerter Latest
         run: docker build -t $LOGIN/$NAME:latest -f ./cicd/docker/alerter .
-      - name: Build image Flask
+      - name: Build image Alerter Version 
+        run: docker build -t $LOGIN/$NAME:${{ steps.vars.outputs.tag }} -f ./cicd/docker/alerter .
+        # Аналогично собираем образы flask'а
+      - name: Build image Flask Latest
         run: docker build -t $LOGIN/$NAME2:latest -f ./cicd/docker/flask .
+      - name: Build image Flask Version
+        run: docker build -t $LOGIN/$NAME2:{{ steps.vars.outputs.tag }} -f ./cicd/docker/flask .
         # Пушим образы в registry
       - name: Push image to docker.io
         run: docker push $LOGIN/$NAME:latest
       - name: Push image to docker.io
+        run: docker push $LOGIN/$NAME:{{ steps.vars.outputs.tag }}
+      - name: Push image to docker.io
         run: docker push $LOGIN/$NAME2:latest
+      - name: Push image to docker.io
+        run: docker push $LOGIN/$NAME2:{{ steps.vars.outputs.tag }}
 
