@@ -1,7 +1,6 @@
 import os
 import socket
 
-
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
 def get_settings(options):
