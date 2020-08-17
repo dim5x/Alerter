@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {# Заголовок #}
+    <header id="Header">
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    {#Allow#}
+                    <th class="allow_mac"><h5>Allow <a href="add_allow_mac.html" style="color: black">+</a></h5></th>
+                    <th class="login"><h6>
+                        Login as:<span style="color: azure">  {{ login }}</span>
+                        <a href="/" style="color: white"> (Logout)</a></h6>
+                    </th>
+                    {#Dissalow#}
+                    <th class="disallow_mac"><h5>Disallow <a href="add_disallow_mac.html" style="color: black">+</a>
+                    </h5>
+                    </th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </header>
+
+    {# State #}
+    <article id="Article">
+        <div>
+            <table id="state">
+                <thead>
+                <tr>
+                    <th>Hardware</th>
+                    <th>Port</th>
+                    <th>Mac</th>
+                    <th>Uptime</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in state %}
+                    <tr>
+                        <td>{{ item["from_host"] }}</td>
+                        <td>{{ item["port"] }}</td>
+                        {% if item["state"] == '1' %}
+                            <td><a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
+                                   style="color: lightgreen">{{ item["mac"] }}</a></td>
+                        {% else %}
+                            <td><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
+                                   style="color: orange">{{ item["mac"] }}</a></td>
+                            <td>{{ item["up_time"] }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+    <footer id="Footer">
+        <div class="spoiler">
+            <span style="color: white"> Log</span> <input type="checkbox">
+            <div class="box">
+                <table id="log">
+                    <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>PRIOR.</th>
+                        <th>FROM_HOST</th>
+                        <th>PROCESS</th>
+                        <th>SYSLOGTAG</th>
+                        <th>MAC_TYPE</th>
+                        <th>MESSAGE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <td>{{ item["receivedat"] }}</td>
+                            <td>{{ item["priority"] }}</td>
+                            <td>{{ item["from_host"] }}</td>
+                            <td>{{ item["process"] }}</td>
+                            <td>{{ item["syslog_tag"] }}</td>
+                            {% if item["mac_type"] =='wellknown' %}
+                                <td><a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
+                                       style="color: lightgreen">{{ item["mac_type"] }}</a></td>
+                            {% else %}
+                                <td><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
+                                       style="color: orange">{{ item["mac_type"] }}</a></td>
+                            {% endif %}
+                            <td>{{ item["message"] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
