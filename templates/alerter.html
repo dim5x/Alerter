@@ -40,14 +40,16 @@
                     <tr>
                         <td>{{ item["from_host"] }}</td>
                         <td>{{ item["port"] }}</td>
-                        {% if item["state"] == '1' %}
-                            <td><a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
-                                   style="color: lightgreen">{{ item["mac"] }}</a></td>
+                        {% if item["mac_type"] == 'wellknown' %}
+                            <td>
+                                <a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
+                                   style="color: lightgreen">{{ item["mac"] }}</a>
+                            </td>
                         {% else %}
                             <td><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
-                                   style="color: orange">{{ item["mac"] }}</a></td>
-                            <td>{{ item["up_time"] }}</td>
+                                   style="color:orange">{{ item["mac"] }}</a></td>
                         {% endif %}
+                        <td>{{ item["up_time"] }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -56,9 +58,16 @@
     </article>
 
     <footer id="Footer">
+        {#        <form method="post">#}
+        {#            <p style="text-align:left">#}
+        {#                <input name="button" type="submit" value="Log">#}
+        {#            </p>#}
+        {#        </form>#}
         <div class="spoiler">
             <span style="color: white"> Log</span> <input type="checkbox">
             <div class="box">
+
+                {#        <table id="log" style={{ on_off }}>#}
                 <table id="log">
                     <thead>
                     <tr>

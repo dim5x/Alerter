@@ -1,7 +1,7 @@
 body {
     display: grid;
     grid-template-areas: "header" "article" "footer";
-    grid-template-rows: 5% 60% 30%;
+    grid-template-rows: 5% 66% 29%;
     /*grid-gap: 0px; /* Зазор между блоками */
     height: 100vh;
     margin: 0;
@@ -18,9 +18,8 @@ header, footer, article {
 
 #Article {
     grid-area: article;
-    /*overflow-y: scroll;*/
-    /*overflow-y: hidden;*/
-    /*overflow-x: hidden;*/
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #Footer {
@@ -94,8 +93,10 @@ TD {
 
 .dataTables_length {
     color: white;
+    font-size: 14px;
 }
 
 .dataTables_filter {
     color: white;
+    font-size: 14px;
 }

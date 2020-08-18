@@ -35,7 +35,7 @@ def login_admin():
             session[login] = login
             return redirect('/alerter')
         else:
-            message = 'Fail.'
+            message_for_user = 'Fail.'
             return render_template('index.html', message=message_for_user)
     return render_template('index.html', message=message_for_user)
 
@@ -56,7 +56,16 @@ def hello_world():
         allow_mac = db_management.get_wellknown_mac()
         disallow_mac = db_management.get_unknown_mac()
 
-        return render_template('test.html', data=data, state=state, allow_mac=allow_mac,
+        # if request.method == 'POST':
+        #     a = session.get('checked')
+        #     if a is True:
+        #         session['checked'] = False
+        #         on_off = 'display: none;'
+        #     else:
+        #         session['checked'] = True
+        #         on_off = 'display: block;'
+
+        return render_template('alerter.html', data=data, state=state, allow_mac=allow_mac,
                                disallow_mac=disallow_mac, login=login)
     return """
     <h2><span style="text-align:center">You are not <a href="/">logged in</a></span></h2>"""
