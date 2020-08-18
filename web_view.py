@@ -1,3 +1,4 @@
+# This Python file uses the following encoding: utf-8
 """Модуль для отображения текущего состояния, лога, управления маками."""
 import hashlib
 from flask import Flask, render_template, request, redirect, session

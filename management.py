@@ -1,3 +1,4 @@
+# This Python file uses the following encoding: utf-8
 """Модуль для управления настройками."""
 import os
 import socket
