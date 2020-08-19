@@ -25,7 +25,7 @@
 </ul>
 
 <li><h2>Скриншот:</h2></li>
-<img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/Screenshot.PNG" alt="альтернативный текст">  
+<img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot5.PNG" alt="альтернативный текст">  
 </ol>
 
 <h2>Настройка postgresql:</h2><br>
