@@ -23,7 +23,7 @@ if CONNECTION_RESULT == 1:
         db.create_db()
         print('База создана!')
     except Exception as error:
-        print('Что-то пошло не так!', error)
+        print('Что-то пошло не так! Ошибка:', error)
 elif CONNECTION_RESULT == 2:
     print('Что-то пошло не так!')
 
