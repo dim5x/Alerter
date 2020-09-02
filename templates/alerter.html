@@ -32,6 +32,7 @@
                     <th>Hardware</th>
                     <th>Port</th>
                     <th>Mac</th>
+                    <th>MacType</th>
                     <th>Uptime</th>
                 </tr>
                 </thead>
@@ -41,13 +42,26 @@
                         <td>{{ item["from_host"] }}</td>
                         <td>{{ item["port"] }}</td>
                         {% if item["mac_type"] == 'wellknown' %}
-                            <td>
-                                <a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
-                                   style="color: lightgreen">{{ item["mac"] }}</a>
-                            </td>
+                        <td>
+                            <a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
+                               style="color: lightgreen">{{ item["mac"] }}</a>
+                        </td>
                         {% else %}
-                            <td><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
-                                   style="color:orange">{{ item["mac"] }}</a></td>
+                        <td>
+                            <a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
+                               style="color:orange">{{ item["mac"] }}</a>
+                        </td>
+                        {% endif %}
+                        {% if item["mac_type"] == 'wellknown' %}
+                        <td>
+                            <a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
+                               style="color: lightgreen">{{ item["mac_type"] }}</a>
+                        </td>
+                        {% else %}
+                        <td>
+                            <a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
+                               style="color:orange">{{ item["mac_type"] }}</a>
+                        </td>
                         {% endif %}
                         <td>{{ item["up_time"] }}</td>
                     </tr>
