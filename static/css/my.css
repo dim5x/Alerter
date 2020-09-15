@@ -90,6 +90,10 @@ TD {
     color: white;
     width: 30%;
 }
+.dataTables_length {
+    color: white;
+    font-size: 14px;
+}
 
 .dataTables_length {
     color: white;
@@ -98,5 +102,13 @@ TD {
 
 .dataTables_filter {
     color: white;
+    font-size: 14px;
+}
+
+.dataTables_info {
+    font-size: 14px;
+}
+
+.dataTables_paginate {
     font-size: 14px;
 }
