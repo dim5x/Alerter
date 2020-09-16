@@ -19,13 +19,24 @@
 <li><b>Что содержит:</b> тестовая информация для отображения.</li>
 </ul>
 
+<li><h2>Папка cicd.</h2></li>
+<ul>
+<li><b>Что содержит:</b> *.sql - для создания таблиц. Докерфайлы и зависимости для Docker. 
+Юнит-тесты и утилиту для тестирования сислог сервера.</li> 
+</ul>
+
+<li><h2>Папка static.</h2></li>
+<ul>
+<li><b>Что содержит:</b> требуху для html-страниц: jquery-3.5.1, bootstrap, DataTables, фавикон и 404.</li> 
+</ul>
+
 <li><h2>Папка templates.</h2></li>
 <ul>
 <li><b>Что содержит:</b> собрание html-страниц для отображения информации.</li>
 </ul>
 
 <li><h2>Скриншот:</h2></li>
-<img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/Screenshot.PNG" alt="альтернативный текст">  
+<img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot6.PNG" alt="альтернативный текст">  
 </ol>
 
 <h2>Настройка postgresql:</h2><br>
