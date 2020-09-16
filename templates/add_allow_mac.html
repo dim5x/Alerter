@@ -22,22 +22,22 @@
         <table id="log" class="tg">
             <thead>
             <tr>
+                <th>DATA</th>
                 <th>MAC</th>
-                <th>Company</th>
-                <th>Author</th>
-                <th>Description</th>
-                <th>Data</th>
+                <th>COMPANY</th>
+                <th>AUTHOR</th>
+                <th>DESCRIPTION</th>
             </tr>
             </thead>
 
             <tbody>
             {% for item in allow_mac %}
                 <tr>
+                    <td>{{ item['wellknown_started_at'] }}</td>
                     <td>{{ item['mac'] }}</td>
                     <td>{{ item['manufacturer'] }}</td>
                     <td>{{ item['wellknown_author'] }}</td>
                     <td>{{ item['description'] }}</td>
-                    <td>{{ item['wellknown_started_at'] }}</td>
                 </tr>
             {% endfor %}
             </tbody>
