@@ -57,19 +57,12 @@ def hello_world():
         allow_mac = db_management.get_wellknown_mac()
         disallow_mac = db_management.get_unknown_mac()
 
-        # if request.method == 'POST':
-        #     a = session.get('checked')
-        #     if a is True:
-        #         session['checked'] = False
-        #         on_off = 'display: none;'
-        #     else:
-        #         session['checked'] = True
-        #         on_off = 'display: block;'
-
         return render_template('alerter.html', data=data, state=state, allow_mac=allow_mac,
                                disallow_mac=disallow_mac, login=login)
     return """
-    <h2><span style="text-align:center">You are not <a href="/">logged in</a></span></h2>"""
+    <style> * {background: black; text-align:center; color: white;} a {color:blue;}</style>
+    <h2>You are not <a href="/">logged in.</a></h2>
+    """
 
 
 # Заглушка страницы добавления хороших маков.
@@ -169,5 +162,4 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     flask_host, flask_use_reloader = management.get_settings(['flask_host', 'flask_use_reloader'])
-    # app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
-    app.run(debug=True, use_reloader=True, host=flask_host)
+    app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
