@@ -10,7 +10,7 @@
             <p style="text-align:center">
                 {% if editing_mac != '' %}
                     <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx"
-                           value={{ editing_mac }}/>
+                           autocomplete="off" value={{ editing_mac }}/>
                 {% else %}
                     <input autofocus maxlength="17" name="field" size="10" type="text" placeholder="xx:xx:xx:xx:xx">
                 {% endif %}
