@@ -17,7 +17,7 @@ HOST, PORT = management.get_settings(['alerter_host', 'alerter_port'])
 db = db_management.db_connection()
 CONNECTION_RESULT = db.test_connection()
 
-TEMPLATE1 = '_' * 108
+TEMPLATE1 = '_' * 80
 TEMPLATE2 = '{:2} |{:^16} | {:^9} | {:^10} | {:^17} | {:^}'
 
 if CONNECTION_RESULT == 1:
@@ -69,24 +69,24 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         elif db.rdbms == 'postgresql':
             db_management.new_syslog_event(row, db)
 
-        print(data)  # отправка сообщений от sysloga в консоль для отладки.
-        # print(TEMPLATE.format(row['priority'], row['from_host'], row['process'],
-        #                      row['syslog_tag'], row['mac'] or 'None', row['message']))
+        # print(data)  # отправка сообщений от sysloga в консоль для отладки.
+        print(TEMPLATE1, end='')
+        print(TEMPLATE2.format(row['priority'], row['from_host'], row['process'],
+                               row['syslog_tag'], row['mac'] or 'None', row['message']))
 
 
 if __name__ == '__main__':
     try:
         server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
         print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
-        print(TEMPLATE1)
-        print(TEMPLATE2.format('pr', 'from_host', 'process', 'syslog_tag', 'mac', 'message'))
+        print(TEMPLATE1, end='')
+        print(TEMPLATE2.format('PR', 'FROM_HOST', 'PROCESS', 'SYSLOG_TAG', 'MAC', 'MESSAGE'))
         server.serve_forever(poll_interval=0.5)
     except (IOError, SystemExit) as error:
         # raise Exception
         print(error)
         print("""(Причина: вероятнее всего вы в разных подсетях с роутером, с которого принимаете события).
 (Что делать?: смените IP-адрес на адрес из подсети роутера и перезапустите alerter.py).""")
-
     except KeyboardInterrupt:
         db.close()
         print('Ctrl+C Pressed. Shutting down.')
