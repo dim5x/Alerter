@@ -114,9 +114,7 @@ def registration():
         wanted_login = request.form.get('wanted_login')
         # email = request.form.get('wanted_login')
         if not db_management.login_exists(wanted_login):
-            return '''
-        <h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>
-        '''
+            return '''<h2 style="text-align: center">Отослано. Ждите и усё будет!</h2>'''
         else:
             message = 'Логин занят.'
             return render_template('registration.html', message=message)
