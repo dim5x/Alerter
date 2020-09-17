@@ -34,7 +34,7 @@ def login_admin():
 
         if db_management.flask_logon(login, password_hash):
             session[login] = login
-            return redirect('/alerter')
+            return redirect('/alerter.html')
         else:
             message_for_user = 'Fail.'
             return render_template('index.html', message=message_for_user)
@@ -42,7 +42,7 @@ def login_admin():
 
 
 # Главная страница.
-@app.route('/alerter', methods=['POST', 'GET'])
+@app.route('/alerter.html', methods=['POST', 'GET'])
 def hello_world():
     """ Отображает информацию из БД, в том случае, если осуществлен удачный логин. """
     if login in session:

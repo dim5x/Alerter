@@ -4,17 +4,23 @@
         <title>Add allow MAC</title>
     </head>
     <div>
-        <h3 style="text-align:center; background-color:lightgreen"><a href="alerter" style="color: black">←</a>   Add allow MAC</h3>
+        <h3 style="text-align:center; background-color:lightgreen"><a href="alerter.html" style="color: black">←</a>   Add allow MAC</h3>
         <form method="post">
             <p style="text-align:center">
                 {% if editing_mac != '' %}
-                    <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx"
-                           autocomplete="off" value={{ editing_mac }}>
+                    <label>
+                        <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx"
+                               autocomplete="off" value={{ editing_mac }}>
+                    </label>
                 {% else %}
-                    <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx"
-                           autocomplete="off">
+                    <label>
+                        <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx"
+                               autocomplete="off">
+                    </label>
                 {% endif %}
-                <input name="description" size="20" type="text" placeholder="Description" autocomplete="off">
+                <label>
+                    <input name="description" size="20" type="text" placeholder="Description" autocomplete="off">
+                </label>
                 <input name="button" type="submit" value="Добавить">
             </p>
         </form>

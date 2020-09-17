@@ -6,14 +6,18 @@
 
     <div>
         <h3 style="text-align:center; background-color:orange">
-            <a href="alerter" style="color: black">←</a> Add disallow MAC</h3>
+            <a href="alerter.html" style="color: black">←</a> Add disallow MAC</h3>
         <form method="post">
             <p style="text-align:center">
                 {% if editing_mac != '' %}
-                    <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx"
-                           autocomplete="off" value={{ editing_mac }}>
+                    <label>
+                        <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx"
+                               autocomplete="off" value={{ editing_mac }}>
+                    </label>
                 {% else %}
-                    <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx">
+                    <label>
+                        <input autofocus maxlength="17" name="field" size="15" type="text" placeholder="xx:xx:xx:xx:xx">
+                    </label>
                 {% endif %}
                 <input name="button" type="submit" value="Добавить">
             </p>
