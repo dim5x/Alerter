@@ -14,7 +14,7 @@ import management
 
 HOST, PORT = management.get_settings(['alerter_host', 'alerter_port'])
 
-db = db_management.db_connection()
+db = db_management.DatabaseConnection()
 CONNECTION_RESULT = db.test_connection()
 
 TEMPLATE1 = '_' * 80
