@@ -42,18 +42,18 @@
                         <td>{{ item["port"] }}</td>
                         {% if item["mac_type"] == 'wellknown' %}
                             <td>
-{#                                <a href="#" onclick="pasteMacToSearch()"> {{ item["mac"] }} </a>#}
-{#                                <script>#}
-{#                                    function pasteMacToSearch() {#}
-{#                                        document.querySelector('#log_filter > label > input[type=search]').value = '{{ item["mac"] }}'#}
-{#                                        document.querySelector('#log_filter > label > input[type=search]').select()#}
-{#                                    }#}
-{#                                </script>#}
+                                {#                                <a href="#" onclick="pasteMacToSearch()"> {{ item["mac"] }} </a>#}
+                                {#                                <script>#}
+                                {#                                    function pasteMacToSearch() {#}
+                                {#                                        document.querySelector('#log_filter > label > input[type=search]').value = '{{ item["mac"] }}'#}
+                                {#                                        document.querySelector('#log_filter > label > input[type=search]').select()#}
+                                {#                                    }#}
+                                {#                                </script>#}
 
 
                                 <a href='#'
                                    onclick="document.querySelector('#log_filter > label > input[type=search]').value = '{{ item["mac"] }}'"
-                                                                   style="color: lightgreen">{{ item["mac"] }}</a>
+                                   style="color: lightgreen">{{ item["mac"] }}</a>
                             </td>
 
                         {% else %}
@@ -72,16 +72,9 @@
     </article>
 
     <footer id="Footer">
-        {#        <form method="post">#}
-        {#            <p style="text-align:left">#}
-        {#                <input name="button" type="submit" value="Log">#}
-        {#            </p>#}
-        {#        </form>#}
         <div class="spoiler">
             <span style="color: white"> Log</span> <input type="checkbox" checked>
             <div class="box">
-
-                {#        <table id="log" style={{ on_off }}>#}
                 <table id="log">
                     <thead>
                     <tr>
@@ -104,12 +97,16 @@
                             <td>{{ item["syslog_tag"] }}</td>
                             {% if item["mac_type"] =='wellknown' %}
                                 <td><a href="add_disallow_mac.html?editing_mac={{ item["mac"] }}"
-                                       style="color: lightgreen">{{ item["mac_type"] }}</a></td>
+                                       style="color: lightgreen">{{ item["mac_type"] }}</a>
+                                </td>
                             {% else %}
                                 <td><a href="add_allow_mac.html?editing_mac={{ item["mac"] }}"
-                                       style="color: orange">{{ item["mac_type"] }}</a></td>
+                                       style="color: orange">{{ item["mac_type"] }}</a>
+                                </td>
                             {% endif %}
-                            <td>{{ item["message"] }}</td>
+                            <td>
+                                {{ item["message"] }}
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
