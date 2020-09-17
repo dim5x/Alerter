@@ -7,15 +7,18 @@
             <table>
                 <thead>
                 <tr>
-                    {#Allow#}
-                    <th class="allow_mac"><h5>Allow <a href="add_allow_mac.html" style="color: black">+</a></h5></th>
-                    <th class="login"><h6>
-                        Login as:<span style="color: azure">  {{ login }}</span>
-                        <a href="/" style="color: white"> (Logout)</a></h6>
+                    {# Allow #}
+                    <th class="allow_mac">
+                        <h5>Allow <a href="add_allow_mac.html" style="color: black">+</a></h5>
                     </th>
-                    {#Dissalow#}
-                    <th class="disallow_mac"><h5>Disallow <a href="add_disallow_mac.html" style="color: black">+</a>
-                    </h5>
+                    {# Login                   #}
+                    <th class="login">
+                        <h6>Login as:<span style="color: azure">  {{ login }}</span>
+                            <a href="/" style="color: white"> (Logout)</a></h6>
+                    </th>
+                    {# Dissalow #}
+                    <th class="disallow_mac">
+                        <h5>Disallow <a href="add_disallow_mac.html" style="color: black">+</a></h5>
                     </th>
                 </tr>
                 </thead>
@@ -42,20 +45,10 @@
                         <td>{{ item["port"] }}</td>
                         {% if item["mac_type"] == 'wellknown' %}
                             <td>
-                                {#                                <a href="#" onclick="pasteMacToSearch()"> {{ item["mac"] }} </a>#}
-                                {#                                <script>#}
-                                {#                                    function pasteMacToSearch() {#}
-                                {#                                        document.querySelector('#log_filter > label > input[type=search]').value = '{{ item["mac"] }}'#}
-                                {#                                        document.querySelector('#log_filter > label > input[type=search]').select()#}
-                                {#                                    }#}
-                                {#                                </script>#}
-
-
                                 <a href='#'
                                    onclick="document.querySelector('#log_filter > label > input[type=search]').value = '{{ item["mac"] }}'"
                                    style="color: lightgreen">{{ item["mac"] }}</a>
                             </td>
-
                         {% else %}
                             <td>
                                 <a href="#"
@@ -73,7 +66,8 @@
 
     <footer id="Footer">
         <div class="spoiler">
-            <span style="color: white"> Log</span> <input type="checkbox" checked>
+            <span style="color: white"> Log</span>
+            <input type="checkbox" checked>
             <div class="box">
                 <table id="log">
                     <thead>
