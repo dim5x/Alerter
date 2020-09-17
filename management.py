@@ -3,6 +3,7 @@
 import os
 import socket
 
+
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
 def get_settings(options):
@@ -34,8 +35,10 @@ def get_settings(options):
                 result.append(settings[option])
         return result
 
+
 def get_ip_address():
     """Получить ИП-адрес."""
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # TCP almost always uses SOCK_STREAM
     s.connect(("8.8.8.8", 80))
     return s.getsockname()[0]
