@@ -1,115 +1,115 @@
 body {
-    display: grid;
-    grid-template-areas: "header" "article" "footer";
-    grid-template-rows: 5% 66% 29%;
-    /*grid-gap: 0px; /* Зазор между блоками */
-    height: 100vh;
-    margin: 0;
-    background: #000000;
+  display: grid;
+  grid-template-areas: "header" "article" "footer";
+  grid-template-rows: 5% 66% 29%;
+  /*grid-gap: 0px; /* Зазор между блоками */
+  height: 100vh;
+  margin: 0;
+  background: #000000;
 }
 
 header, footer, article {
-    background: #000000;
+  background: #000000;
 }
 
 #Header {
-    grid-area: header;
+  grid-area: header;
 }
 
 #Article {
-    grid-area: article;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  grid-area: article;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #Footer {
-    grid-area: footer;
-    /*overflow: scroll;*/
-    /*overflow-x: hidden;*/
+  grid-area: footer;
+  /*overflow: scroll;*/
+  /*overflow-x: hidden;*/
 }
 
 TABLE {
-    text-align: center;
-    border-collapse: collapse; /* Схлопываем двойные границы вокруг ячеек. */
-    margin: 0 auto; /* Выравнивание по центру. */
-    width: 100%;
+  text-align: center;
+  border-collapse: collapse; /* Схлопываем двойные границы вокруг ячеек. */
+  margin: 0 auto; /* Выравнивание по центру. */
+  width: 100%;
 }
 
 TH {
-    background-color: #4f4f4f;
-    border-color: #aaa;
-    border-style: solid;
-    border-width: 1px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    overflow: hidden;
-    text-align: center;
-    /*padding: 10px 5px;*/
-    word-break: normal;
+  background-color: #4f4f4f;
+  border-color: #aaa;
+  border-style: solid;
+  border-width: 1px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  overflow: hidden;
+  text-align: center;
+  /*padding: 10px 5px;*/
+  word-break: normal;
 }
 
 TD {
-    background-color: black;
-    border-color: #aaa;
-    border-style: solid;
-    border-width: 1px;
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    overflow: hidden;
-    text-align: center;
-    /*padding: 10px 3px;*/
-    word-break: normal;
+  background-color: black;
+  border-color: #aaa;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  overflow: hidden;
+  text-align: center;
+  /*padding: 10px 3px;*/
+  word-break: normal;
 }
 
 .spoiler > input + .box {
-    display: none;
+  display: none;
 }
 
 .spoiler > input:checked + .box {
-    display: block;
+  display: block;
 }
 
 .allow_mac {
-    background: lightgreen; /* Цвет фона */
-    color: black;
-    text-align: center;
-    width: 35%;
+  background: lightgreen; /* Цвет фона */
+  color: black;
+  text-align: center;
+  width: 35%;
 }
 
 .disallow_mac {
-    background: orange; /* Цвет фона */
-    color: black;
-    text-align: center;
-    width: 35%;
+  background: orange; /* Цвет фона */
+  color: black;
+  text-align: center;
+  width: 35%;
 }
 
 .login {
-    background-color: #4f4f4f;
-    color: white;
-    width: 30%;
+  background-color: #4f4f4f;
+  color: white;
+  width: 30%;
 }
 
 .dataTables_length {
-    color: white;
-    font-size: 14px;
+  color: white;
+  font-size: 14px;
 }
 
 .dataTables_length {
-    color: white;
-    font-size: 14px;
+  color: white;
+  font-size: 14px;
 }
 
 .dataTables_filter {
-    color: white;
-    font-size: 14px;
+  color: white;
+  font-size: 14px;
 }
 
 .dataTables_info {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .dataTables_paginate {
-    font-size: 14px;
+  font-size: 14px;
 }
