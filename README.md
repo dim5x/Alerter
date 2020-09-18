@@ -5,8 +5,6 @@
 [![License: Unlicense](https://img.shields.io/badge/Fuck%20license-Unlicense-brightgreen)](LICENSE)
 [![codecov](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter/branch/master/graph/badge.svg)](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter)
 
-
-
 # PyNetHomeInvaderAlerter
 <ol>
 <li><h2>Запуск скрипта PyNetHomeInvaderAlerter.py.</h2></li>
