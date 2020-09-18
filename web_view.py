@@ -20,6 +20,7 @@ login: str = ''
 @app.route('/', methods=['POST', 'GET'])
 def login_admin():
     """Обрабатывает логин в систему. Считывает с формы логин/пароль (index.html).
+
     Проверяет в базе наличие хэша пароля. В случае успеха делает редирект на основную страницу.
     Помечает успешный залогин в кукисе session[login] = login.
     В противном случае - пишет Fail и отображает страницу ввода пароля снова."""
@@ -44,7 +45,7 @@ def login_admin():
 # Главная страница.
 @app.route('/alerter.html', methods=['POST', 'GET'])
 def hello_world():
-    """ Отображает информацию из БД, в том случае, если осуществлен удачный логин. """
+    """Отображает информацию из БД, в том случае, если осуществлен удачный логин."""
     if login in session:
         global data
         global state
@@ -69,6 +70,7 @@ def hello_world():
 @app.route('/add_allow_mac.html', methods=['POST', 'GET'])
 def add_allow_mac():
     """Добавляет мак в доверенные, в том случае, если успешен залогин.
+
     В качестве автора - проставляется тот, кто залогинился в систему."""
     editing_mac = request.args.get('editing_mac', '')
     allow_mac = db_management.get_wellknown_mac()
@@ -90,7 +92,8 @@ def add_allow_mac():
 @app.route('/add_disallow_mac.html', methods=['POST', 'GET'])
 def add_disallow_mac():
     """Добавляет плохие маки, если успешен залогин.
-     Функционал сомнителен - ибо всё то же делается автоматически в БД.
+
+    Функционал сомнителен - ибо всё то же делается автоматически в БД.
     Вероятно, будет удалено/изменено просто на просмотр списка."""
     editing_mac = request.args.get('editing_mac', '')
     disallow_mac = db_management.get_unknown_mac()
@@ -112,6 +115,7 @@ def add_disallow_mac():
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():
     """Осуществляет ригистрацию нового пользователя в системе.
+
     Фунционал работы с почтой не дописан. Под вопросом."""
     message = ''
     if request.method == 'POST':
