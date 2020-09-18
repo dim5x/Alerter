@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1711f11a97b84790b35dfc77a91f0893)](https://app.codacy.com/manual/dim5x/PyNetHomeInvaderAlerter?utm_source=github.com&utm_medium=referral&utm_content=dim5x/PyNetHomeInvaderAlerter&utm_campaign=Badge_Grade_Dashboard)
 [![Actions Status](https://github.com/dim5x/PyNetHomeInvaderAlerter/workflows/Run-tests-on-any-Push-event/badge.svg)](https://github.com/dim5x/PyNetHomeInvaderAlerter/actions)
 [![Actions Status](https://github.com/dim5x/PyNetHomeInvaderAlerter/workflows/Publish-on-Docker-Hub/badge.svg)](https://github.com/dim5x/PyNetHomeInvaderAlerter/actions)
 [![codecov](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter/branch/master/graph/badge.svg)](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter)
