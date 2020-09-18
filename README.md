@@ -56,14 +56,14 @@ https://www.postgresql.org/download/linux/ubuntu/</li>
 <ul>
 <li>Логинимся под системным пользователем:<br>
 
-```
+```sh
 su - postgres
 ```
 
 </li>
 <li>Запускаем утилиту:<br>
 
-```
+```sh
 psql
 ```
 
