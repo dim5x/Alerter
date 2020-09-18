@@ -9,7 +9,7 @@ import management
 
 
 class DatabaseConnection:
-    """  Класс представляет собой абстракцию для работы с базой данных.
+    """ Класс представляет собой абстракцию для работы с базой данных.
 
     Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
 
@@ -49,7 +49,7 @@ class DatabaseConnection:
             ["rdbms", "db_connection_string", "debug"])
 
     def create_db(self):
-        """ Создание структуры базы данных: """
+        """Создание структуры базы данных:"""
         self.open()
 
         if self.rdbms == "sqlite":
@@ -76,18 +76,18 @@ class DatabaseConnection:
         self.close()
 
     def open(self):
-        """ Открытие. """
+        """Открытие."""
         if self.rdbms == "sqlite":
             self.connection = sqlite3.connect(self.db_connection_string)
         elif self.rdbms == "postgresql":
             self.connection = psycopg2.connect(self.db_connection_string)
 
     def close(self):
-        """ Закрытие. """
+        """Закрытие."""
         self.connection.close()
 
     def test_connection(self):
-        """ Проверка соединения. """
+        """Проверка соединения."""
         if self.rdbms == "sqlite":
             if os.path.exists(self.db_connection_string):
                 return 0
@@ -117,7 +117,7 @@ class DatabaseConnection:
         return dick
 
     def execute(self, query):
-        """ Выполняет запрос и возвращает результат в виде списка словарей."""
+        """Выполняет запрос и возвращает результат в виде списка словарей."""
         if self.rdbms == 'sqlite':
             self.connection.row_factory = self.dict_factory
             cursor = self.connection.cursor()
@@ -129,7 +129,7 @@ class DatabaseConnection:
         return result
 
     def execute_non_query(self, query):
-        """ Необходимо использовать для запросов, которые изменяют данные "insert", "update". """
+        """Необходимо использовать для запросов, которые изменяют данные "insert", "update"."""
         cursor = self.connection.cursor()
         cursor.execute(query)
         self.connection.commit()
@@ -137,8 +137,8 @@ class DatabaseConnection:
         return True
 
     def execute_scalar(self, query):
-        """ Выполняет запрос и возвращает результат в виде одного значения,
-        нужно использовать в запросах типа "select count(x) from" или "select top 1 x from". """
+        """Выполняет запрос и возвращает результат в виде одного значения,
+        нужно использовать в запросах типа "select count(x) from" или "select top 1 x from"."""
         cursor = self.connection.cursor()
         cursor.execute(query)
         result = cursor.fetchone()[0]
@@ -146,7 +146,7 @@ class DatabaseConnection:
         return result
 
     def execute_script(self, path):
-        """ Выполняет скрипт из *.sql-файла. """
+        """Выполняет скрипт из *.sql-файла."""
         cursor = self.connection.cursor()
         with open(path, 'r') as file:
             query = file.read().replace('\n', ' ').replace('\t', '')
@@ -182,7 +182,7 @@ def get_value(data):
 
 
 def insert_data(data, table, conn='not_created'):
-    """ Добавляем данные в базу. """
+    """Добавляем данные в базу."""
     columns, values = '', ''
     for key in data:
         if columns == '':
@@ -345,7 +345,7 @@ def get_current_state(only_unknown=False):
 
 
 def get_wellknown_mac():
-    """ Выборка всех доверенных mac-адресов. """
+    """Выборка всех доверенных mac-адресов."""
     query = '''select
                     mac_addresses.mac mac,
                     mac_addresses.wellknown_author wellknown_author,
@@ -371,7 +371,7 @@ def get_wellknown_mac():
 
 
 def get_unknown_mac():
-    """ Выборка всех недоверенных mac-адресов. """
+    """Выборка всех недоверенных mac-адресов."""
     query = '''select
                     mac_addresses.mac mac,
                     mac_owners.manufacturer manufacturer
@@ -396,7 +396,7 @@ def get_unknown_mac():
 
 
 def set_mac_to_wellknown(mac, login, description):
-    """ Установка признака "доверенный" для mac-адреса. """
+    """Установка признака "доверенный" для mac-адреса."""
     db = DatabaseConnection()
 
     query = '''update
@@ -421,7 +421,7 @@ def set_mac_to_wellknown(mac, login, description):
 
 
 def set_mac_to_unknown(mac, login):
-    """ Удаление признака "доверенный" для mac-адреса. """
+    """Удаление признака "доверенный" для mac-адреса."""
     db = DatabaseConnection()
 
     query = '''update
@@ -446,7 +446,7 @@ def set_mac_to_unknown(mac, login):
 
 
 def flask_logon(login, hash_sha384):
-    """ Аутентификация. """
+    """Аутентификация."""
     query = '''
                 select
                     count(1) _count
