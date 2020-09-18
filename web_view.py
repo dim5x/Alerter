@@ -134,7 +134,6 @@ def registration():
 @app.route('/test')
 def txt():
     """Для тестов."""
-
     data = db_management.get_events()
     return render_template('test.html', data=data)
 
@@ -142,7 +141,6 @@ def txt():
 @app.route('/test1')
 def txt1():
     """Для тестов."""
-
     data = db_management.get_events()
     return render_template('test1.html', data=data)
 
