@@ -3,14 +3,15 @@ import unittest
 import os
 import sys
 import inspect
+import web_view as tested_app
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(os.path.dirname(current_dir))
 sys.path.insert(0, parent_dir)
 
-import web_view as tested_app
 
 class FlaskAppTests(unittest.TestCase):
+
     """Класс юнит-теста."""
 
     def setUp(self):
@@ -24,8 +25,9 @@ class FlaskAppTests(unittest.TestCase):
         self.assertEqual(resp.data, b'Hello World!')
 
     def test_post_hello_endpoint(self):
-        """Проверка на отклик - должен выдать код 200 у главной страницы, при успешном запуске
-         Фласка."""
+        """Проверка на отклик.
+
+         Должен выдать код 200 у главной страницы, при успешном запуске Фласка."""
         resp = self.app.get('/')
         self.assertEqual(resp.status_code, 200)
 
