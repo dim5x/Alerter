@@ -23,7 +23,7 @@ jobs:
         # Устанавливаем зависимости
         run: pip install -r ./cicd/docker/requirements_test.txt
       - name: Run tests
-        run: coverage run ./cicd/test/unit_test.py
+        run: coverage run unit_test.py
       - name: Tests report
         run: coverage report
   build_test:

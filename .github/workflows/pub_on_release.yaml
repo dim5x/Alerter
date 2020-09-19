@@ -26,7 +26,7 @@ jobs:
         run: pip install -r ./cicd/docker/requirements_test.txt
       - name: Run tests
         # Запускаем тесты
-        run: coverage run ./cicd/test/unit_test.py
+        run: coverage run unit_test.py
       - name: Tests report
         run: coverage report
 
