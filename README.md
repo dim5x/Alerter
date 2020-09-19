@@ -12,9 +12,9 @@
 
 [![Actions Status](https://github.com/dim5x/PyNetHomeInvaderAlerter/workflows/Publish-on-Docker-Hub/badge.svg)](https://github.com/dim5x/PyNetHomeInvaderAlerter/actions)
 
-Alerter.py: [![Docker size](https://badgen.net/docker/size/dim5x/alerter)]()
+[![Docker size](https://badgen.net/docker/size/dim5x/alerter)]() - Alerter.
 
-Web_view: [![Docker size](https://badgen.net/docker/size/dim5x/flask)]()
+[![Docker size](https://badgen.net/docker/size/dim5x/flask)]() - Web_view.
 
 <!--[![Docker size](https://badgen.net/codacy/coverage/9bafb2021af6488aba69eff6dd1dc173)]()-->
 
