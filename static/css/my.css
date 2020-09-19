@@ -3,7 +3,7 @@ body {
   grid-template-areas: "header" "article" "footer";
   grid-template-rows: 5% 66% 29%;
 
-  /*grid-gap: 0px; /* Зазор между блоками */
+  /* grid-gap: 0px; /* Зазор между блоками */
   height: 100vh;
   margin: 0;
   background: #000000;
@@ -26,8 +26,8 @@ header, footer, article {
 #Footer {
   grid-area: footer;
 
-  /*overflow: scroll;*/
-  /*overflow-x: hidden;*/
+  /* overflow: scroll;*/
+  /* overflow-x: hidden;*/
 }
 
 table {
@@ -50,7 +50,7 @@ th {
   overflow: hidden;
   text-align: center;
 
-  /*padding: 10px 5px;*/
+  /* padding: 10px 5px;*/
   word-break: normal;
 }
 
@@ -65,7 +65,7 @@ td {
   overflow: hidden;
   text-align: center;
 
-  /*padding: 10px 3px;*/
+  /* padding: 10px 3px;*/
   word-break: normal;
 }
 
