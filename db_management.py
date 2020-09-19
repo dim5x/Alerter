@@ -230,7 +230,7 @@ def login_exists(login):
 
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at='', mac=''):
-    """  Выборка событий из syslog'а:
+    """ Выборка событий из syslog'а:
 
    all_events          получать только c тэгами link-up и LINK_DOWN.
    only_unknown_mac    получить события только с неизвестными mac'ами.
