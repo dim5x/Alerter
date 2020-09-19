@@ -1,5 +1,5 @@
 # This Python file uses the following encoding: utf-8
-""" Модуль для работы с БД."""
+"""Модуль для работы с БД."""
 import os
 import sqlite3
 import psycopg2
@@ -178,7 +178,8 @@ def get_value(data):
   conn    подключение
 
   Если подключение не передаётся в качестве параметра, то создается подключение по умолчанию,
-  которое закрывается после выполнения. """
+  которое закрывается после выполнения. 
+  """
 
 
 def insert_data(data, table, conn='not_created'):
