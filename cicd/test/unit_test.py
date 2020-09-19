@@ -3,7 +3,7 @@ import unittest
 import os
 import sys
 import inspect
-import web_view as tested_app
+import ../../web_view as tested_app
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(os.path.dirname(current_dir))
