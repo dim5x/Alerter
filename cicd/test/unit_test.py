@@ -27,7 +27,8 @@ class FlaskAppTests(unittest.TestCase):
     def test_post_hello_endpoint(self):
         """Проверка на отклик.
 
-         Должен выдать код 200 у главной страницы, при успешном запуске Фласка."""
+         Должен выдать код 200 у главной страницы, при успешном запуске Фласка.
+         """
         resp = self.app.get('/')
         self.assertEqual(resp.status_code, 200)
 
