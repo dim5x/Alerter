@@ -5,7 +5,7 @@
 [![License: Unlicense](https://img.shields.io/badge/Fuck%20license-Unlicense-brightgreen)](LICENSE)
 [![Last commit](https://badgen.net/github/last-commit/dim5x/PyNetHomeInvaderAlerter)]()
 
-[![Actions Status](https://github.com/dim5x/PyNetHomeInvaderAlerter/workflows/Run-tests-on-any-Push-event/badge.svg)](https://github.com/dim5x/PyNetHomeInvaderAlerter/actions)
+[![Actions Status](https://github.com/dim5x/PyNetHomeInvaderAlerter/workflows/Run-tests-on-Push/badge.svg)](https://github.com/dim5x/PyNetHomeInvaderAlerter/actions)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1711f11a97b84790b35dfc77a91f0893)](https://app.codacy.com/manual/dim5x/PyNetHomeInvaderAlerter?utm_source=github.com&utm_medium=referral&utm_content=dim5x/PyNetHomeInvaderAlerter&utm_campaign=Badge_Grade_Dashboard)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4cf97e39fba425223a49/maintainability)](https://codeclimate.com/github/dim5x/PyNetHomeInvaderAlerter/maintainability)
 <!--[![codecov](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter/branch/master/graph/badge.svg)](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter)-->
