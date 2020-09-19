@@ -137,8 +137,9 @@ class DatabaseConnection:
         return True
 
     def execute_scalar(self, query):
-        """Выполняет запрос и возвращает результат в виде одного значения,
-        нужно использовать в запросах типа "select count(x) from" или "select top 1 x from"."""
+        """Выполняет запрос и возвращает результат в виде одного значения.
+
+        Нужно использовать в запросах типа "select count(x) from" или "select top 1 x from"."""
         cursor = self.connection.cursor()
         cursor.execute(query)
         result = cursor.fetchone()[0]
