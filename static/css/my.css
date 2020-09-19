@@ -6,11 +6,11 @@ body {
   /* grid-gap: 0px; /* Зазор между блоками */
   height: 100vh;
   margin: 0;
-  background: #000000;
+  background: #000;
 }
 
 header, footer, article {
-  background: #000000;
+  background: #000;
 }
 
 #Header {
@@ -97,11 +97,6 @@ td {
   background-color: #4f4f4f;
   color: white;
   width: 30%;
-}
-
-.dataTables_length {
-  color: white;
-  font-size: 14px;
 }
 
 .dataTables_length {
