@@ -348,7 +348,12 @@ def get_current_state(only_unknown=False):
 
 
 def get_mac(status):
-    """Выборка всех доверенных mac-адресов."""
+    """Выборка всех mac-адресов по критерию.
+
+    В зависимости от переданного параметра:
+    status = 'wellknown' - выборка доверенных маков.
+    status = 'unknown'   - выборка недоверенных маков.
+    """
 
     query_for_wellknown = '''select
                     mac_addresses.mac mac,
