@@ -4,7 +4,6 @@ import web_view as tested_app
 
 
 class FlaskAppTests(unittest.TestCase):
-
     """Класс юнит-теста."""
 
     def setUp(self):
