@@ -45,15 +45,17 @@
                         <td>{{ item["port"] }}</td>
                         {% if item["mac_type"] == 'wellknown' %}
                             <td>
-                                <a href='#'
-                                   onclick="document.querySelector('#log_filter > label > input[type=search]').value = '{{ item["mac"] }}'"
-                                   style="color: lightgreen">{{ item["mac"] }}</a>
+                                <script type="text/javascript">
+                                    function qwe(mac) {
+                                        document.querySelector('#log_filter > label > input[type=search]').value = mac;
+                                        document.querySelector('#log_filter > label > input[type=search]').focus();
+                                    }
+                                </script>
+                                <a href='#' onclick="qwe('{{ item["mac"] }}')" style="color: lightgreen">{{ item["mac"] }}</a>
                             </td>
                         {% else %}
                             <td>
-                                <a href="#"
-                                   onclick="document.querySelector('#log_filter > label > input[type=search]').value = '{{ item["mac"] }}'"
-                                   style=" color:orange">{{ item["mac"] }}</a>
+                                <a href="#" onclick="qwe('{{ item["mac"] }}')" style=" color:orange">{{ item["mac"] }}</a>
                             </td>
                         {% endif %}
                         <td>{{ item["up_time"] }}</td>
