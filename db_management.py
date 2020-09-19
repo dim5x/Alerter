@@ -347,9 +347,10 @@ def get_current_state(only_unknown=False):
     return result
 
 
-def get_wellknown_mac():
+def get_mac(status):
     """Выборка всех доверенных mac-адресов."""
-    query = '''select
+
+    query_for_wellknown = '''select
                     mac_addresses.mac mac,
                     mac_addresses.wellknown_author wellknown_author,
                     mac_addresses.description description,
@@ -365,34 +366,26 @@ def get_wellknown_mac():
                     wellknown = 1
                     '''
 
+    query_for_unknown = '''select
+                        mac_addresses.mac mac,
+                        mac_owners.manufacturer manufacturer
+                    from 
+                        mac_addresses 
+                        left join
+                        mac_owners
+                        on
+                        upper(substr(replace(mac_addresses.mac,':',''),1,6)) = mac_owners.mac
+                    where 
+                        wellknown = 0 
+                        or 
+                        wellknown is null
+                        '''
     db = DatabaseConnection()
     db.open()
-    result = db.execute(query)
-    db.close()
-
-    return result
-
-
-def get_unknown_mac():
-    """Выборка всех недоверенных mac-адресов."""
-    query = '''select
-                    mac_addresses.mac mac,
-                    mac_owners.manufacturer manufacturer
-                from 
-                    mac_addresses 
-                    left join
-                    mac_owners
-                    on
-                    upper(substr(replace(mac_addresses.mac,':',''),1,6)) = mac_owners.mac
-                where 
-                    wellknown = 0 
-                    or 
-                    wellknown is null
-                    '''
-
-    db = DatabaseConnection()
-    db.open()
-    result = db.execute(query)
+    if status == 'wellknown':
+        result = db.execute(query_for_wellknown)
+    elif status == 'unknown':
+        result = db.execute(query_for_unknown)
     db.close()
 
     return result

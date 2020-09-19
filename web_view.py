@@ -55,8 +55,8 @@ def hello_world():
         data = db_management.get_events()
         state = db_management.get_current_state()
 
-        allow_mac = db_management.get_wellknown_mac()
-        disallow_mac = db_management.get_unknown_mac()
+        allow_mac = db_management.get_mac('wellknown')
+        disallow_mac = db_management.get_mac('unknown')
 
         return render_template('alerter.html', data=data, state=state, allow_mac=allow_mac,
                                disallow_mac=disallow_mac, login=login)
@@ -73,14 +73,14 @@ def add_allow_mac():
 
     В качестве автора - проставляется тот, кто залогинился в систему."""
     editing_mac = request.args.get('editing_mac', '')
-    allow_mac = db_management.get_wellknown_mac()
+    allow_mac = db_management.get_mac('wellknown')
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
                 mac = request.form['field']
                 description = request.form['description']
                 db_management.set_mac_to_wellknown(mac, login, description)
-                allow_mac = db_management.get_wellknown_mac()
+                allow_mac = db_management.get_mac('wellknown')
                 return render_template('add_allow_mac.html', allow_mac=allow_mac)
                 # return redirect('/alerter')
     else:
@@ -96,13 +96,13 @@ def add_disallow_mac():
     Функционал сомнителен - ибо всё то же делается автоматически в БД.
     Вероятно, будет удалено/изменено просто на просмотр списка."""
     editing_mac = request.args.get('editing_mac', '')
-    disallow_mac = db_management.get_unknown_mac()
+    disallow_mac = db_management.get_mac('unknown')
     if login in session:
         if request.method == 'POST':
             if request.form['button'] == 'Добавить':
                 mac = request.form['field']
                 db_management.set_mac_to_unknown(mac, login)
-                disallow_mac = db_management.get_unknown_mac()
+                disallow_mac = db_management.get_mac('unknown')
                 return render_template('add_disallow_mac.html', disallow_mac=disallow_mac)
                 # return redirect('/alerter')
     else:
