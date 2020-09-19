@@ -1,7 +1,4 @@
 [![Release](https://badgen.net/github/release/dim5x/PyNetHomeInvaderAlerter)]()
-[![Watchers](https://badgen.net/github/watchers/dim5x/PyNetHomeInvaderAlerter)]()
-[![Stars](https://badgen.net/github/stars/dim5x/PyNetHomeInvaderAlerter)](micromatch/micromatch)
-[![Forks](https://badgen.net/github/forks/dim5x/PyNetHomeInvaderAlerter)](micromatch/micromatch)
 [![Openned issues](https://badgen.net/github/open-issues/dim5x/PyNetHomeInvaderAlerter)]()
 [![Closed issues](https://badgen.net/github/closed-issues/dim5x/PyNetHomeInvaderAlerter)]()
 [![Commits](https://badgen.net/github/commits/dim5x/PyNetHomeInvaderAlerter)]()
