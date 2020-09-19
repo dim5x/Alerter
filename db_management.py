@@ -139,7 +139,8 @@ class DatabaseConnection:
     def execute_scalar(self, query):
         """Выполняет запрос и возвращает результат в виде одного значения.
 
-        Нужно использовать в запросах типа "select count(x) from" или "select top 1 x from"."""
+        Нужно использовать в запросах типа "select count(x) from" или "select top 1 x from".
+        """
         cursor = self.connection.cursor()
         cursor.execute(query)
         result = cursor.fetchone()[0]
@@ -354,7 +355,6 @@ def get_mac(status):
     status = 'wellknown' - выборка доверенных маков.
     status = 'unknown'   - выборка недоверенных маков.
     """
-
     query_for_wellknown = '''select
                     mac_addresses.mac mac,
                     mac_addresses.wellknown_author wellknown_author,
