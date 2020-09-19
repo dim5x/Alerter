@@ -9,7 +9,9 @@ body {
   background: #000;
 }
 
-header, footer, article {
+header,
+footer,
+article {
   background: #000;
 }
 
@@ -27,6 +29,7 @@ header, footer, article {
   grid-area: footer;
 
   /* overflow: scroll; */
+
   /* overflow-x: hidden; */
 }
 
