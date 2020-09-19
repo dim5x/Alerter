@@ -1,4 +1,5 @@
 [![Release](https://badgen.net/github/release/dim5x/PyNetHomeInvaderAlerter)]()
+[![Lines of code](https://badgen.net/codeclimate/loc/dim5x/PyNetHomeInvaderAlerter)]()
 [![Openned issues](https://badgen.net/github/open-issues/dim5x/PyNetHomeInvaderAlerter)]()
 [![Closed issues](https://badgen.net/github/closed-issues/dim5x/PyNetHomeInvaderAlerter)]()
 [![Commits](https://badgen.net/github/commits/dim5x/PyNetHomeInvaderAlerter)]()
