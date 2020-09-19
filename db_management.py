@@ -217,6 +217,7 @@ def new_syslog_event(event, db):
 
 def login_exists(login):
     """ Проверка существования логина:
+
         login       проверяемый логин
     """
     query = 'select count(1) _count from [admin] where [login] = %(login)s' % {'login': login}
