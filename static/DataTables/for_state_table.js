@@ -3,5 +3,5 @@ $(document).ready(function () {
         "lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]],
         "order": [[ 0, "desc" ]]
     });
-});
+})
 
