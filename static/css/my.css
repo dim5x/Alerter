@@ -26,16 +26,14 @@ header, footer, article {
 #Footer {
   grid-area: footer;
 
-  /* overflow: scroll;*/
-  /* overflow-x: hidden;*/
+  /* overflow: scroll; */
+  /* overflow-x: hidden; */
 }
 
 table {
   text-align: center;
   border-collapse: collapse; /* Схлопываем двойные границы вокруг ячеек. */
-
   margin: 0 auto; /* Выравнивание по центру. */
-
   width: 100%;
 }
 
@@ -50,7 +48,7 @@ th {
   overflow: hidden;
   text-align: center;
 
-  /* padding: 10px 5px;*/
+  /* padding: 10px 5px; */
   word-break: normal;
 }
 
@@ -65,7 +63,7 @@ td {
   overflow: hidden;
   text-align: center;
 
-  /* padding: 10px 3px;*/
+  /* padding: 10px 3px; */
   word-break: normal;
 }
 
@@ -79,7 +77,6 @@ td {
 
 .allow_mac {
   background: lightgreen; /* Цвет фона */
-
   color: black;
   text-align: center;
   width: 35%;
@@ -87,7 +84,6 @@ td {
 
 .disallow_mac {
   background: orange; /* Цвет фона */
-
   color: black;
   text-align: center;
   width: 35%;
