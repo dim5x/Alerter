@@ -6,7 +6,6 @@ import management
 import db_management
 
 app = Flask(__name__)
-# app.static_folder = r'static'  # определяем static папку для Flask, где лежат css и прочее.
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # для работы session
 
 data: list = []
@@ -50,8 +49,6 @@ def hello_world():
     if login in session:
         global data
         global state
-        # global allow_mac
-        # global disallow_mac
 
         data = db_management.get_events()
         state = db_management.get_current_state()
@@ -142,21 +139,6 @@ def txt():
     return render_template('test.html', data=data)
 
 
-@app.route('/test1')
-def txt1():
-    """Для тестов."""
-    data = db_management.get_events()
-    return render_template('test1.html', data=data)
-
-
-@app.route('/test2')
-def txt2():
-    """Для тестов."""
-    # data = ''
-    data = db_management.get_events()
-    return render_template('test2.html', data=data)
-
-
 @app.route('/unit_test')
 def unit_test():
     """Для юнит-теста."""
@@ -171,5 +153,5 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    flask_host, flask_use_reloader = management.get_settings(['flask_host', 'flask_use_reloader'])
-    app.run(debug=False, use_reloader=flask_use_reloader, host=flask_host)
+    f_d, f_h, f_r = management.get_settings(['debug', 'flask_host', 'flask_use_reloader'])
+    app.run(debug=f_d, use_reloader=f_r, host=f_h)
