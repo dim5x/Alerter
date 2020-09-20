@@ -172,4 +172,4 @@ def page_not_found(error):
 
 if __name__ == '__main__':
     flask_host, flask_use_reloader = management.get_settings(['flask_host', 'flask_use_reloader'])
-    app.run(debug=True, use_reloader=flask_use_reloader, host=flask_host)
+    app.run(debug=False, use_reloader=flask_use_reloader, host=flask_host)
