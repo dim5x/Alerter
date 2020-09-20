@@ -9,48 +9,47 @@ import management
 
 
 class DatabaseConnection:
-
-    """ Класс представляет собой абстракцию для работы с базой данных.
+    """Класс представляет собой абстракцию для работы с базой данных.
 
     Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
+    создается функция, которая будет вызываться извне, def function
+    внутри функции определяется запрос к БД.
 
-        создается функция, которая будет вызываться извне, def function
-        внутри функции определяется запрос к БД
-
-        db = db_connection()    // создается экземпляр класса
-        db.open()               // открывается подклчюение
-        result = db.execute...  // выполняется запрос
-        db.close()              // закрывается подключение
+    db = db_connection()    // создается экземпляр класса
+    db.open()               // открывается подклчюение
+    result = db.execute...  // выполняется запрос
+    db.close()              // закрывается подключение
 
     Методы класса:
 
-        open                создать подключение к БД.
-        close               закрыть подключение.
-        execute             выполняет запрос и возвращает результат в виде списка словарей.
-        execute_scalar      выполняет запрос и возвращает результат в виде одного значения,
-                            нужно использовать в запросах типа "select count(x) from" или
-                            "select top 1 x from".
-        execute_non_query   необходимо использовать для запросов, которые изменяют данные,
-                            такие как:   "insert", "update".
-        execute_script      выполняет скрипт из *.sql-файла.
-        test_connection     проверить возможность подключения:
+    open                создать подключение к БД.
+    close               закрыть подключение.
+    execute             выполняет запрос и возвращает результат в виде списка словарей.
+    execute_scalar      выполняет запрос и возвращает результат в виде одного значения,
+                        нужно использовать в запросах типа "select count(x) from" или
+                        "select top 1 x from".
+    execute_non_query   необходимо использовать для запросов, которые изменяют данные,
+                        такие как:   "insert", "update".
+    execute_script      выполняет скрипт из *.sql-файла.
+    test_connection     проверить возможность подключения:
                             0 - всё в порядке;
                             1 - подключение есть, отсутствует структура, можно вызвать метод create_db;
                             2 - что-то непонятное, нужно искать причины.
 
     Атрибуты класса (извне не используются):
 
-        rdbms               тип БД.
-        connection_string   строка подключения.
-        connection          текущее подключение.
-        """
+    rdbms               тип БД.
+    connection_string   строка подключения.
+    connection          текущее подключение.
+    """
 
     def __init__(self):
+        """Описание."""
         self.rdbms, self.db_connection_string, self.debug = management.get_settings(
             ["rdbms", "db_connection_string", "debug"])
 
     def create_db(self):
-        """Создание структуры базы данных:"""
+        """Создание структуры базы данных."""
         self.open()
 
         if self.rdbms == "sqlite":
@@ -112,6 +111,7 @@ class DatabaseConnection:
         return 2
 
     def dict_factory(self, cursor, row):
+        """Описание."""
         dick = {}
         for idx, col in enumerate(cursor.description):
             dick[col[0]] = row[idx]
@@ -163,6 +163,7 @@ class DatabaseConnection:
 
 
 def get_value(data):
+    """Описание."""
     if data is None:
         value = 'null'
     elif not data.isdigit():
@@ -210,6 +211,7 @@ def insert_data(data, table, conn='not_created'):
 
 
 def new_syslog_event(event, db):
+    """Описание."""
     cursor = db.connection.cursor()
     cursor.callproc('new_syslog_event', [event['priority'], event['device_time'],
                                          event['from_host'], event['process'], event['syslog_tag'],
@@ -219,9 +221,9 @@ def new_syslog_event(event, db):
 
 
 def login_exists(login):
-    """ Проверка существования логина:
+    """Проверка существования логина.
 
-        login       проверяемый логин
+    login    проверяемый логин.
     """
     query = 'select count(1) _count from [admin] where [login] = %(login)s' % {'login': login}
     db = DatabaseConnection()
@@ -232,14 +234,14 @@ def login_exists(login):
 
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at='', mac=''):
-    """ Выборка событий из syslog'а:
+    """Выборка событий из syslog'а.
 
-   all_events          получать только c тэгами link-up и LINK_DOWN.
-   only_unknown_mac    получить события только с неизвестными mac'ами.
-   started_at          начало диапазона.
-   ended_at            конец диапазона.
+    all_events          получать только c тэгами link-up и LINK_DOWN.
+    only_unknown_mac    получить события только с неизвестными mac'ами.
+    started_at          начало диапазона.
+    ended_at            конец диапазона.
 
-   По умолчанию в выборку попадают все события за последний два часа.
+    По умолчанию в выборку попадают все события за последний два часа.
     """
     db = DatabaseConnection()
     query = ''
@@ -298,19 +300,17 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 
 
 def get_current_state(only_unknown=False):
-    """  Выборка текущих подключений к сетевому оборудованию:
+    """Выборка текущих подключений к сетевому оборудованию.
 
-      from_host
-      port
-      mac
-      mac_type
-      manufacturer
-      up_time
+    from_host
+    port
+    mac
+    mac_type
+    manufacturer
+    up_time
 
-      Фильтр:
-          only_unknown    только "недоверенные" mac-адресы.
+    Фильтр: only_unknown - только "недоверенные" mac-адресы.
     """
-
     query = '''select
                 from_host,
                 port,
