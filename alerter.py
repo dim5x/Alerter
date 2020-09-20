@@ -1,13 +1,14 @@
 # This Python file uses the following encoding: utf-8
+"""Модуль для обработки сообщений от сетевых железок."""
 
 # Под виндой с 514-ым портом могут быть проблемы, нужно повышение привилегий.
 # Заменить тем, что выше 1023-его.
 # HOST, PORT = 'x.x.x.x', 514
 
-# from memory_profiler import memory_usage
 import socketserver
 import re
 from datetime import datetime
+# from memory_profiler import memory_usage
 
 import db_management
 import management
@@ -33,10 +34,10 @@ db.open()
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
-
-    """Класс Syslog сервера"""
+    """Класс Syslog сервера."""
 
     def handle(self):
+        """Обработчик событий сислога."""
         data = bytes.decode(self.request[0].strip())
 
         # Parse
