@@ -32,7 +32,9 @@ elif CONNECTION_RESULT == 2:
 
 db.open()
 
-class SyslogUDPHandler(socketserver.BaseRequestHandler):    
+
+class SyslogUDPHandler(socketserver.BaseRequestHandler):
+    
     """Класс Syslog сервера."""    
     def handle(self):
         """Обработчик событий сислога."""
