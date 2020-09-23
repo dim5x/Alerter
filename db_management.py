@@ -9,7 +9,6 @@ import management
 
 
 class DatabaseConnection:
-
     """Класс представляет собой абстракцию для работы с базой данных.
 
     Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
@@ -138,13 +137,13 @@ class DatabaseConnection:
         cursor.close()
         return True
 
-    def execute_scalar(self, query):
+    def execute_scalar(self, query, data):
         """Выполняет запрос и возвращает результат в виде одного значения.
 
         Нужно использовать в запросах типа "select count(x) from" или "select top 1 x from".
         """
         cursor = self.connection.cursor()
-        cursor.execute(query)
+        cursor.execute(query, data)
         result = cursor.fetchone()[0]
         cursor.close()
         return result
@@ -224,10 +223,11 @@ def login_exists(login):
 
     login    проверяемый логин.
     """
-    query = 'select count(1) _count from [admin] where [login] = %(login)s' % {'login': login}
+    query = 'select count(1) _count from [admin] where [login] = ?'
+    data = (login,)
     db = DatabaseConnection()
     db.open()
-    result = (int(db.execute_scalar(query)) > 0)
+    result = (int(db.execute_scalar(query, data)) > 0)
     db.close()
     return result
 
