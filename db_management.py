@@ -129,7 +129,7 @@ class DatabaseConnection:
         cursor.close()
         return result
 
-    def execute_non_query(self, query, data):
+    def execute_non_query(self, query, data=''):
         """Необходимо использовать для запросов, которые изменяют данные "insert", "update"."""
         cursor = self.connection.cursor()
         cursor.execute(query, data)
@@ -137,7 +137,7 @@ class DatabaseConnection:
         cursor.close()
         return True
 
-    def execute_scalar(self, query, data):
+    def execute_scalar(self, query, data=''):
         """Выполняет запрос и возвращает результат в виде одного значения.
 
         Нужно использовать в запросах типа "select count(x) from" или "select top 1 x from".
