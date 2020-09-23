@@ -13,7 +13,7 @@
 
 [![Docker size](https://badgen.net/docker/size/dim5x/alerter)]() - Alerter.
 
-[![Docker size](https://badgen.net/docker/size/dim5x/flask)]() - Web_view.
+[![Docker size](https://badgen.net/docker/size/dim5x/flask)]() - Web_view./
 
 <!--[![Docker size](https://badgen.net/codacy/coverage/9bafb2021af6488aba69eff6dd1dc173)]()-->
 
