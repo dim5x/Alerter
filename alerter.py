@@ -34,6 +34,7 @@ db.open()
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
+    
     """Класс Syslog сервера."""
 
     def handle(self):
