@@ -129,10 +129,10 @@ class DatabaseConnection:
         cursor.close()
         return result
 
-    def execute_non_query(self, query):
+    def execute_non_query(self, query, data):
         """Необходимо использовать для запросов, которые изменяют данные "insert", "update"."""
         cursor = self.connection.cursor()
-        cursor.execute(query)
+        cursor.execute(query, data)
         self.connection.commit()
         cursor.close()
         return True
@@ -223,8 +223,8 @@ def login_exists(login):
 
     login    проверяемый логин.
     """
-    query = 'select count(1) _count from [admin] where [login] = ?'
-    data = (login,)
+    query = 'select count(1) _count from [admin] where [login] =:login'
+    data = {'login': login}
     db = DatabaseConnection()
     db.open()
     result = (int(db.execute_scalar(query, data)) > 0)
@@ -404,9 +404,11 @@ def set_mac_to_wellknown(mac, login, description):
                         mac_addresses
                     set
                         wellknown = 1,
-                        wellknown_author = '%(login)s',
-                        description = '%(description)s',
-            ''' % {'login': login, 'description': description}
+                        wellknown_author =:login,
+                        description =:description,
+            '''
+    data = {'login': login, 'description': description}
+
     if db.rdbms == 'sqlite':
         query += '''wellknown_started_at = datetime('now','localtime')'''
     elif db.rdbms == 'postgresql':
@@ -417,7 +419,7 @@ def set_mac_to_wellknown(mac, login, description):
                 ''' % {'mac': mac}
 
     db.open()
-    db.execute_non_query(query)
+    db.execute_non_query(query, data)
     db.close()
 
 
@@ -429,9 +431,10 @@ def set_mac_to_unknown(mac, login):
                         mac_addresses
                     set
                         wellknown = 0,
-                        wellknown_author = '%(login)s',
+                        wellknown_author =:login,
                         description = '',
-            ''' % {'login': login}
+            '''
+    data = {'login': login}
     if db.rdbms == 'sqlite':
         query += '''wellknown_started_at = datetime('now','localtime')'''
     elif db.rdbms == 'postgresql':
@@ -442,7 +445,7 @@ def set_mac_to_unknown(mac, login):
                     ''' % {'mac': mac}
 
     db.open()
-    db.execute_non_query(query)
+    db.execute_non_query(query, data)
     db.close()
 
 
@@ -454,13 +457,14 @@ def flask_logon(login, hash_sha384):
                 from
                     admin
                 where
-                    login = '%(login)s'
+                    login =:login
                     and
-                    hash = '%(hash)s'
-            ''' % {'login': login, 'hash': hash_sha384}
+                    hash =:hash
+            '''
+    data = {'login': login, 'hash': hash_sha384}
 
     db = DatabaseConnection()
     db.open()
-    result = (int(db.execute_scalar(query)) > 0)
+    result = (int(db.execute_scalar(query, data)) > 0)
     db.close()
     return result
