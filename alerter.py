@@ -34,8 +34,8 @@ db.open()
 
 
 class SyslogUDPHandler(socketserver.BaseRequestHandler):
-    
-    """Класс Syslog сервера."""    
+    """Класс Syslog сервера."""
+
     def handle(self):
         """Обработчик событий сислога."""
         data = bytes.decode(self.request[0].strip())
