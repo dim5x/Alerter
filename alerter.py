@@ -16,12 +16,13 @@ import management
 HOST, PORT = management.get_settings(['alerter_host', 'alerter_port'])
 # HOST, PORT = 'localhost', 5140
 
+
 db = db_management.DatabaseConnection()
 CONNECTION_RESULT = db.test_connection()
 
 # TEMPLATE1 = '_' * 80
-TEMPLATE1 = '---+-----------------+-----------+------------+-------------------+---------'
-TEMPLATE2 = '{:2} |{:^16} | {:^9} | {:^10} | {:^17} | {:^}'
+TEMPLATE1 = '--------+---+-----------------+-----------+------------+-------------------+'
+TEMPLATE2 = '{:7} |{:2} |{:^16} | {:^9} | {:^10} | {:^17} |'
 
 if CONNECTION_RESULT == 1:
     try:
@@ -75,9 +76,10 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 
         # print(data)  # отправка сообщений от sysloga в консоль для отладки.
         print(TEMPLATE1)
-        print(TEMPLATE2.format(row['priority'] or '-', row['from_host'] or '-',
+        print(TEMPLATE2.format('', row['priority'] or '-', row['from_host'] or '-',
                                row['process'] or '-', row['syslog_tag'] or '-',
-                               row['mac'] or '-', row['message'] or '-'))
+                               row['mac'] or '-'))
+        print('MESSAGE:|', row['message'] or '-')
 
 
 if __name__ == '__main__':
@@ -85,7 +87,7 @@ if __name__ == '__main__':
         server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
         print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
         print(TEMPLATE1)
-        print(TEMPLATE2.format('PR', 'FROM_HOST', 'PROCESS', 'SYSLOG_TAG', 'MAC', 'MESSAGE'))
+        print(TEMPLATE2.format('', 'PR', 'FROM_HOST', 'PROCESS', 'SYSLOG_TAG', 'MAC'))
         server.serve_forever(poll_interval=0.5)
     except (IOError, SystemExit) as error:
         print(error)
