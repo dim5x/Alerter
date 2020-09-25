@@ -14,11 +14,13 @@ import db_management
 import management
 
 HOST, PORT = management.get_settings(['alerter_host', 'alerter_port'])
+# HOST, PORT = 'localhost', 5140
 
 db = db_management.DatabaseConnection()
 CONNECTION_RESULT = db.test_connection()
 
-TEMPLATE1 = '_' * 80
+# TEMPLATE1 = '_' * 80
+TEMPLATE1 = '---+-----------------+-----------+------------+-------------------+---------'
 TEMPLATE2 = '{:2} |{:^16} | {:^9} | {:^10} | {:^17} | {:^}'
 
 if CONNECTION_RESULT == 1:
