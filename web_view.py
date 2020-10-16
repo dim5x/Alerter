@@ -24,7 +24,6 @@ def login_admin():
     Помечает успешный залогин в кукисе session[login] = login.
     В противном случае - пишет Fail и отображает страницу ввода пароля снова.
     """
-    message_for_user = ''
     session.clear()
     global login
     if request.method == 'POST':
@@ -37,9 +36,8 @@ def login_admin():
             session[login] = login
             return redirect('/alerter.html')
         else:
-            message_for_user = 'Fail.'
-            return render_template('index.html', message=message_for_user)
-    return render_template('index.html', message=message_for_user)
+            return render_template('index.html', message='Fail.')
+    return render_template('index.html')
 
 
 # Главная страница.
