@@ -1,7 +1,7 @@
 # Берем нужный базовый образ
 FROM python:3.8-slim
 # Копируем все файлы из текущей директории в /app контейнера
-COPY ["./cicd/db", "./static", "./templates", "db_management.py", "web_view.py",
+COPY ["./cicd/db", "./static", "./templates", "db_management.py", "web_view.py", \
 "global.config", "management.py","./cicd/docker/requirements_flask.txt", "/app/alerter"]
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean
