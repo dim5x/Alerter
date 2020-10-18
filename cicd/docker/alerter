@@ -1,7 +1,7 @@
 # Берем нужный базовый образ
 FROM python:3.8-slim
 # Копируем все файлы из текущей директории в /app контейнера
-COPY ./cicd/db /app/alerter/cicd/db && \
+COPY ./cicd/db/ /app/alerter/cicd/db/ && \
 COPY ["*.py", "global.config", "cicd/docker/requirements_alerter.txt", "/app/alerter/"]
 
 # Устанавливаем все зависимости
