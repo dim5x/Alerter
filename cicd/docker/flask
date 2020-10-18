@@ -1,7 +1,7 @@
 # Берем нужный базовый образ
 FROM python:3.8-slim
 # Копируем все файлы из текущей директории в /app контейнера
-COPY ./static/ /app/alerter/static/ && COPY ./templates/ /app/alerter/templates/ && \
+COPY /static/ /app/alerter/static/ && COPY /templates/ /app/alerter/templates/ && \
 COPY ["*.py", "global.config", "./cicd/docker/requirements_flask.txt", "/app/alerter/"]
 
 # Устанавливаем все зависимости
