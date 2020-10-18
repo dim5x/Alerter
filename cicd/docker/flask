@@ -7,6 +7,7 @@ COPY ["./cicd/db/", "./static/", "./templates/", "db_management.py", "web_view.p
 RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean
 # Устанавливаем все зависимости
 RUN pip install -r /app/alerter/requirements_flask.txt --no-cache-dir
+RUN apt-get --purge remove -y netcat-openbsd gcc apt-utils
 # Устанавливаем приложение (Подробнее смотри Distutils)
 WORKDIR /app/alerter
 
