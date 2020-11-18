@@ -115,3 +115,14 @@ td {
 .dataTables_paginate {
   font-size: 14px;
 }
+
+.btnSubmit {
+  border-radius: 4px;
+  transition: border-radius 0.5s ease-in;
+}
+
+.btnSubmit:hover {
+  border-radius: 16px;
+  background: lightgreen;
+}
+
