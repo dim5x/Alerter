@@ -110,7 +110,6 @@ class DatabaseConnection:
                 return 2
         return 2
 
-    @staticmethod
     def dict_factory(self, cursor, row):
         """Описание."""
         dick = {}
