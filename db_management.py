@@ -106,7 +106,7 @@ class DatabaseConnection:
                 else:
                     self.close()
                     return 0
-            except:
+            except Exception:
                 return 2
         return 2
 
