@@ -9,7 +9,8 @@ import management
 
 
 class DatabaseConnection:
-    """Класс представляет собой абстракцию для работы с базой данных.
+    """
+    Класс представляет собой абстракцию для работы с базой данных.
 
     Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
     создается функция, которая будет вызываться извне, def function
@@ -138,7 +139,8 @@ class DatabaseConnection:
         return True
 
     def execute_scalar(self, query, data=''):
-        """Выполняет запрос и возвращает результат в виде одного значения.
+        """
+        Выполняет запрос и возвращает результат в виде одного значения.
 
         Нужно использовать в запросах типа "select count(x) from" или "select top 1 x from".
         """
@@ -219,7 +221,8 @@ def new_syslog_event(event, db):
 
 
 def login_exists(login):
-    """Проверка существования логина.
+    """
+    Проверка существования логина.
 
     login    проверяемый логин.
     """
@@ -233,7 +236,8 @@ def login_exists(login):
 
 
 def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at='', mac=''):
-    """Выборка событий из syslog'а.
+    """
+    Выборка событий из syslog'а.
 
     all_events          получать только c тэгами link-up и LINK_DOWN.
     only_unknown_mac    получить события только с неизвестными mac'ами.
@@ -299,7 +303,8 @@ def get_events(all_events=True, only_unknown_mac=False, started_at='', ended_at=
 
 
 def get_current_state(only_unknown=False):
-    """Выборка текущих подключений к сетевому оборудованию.
+    """
+    Выборка текущих подключений к сетевому оборудованию.
 
     from_host
     port
@@ -349,7 +354,8 @@ def get_current_state(only_unknown=False):
 
 
 def get_mac(status):
-    """Выборка всех mac-адресов по критерию.
+    """
+    Выборка всех mac-адресов по критерию.
 
     В зависимости от переданного параметра:
     status = 'wellknown' - выборка доверенных маков.
