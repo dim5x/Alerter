@@ -8,8 +8,7 @@
 [![Actions Status](https://github.com/dim5x/PyNetHomeInvaderAlerter/workflows/Publish-on-Docker-Hub/badge.svg)](https://github.com/dim5x/PyNetHomeInvaderAlerter/actions)
 [![Actions Status](https://github.com/dim5x/PyNetHomeInvaderAlerter/workflows/Run-tests-on-Push/badge.svg)](https://github.com/dim5x/PyNetHomeInvaderAlerter/actions)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4bb2e27ce5df492495a6e6d479bdc86f)](https://www.codacy.com/manual/dim5x/PyNetHomeInvaderAlerter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dim5x/PyNetHomeInvaderAlerter&amp;utm_campaign=Badge_Grade)
-[![Maintainability](https://api.codeclimate.com/v1/badges/4cf97e39fba425223a49/maintainability)](https://codeclimate.com/github/dim5x/PyNetHomeInvaderAlerter/maintainability)
-<!--[![codecov](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter/branch/master/graph/badge.svg)](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter)-->
+[![Maintainability](https://api.codeclimate.com/v1/badges/2e0f5a54936d9ff63335/maintainability)](https://codeclimate.com/github/dim5x/PyNetHomeInvaderAlerter/maintainability)<!--[![codecov](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter/branch/master/graph/badge.svg)](https://codecov.io/gh/dim5x/PyNetHomeInvaderAlerter)-->
 
 [![Docker size](https://badgen.net/docker/size/dim5x/alerter)]() - Alerter.
 
