@@ -41,7 +41,7 @@ services:
     #  dockerfile: ./cicd/docker/alerter
     container_name: alerter
     ports:
-      - 514:514/udp
+      - 5140:5140/udp
     networks:
       bridge:
         ipv4_address: 172.21.0.2

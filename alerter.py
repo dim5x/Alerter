@@ -84,7 +84,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 if __name__ == '__main__':
     try:
         server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
-        print('Start server on: {}. Listening port: {}'.format(HOST, PORT))
+        print(f'Start server on: {HOST}. Listening port: {PORT}')
         print(TEMPLATE1)
         print(TEMPLATE2.format('', 'PR', 'FROM_HOST', 'PROCESS', 'SYSLOG_TAG', 'MAC'))
         server.serve_forever(poll_interval=0.5)
