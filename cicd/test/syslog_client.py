@@ -12,7 +12,7 @@ tags = ['kernel: wlan0:']
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # sock.connect(("192.168.0.102", 5140))
-sock.connect(("localhost", 5140))
+sock.connect(("localhost", 514))
 
 
 def random_mac():

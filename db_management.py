@@ -2,6 +2,7 @@
 """Модуль для работы с БД."""
 import os
 import sqlite3
+
 import psycopg2
 import psycopg2.extras
 
@@ -17,7 +18,7 @@ class DatabaseConnection:
     внутри функции определяется запрос к БД.
 
     db = db_connection()    // создается экземпляр класса
-    db.open()               // открывается подклчюение
+    db.open()               // открывается подключение
     result = db.execute...  // выполняется запрос
     db.close()              // закрывается подключение
 
@@ -47,7 +48,7 @@ class DatabaseConnection:
     def __init__(self):
         """Описание."""
         self.rdbms, self.db_connection_string, self.debug = management.get_settings(
-            ["rdbms", "db_connection_string", "debug"])
+            "rdbms", "db_connection_string", "debug")
 
     def create_db(self):
         """Создание структуры базы данных."""
@@ -194,10 +195,10 @@ def insert_data(data, table, conn='not_created'):
             columns += key
             values += get_value(data[key])
         else:
-            columns = columns + ', ' + key
-            values = values + ', ' + get_value(data[key])
+            columns += ', ' + key
+            values += ', ' + get_value(data[key])
 
-    query = 'insert into ' + table + '(' + columns + ') values(' + values + ')'
+    query = f'insert into {table}({columns}) values({values})'
 
     connection = conn
     if connection == 'not_created':
@@ -213,9 +214,8 @@ def insert_data(data, table, conn='not_created'):
 def new_syslog_event(event, db):
     """Описание."""
     cursor = db.connection.cursor()
-    cursor.callproc('new_syslog_event', [event['priority'], event['device_time'],
-                                         event['from_host'], event['process'], event['syslog_tag'],
-                                         event['message'], event['mac']])
+    cursor.callproc('new_syslog_event', [event['priority'], event['device_time'], event['from_host'], event['process'],
+                                         event['syslog_tag'], event['message'], event['mac']])
     db.connection.commit()
     cursor.close()
 

@@ -6,7 +6,7 @@ import socket
 
 # Считываем настройки
 # Локальные имеют приоритет над глобальными
-def get_settings(options):
+def get_settings(*options) -> list:
     """Получить настройки из файлов конфигурации."""
     settings = {}
 
@@ -24,9 +24,6 @@ def get_settings(options):
             if key not in settings:
                 settings.update({key: value})
 
-    if isinstance(options, str):
-        return settings[options]
-    elif isinstance(options, list):
         result = []
         for option in options:
             if settings[option].isdigit():

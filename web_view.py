@@ -1,9 +1,11 @@
 # This Python file uses the following encoding: utf-8
 """Модуль для отображения текущего состояния, лога, управления маками."""
 import hashlib
+
 from flask import Flask, render_template, request, redirect, session
-import management
+
 import db_management
+import management
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # для работы session
@@ -134,11 +136,11 @@ def registration():
     return render_template('registration.html', message=message)
 
 
-@app.route('/test')
-def txt():
-    """Для тестов."""
-    data = db_management.get_events()
-    return render_template('test.html', data=data)
+# @app.route('/test')
+# def txt():
+#     """Для тестов."""
+#     data = db_management.get_events()
+#     return render_template('test.html', data=data)
 
 
 @app.route('/unit_test')
@@ -155,5 +157,5 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    f_d, f_h, f_r = management.get_settings(['debug', 'flask_host', 'flask_use_reloader'])
-    app.run(debug=f_d, use_reloader=f_r, host=f_h)
+    debug, host, reloader = management.get_settings('debug', 'flask_host', 'flask_use_reloader')
+    app.run(debug=debug, use_reloader=reloader, host=host)
