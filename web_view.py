@@ -10,10 +10,6 @@ import management
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # для работы session
 
-data: list = []
-state: list = []
-allow_mac: list = []
-disallow_mac: list = []
 login: str = ''
 
 
@@ -48,9 +44,6 @@ def login_admin():
 def hello_world():
     """Отображает информацию из БД, в том случае, если осуществлен удачный логин."""
     if login in session:
-        global data
-        global state
-
         data = db_management.get_events()
         state = db_management.get_current_state()
 
