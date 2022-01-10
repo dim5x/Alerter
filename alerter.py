@@ -16,6 +16,9 @@ import management
 
 console = Console()
 # from memory_profiler import memory_usage
+TEMPLATE1 = '┌────┬────────────────────┬─────────────┬──────────────┬──────────────────────┐'
+TEMPLATE2 = '│{:^4}│{:^19} │ {:^11} │ {:^12} │ {:^20} │'
+TEMPLATE3 = '│{: <77}│'
 
 # HOST, PORT = 'localhost', 5140
 HOST, PORT = management.get_settings('alerter_host', 'alerter_port')
@@ -23,18 +26,14 @@ HOST, PORT = management.get_settings('alerter_host', 'alerter_port')
 db = db_management.DatabaseConnection()
 CONNECTION_RESULT = db.test_connection()
 
-TEMPLATE1 = '┌────┬────────────────────┬─────────────┬──────────────┬──────────────────────┐'
-TEMPLATE2 = '│{:^4}│{:^19} │ {:^11} │ {:^12} │ {:^20} │'
-TEMPLATE3 = '│{: <77}│'
-
-if CONNECTION_RESULT == 1:
-    try:
+match CONNECTION_RESULT:
+    case 'BASE EXISTS':
+        print('База существует.')
+    case 'BASE NOT EXISTS':
         db.create_db()
         print('База создана!')
-    except Exception as error:
-        print(f'Что-то пошло не так! Ошибка:{error}')
-elif CONNECTION_RESULT == 2:
-    print('Что-то пошло не так!')
+    case ERROR:
+        print(f'Что-то пошло не так! {ERROR}')
 
 db.open()
 

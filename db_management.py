@@ -48,34 +48,37 @@ class DatabaseConnection:
     def __init__(self):
         """Описание."""
         self.rdbms, self.db_connection_string, self.debug = management.get_settings(
-            "rdbms", "db_connection_string", "debug")
+            "rdbms", "db_connection_string", "flask_debug")
 
     def create_db(self):
         """Создание структуры базы данных."""
-        self.open()
+        try:
+            self.open()
 
-        if self.rdbms == "sqlite":
-            self.execute_script("cicd/db/sqlite_create_db.sql")
-        elif self.rdbms == "postgresql":
-            self.execute_script("cicd/db/postgres_create_db.sql")
+            if self.rdbms == "sqlite":
+                self.execute_script("cicd/db/sqlite_create_db.sql")
+            elif self.rdbms == "postgresql":
+                self.execute_script("cicd/db/postgres_create_db.sql")
 
-        # Заполнение таблицы mac_owners
+            # Заполнение таблицы mac_owners
 
-        with open('cicd/db/macs.txt', encoding="utf-8") as file:
-            lines = file.read().splitlines()
-        query = 'insert into mac_owners(mac, manufacturer) values '
-        for line in lines:
-            mac, owner = line[0:6].replace('\'', '\'\''), line[11:].replace('\'', '\'\'')
-            query += '(\'' + mac + '\', \'' + owner + '\'),'
-        query = query[0:-1] + ';'
-        self.execute_non_query(query)
+            with open('cicd/db/macs.txt', encoding="utf-8") as file:
+                lines = file.read().splitlines()
+            query = 'insert into mac_owners(mac, manufacturer) values '
+            for line in lines:
+                mac, owner = line[0:6].replace('\'', '\'\''), line[11:].replace('\'', '\'\'')
+                query += '(\'' + mac + '\', \'' + owner + '\'),'
+            query = query[0:-1] + ';'
+            self.execute_non_query(query)
 
-        # Тестовые наборы данных для отладки
+            # Тестовые наборы данных для отладки
 
-        if self.debug:
-            self.execute_script("cicd/db/debug_data.sql")
+            if self.debug:
+                self.execute_script("cicd/db/debug_data.sql")
 
-        self.close()
+            self.close()
+        except Exception as error:
+            print(f'Что-то пошло не так! Ошибка:{error}')
 
     def open(self):
         """Открытие."""
@@ -92,9 +95,9 @@ class DatabaseConnection:
         """Проверка соединения."""
         if self.rdbms == "sqlite":
             if os.path.exists(self.db_connection_string):
-                return 0
+                return 'BASE EXISTS'
             else:
-                return 1
+                return 'BASE NOT EXISTS'
         elif self.rdbms == "postgresql":
             # проверка доступности базы данных
             try:
@@ -104,13 +107,15 @@ class DatabaseConnection:
                 table_count = self.execute_scalar(query)
                 if table_count == 0:
                     self.close()
-                    return 1
+                    return 'BASE NOT EXISTS'
                 else:
                     self.close()
-                    return 0
-            except Exception:
-                return 2
-        return 2
+                    return 'BASE EXISTS'
+            except Exception as e:
+                ERROR = str(e)
+                return ERROR
+        ERROR = 'База не SQL или Postgres.'
+        return ERROR
 
     def dict_factory(self, cursor, row):
         """Описание."""

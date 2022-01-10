@@ -157,5 +157,5 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    debug, host, reloader = management.get_settings('debug', 'flask_host', 'flask_use_reloader')
+    debug, host, reloader = management.get_settings('flask_debug', 'flask_host', 'flask_use_reloader')
     app.run(debug=debug, use_reloader=reloader, host=host)
