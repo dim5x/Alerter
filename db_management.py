@@ -1,12 +1,11 @@
 # This Python file uses the following encoding: utf-8
 """Модуль для работы с БД."""
+from configparser import ConfigParser
 import os
-import sqlite3
-
 import psycopg2
 import psycopg2.extras
+import sqlite3
 
-import management
 
 
 class DatabaseConnection:
@@ -47,8 +46,11 @@ class DatabaseConnection:
 
     def __init__(self):
         """Описание."""
-        self.rdbms, self.db_connection_string, self.debug = management.get_settings(
-            "rdbms", "db_connection_string", "flask_debug")
+        config = ConfigParser()
+        config.read('options.ini')
+        self.db_connection_string = config['DATABASE']['db_connection_string']
+        self.debug = config['DATABASE']['debug']
+        self.rdbms = config['DATABASE']['rdbms']
 
     def create_db(self):
         """Создание структуры базы данных."""

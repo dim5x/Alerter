@@ -5,14 +5,14 @@
 # Можно заменить порт на тот, что выше 1023-его. На клиенте прописать аналогичный.
 # HOST, PORT = 'x.x.x.x': str, 514: int
 
-import re
-import socketserver
+from configparser import ConfigParser
 from datetime import datetime
-
+import re
 from rich.console import Console
+import socketserver
 
 import db_management
-import management
+
 
 console = Console()
 # from memory_profiler import memory_usage
@@ -20,8 +20,10 @@ TEMPLATE1 = '┌────┬────────────────�
 TEMPLATE2 = '│{:^4}│{:^19} │ {:^11} │ {:^12} │ {:^20} │'
 TEMPLATE3 = '│{: <77}│'
 
+config = ConfigParser()
+config.read('options.ini')
 # HOST, PORT = 'localhost', 5140
-HOST, PORT = management.get_settings('alerter_host', 'alerter_port')
+HOST, PORT = config['ALERTER']['host'], config['ALERTER']['port']
 
 db = db_management.DatabaseConnection()
 CONNECTION_RESULT = db.test_connection()
@@ -94,7 +96,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 
 if __name__ == '__main__':
     try:
-        server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
+        server = socketserver.UDPServer((HOST, int(PORT)), SyslogUDPHandler)
         console.print(f'Start server on: {HOST}. Listening port: {PORT}')
         console.print(TEMPLATE1, style='bold magenta')
         console.print(TEMPLATE2.format('PR', 'FROM_HOST', 'PROCESS', 'SYSLOG_TAG', 'MAC'),

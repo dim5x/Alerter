@@ -1,11 +1,10 @@
 # This Python file uses the following encoding: utf-8
 """Модуль для отображения текущего состояния, лога, управления маками."""
+from configparser import ConfigParser
 import hashlib
-
 from flask import Flask, render_template, request, redirect, session
 
 import db_management
-import management
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # для работы session
@@ -150,5 +149,8 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    debug, host, reloader = management.get_settings('flask_debug', 'flask_host', 'flask_use_reloader')
-    app.run(debug=debug, use_reloader=reloader, host=host)
+    config = ConfigParser()
+    config.read('options.ini')
+    app.run(debug=config['FLASK']['debug'],
+            host=config['FLASK']['host'],
+            use_reloader=config['FLASK']['use_reloader'])
