@@ -110,9 +110,9 @@ def add_disallow_mac():
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():
     """
-    Осуществляет ригистрацию нового пользователя в системе.
+    Осуществляет регистрацию нового пользователя в системе.
 
-    Фунционал работы с почтой не дописан. Под вопросом.
+    Функционал работы с почтой не дописан. Под вопросом.
     """
     message = ''
     if request.method == 'POST':
@@ -128,11 +128,13 @@ def registration():
     return render_template('registration.html', message=message)
 
 
-# @app.route('/test')
-# def txt():
-#     """Для тестов."""
-#     data = db_management.get_events()
-#     return render_template('test.html', data=data)
+@app.route('/test')
+def test():
+    """Для тестов."""
+    data = db_management.get_events()
+    print(data)
+    print(type(data))
+    return data
 
 
 @app.route('/unit_test')
@@ -151,6 +153,6 @@ def page_not_found(error):
 if __name__ == '__main__':
     config = ConfigParser()
     config.read('options.ini')
-    app.run(debug=config['FLASK']['debug'],
+    app.run(debug=config.getboolean('FLASK', 'debug'),
             host=config['FLASK']['host'],
             use_reloader=config['FLASK']['use_reloader'])
