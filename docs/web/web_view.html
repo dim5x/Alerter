@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>web_view API documentation</title>
+<meta name="description" content="Модуль для отображения текущего состояния, лога, управления маками." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>web_view</code></h1>
+</header>
+<section id="section-intro">
+<p>Модуль для отображения текущего состояния, лога, управления маками.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># This Python file uses the following encoding: utf-8
+&#34;&#34;&#34;Модуль для отображения текущего состояния, лога, управления маками.&#34;&#34;&#34;
+import pdoc
+from configparser import ConfigParser
+import hashlib
+from flask import Flask, render_template, request, redirect, session
+import test
+import db_management
+
+app = Flask(__name__)
+app.secret_key = b&#39;_5#y2L&#34;F4Q8z\n\xec]/&#39;  # для работы session
+
+login: str = &#39;&#39;
+
+
+# Страница логина.
+@app.route(&#39;/&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def login_admin():
+    &#34;&#34;&#34;
+    Обрабатывает логин в систему. Считывает с формы логин/пароль (index.html).
+
+    Проверяет в базе наличие хэша пароля. В случае успеха делает редирект на основную страницу.
+    Помечает успешный залогин в кукисе session[login] = login.
+    В противном случае - пишет Fail и отображает страницу ввода пароля снова.
+    &#34;&#34;&#34;
+    session.clear()
+    global login
+    if request.method == &#39;POST&#39;:
+        login = request.form.get(&#39;login&#39;)
+        password = request.form.get(&#39;password&#39;)
+
+        password_hash = hashlib.sha3_384(bytes(password, encoding=&#39;UTF-8&#39;)).hexdigest()
+
+        if db_management.flask_logon(login, password_hash):
+            session[login] = login
+            return redirect(&#39;/alerter.html&#39;)
+        else:
+            return render_template(&#39;index.html&#39;, message=&#39;Fail.&#39;)
+    return render_template(&#39;index.html&#39;)
+
+
+# Главная страница.
+@app.route(&#39;/alerter.html&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def hello_world():
+    &#34;&#34;&#34;Отображает информацию из БД, в том случае, если осуществлен удачный логин.&#34;&#34;&#34;
+    if login in session:
+        data = db_management.get_events()
+        state = db_management.get_current_state()
+
+        allow_mac = db_management.get_mac(&#39;wellknown&#39;)
+        disallow_mac = db_management.get_mac(&#39;unknown&#39;)
+
+        return render_template(&#39;alerter.html&#39;, data=data, state=state, allow_mac=allow_mac,
+                               disallow_mac=disallow_mac, login=login)
+    return &#34;&#34;&#34;
+    &lt;style&gt; * {background: black; text-align:center; color: white;} a {color:blue;}&lt;/style&gt;
+    &lt;h2&gt;You are not &lt;a href=&#34;/&#34;&gt;logged in.&lt;/a&gt;&lt;/h2&gt;
+    &#34;&#34;&#34;
+
+
+# Заглушка страницы добавления хороших маков.
+@app.route(&#39;/add_allow_mac.html&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def add_allow_mac():
+    &#34;&#34;&#34;
+    Добавляет мак в доверенные, в том случае, если успешен залогин.
+
+    В качестве автора - проставляется тот, кто залогинился в систему.
+    &#34;&#34;&#34;
+    editing_mac = request.args.get(&#39;editing_mac&#39;, &#39;&#39;)
+    allow_mac = db_management.get_mac(&#39;wellknown&#39;)
+    if login in session:
+        if request.method == &#39;POST&#39;:
+            if request.form[&#39;button&#39;] == &#39;Добавить&#39;:
+                mac = request.form[&#39;field&#39;]
+                description = request.form[&#39;description&#39;]
+                db_management.set_mac_to_wellknown(mac, login, description)
+                allow_mac = db_management.get_mac(&#39;wellknown&#39;)
+                return render_template(&#39;add_allow_mac.html&#39;, allow_mac=allow_mac)
+                # return redirect(&#39;/alerter&#39;)
+    else:
+        return redirect(&#39;/&#39;)
+    return render_template(&#39;add_allow_mac.html&#39;, allow_mac=allow_mac, editing_mac=editing_mac)
+
+
+# Заглушка страницы добавления плохих маков.
+@app.route(&#39;/add_disallow_mac.html&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def add_disallow_mac():
+    &#34;&#34;&#34;
+    Добавляет плохие маки, если успешен залогин.
+
+    Функционал сомнителен - ибо всё то же делается автоматически в БД.
+    Вероятно, будет удалено/изменено просто на просмотр списка.
+    &#34;&#34;&#34;
+    editing_mac = request.args.get(&#39;editing_mac&#39;, &#39;&#39;)
+    disallow_mac = db_management.get_mac(&#39;unknown&#39;)
+    if login in session:
+        if request.method == &#39;POST&#39;:
+            if request.form[&#39;button&#39;] == &#39;Добавить&#39;:
+                mac = request.form[&#39;field&#39;]
+                db_management.set_mac_to_unknown(mac, login)
+                disallow_mac = db_management.get_mac(&#39;unknown&#39;)
+                return render_template(&#39;add_disallow_mac.html&#39;, disallow_mac=disallow_mac)
+                # return redirect(&#39;/alerter&#39;)
+    else:
+        return redirect(&#39;/&#39;)
+    return render_template(&#39;add_disallow_mac.html&#39;, disallow_mac=disallow_mac,
+                           editing_mac=editing_mac)
+
+
+# Страница регистрации нового пользователя.
+@app.route(&#39;/registration&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def registration():
+    &#34;&#34;&#34;
+    Осуществляет ригистрацию нового пользователя в системе.
+
+    Фунционал работы с почтой не дописан. Под вопросом.
+    &#34;&#34;&#34;
+    message = &#39;&#39;
+    if request.method == &#39;POST&#39;:
+        # name = request.form.get(&#39;name&#39;)
+        # surname = request.form.get(&#39;surname&#39;)
+        wanted_login = request.form.get(&#39;wanted_login&#39;)
+        # email = request.form.get(&#39;wanted_login&#39;)
+        if not db_management.login_exists(wanted_login):
+            return &#39;&#39;&#39;&lt;h2 style=&#34;text-align: center&#34;&gt;Отослано. Ждите и усё будет!&lt;/h2&gt;&#39;&#39;&#39;
+        else:
+            message = &#39;Логин занят.&#39;
+            return render_template(&#39;registration.html&#39;, message=message)
+    return render_template(&#39;registration.html&#39;, message=message)
+
+
+@app.route(&#39;/test&#39;)
+def txt():
+    &#34;&#34;&#34;Для тестов.&#34;&#34;&#34;
+    data = db_management.get_events()
+    print(data)
+    print(type(data))
+    return data
+
+
+@app.route(&#39;/unit_test&#39;)
+def unit_test():
+    &#34;&#34;&#34;Для юнит-теста.&#34;&#34;&#34;
+    return &#39;Hello World!&#39;
+
+
+# Страница 404.
+@app.errorhandler(404)
+def page_not_found(error):
+    &#34;&#34;&#34;Отображает страницу ошибки в случае перехода на несуществующую страницу.&#34;&#34;&#34;
+    return render_template(&#39;404.html&#39;, error=error), 404
+
+
+if __name__ == &#39;__main__&#39;:
+    config = ConfigParser()
+    config.read(&#39;options.ini&#39;)
+    app.run(debug=config[&#39;FLASK&#39;][&#39;debug&#39;],
+            host=config[&#39;FLASK&#39;][&#39;host&#39;],
+            use_reloader=config[&#39;FLASK&#39;][&#39;use_reloader&#39;])</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="al.web.web_view.add_allow_mac"><code class="name flex">
+<span>def <span class="ident">add_allow_mac</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Добавляет мак в доверенные, в том случае, если успешен залогин.</p>
+<p>В качестве автора - проставляется тот, кто залогинился в систему.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/add_allow_mac.html&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def add_allow_mac():
+    &#34;&#34;&#34;
+    Добавляет мак в доверенные, в том случае, если успешен залогин.
+
+    В качестве автора - проставляется тот, кто залогинился в систему.
+    &#34;&#34;&#34;
+    editing_mac = request.args.get(&#39;editing_mac&#39;, &#39;&#39;)
+    allow_mac = db_management.get_mac(&#39;wellknown&#39;)
+    if login in session:
+        if request.method == &#39;POST&#39;:
+            if request.form[&#39;button&#39;] == &#39;Добавить&#39;:
+                mac = request.form[&#39;field&#39;]
+                description = request.form[&#39;description&#39;]
+                db_management.set_mac_to_wellknown(mac, login, description)
+                allow_mac = db_management.get_mac(&#39;wellknown&#39;)
+                return render_template(&#39;add_allow_mac.html&#39;, allow_mac=allow_mac)
+                # return redirect(&#39;/alerter&#39;)
+    else:
+        return redirect(&#39;/&#39;)
+    return render_template(&#39;add_allow_mac.html&#39;, allow_mac=allow_mac, editing_mac=editing_mac)</code></pre>
+</details>
+</dd>
+<dt id="al.web.web_view.add_disallow_mac"><code class="name flex">
+<span>def <span class="ident">add_disallow_mac</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Добавляет плохие маки, если успешен залогин.</p>
+<p>Функционал сомнителен - ибо всё то же делается автоматически в БД.
+Вероятно, будет удалено/изменено просто на просмотр списка.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/add_disallow_mac.html&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def add_disallow_mac():
+    &#34;&#34;&#34;
+    Добавляет плохие маки, если успешен залогин.
+
+    Функционал сомнителен - ибо всё то же делается автоматически в БД.
+    Вероятно, будет удалено/изменено просто на просмотр списка.
+    &#34;&#34;&#34;
+    editing_mac = request.args.get(&#39;editing_mac&#39;, &#39;&#39;)
+    disallow_mac = db_management.get_mac(&#39;unknown&#39;)
+    if login in session:
+        if request.method == &#39;POST&#39;:
+            if request.form[&#39;button&#39;] == &#39;Добавить&#39;:
+                mac = request.form[&#39;field&#39;]
+                db_management.set_mac_to_unknown(mac, login)
+                disallow_mac = db_management.get_mac(&#39;unknown&#39;)
+                return render_template(&#39;add_disallow_mac.html&#39;, disallow_mac=disallow_mac)
+                # return redirect(&#39;/alerter&#39;)
+    else:
+        return redirect(&#39;/&#39;)
+    return render_template(&#39;add_disallow_mac.html&#39;, disallow_mac=disallow_mac,
+                           editing_mac=editing_mac)</code></pre>
+</details>
+</dd>
+<dt id="al.web.web_view.hello_world"><code class="name flex">
+<span>def <span class="ident">hello_world</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Отображает информацию из БД, в том случае, если осуществлен удачный логин.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/alerter.html&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def hello_world():
+    &#34;&#34;&#34;Отображает информацию из БД, в том случае, если осуществлен удачный логин.&#34;&#34;&#34;
+    if login in session:
+        data = db_management.get_events()
+        state = db_management.get_current_state()
+
+        allow_mac = db_management.get_mac(&#39;wellknown&#39;)
+        disallow_mac = db_management.get_mac(&#39;unknown&#39;)
+
+        return render_template(&#39;alerter.html&#39;, data=data, state=state, allow_mac=allow_mac,
+                               disallow_mac=disallow_mac, login=login)
+    return &#34;&#34;&#34;
+    &lt;style&gt; * {background: black; text-align:center; color: white;} a {color:blue;}&lt;/style&gt;
+    &lt;h2&gt;You are not &lt;a href=&#34;/&#34;&gt;logged in.&lt;/a&gt;&lt;/h2&gt;
+    &#34;&#34;&#34;</code></pre>
+</details>
+</dd>
+<dt id="al.web.web_view.login_admin"><code class="name flex">
+<span>def <span class="ident">login_admin</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Обрабатывает логин в систему. Считывает с формы логин/пароль (index.html).</p>
+<p>Проверяет в базе наличие хэша пароля. В случае успеха делает редирект на основную страницу.
+Помечает успешный залогин в кукисе session[login] = login.
+В противном случае - пишет Fail и отображает страницу ввода пароля снова.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def login_admin():
+    &#34;&#34;&#34;
+    Обрабатывает логин в систему. Считывает с формы логин/пароль (index.html).
+
+    Проверяет в базе наличие хэша пароля. В случае успеха делает редирект на основную страницу.
+    Помечает успешный залогин в кукисе session[login] = login.
+    В противном случае - пишет Fail и отображает страницу ввода пароля снова.
+    &#34;&#34;&#34;
+    session.clear()
+    global login
+    if request.method == &#39;POST&#39;:
+        login = request.form.get(&#39;login&#39;)
+        password = request.form.get(&#39;password&#39;)
+
+        password_hash = hashlib.sha3_384(bytes(password, encoding=&#39;UTF-8&#39;)).hexdigest()
+
+        if db_management.flask_logon(login, password_hash):
+            session[login] = login
+            return redirect(&#39;/alerter.html&#39;)
+        else:
+            return render_template(&#39;index.html&#39;, message=&#39;Fail.&#39;)
+    return render_template(&#39;index.html&#39;)</code></pre>
+</details>
+</dd>
+<dt id="al.web.web_view.page_not_found"><code class="name flex">
+<span>def <span class="ident">page_not_found</span></span>(<span>error)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Отображает страницу ошибки в случае перехода на несуществующую страницу.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.errorhandler(404)
+def page_not_found(error):
+    &#34;&#34;&#34;Отображает страницу ошибки в случае перехода на несуществующую страницу.&#34;&#34;&#34;
+    return render_template(&#39;404.html&#39;, error=error), 404</code></pre>
+</details>
+</dd>
+<dt id="al.web.web_view.registration"><code class="name flex">
+<span>def <span class="ident">registration</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Осуществляет ригистрацию нового пользователя в системе.</p>
+<p>Фунционал работы с почтой не дописан. Под вопросом.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/registration&#39;, methods=[&#39;POST&#39;, &#39;GET&#39;])
+def registration():
+    &#34;&#34;&#34;
+    Осуществляет ригистрацию нового пользователя в системе.
+
+    Фунционал работы с почтой не дописан. Под вопросом.
+    &#34;&#34;&#34;
+    message = &#39;&#39;
+    if request.method == &#39;POST&#39;:
+        # name = request.form.get(&#39;name&#39;)
+        # surname = request.form.get(&#39;surname&#39;)
+        wanted_login = request.form.get(&#39;wanted_login&#39;)
+        # email = request.form.get(&#39;wanted_login&#39;)
+        if not db_management.login_exists(wanted_login):
+            return &#39;&#39;&#39;&lt;h2 style=&#34;text-align: center&#34;&gt;Отослано. Ждите и усё будет!&lt;/h2&gt;&#39;&#39;&#39;
+        else:
+            message = &#39;Логин занят.&#39;
+            return render_template(&#39;registration.html&#39;, message=message)
+    return render_template(&#39;registration.html&#39;, message=message)</code></pre>
+</details>
+</dd>
+<dt id="al.web.web_view.txt"><code class="name flex">
+<span>def <span class="ident">txt</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Для тестов.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/test&#39;)
+def txt():
+    &#34;&#34;&#34;Для тестов.&#34;&#34;&#34;
+    data = db_management.get_events()
+    print(data)
+    print(type(data))
+    return data</code></pre>
+</details>
+</dd>
+<dt id="al.web.web_view.unit_test"><code class="name flex">
+<span>def <span class="ident">unit_test</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Для юнит-теста.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#39;/unit_test&#39;)
+def unit_test():
+    &#34;&#34;&#34;Для юнит-теста.&#34;&#34;&#34;
+    return &#39;Hello World!&#39;</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="al.web" href="index.html">Alerter</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="al.web.web_view.add_allow_mac" href="#al.web.web_view.add_allow_mac">add_allow_mac</a></code></li>
+<li><code><a title="al.web.web_view.add_disallow_mac" href="#al.web.web_view.add_disallow_mac">add_disallow_mac</a></code></li>
+<li><code><a title="al.web.web_view.hello_world" href="#al.web.web_view.hello_world">hello_world</a></code></li>
+<li><code><a title="al.web.web_view.login_admin" href="#al.web.web_view.login_admin">login_admin</a></code></li>
+<li><code><a title="al.web.web_view.page_not_found" href="#al.web.web_view.page_not_found">page_not_found</a></code></li>
+<li><code><a title="al.web.web_view.registration" href="#al.web.web_view.registration">registration</a></code></li>
+<li><code><a title="al.web.web_view.txt" href="#al.web.web_view.txt">txt</a></code></li>
+<li><code><a title="al.web.web_view.unit_test" href="#al.web.web_view.unit_test">unit_test</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

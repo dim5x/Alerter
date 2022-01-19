@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>db_management API documentation</title>
+<meta name="description" content="Модуль для работы с БД." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>db_management</code></h1>
+</header>
+<section id="section-intro">
+<p>Модуль для работы с БД.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># This Python file uses the following encoding: utf-8
+&#34;&#34;&#34;Модуль для работы с БД.&#34;&#34;&#34;
+from configparser import ConfigParser
+import os
+import psycopg2
+import psycopg2.extras
+import sqlite3
+
+
+
+class DatabaseConnection:
+    &#34;&#34;&#34;
+    Класс представляет собой абстракцию для работы с базой данных.
+
+    Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
+    создается функция, которая будет вызываться извне, def function
+    внутри функции определяется запрос к БД.
+
+    db = db_connection()    // создается экземпляр класса
+    db.open()               // открывается подключение
+    result = db.execute...  // выполняется запрос
+    db.close()              // закрывается подключение
+
+    Методы класса:
+
+    open                создать подключение к БД.
+    close               закрыть подключение.
+    execute             выполняет запрос и возвращает результат в виде списка словарей.
+    execute_scalar      выполняет запрос и возвращает результат в виде одного значения,
+                        нужно использовать в запросах типа &#34;select count(x) from&#34; или
+                        &#34;select top 1 x from&#34;.
+    execute_non_query   необходимо использовать для запросов, которые изменяют данные,
+                        такие как:   &#34;insert&#34;, &#34;update&#34;.
+    execute_script      выполняет скрипт из *.sql-файла.
+    test_connection     проверить возможность подключения:
+                            0 - всё в порядке;
+                            1 - подключение есть, отсутствует структура, можно вызвать метод create_db;
+                            2 - что-то непонятное, нужно искать причины.
+
+    Атрибуты класса (извне не используются):
+
+    rdbms               тип БД.
+    connection_string   строка подключения.
+    connection          текущее подключение.
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+        config = ConfigParser()
+        config.read(&#39;options.ini&#39;)
+        self.db_connection_string = config[&#39;DATABASE&#39;][&#39;db_connection_string&#39;]
+        self.debug = config[&#39;DATABASE&#39;][&#39;debug&#39;]
+        self.rdbms = config[&#39;DATABASE&#39;][&#39;rdbms&#39;]
+
+    def create_db(self):
+        &#34;&#34;&#34;Создание структуры базы данных.&#34;&#34;&#34;
+        try:
+            self.open()
+
+            if self.rdbms == &#34;sqlite&#34;:
+                self.execute_script(&#34;cicd/db/sqlite_create_db.sql&#34;)
+            elif self.rdbms == &#34;postgresql&#34;:
+                self.execute_script(&#34;cicd/db/postgres_create_db.sql&#34;)
+
+            # Заполнение таблицы mac_owners
+
+            with open(&#39;cicd/db/macs.txt&#39;, encoding=&#34;utf-8&#34;) as file:
+                lines = file.read().splitlines()
+            query = &#39;insert into mac_owners(mac, manufacturer) values &#39;
+            for line in lines:
+                mac, owner = line[0:6].replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;), line[11:].replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;)
+                query += &#39;(\&#39;&#39; + mac + &#39;\&#39;, \&#39;&#39; + owner + &#39;\&#39;),&#39;
+            query = query[0:-1] + &#39;;&#39;
+            self.execute_non_query(query)
+
+            # Тестовые наборы данных для отладки
+
+            if self.debug:
+                self.execute_script(&#34;cicd/db/debug_data.sql&#34;)
+
+            self.close()
+        except Exception as error:
+            print(f&#39;Что-то пошло не так! Ошибка:{error}&#39;)
+
+    def open(self):
+        &#34;&#34;&#34;Открытие.&#34;&#34;&#34;
+        if self.rdbms == &#34;sqlite&#34;:
+            self.connection = sqlite3.connect(self.db_connection_string)
+        elif self.rdbms == &#34;postgresql&#34;:
+            self.connection = psycopg2.connect(self.db_connection_string)
+
+    def close(self):
+        &#34;&#34;&#34;Закрытие.&#34;&#34;&#34;
+        self.connection.close()
+
+    def test_connection(self):
+        &#34;&#34;&#34;Проверка соединения.&#34;&#34;&#34;
+        if self.rdbms == &#34;sqlite&#34;:
+            if os.path.exists(self.db_connection_string):
+                return &#39;BASE EXISTS&#39;
+            else:
+                return &#39;BASE NOT EXISTS&#39;
+        elif self.rdbms == &#34;postgresql&#34;:
+            # проверка доступности базы данных
+            try:
+                self.open()
+                # проверка наличия структуры в базе данных
+                query = &#34;select count(table_name) _count from information_schema.tables WHERE table_schema=&#39;public&#39;&#34;
+                table_count = self.execute_scalar(query)
+                if table_count == 0:
+                    self.close()
+                    return &#39;BASE NOT EXISTS&#39;
+                else:
+                    self.close()
+                    return &#39;BASE EXISTS&#39;
+            except Exception as e:
+                ERROR = str(e)
+                return ERROR
+        ERROR = &#39;База не SQL или Postgres.&#39;
+        return ERROR
+
+    def dict_factory(self, cursor, row):
+        &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+        dick = {}
+        for idx, col in enumerate(cursor.description):
+            dick[col[0]] = row[idx]
+        return dick
+
+    def execute(self, query):
+        &#34;&#34;&#34;Выполняет запрос и возвращает результат в виде списка словарей.&#34;&#34;&#34;
+        if self.rdbms == &#39;sqlite&#39;:
+            self.connection.row_factory = self.dict_factory
+            cursor = self.connection.cursor()
+        elif self.rdbms == &#39;postgresql&#39;:
+            cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor.execute(query)
+        result = cursor.fetchall()
+        cursor.close()
+        return result
+
+    def execute_non_query(self, query, data=&#39;&#39;):
+        &#34;&#34;&#34;Необходимо использовать для запросов, которые изменяют данные &#34;insert&#34;, &#34;update&#34;.&#34;&#34;&#34;
+        cursor = self.connection.cursor()
+        cursor.execute(query, data)
+        self.connection.commit()
+        cursor.close()
+        return True
+
+    def execute_scalar(self, query, data=&#39;&#39;):
+        &#34;&#34;&#34;
+        Выполняет запрос и возвращает результат в виде одного значения.
+
+        Нужно использовать в запросах типа &#34;select count(x) from&#34; или &#34;select top 1 x from&#34;.
+        &#34;&#34;&#34;
+        cursor = self.connection.cursor()
+        cursor.execute(query, data)
+        result = cursor.fetchone()[0]
+        cursor.close()
+        return result
+
+    def execute_script(self, path):
+        &#34;&#34;&#34;Выполняет скрипт из *.sql-файла.&#34;&#34;&#34;
+        cursor = self.connection.cursor()
+        with open(path, &#39;r&#39;) as file:
+            query = file.read().replace(&#39;\n&#39;, &#39; &#39;).replace(&#39;\t&#39;, &#39;&#39;)
+        if self.rdbms == &#39;sqlite&#39;:
+            cursor.executescript(query)
+        elif self.rdbms == &#39;postgresql&#39;:
+            cursor.execute(query)
+        self.connection.commit()
+        cursor.close()
+        return True
+
+
+def get_value(data):
+    &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+    if data is None:
+        value = &#39;null&#39;
+    elif not data.isdigit():
+        value = &#39;\&#39;&#39; + data.replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;) + &#39;\&#39;&#39;
+    else:
+        value = data
+    return value
+
+
+#   Функции для работы извне
+#
+#   Вставка словаря в соответствующую таблицу:
+#
+#   data    словарь
+#   table   имя таблицы
+#   conn    подключение
+#
+#   Если подключение не передаётся в качестве параметра, то создается подключение по умолчанию,
+#   которое закрывается после выполнения.
+
+def insert_data(data, table, conn=&#39;not_created&#39;):
+    &#34;&#34;&#34;Добавляем данные в базу.&#34;&#34;&#34;
+    columns, values = &#39;&#39;, &#39;&#39;
+    for key in data:
+        if columns == &#39;&#39;:
+            columns += key
+            values += get_value(data[key])
+        else:
+            columns += &#39;, &#39; + key
+            values += &#39;, &#39; + get_value(data[key])
+
+    query = f&#39;insert into {table}({columns}) values({values})&#39;
+
+    connection = conn
+    if connection == &#39;not_created&#39;:
+        db = DatabaseConnection()
+        db.open()
+
+    db.execute_non_query(query)
+
+    if connection == &#39;not_created&#39;:
+        db.close()
+
+
+def new_syslog_event(event, db):
+    &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+    cursor = db.connection.cursor()
+    cursor.callproc(&#39;new_syslog_event&#39;, [event[&#39;priority&#39;], event[&#39;device_time&#39;], event[&#39;from_host&#39;], event[&#39;process&#39;],
+                                         event[&#39;syslog_tag&#39;], event[&#39;message&#39;], event[&#39;mac&#39;]])
+    db.connection.commit()
+    cursor.close()
+
+
+def login_exists(login):
+    &#34;&#34;&#34;
+    Проверка существования логина.
+
+    login    проверяемый логин.
+    &#34;&#34;&#34;
+    query = &#39;select count(1) _count from [admin] where [login] =:login&#39;
+    data = {&#39;login&#39;: login}
+    db = DatabaseConnection()
+    db.open()
+    result = (int(db.execute_scalar(query, data)) &gt; 0)
+    db.close()
+    return result
+
+
+def get_events(all_events=True, only_unknown_mac=False, started_at=&#39;&#39;, ended_at=&#39;&#39;, mac=&#39;&#39;):
+    &#34;&#34;&#34;
+    Выборка событий из syslog&#39;а.
+
+    all_events          получать только c тэгами link-up и LINK_DOWN.
+    only_unknown_mac    получить события только с неизвестными mac&#39;ами.
+    started_at          начало диапазона.
+    ended_at            конец диапазона.
+
+    По умолчанию в выборку попадают все события за последний два часа.
+    &#34;&#34;&#34;
+    db = DatabaseConnection()
+    query = &#39;&#39;
+
+    if db.rdbms == &#39;sqlite&#39;:
+        if started_at == &#39;&#39;:
+            started_at = &#39;datetime(\&#39;now\&#39;,\&#39;-2000 hour\&#39;, \&#39;localtime\&#39;)&#39;
+        if ended_at == &#39;&#39;:
+            ended_at = &#39;datetime(\&#39;now\&#39;, \&#39;localtime\&#39;)&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        if started_at == &#39;&#39;:
+            started_at = &#39;current_timestamp + interval \&#39;-2000 hour\&#39;&#39;
+        if ended_at == &#39;&#39;:
+            ended_at = &#39;current_timestamp&#39;
+
+    if db.rdbms == &#39;sqlite&#39;:
+        query = &#39;&#39;&#39;select
+            receivedat, &#39;&#39;&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        query = &#39;&#39;&#39;select
+            receivedat::timestamp(0) receivedat,&#39;&#39;&#39;
+
+    query += &#39;&#39;&#39;priority,
+            from_host,
+            process,
+            syslog_tag,
+            case
+                when mac_addresses.mac is null then &#39;&#39;
+                when mac_addresses.wellknown = 1 then &#39;wellknown&#39;
+                when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then &#39;unknown&#39;
+            end mac_type,
+            message,
+            syslog.mac
+        from
+            syslog
+            left join
+            mac_addresses
+            on upper(syslog.mac) = upper(mac_addresses.mac)
+        where
+            receivedat &gt; %(started_at)s
+            and
+            receivedat &lt; %(ended_at)s
+        &#39;&#39;&#39; % {&#39;started_at&#39;: started_at, &#39;ended_at&#39;: ended_at}
+    if not all_events:
+        query += &#39; and (syslog_tag like \&#39;%link-up%\&#39; or syslog_tag like \&#39;%LINK_DOWN%\&#39;)&#39;
+    if mac != &#39;&#39;:
+        query += &#39;and syslog.mac = %(mac)s&#39; % {&#39;mac&#39;: mac}
+
+    query += &#39;&#39;&#39; order by receivedat desc limit 500&#39;&#39;&#39;
+
+    db.open()
+    result = db.execute(query)
+    db.close()
+    # print(query)
+    return result
+
+
+def get_current_state(only_unknown=False):
+    &#34;&#34;&#34;
+    Выборка текущих подключений к сетевому оборудованию.
+
+    from_host
+    port
+    mac
+    mac_type
+    manufacturer
+    up_time
+
+    Фильтр: only_unknown - только &#34;недоверенные&#34; mac-адресы.
+    &#34;&#34;&#34;
+    query = &#39;&#39;&#39;select
+                from_host,
+                port,
+                current_state.mac mac,
+                case
+                    when mac_addresses.mac is null then &#39;&#39;
+                    when mac_addresses.wellknown = 1 then &#39;wellknown&#39;
+                    when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then &#39;unknown&#39;
+                end mac_type,
+                manufacturer,
+                started_at up_time
+            from
+                current_state
+                join
+                mac_addresses 
+                on
+                upper(current_state.mac) = upper(mac_addresses.mac)
+                left join
+                mac_owners
+                on
+                upper(substr(replace(mac_addresses.mac,&#39;:&#39;,&#39;&#39;),1,6)) = mac_owners.mac
+            where
+                state = 1
+                &#39;&#39;&#39;
+    if only_unknown:
+        query += &#34; and mac_addresses.mac is not null and &#34; \
+                 &#34;(mac_addresses.wellknown is null or mac_addresses.wellknown = 0) &#34;
+
+    query += &#34;order by from_host, port&#34;
+
+    db = DatabaseConnection()
+    db.open()
+    result = db.execute(query)
+    db.close()
+
+    return result
+
+
+def get_mac(status):
+    &#34;&#34;&#34;
+    Выборка всех mac-адресов по критерию.
+
+    В зависимости от переданного параметра:
+    status = &#39;wellknown&#39; - выборка доверенных маков.
+    status = &#39;unknown&#39;   - выборка недоверенных маков.
+    &#34;&#34;&#34;
+    query_for_wellknown = &#39;&#39;&#39;select
+                    mac_addresses.mac mac,
+                    mac_addresses.wellknown_author wellknown_author,
+                    mac_addresses.description description,
+                    mac_addresses.wellknown_started_at wellknown_started_at,
+                    mac_owners.manufacturer manufacturer
+                from 
+                    mac_addresses 
+                    left join
+                    mac_owners
+                    on
+                    upper(substr(replace(mac_addresses.mac,&#39;:&#39;,&#39;&#39;),1,6)) = mac_owners.mac
+                where 
+                    wellknown = 1
+                    &#39;&#39;&#39;
+
+    query_for_unknown = &#39;&#39;&#39;select
+                        mac_addresses.mac mac,
+                        mac_owners.manufacturer manufacturer
+                    from 
+                        mac_addresses 
+                        left join
+                        mac_owners
+                        on
+                        upper(substr(replace(mac_addresses.mac,&#39;:&#39;,&#39;&#39;),1,6)) = mac_owners.mac
+                    where 
+                        wellknown = 0 
+                        or 
+                        wellknown is null
+                        &#39;&#39;&#39;
+    db = DatabaseConnection()
+    db.open()
+    if status == &#39;wellknown&#39;:
+        result = db.execute(query_for_wellknown)
+    elif status == &#39;unknown&#39;:
+        result = db.execute(query_for_unknown)
+    db.close()
+
+    return result
+
+
+def set_mac_to_wellknown(mac, login, description):
+    &#34;&#34;&#34;Установка признака &#34;доверенный&#34; для mac-адреса.&#34;&#34;&#34;
+    db = DatabaseConnection()
+
+    query = &#39;&#39;&#39;update
+                        mac_addresses
+                    set
+                        wellknown = 1,
+                        wellknown_author =:login,
+                        description =:description,
+            &#39;&#39;&#39;
+    data = {&#39;login&#39;: login, &#39;description&#39;: description}
+
+    if db.rdbms == &#39;sqlite&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = datetime(&#39;now&#39;,&#39;localtime&#39;)&#39;&#39;&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = current_timestamp&#39;&#39;&#39;
+
+    query += &#39;&#39;&#39; where
+                        mac = &#39;%(mac)s&#39;
+                &#39;&#39;&#39; % {&#39;mac&#39;: mac}
+
+    db.open()
+    db.execute_non_query(query, data)
+    db.close()
+
+
+def set_mac_to_unknown(mac, login):
+    &#34;&#34;&#34;Удаление признака &#34;доверенный&#34; для mac-адреса.&#34;&#34;&#34;
+    db = DatabaseConnection()
+
+    query = &#39;&#39;&#39;update
+                        mac_addresses
+                    set
+                        wellknown = 0,
+                        wellknown_author =:login,
+                        description = &#39;&#39;,
+            &#39;&#39;&#39;
+    data = {&#39;login&#39;: login}
+    if db.rdbms == &#39;sqlite&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = datetime(&#39;now&#39;,&#39;localtime&#39;)&#39;&#39;&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = current_timestamp&#39;&#39;&#39;
+
+    query += &#39;&#39;&#39; where
+                        mac = &#39;%(mac)s&#39;
+                    &#39;&#39;&#39; % {&#39;mac&#39;: mac}
+
+    db.open()
+    db.execute_non_query(query, data)
+    db.close()
+
+
+def flask_logon(login, hash_sha384):
+    &#34;&#34;&#34;Аутентификация.&#34;&#34;&#34;
+    query = &#39;&#39;&#39;
+                select
+                    count(1) _count
+                from
+                    admin
+                where
+                    login =:login
+                    and
+                    hash =:hash
+            &#39;&#39;&#39;
+    data = {&#39;login&#39;: login, &#39;hash&#39;: hash_sha384}
+
+    db = DatabaseConnection()
+    db.open()
+    result = (int(db.execute_scalar(query, data)) &gt; 0)
+    db.close()
+    return result</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="al.db.db_management.flask_logon"><code class="name flex">
+<span>def <span class="ident">flask_logon</span></span>(<span>login, hash_sha384)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Аутентификация.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flask_logon(login, hash_sha384):
+    &#34;&#34;&#34;Аутентификация.&#34;&#34;&#34;
+    query = &#39;&#39;&#39;
+                select
+                    count(1) _count
+                from
+                    admin
+                where
+                    login =:login
+                    and
+                    hash =:hash
+            &#39;&#39;&#39;
+    data = {&#39;login&#39;: login, &#39;hash&#39;: hash_sha384}
+
+    db = DatabaseConnection()
+    db.open()
+    result = (int(db.execute_scalar(query, data)) &gt; 0)
+    db.close()
+    return result</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.get_current_state"><code class="name flex">
+<span>def <span class="ident">get_current_state</span></span>(<span>only_unknown=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Выборка текущих подключений к сетевому оборудованию.</p>
+<p>from_host
+port
+mac
+mac_type
+manufacturer
+up_time</p>
+<p>Фильтр: only_unknown - только "недоверенные" mac-адресы.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_current_state(only_unknown=False):
+    &#34;&#34;&#34;
+    Выборка текущих подключений к сетевому оборудованию.
+
+    from_host
+    port
+    mac
+    mac_type
+    manufacturer
+    up_time
+
+    Фильтр: only_unknown - только &#34;недоверенные&#34; mac-адресы.
+    &#34;&#34;&#34;
+    query = &#39;&#39;&#39;select
+                from_host,
+                port,
+                current_state.mac mac,
+                case
+                    when mac_addresses.mac is null then &#39;&#39;
+                    when mac_addresses.wellknown = 1 then &#39;wellknown&#39;
+                    when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then &#39;unknown&#39;
+                end mac_type,
+                manufacturer,
+                started_at up_time
+            from
+                current_state
+                join
+                mac_addresses 
+                on
+                upper(current_state.mac) = upper(mac_addresses.mac)
+                left join
+                mac_owners
+                on
+                upper(substr(replace(mac_addresses.mac,&#39;:&#39;,&#39;&#39;),1,6)) = mac_owners.mac
+            where
+                state = 1
+                &#39;&#39;&#39;
+    if only_unknown:
+        query += &#34; and mac_addresses.mac is not null and &#34; \
+                 &#34;(mac_addresses.wellknown is null or mac_addresses.wellknown = 0) &#34;
+
+    query += &#34;order by from_host, port&#34;
+
+    db = DatabaseConnection()
+    db.open()
+    result = db.execute(query)
+    db.close()
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.get_events"><code class="name flex">
+<span>def <span class="ident">get_events</span></span>(<span>all_events=True, only_unknown_mac=False, started_at='', ended_at='', mac='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Выборка событий из syslog'а.</p>
+<p>all_events
+получать только c тэгами link-up и LINK_DOWN.
+only_unknown_mac
+получить события только с неизвестными mac'ами.
+started_at
+начало диапазона.
+ended_at
+конец диапазона.</p>
+<p>По умолчанию в выборку попадают все события за последний два часа.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_events(all_events=True, only_unknown_mac=False, started_at=&#39;&#39;, ended_at=&#39;&#39;, mac=&#39;&#39;):
+    &#34;&#34;&#34;
+    Выборка событий из syslog&#39;а.
+
+    all_events          получать только c тэгами link-up и LINK_DOWN.
+    only_unknown_mac    получить события только с неизвестными mac&#39;ами.
+    started_at          начало диапазона.
+    ended_at            конец диапазона.
+
+    По умолчанию в выборку попадают все события за последний два часа.
+    &#34;&#34;&#34;
+    db = DatabaseConnection()
+    query = &#39;&#39;
+
+    if db.rdbms == &#39;sqlite&#39;:
+        if started_at == &#39;&#39;:
+            started_at = &#39;datetime(\&#39;now\&#39;,\&#39;-2000 hour\&#39;, \&#39;localtime\&#39;)&#39;
+        if ended_at == &#39;&#39;:
+            ended_at = &#39;datetime(\&#39;now\&#39;, \&#39;localtime\&#39;)&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        if started_at == &#39;&#39;:
+            started_at = &#39;current_timestamp + interval \&#39;-2000 hour\&#39;&#39;
+        if ended_at == &#39;&#39;:
+            ended_at = &#39;current_timestamp&#39;
+
+    if db.rdbms == &#39;sqlite&#39;:
+        query = &#39;&#39;&#39;select
+            receivedat, &#39;&#39;&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        query = &#39;&#39;&#39;select
+            receivedat::timestamp(0) receivedat,&#39;&#39;&#39;
+
+    query += &#39;&#39;&#39;priority,
+            from_host,
+            process,
+            syslog_tag,
+            case
+                when mac_addresses.mac is null then &#39;&#39;
+                when mac_addresses.wellknown = 1 then &#39;wellknown&#39;
+                when mac_addresses.mac is not null and (mac_addresses.wellknown is null or mac_addresses.wellknown = 0) then &#39;unknown&#39;
+            end mac_type,
+            message,
+            syslog.mac
+        from
+            syslog
+            left join
+            mac_addresses
+            on upper(syslog.mac) = upper(mac_addresses.mac)
+        where
+            receivedat &gt; %(started_at)s
+            and
+            receivedat &lt; %(ended_at)s
+        &#39;&#39;&#39; % {&#39;started_at&#39;: started_at, &#39;ended_at&#39;: ended_at}
+    if not all_events:
+        query += &#39; and (syslog_tag like \&#39;%link-up%\&#39; or syslog_tag like \&#39;%LINK_DOWN%\&#39;)&#39;
+    if mac != &#39;&#39;:
+        query += &#39;and syslog.mac = %(mac)s&#39; % {&#39;mac&#39;: mac}
+
+    query += &#39;&#39;&#39; order by receivedat desc limit 500&#39;&#39;&#39;
+
+    db.open()
+    result = db.execute(query)
+    db.close()
+    # print(query)
+    return result</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.get_mac"><code class="name flex">
+<span>def <span class="ident">get_mac</span></span>(<span>status)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Выборка всех mac-адресов по критерию.</p>
+<p>В зависимости от переданного параметра:
+status = 'wellknown' - выборка доверенных маков.
+status = 'unknown'
+- выборка недоверенных маков.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_mac(status):
+    &#34;&#34;&#34;
+    Выборка всех mac-адресов по критерию.
+
+    В зависимости от переданного параметра:
+    status = &#39;wellknown&#39; - выборка доверенных маков.
+    status = &#39;unknown&#39;   - выборка недоверенных маков.
+    &#34;&#34;&#34;
+    query_for_wellknown = &#39;&#39;&#39;select
+                    mac_addresses.mac mac,
+                    mac_addresses.wellknown_author wellknown_author,
+                    mac_addresses.description description,
+                    mac_addresses.wellknown_started_at wellknown_started_at,
+                    mac_owners.manufacturer manufacturer
+                from 
+                    mac_addresses 
+                    left join
+                    mac_owners
+                    on
+                    upper(substr(replace(mac_addresses.mac,&#39;:&#39;,&#39;&#39;),1,6)) = mac_owners.mac
+                where 
+                    wellknown = 1
+                    &#39;&#39;&#39;
+
+    query_for_unknown = &#39;&#39;&#39;select
+                        mac_addresses.mac mac,
+                        mac_owners.manufacturer manufacturer
+                    from 
+                        mac_addresses 
+                        left join
+                        mac_owners
+                        on
+                        upper(substr(replace(mac_addresses.mac,&#39;:&#39;,&#39;&#39;),1,6)) = mac_owners.mac
+                    where 
+                        wellknown = 0 
+                        or 
+                        wellknown is null
+                        &#39;&#39;&#39;
+    db = DatabaseConnection()
+    db.open()
+    if status == &#39;wellknown&#39;:
+        result = db.execute(query_for_wellknown)
+    elif status == &#39;unknown&#39;:
+        result = db.execute(query_for_unknown)
+    db.close()
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.get_value"><code class="name flex">
+<span>def <span class="ident">get_value</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Описание.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_value(data):
+    &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+    if data is None:
+        value = &#39;null&#39;
+    elif not data.isdigit():
+        value = &#39;\&#39;&#39; + data.replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;) + &#39;\&#39;&#39;
+    else:
+        value = data
+    return value</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.insert_data"><code class="name flex">
+<span>def <span class="ident">insert_data</span></span>(<span>data, table, conn='not_created')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Добавляем данные в базу.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insert_data(data, table, conn=&#39;not_created&#39;):
+    &#34;&#34;&#34;Добавляем данные в базу.&#34;&#34;&#34;
+    columns, values = &#39;&#39;, &#39;&#39;
+    for key in data:
+        if columns == &#39;&#39;:
+            columns += key
+            values += get_value(data[key])
+        else:
+            columns += &#39;, &#39; + key
+            values += &#39;, &#39; + get_value(data[key])
+
+    query = f&#39;insert into {table}({columns}) values({values})&#39;
+
+    connection = conn
+    if connection == &#39;not_created&#39;:
+        db = DatabaseConnection()
+        db.open()
+
+    db.execute_non_query(query)
+
+    if connection == &#39;not_created&#39;:
+        db.close()</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.login_exists"><code class="name flex">
+<span>def <span class="ident">login_exists</span></span>(<span>login)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Проверка существования логина.</p>
+<p>login
+проверяемый логин.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def login_exists(login):
+    &#34;&#34;&#34;
+    Проверка существования логина.
+
+    login    проверяемый логин.
+    &#34;&#34;&#34;
+    query = &#39;select count(1) _count from [admin] where [login] =:login&#39;
+    data = {&#39;login&#39;: login}
+    db = DatabaseConnection()
+    db.open()
+    result = (int(db.execute_scalar(query, data)) &gt; 0)
+    db.close()
+    return result</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.new_syslog_event"><code class="name flex">
+<span>def <span class="ident">new_syslog_event</span></span>(<span>event, db)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Описание.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def new_syslog_event(event, db):
+    &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+    cursor = db.connection.cursor()
+    cursor.callproc(&#39;new_syslog_event&#39;, [event[&#39;priority&#39;], event[&#39;device_time&#39;], event[&#39;from_host&#39;], event[&#39;process&#39;],
+                                         event[&#39;syslog_tag&#39;], event[&#39;message&#39;], event[&#39;mac&#39;]])
+    db.connection.commit()
+    cursor.close()</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.set_mac_to_unknown"><code class="name flex">
+<span>def <span class="ident">set_mac_to_unknown</span></span>(<span>mac, login)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Удаление признака "доверенный" для mac-адреса.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_mac_to_unknown(mac, login):
+    &#34;&#34;&#34;Удаление признака &#34;доверенный&#34; для mac-адреса.&#34;&#34;&#34;
+    db = DatabaseConnection()
+
+    query = &#39;&#39;&#39;update
+                        mac_addresses
+                    set
+                        wellknown = 0,
+                        wellknown_author =:login,
+                        description = &#39;&#39;,
+            &#39;&#39;&#39;
+    data = {&#39;login&#39;: login}
+    if db.rdbms == &#39;sqlite&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = datetime(&#39;now&#39;,&#39;localtime&#39;)&#39;&#39;&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = current_timestamp&#39;&#39;&#39;
+
+    query += &#39;&#39;&#39; where
+                        mac = &#39;%(mac)s&#39;
+                    &#39;&#39;&#39; % {&#39;mac&#39;: mac}
+
+    db.open()
+    db.execute_non_query(query, data)
+    db.close()</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.set_mac_to_wellknown"><code class="name flex">
+<span>def <span class="ident">set_mac_to_wellknown</span></span>(<span>mac, login, description)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Установка признака "доверенный" для mac-адреса.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_mac_to_wellknown(mac, login, description):
+    &#34;&#34;&#34;Установка признака &#34;доверенный&#34; для mac-адреса.&#34;&#34;&#34;
+    db = DatabaseConnection()
+
+    query = &#39;&#39;&#39;update
+                        mac_addresses
+                    set
+                        wellknown = 1,
+                        wellknown_author =:login,
+                        description =:description,
+            &#39;&#39;&#39;
+    data = {&#39;login&#39;: login, &#39;description&#39;: description}
+
+    if db.rdbms == &#39;sqlite&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = datetime(&#39;now&#39;,&#39;localtime&#39;)&#39;&#39;&#39;
+    elif db.rdbms == &#39;postgresql&#39;:
+        query += &#39;&#39;&#39;wellknown_started_at = current_timestamp&#39;&#39;&#39;
+
+    query += &#39;&#39;&#39; where
+                        mac = &#39;%(mac)s&#39;
+                &#39;&#39;&#39; % {&#39;mac&#39;: mac}
+
+    db.open()
+    db.execute_non_query(query, data)
+    db.close()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="al.db.db_management.DatabaseConnection"><code class="flex name class">
+<span>class <span class="ident">DatabaseConnection</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Класс представляет собой абстракцию для работы с базой данных.</p>
+<p>Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
+создается функция, которая будет вызываться извне, def function
+внутри функции определяется запрос к БД.</p>
+<p>db = db_connection()
+// создается экземпляр класса
+db.open()
+// открывается подключение
+result = db.execute&hellip;
+// выполняется запрос
+db.close()
+// закрывается подключение</p>
+<p>Методы класса:</p>
+<p>open
+создать подключение к БД.
+close
+закрыть подключение.
+execute
+выполняет запрос и возвращает результат в виде списка словарей.
+execute_scalar
+выполняет запрос и возвращает результат в виде одного значения,
+нужно использовать в запросах типа "select count(x) from" или
+"select top 1 x from".
+execute_non_query
+необходимо использовать для запросов, которые изменяют данные,
+такие как:
+"insert", "update".
+execute_script
+выполняет скрипт из *.sql-файла.
+test_connection
+проверить возможность подключения:
+0 - всё в порядке;
+1 - подключение есть, отсутствует структура, можно вызвать метод create_db;
+2 - что-то непонятное, нужно искать причины.</p>
+<p>Атрибуты класса (извне не используются):</p>
+<p>rdbms
+тип БД.
+connection_string
+строка подключения.
+connection
+текущее подключение.</p>
+<p>Описание.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DatabaseConnection:
+    &#34;&#34;&#34;
+    Класс представляет собой абстракцию для работы с базой данных.
+
+    Желательно с классом работать изнутри этого модуля. Целевая схема следующая:
+    создается функция, которая будет вызываться извне, def function
+    внутри функции определяется запрос к БД.
+
+    db = db_connection()    // создается экземпляр класса
+    db.open()               // открывается подключение
+    result = db.execute...  // выполняется запрос
+    db.close()              // закрывается подключение
+
+    Методы класса:
+
+    open                создать подключение к БД.
+    close               закрыть подключение.
+    execute             выполняет запрос и возвращает результат в виде списка словарей.
+    execute_scalar      выполняет запрос и возвращает результат в виде одного значения,
+                        нужно использовать в запросах типа &#34;select count(x) from&#34; или
+                        &#34;select top 1 x from&#34;.
+    execute_non_query   необходимо использовать для запросов, которые изменяют данные,
+                        такие как:   &#34;insert&#34;, &#34;update&#34;.
+    execute_script      выполняет скрипт из *.sql-файла.
+    test_connection     проверить возможность подключения:
+                            0 - всё в порядке;
+                            1 - подключение есть, отсутствует структура, можно вызвать метод create_db;
+                            2 - что-то непонятное, нужно искать причины.
+
+    Атрибуты класса (извне не используются):
+
+    rdbms               тип БД.
+    connection_string   строка подключения.
+    connection          текущее подключение.
+    &#34;&#34;&#34;
+
+    def __init__(self):
+        &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+        config = ConfigParser()
+        config.read(&#39;options.ini&#39;)
+        self.db_connection_string = config[&#39;DATABASE&#39;][&#39;db_connection_string&#39;]
+        self.debug = config[&#39;DATABASE&#39;][&#39;debug&#39;]
+        self.rdbms = config[&#39;DATABASE&#39;][&#39;rdbms&#39;]
+
+    def create_db(self):
+        &#34;&#34;&#34;Создание структуры базы данных.&#34;&#34;&#34;
+        try:
+            self.open()
+
+            if self.rdbms == &#34;sqlite&#34;:
+                self.execute_script(&#34;cicd/db/sqlite_create_db.sql&#34;)
+            elif self.rdbms == &#34;postgresql&#34;:
+                self.execute_script(&#34;cicd/db/postgres_create_db.sql&#34;)
+
+            # Заполнение таблицы mac_owners
+
+            with open(&#39;cicd/db/macs.txt&#39;, encoding=&#34;utf-8&#34;) as file:
+                lines = file.read().splitlines()
+            query = &#39;insert into mac_owners(mac, manufacturer) values &#39;
+            for line in lines:
+                mac, owner = line[0:6].replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;), line[11:].replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;)
+                query += &#39;(\&#39;&#39; + mac + &#39;\&#39;, \&#39;&#39; + owner + &#39;\&#39;),&#39;
+            query = query[0:-1] + &#39;;&#39;
+            self.execute_non_query(query)
+
+            # Тестовые наборы данных для отладки
+
+            if self.debug:
+                self.execute_script(&#34;cicd/db/debug_data.sql&#34;)
+
+            self.close()
+        except Exception as error:
+            print(f&#39;Что-то пошло не так! Ошибка:{error}&#39;)
+
+    def open(self):
+        &#34;&#34;&#34;Открытие.&#34;&#34;&#34;
+        if self.rdbms == &#34;sqlite&#34;:
+            self.connection = sqlite3.connect(self.db_connection_string)
+        elif self.rdbms == &#34;postgresql&#34;:
+            self.connection = psycopg2.connect(self.db_connection_string)
+
+    def close(self):
+        &#34;&#34;&#34;Закрытие.&#34;&#34;&#34;
+        self.connection.close()
+
+    def test_connection(self):
+        &#34;&#34;&#34;Проверка соединения.&#34;&#34;&#34;
+        if self.rdbms == &#34;sqlite&#34;:
+            if os.path.exists(self.db_connection_string):
+                return &#39;BASE EXISTS&#39;
+            else:
+                return &#39;BASE NOT EXISTS&#39;
+        elif self.rdbms == &#34;postgresql&#34;:
+            # проверка доступности базы данных
+            try:
+                self.open()
+                # проверка наличия структуры в базе данных
+                query = &#34;select count(table_name) _count from information_schema.tables WHERE table_schema=&#39;public&#39;&#34;
+                table_count = self.execute_scalar(query)
+                if table_count == 0:
+                    self.close()
+                    return &#39;BASE NOT EXISTS&#39;
+                else:
+                    self.close()
+                    return &#39;BASE EXISTS&#39;
+            except Exception as e:
+                ERROR = str(e)
+                return ERROR
+        ERROR = &#39;База не SQL или Postgres.&#39;
+        return ERROR
+
+    def dict_factory(self, cursor, row):
+        &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+        dick = {}
+        for idx, col in enumerate(cursor.description):
+            dick[col[0]] = row[idx]
+        return dick
+
+    def execute(self, query):
+        &#34;&#34;&#34;Выполняет запрос и возвращает результат в виде списка словарей.&#34;&#34;&#34;
+        if self.rdbms == &#39;sqlite&#39;:
+            self.connection.row_factory = self.dict_factory
+            cursor = self.connection.cursor()
+        elif self.rdbms == &#39;postgresql&#39;:
+            cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor.execute(query)
+        result = cursor.fetchall()
+        cursor.close()
+        return result
+
+    def execute_non_query(self, query, data=&#39;&#39;):
+        &#34;&#34;&#34;Необходимо использовать для запросов, которые изменяют данные &#34;insert&#34;, &#34;update&#34;.&#34;&#34;&#34;
+        cursor = self.connection.cursor()
+        cursor.execute(query, data)
+        self.connection.commit()
+        cursor.close()
+        return True
+
+    def execute_scalar(self, query, data=&#39;&#39;):
+        &#34;&#34;&#34;
+        Выполняет запрос и возвращает результат в виде одного значения.
+
+        Нужно использовать в запросах типа &#34;select count(x) from&#34; или &#34;select top 1 x from&#34;.
+        &#34;&#34;&#34;
+        cursor = self.connection.cursor()
+        cursor.execute(query, data)
+        result = cursor.fetchone()[0]
+        cursor.close()
+        return result
+
+    def execute_script(self, path):
+        &#34;&#34;&#34;Выполняет скрипт из *.sql-файла.&#34;&#34;&#34;
+        cursor = self.connection.cursor()
+        with open(path, &#39;r&#39;) as file:
+            query = file.read().replace(&#39;\n&#39;, &#39; &#39;).replace(&#39;\t&#39;, &#39;&#39;)
+        if self.rdbms == &#39;sqlite&#39;:
+            cursor.executescript(query)
+        elif self.rdbms == &#39;postgresql&#39;:
+            cursor.execute(query)
+        self.connection.commit()
+        cursor.close()
+        return True</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="al.db.db_management.DatabaseConnection.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Закрытие.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    &#34;&#34;&#34;Закрытие.&#34;&#34;&#34;
+    self.connection.close()</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.create_db"><code class="name flex">
+<span>def <span class="ident">create_db</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Создание структуры базы данных.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_db(self):
+    &#34;&#34;&#34;Создание структуры базы данных.&#34;&#34;&#34;
+    try:
+        self.open()
+
+        if self.rdbms == &#34;sqlite&#34;:
+            self.execute_script(&#34;cicd/db/sqlite_create_db.sql&#34;)
+        elif self.rdbms == &#34;postgresql&#34;:
+            self.execute_script(&#34;cicd/db/postgres_create_db.sql&#34;)
+
+        # Заполнение таблицы mac_owners
+
+        with open(&#39;cicd/db/macs.txt&#39;, encoding=&#34;utf-8&#34;) as file:
+            lines = file.read().splitlines()
+        query = &#39;insert into mac_owners(mac, manufacturer) values &#39;
+        for line in lines:
+            mac, owner = line[0:6].replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;), line[11:].replace(&#39;\&#39;&#39;, &#39;\&#39;\&#39;&#39;)
+            query += &#39;(\&#39;&#39; + mac + &#39;\&#39;, \&#39;&#39; + owner + &#39;\&#39;),&#39;
+        query = query[0:-1] + &#39;;&#39;
+        self.execute_non_query(query)
+
+        # Тестовые наборы данных для отладки
+
+        if self.debug:
+            self.execute_script(&#34;cicd/db/debug_data.sql&#34;)
+
+        self.close()
+    except Exception as error:
+        print(f&#39;Что-то пошло не так! Ошибка:{error}&#39;)</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.dict_factory"><code class="name flex">
+<span>def <span class="ident">dict_factory</span></span>(<span>self, cursor, row)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Описание.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dict_factory(self, cursor, row):
+    &#34;&#34;&#34;Описание.&#34;&#34;&#34;
+    dick = {}
+    for idx, col in enumerate(cursor.description):
+        dick[col[0]] = row[idx]
+    return dick</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.execute"><code class="name flex">
+<span>def <span class="ident">execute</span></span>(<span>self, query)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Выполняет запрос и возвращает результат в виде списка словарей.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def execute(self, query):
+    &#34;&#34;&#34;Выполняет запрос и возвращает результат в виде списка словарей.&#34;&#34;&#34;
+    if self.rdbms == &#39;sqlite&#39;:
+        self.connection.row_factory = self.dict_factory
+        cursor = self.connection.cursor()
+    elif self.rdbms == &#39;postgresql&#39;:
+        cursor = self.connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute(query)
+    result = cursor.fetchall()
+    cursor.close()
+    return result</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.execute_non_query"><code class="name flex">
+<span>def <span class="ident">execute_non_query</span></span>(<span>self, query, data='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Необходимо использовать для запросов, которые изменяют данные "insert", "update".</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def execute_non_query(self, query, data=&#39;&#39;):
+    &#34;&#34;&#34;Необходимо использовать для запросов, которые изменяют данные &#34;insert&#34;, &#34;update&#34;.&#34;&#34;&#34;
+    cursor = self.connection.cursor()
+    cursor.execute(query, data)
+    self.connection.commit()
+    cursor.close()
+    return True</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.execute_scalar"><code class="name flex">
+<span>def <span class="ident">execute_scalar</span></span>(<span>self, query, data='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Выполняет запрос и возвращает результат в виде одного значения.</p>
+<p>Нужно использовать в запросах типа "select count(x) from" или "select top 1 x from".</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def execute_scalar(self, query, data=&#39;&#39;):
+    &#34;&#34;&#34;
+    Выполняет запрос и возвращает результат в виде одного значения.
+
+    Нужно использовать в запросах типа &#34;select count(x) from&#34; или &#34;select top 1 x from&#34;.
+    &#34;&#34;&#34;
+    cursor = self.connection.cursor()
+    cursor.execute(query, data)
+    result = cursor.fetchone()[0]
+    cursor.close()
+    return result</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.execute_script"><code class="name flex">
+<span>def <span class="ident">execute_script</span></span>(<span>self, path)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Выполняет скрипт из *.sql-файла.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def execute_script(self, path):
+    &#34;&#34;&#34;Выполняет скрипт из *.sql-файла.&#34;&#34;&#34;
+    cursor = self.connection.cursor()
+    with open(path, &#39;r&#39;) as file:
+        query = file.read().replace(&#39;\n&#39;, &#39; &#39;).replace(&#39;\t&#39;, &#39;&#39;)
+    if self.rdbms == &#39;sqlite&#39;:
+        cursor.executescript(query)
+    elif self.rdbms == &#39;postgresql&#39;:
+        cursor.execute(query)
+    self.connection.commit()
+    cursor.close()
+    return True</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Открытие.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self):
+    &#34;&#34;&#34;Открытие.&#34;&#34;&#34;
+    if self.rdbms == &#34;sqlite&#34;:
+        self.connection = sqlite3.connect(self.db_connection_string)
+    elif self.rdbms == &#34;postgresql&#34;:
+        self.connection = psycopg2.connect(self.db_connection_string)</code></pre>
+</details>
+</dd>
+<dt id="al.db.db_management.DatabaseConnection.test_connection"><code class="name flex">
+<span>def <span class="ident">test_connection</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Проверка соединения.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_connection(self):
+    &#34;&#34;&#34;Проверка соединения.&#34;&#34;&#34;
+    if self.rdbms == &#34;sqlite&#34;:
+        if os.path.exists(self.db_connection_string):
+            return &#39;BASE EXISTS&#39;
+        else:
+            return &#39;BASE NOT EXISTS&#39;
+    elif self.rdbms == &#34;postgresql&#34;:
+        # проверка доступности базы данных
+        try:
+            self.open()
+            # проверка наличия структуры в базе данных
+            query = &#34;select count(table_name) _count from information_schema.tables WHERE table_schema=&#39;public&#39;&#34;
+            table_count = self.execute_scalar(query)
+            if table_count == 0:
+                self.close()
+                return &#39;BASE NOT EXISTS&#39;
+            else:
+                self.close()
+                return &#39;BASE EXISTS&#39;
+        except Exception as e:
+            ERROR = str(e)
+            return ERROR
+    ERROR = &#39;База не SQL или Postgres.&#39;
+    return ERROR</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="al.db" href="index.html">Alerter</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="al.db.db_management.flask_logon" href="#al.db.db_management.flask_logon">flask_logon</a></code></li>
+<li><code><a title="al.db.db_management.get_current_state" href="#al.db.db_management.get_current_state">get_current_state</a></code></li>
+<li><code><a title="al.db.db_management.get_events" href="#al.db.db_management.get_events">get_events</a></code></li>
+<li><code><a title="al.db.db_management.get_mac" href="#al.db.db_management.get_mac">get_mac</a></code></li>
+<li><code><a title="al.db.db_management.get_value" href="#al.db.db_management.get_value">get_value</a></code></li>
+<li><code><a title="al.db.db_management.insert_data" href="#al.db.db_management.insert_data">insert_data</a></code></li>
+<li><code><a title="al.db.db_management.login_exists" href="#al.db.db_management.login_exists">login_exists</a></code></li>
+<li><code><a title="al.db.db_management.new_syslog_event" href="#al.db.db_management.new_syslog_event">new_syslog_event</a></code></li>
+<li><code><a title="al.db.db_management.set_mac_to_unknown" href="#al.db.db_management.set_mac_to_unknown">set_mac_to_unknown</a></code></li>
+<li><code><a title="al.db.db_management.set_mac_to_wellknown" href="#al.db.db_management.set_mac_to_wellknown">set_mac_to_wellknown</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="al.db.db_management.DatabaseConnection" href="#al.db.db_management.DatabaseConnection">DatabaseConnection</a></code></h4>
+<ul class="two-column">
+<li><code><a title="al.db.db_management.DatabaseConnection.close" href="#al.db.db_management.DatabaseConnection.close">close</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.create_db" href="#al.db.db_management.DatabaseConnection.create_db">create_db</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.dict_factory" href="#al.db.db_management.DatabaseConnection.dict_factory">dict_factory</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.execute" href="#al.db.db_management.DatabaseConnection.execute">execute</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.execute_non_query" href="#al.db.db_management.DatabaseConnection.execute_non_query">execute_non_query</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.execute_scalar" href="#al.db.db_management.DatabaseConnection.execute_scalar">execute_scalar</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.execute_script" href="#al.db.db_management.DatabaseConnection.execute_script">execute_script</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.open" href="#al.db.db_management.DatabaseConnection.open">open</a></code></li>
+<li><code><a title="al.db.db_management.DatabaseConnection.test_connection" href="#al.db.db_management.DatabaseConnection.test_connection">test_connection</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
