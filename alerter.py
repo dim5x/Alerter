@@ -13,7 +13,6 @@ import socketserver
 
 import db_management
 
-
 console = Console()
 # from memory_profiler import memory_usage
 TEMPLATE1 = '┌────┬────────────────────┬─────────────┬──────────────┬──────────────────────┐'
@@ -23,7 +22,7 @@ TEMPLATE3 = '│{: <77}│'
 config = ConfigParser()
 config.read('options.ini')
 # HOST, PORT = 'localhost', 5140
-HOST, PORT = config['ALERTER']['host'], config['ALERTER']['port']
+HOST, PORT = config['ALERTER']['host'], config.getint('ALERTER', 'port')
 
 db = db_management.DatabaseConnection()
 CONNECTION_RESULT = db.test_connection()
@@ -96,7 +95,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
 
 if __name__ == '__main__':
     try:
-        server = socketserver.UDPServer((HOST, int(PORT)), SyslogUDPHandler)
+        server = socketserver.UDPServer((HOST, PORT), SyslogUDPHandler)
         console.print(f'Start server on: {HOST}. Listening port: {PORT}')
         console.print(TEMPLATE1, style='bold magenta')
         console.print(TEMPLATE2.format('PR', 'FROM_HOST', 'PROCESS', 'SYSLOG_TAG', 'MAC'),
