@@ -46,7 +46,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
         """Обработчик событий сислога."""
         data = bytes.decode(self.request[0].strip())
 
-        # Parse
+        # Parse syslog data
         event = re.search(
             r'(?P<priority><\d{,3}>)'
             r'(?P<date>\w{,3}\s+\d{,2}\s+\d{,2}:\d{,2}:\d{2})'
