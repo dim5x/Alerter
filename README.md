@@ -145,7 +145,7 @@ docker-compose up --build
 
 * Автор: [dim5x](https://github.com/dim5x)
 * Соавтор : [Baron-Munchhausen](https://github.com/Baron-Munchhausen)
-* Лицензия: Fuck license
+* Лицензия: Fuck license.
 
 ---
 
