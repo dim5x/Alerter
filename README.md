@@ -30,6 +30,7 @@ style="width: 400px; height: auto;"  /* Сохраняет пропорции */
 title="Alerter: web view."
 />
 
+
 [//]: # (width="400")
 
 [//]: # (  style="max-width: 100%; height: auto;"  /* Адаптивность */)
