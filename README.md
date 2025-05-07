@@ -23,11 +23,12 @@ syslog-сообщений. Подходит для использования д
 
 ## 🚀 Возможности:
 
-<img
-align="right"
-src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG"
-style="width: 400px; height: auto;"  /* Сохраняет пропорции */
-title="Alerter: web view."
+<img 
+    align="right"
+    src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG"
+    width="400"
+    style="max-width: 100%; height: auto;"
+    title="Alerter: web view."
 />
 
 
