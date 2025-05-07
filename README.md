@@ -23,7 +23,7 @@ syslog-сообщений. Подходит для использования д
 
 ## 🚀 Возможности:
 
-<img "right" src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG" width="400" style="max-width: 100%; height: auto;" title="Alerter: web view." alt="Скриншот программы Alerter."/>
+<img align="right" src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG" width="400" style="max-width: 100%; height: auto;" title="Alerter: web view." alt="Скриншот программы Alerter."/>
 
 [//]: # (width="400")
 
