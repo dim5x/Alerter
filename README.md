@@ -23,18 +23,12 @@ syslog-сообщений. Подходит для использования д
 
 ## 🚀 Возможности:
 
-<img 
-    align="right"
-    src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG"
-    width="400"
-    style="max-width: 100%; height: auto;"
-    title="Alerter: web view."
-/>
-
+<img "right" src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG" width="400" style="max-width: 100%; height: auto;" title="Alerter: web view." alt="Скриншот программы Alerter."/>
 
 [//]: # (width="400")
 
 [//]: # (  style="max-width: 100%; height: auto;"  /* Адаптивность */)
+
 * Прием и хранение syslog-сообщений от сетевых устройств (например, роутеров).
 * Веб-интерфейс для просмотра логов.
 * Фильтрация по MAC-адресам, источникам и другим параметрам.
@@ -83,33 +77,32 @@ https://www.postgresql.org/download/linux/ubuntu/
 
 3.1. Логинимся под системным пользователем:
 
-```sh
+```bash
  su - postgres
 ```
 
 3.2. Запускаем утилиту:
 
-```sh
+```bash
 psql
 ```
 
 3.3. Создаём пользователя для сервиса:
 
-```SQL
+```bash
 create user alerter with password 'alerter';
 ```
 
 3.4. Создаём базу данных:
-
-```SQL
+```bash
 create database alerter_destination;
 ```
 
 3.5. Предоставляем пользователю права на базу данных:
-
-```SQL
+```bash
 grant all privileges on database alerter_destination to alerter;
 ```
+
 
 ### 4. Настройте параметры подключения:
 
@@ -160,7 +153,7 @@ docker-compose up --build
 * Управление белыми списками MAC-адресов
 
 Скриншот:
-<img src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG" alt="альтернативный текст">
+<img alt="Скриншот программы Alerter." src="https://github.com/dim5x/PyNetHomeInvaderAlerter/raw/master/archive/Screenshot7.PNG" title="Alerter: web view."/>
 
 ## 🧪 Тестирование:
 
