@@ -5,12 +5,14 @@ COPY cicd/db /app/alerter/cicd/db
 COPY ["*.py", "global.config", "cicd/docker/alerter/requirements_alerter.txt", "/app/alerter/"]
 
 # Устанавливаем все зависимости
-RUN pip install -r /app/alerter/requirements_alerter.txt --no-cache-dir
+RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean && \
+pip install -r /app/alerter/requirements_alerter.txt --no-cache-dir && \
+apt-get --purge remove -y netcat-openbsd gcc apt-utils
 
 # Устанавливаем приложение (Подробнее смотри Distutils)
 WORKDIR /app/alerter
 
-CMD ["python", "/app/alerter/alerter.py"]
+CMD python /app/alerter/alerter.py
 
 # Говорим контейнеру какой порт слушай
 EXPOSE 514
