@@ -17,3 +17,4 @@ CMD python /app/alerter/web_view.py
 
 # Говорим контейнеру какой порт слушай
 EXPOSE 5000
+
