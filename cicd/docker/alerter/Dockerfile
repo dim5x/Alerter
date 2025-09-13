@@ -1,19 +1,18 @@
 # Берем нужный базовый образ
-FROM python:3.8-slim
+FROM python:3.10-slim
 # Копируем все файлы из текущей директории в /app контейнера
-COPY /static/ /app/alerter/static/
-COPY /templates/ /app/alerter/templates/
-COPY ["*.py", "global.config", "./cicd/docker/requirements_flask.txt", "/app/alerter/"]
+COPY cicd/db /app/alerter/cicd/db
+COPY ["*.py", "global.config", "cicd/docker/alerter/requirements_alerter.txt", "/app/alerter/"]
 
 # Устанавливаем все зависимости
 RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean && \
-pip install -r /app/alerter/requirements_flask.txt --no-cache-dir && \
+pip install -r /app/alerter/requirements_alerter.txt --no-cache-dir && \
 apt-get --purge remove -y netcat-openbsd gcc apt-utils
 
 # Устанавливаем приложение (Подробнее смотри Distutils)
 WORKDIR /app/alerter
 
-CMD python /app/alerter/web_view.py
+CMD python /app/alerter/alerter.py
 
 # Говорим контейнеру какой порт слушай
-EXPOSE 5000
+EXPOSE 514
