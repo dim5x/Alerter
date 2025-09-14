@@ -22,7 +22,8 @@ TEMPLATE3 = '│{: <77}│'
 config = ConfigParser()
 config.read('options.ini')
 # HOST, PORT = 'localhost', 5140
-HOST, PORT = config['ALERTER']['host'], config.getint('ALERTER', 'port')
+HOST, PORT = '0.0.0.0', 5140
+# HOST, PORT = config['ALERTER']['host'], config.getint('ALERTER', 'port')
 
 db = db_management.DatabaseConnection()
 CONNECTION_RESULT = db.test_connection()
@@ -45,7 +46,7 @@ class SyslogUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         """Обработчик событий сислога."""
         data = bytes.decode(self.request[0].strip())
-
+        print(data)
         # Parse syslog data
         event = re.search(
             r'(?P<priority><\d{,3}>)'
