@@ -11,7 +11,7 @@ RUN pip install -r /app/alerter/requirements_alerter.txt --no-cache-dir
 
 # Копируем код приложения
 COPY cicd/db /app/alerter/cicd/db
-COPY alerter.py options.ini ./
+COPY alerter.py db_management.py options.ini ./
 
 # Говорим контейнеру какой порт слушай
 EXPOSE 5140
