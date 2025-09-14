@@ -13,4 +13,4 @@ WORKDIR /app/alerter
 CMD ["python", "/app/alerter/alerter.py"]
 
 # Говорим контейнеру какой порт слушай
-EXPOSE 514
+EXPOSE 5140
