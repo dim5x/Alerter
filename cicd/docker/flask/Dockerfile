@@ -3,7 +3,7 @@ FROM python:3.10-slim
 # Копируем все файлы из текущей директории в /app контейнера
 COPY /static/ /app/alerter/static/
 COPY /templates/ /app/alerter/templates/
-COPY ["*.py", "global.config", "./cicd/docker/flask/requirements_flask.txt", "/app/alerter/"]
+COPY ["*.py", "options.ini", "./cicd/docker/flask/requirements_flask.txt", "/app/alerter/"]
 
 # Устанавливаем все зависимости
 RUN apt-get update && apt-get upgrade -y && apt-get install -y netcat-openbsd gcc apt-utils && apt-get clean && \
