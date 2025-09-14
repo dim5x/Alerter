@@ -27,7 +27,6 @@ services:
     volumes:
       - app_config:/app/alerter/local.config
       - app_db:/app/alerter/destination.db
-    command: sh -c "sqlite3 /app/alerter/destination.db < /app/alerter/cicd/db/sqlite_create_db.sql && python /app/alerter/alerter.py"
 
 networks:
   bridge:
