@@ -12,7 +12,7 @@ RUN pip install -r requirements_flask.txt --no-cache-dir
 # Копируем код приложения
 COPY /static/ /app/alerter/static/
 COPY /templates/ /app/alerter/templates/
-COPY web_view.py options.ini ./
+COPY web_view.py db_management.py options.ini ./
 
 # Говорим контейнеру какой порт слушать
 EXPOSE 5000
