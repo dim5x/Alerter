@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  web_view:
+    image: dim5x/flask.slim:latest
+    container_name: web_view
+    ports:
+      - 5000:5000
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.3
+    restart: always
+    volumes:
+      - app_config:/app/alerter/local.config
+      - app_db:/app/alerter/destination.db
+    depends_on:
+      - alerter
+
+  alerter:
+    image: dim5x/alerter.slim:latest
+    container_name: alerter
+    ports:
+      - 514:514/udp
+    networks:
+      bridge:
+        ipv4_address: 172.21.0.2
+    restart: always
+    volumes:
+      - app_config:/app/alerter/local.config
+      - app_db:/app/alerter/destination.db
+    command: sh -c "sqlite3 /app/alerter/destination.db < /app/alerter/cicd/db/sqlite_create_db.sql && python /app/alerter/alerter.py"
+
+networks:
+  bridge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
+
+volumes:
+  app_config:
+    driver: local
+  app_db:
+    driver: local
